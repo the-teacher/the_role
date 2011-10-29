@@ -1,37 +1,37 @@
 - content_for :title do
   = t('.title')
 
-p= flash[:notice]
+%p= flash[:notice]
 
-h1= t('.title')
+%h1= t('.title')
 
-p= link_to raw(t('.back')), admin_roles_path
+%p= link_to raw(t('.back')), admin_roles_path
 
-h2
-  == t('.name')
+%h2
+  = t('.name')
   = @role.title
 
 = form_for :role, :url => {:action=> :update }, :html => {:method => :put, :class => :form } do |f|
   = render :partial => 'form', :locals => {:f => f, :button => t('.update')}
 
-h4= t('.create_section')
+%h4= t('.create_section')
 - role = TheRole.get(@role.the_role)
   
 = form_tag(new_role_section_admin_role_path, :method => :post, :class => :new_action) do
   = text_field_tag :section_name
   = submit_tag t('.create_section')
 
-h4= t('.create_access_policy')
+%h4= t('.create_access_policy')
 
 - unless role.empty?
   = form_tag(new_role_policy_admin_role_path(@role), :method => :post, :class => :new_action) do
     = text_field_tag :section_policy
 
-    select name=:section_name
+    %select{ :name => :section_name }
       -role.each do |name, set|
-        option value=name
+        %option{ :value => name }
           = name
         
-      input type=:submit value=t('.create_policy')
+      %input{ :type => :submit, :value => t('.create_policy') }
 - else
-  p= t('.section_needs')
+  %p= t('.section_needs')

@@ -29,8 +29,8 @@ class Admin::RolesController < ApplicationController
 
   def update
     role = TheRole.get(@role.the_role).the_reset!
-    role.the_merge!(params[:role][:the_role])
-
+    new_role = params[:role] ? params[:role][:the_role] : Hash.new
+    role.the_merge!(new_role)
     if @role.update_attribute(:the_role, role.to_yaml)
       flash[:notice] = t('the_role.role_updated')
       redirect_to edit_admin_role_path(@role)
