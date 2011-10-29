@@ -36,6 +36,7 @@ module TheRole
     end
     
     def moderator? section
+      return true if self.admin?
       role = self.the_role[:moderator] ? self.the_role[:moderator][section.to_sym] : false
       role && role.is_a?(TrueClass)
     end
