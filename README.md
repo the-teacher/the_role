@@ -92,13 +92,70 @@ rails c
     => flase
 ```
 
-## Example
+## TheRole into Controller 
 
 ``` ruby
-- if curent_user.has_role? :pages, :show
-  Page content
-- else
-  Access denied
+rails g controller welcome index edit secret
 ```
+
+**config/routes.rb**
+
+``` ruby
+resources :pages
+get "welcome/index"
+get "welcome/edit"
+get "welcome/secret"
+
+root :to => 'welcome#index'
+```
+
+**index.html.erb**
+
+``` ruby
+<% user = User.first %>
+<% user.role = Role.where(:name => :user).first %>
+<% user.save %>
+<%= user.role.name if user.role %>
+ 
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+
+<% if user.has_role? :welcome, :index %>
+  Secret content
+<% else %>
+  Access Denied
+<% end %>
+```
+
+**Gives**
+
+``` ruby
+user
+Welcome#index
+
+Find me in app/views/welcome/index.html.erb
+Access Denied
+```
+
+**Manage role**
+
+``` ruby
+http://localhost:3000/admin/roles
+```
+
+Create a Role group **welcome** 
+Create an access policy **index** inside **welcome**
+
+
+**Now welcome#index give**
+
+``` ruby
+user
+Welcome#index
+
+Find me in app/views/welcome/index.html.erb
+Secret content
+```
+
 
 Copyright (c) 2011 [Ilya N. Zykin Github.com/the-teacher], released under the MIT license
