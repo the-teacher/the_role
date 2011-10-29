@@ -103,7 +103,7 @@ module TheRole
         @the_role_object = self.instance_variable_get("@#{variable_name}")
       end
 
-      # before_filter :owner_and_role_require
+      # before_filter :the_owner_require
       def the_owner_require
         the_role_access_denied unless current_user.owner?(@the_role_object)
       end
