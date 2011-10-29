@@ -10,7 +10,7 @@ namespace :db do
         }
       }
       Role.new(
-        :name => :administrator,
+        :name => :admin,
         :title => 'Administrator',
         :description => 'Role for administrator',
         :the_role => role.to_yaml
@@ -27,7 +27,7 @@ namespace :db do
         }
       }
       Role.new(
-        :name => :user,
+        :name => :moderator,
         :title => 'Moderator of pages',
         :description => "Moderator #1",
         :the_role => role.to_yaml
@@ -107,7 +107,7 @@ namespace :db do
         }
       }
       Role.new(
-        :name => :user,
+        :name => :demo,
         :title => 'Demo',
         :description => "Demo user",
         :the_role => role.to_yaml

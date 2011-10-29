@@ -47,7 +47,11 @@ module TheRole
     def has_role?(section, policy)
       return true   if self.admin?
       return true   if self.moderator? section 
-      self.the_role[section.to_sym][policy.to_sym].is_a?(TrueClass) if self.the_role[section.to_sym] && self.the_role[section.to_sym][policy.to_sym]
+      if self.the_role[section.to_sym] && self.the_role[section.to_sym][policy.to_sym]
+        self.the_role[section.to_sym][policy.to_sym].is_a?(TrueClass)
+      else
+        false
+      end
     end
 
     # FALSE if object is nil

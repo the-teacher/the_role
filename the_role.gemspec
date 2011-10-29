@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = TheRole::VERSION
   s.authors     = ["Ilya N. Zykin"]
   s.email       = ["zykin-ilya@ya.ru"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/the-teacher/the_role"
   s.summary     = %q{TheRole - simple, but powerful role system}
   s.description = %q{TheRole - simple, but powerful role system for ROR applications}
 
@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   # s.add_development_dependency "rspec"
   # s.add_runtime_dependency "rest-client"
+  s.add_dependency 'haml'
 end
