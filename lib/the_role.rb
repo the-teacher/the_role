@@ -36,7 +36,7 @@ module TheRole
     end
     
     def moderator? section
-      role = self.the_role[:system] ? self.the_role[:moderator][section.to_sym] : false
+      role = self.the_role[:moderator] ? self.the_role[:moderator][section.to_sym] : false
       role && role.is_a?(TrueClass)
     end
 
