@@ -1,0 +1,26 @@
+- role = TheRole.get(@role.the_role)
+
+- if role.blank?
+  h3  
+    = t('.empty')
+- else
+  -role.each do |name, set|
+    h4
+      = name
+      span.controls
+        = link_to(t('.delete'), admin_role_section_url(@role, name), :method => :delete, :confirm => t('.destroy_section_confirm'))
+
+    - if set.is_a?(Hash)
+      ul.rights
+        - set.each do |n, v|
+          li
+            = check_box_tag "role[the_role][#{name}][#{n}]", true, v
+            = n
+            .controls
+              = link_to t('.delete'), delete_policy_admin_role_section_path(@role, name, :name => n), :method => :delete, :confirm => t('.delete_policy_confirm')
+
+  = f.submit button
+
+
+
+  

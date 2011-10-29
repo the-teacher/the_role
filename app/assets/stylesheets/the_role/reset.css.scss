@@ -1,0 +1,63 @@
+/*18 aug 2011 */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
+p, img, font, pre, blockquote, i, b, u, s, strike, sub, sup, tt, big, small,
+center, abbr, em, code, acronym, address, ins, del, strong, var, cite,
+dfn, kbd, samp, dd, dl, dt, ol, ul, li, caption,
+table, tbody, tfoot, thead, tr, th, td,
+form, fieldset, legend, label,
+article, aside, canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:10px; /*zero-point*/
+  vertical-align:baseline;
+  background:transparent;
+  line-height:100%;
+}
+html, body, div, applet, object, iframe, img, p, pre, blockquote,
+dd, dl, dt, ol, ul, li, caption, table, tbody, tfoot, thead, tr, th, td,
+form, fieldset, legend, label{
+  font-weight:normal;
+}
+
+img, p, pre, blockquote, dd, dt, li, caption, legend, label{line-height:100%;}
+table, tr, td{
+  vertical-align:top;
+  border-collapse:collapse;
+  border-spacing:0;
+}
+img{vertical-align:top;}
+ol, ul{list-style:none; margin:0;}
+li{list-style-position:outside;}
+
+a{text-decoration:none;}
+a:hover{text-decoration:none;}
+
+sup, sub{font-size:85%; zoom:1;}
+sup{vertical-align:40%;}
+sub{vertical-align:-40%;}
+:focus{outline:0;}
+.overblock{overflow:hidden; zoom:1;}
+.nobr{white-space:nowrap;}
+.u{text-decoration:underline;}
+noscript{color:red;}
+/*basic LIST styles*/
+.numered_list, .marked_list{margin-left:20px;}
+.numered_list li, .marked_list li{
+  list-style-position: outside;
+  margin-left: 15px;
+  padding-left: 5px;
+}
+.numered_list li{list-style-type:decimal;}
+.marked_list  li{list-style-type:disc;}
+/*Inherit*/
+a, span, font, i, b, u, s, strike{ font-size: inherit; }
+/*CUSTOM*/
+img, p, pre, blockquote, dd, dt, caption, legend, label{
+  line-height:150%;
+}
+p, pre, blockquote{margin-bottom:15px;}
+a{color:#8CA357;}
+a:hover{text-decoration:underline;}
