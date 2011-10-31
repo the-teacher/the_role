@@ -13,7 +13,6 @@ Gemfile
 
 ``` ruby
   gem 'the_role'
-  gem 'haml'
 ```
 
 ``` ruby
@@ -24,15 +23,33 @@ Gemfile
 rake the_role_engine:install:migrations
   >> Copied migration 20111028145956_create_roles.rb from the_role_engine
 
-rake db:migrate
+rails g model user role_id:integer
+rails g model role --migration=false
+
+rake db:create && rake db:migrate
 ```
 
+Creating roles for test
+
 ``` ruby
-rake db:roles:create
+rake db:roles:test
   >> Administrator, Moderator of pages, User, Demo
 ```
 
+##  Manage roles
+
 ``` ruby
+rails s
+```
+
+**admin_roles_path** => **http://localhost:3000/admin/roles**
+
+##  How it works
+
+
+``` ruby
+rails c
+
 user = User.first
 user.role = Role.where(:name => :demo).first
 user.save
@@ -68,7 +85,5 @@ user.has_role? :any_crazy_name, :any_crazy_name
   => true
 
 ```
-
-Manage your roles you can with **admin_roles_path** => **http://localhost:3000/admin/roles**
 
 Copyright (c) 2011 [Ilya N. Zykin Github.com/the-teacher], released under the MIT license

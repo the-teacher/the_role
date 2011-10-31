@@ -1,8 +1,8 @@
 namespace :db do
   namespace :roles do
-    # rake db:roles:create_test
+    # rake db:roles:test
     desc 'create roles'
-    task :create_test => :environment do
+    task :test => :environment do
       # ADMIN
       role = {
         :system => {
@@ -115,6 +115,6 @@ namespace :db do
       puts 'Demo'
 
       puts 'Roles created'
-    end#create
+    end#test
   end#roles
 end#db
