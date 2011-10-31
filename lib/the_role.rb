@@ -1,6 +1,8 @@
-require "the_role/version"
+require "haml"
+
 require "the_role/hash"
 require "the_role/engine"
+require "the_role/version"
 require "the_role/the_class_exists"
 
 module TheRole
