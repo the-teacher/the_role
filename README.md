@@ -57,12 +57,15 @@ end
 
 ``` ruby
 class ArticlesController < ApplicationController
-  before_filter :login_required
+  # Auth system
+  before_filter :login_required, :except=>[:index, :show, :tag]
+  # Role system
+  before_filter :the_role_require,  :except => [:index, :show, :tag]
+  before_filter :the_role_object,   :only => [:edit, :update, :rebuild, :destroy]
+  before_filter :the_owner_require, :only => [:edit, :update, :rebuild, :destroy]
 
-  before_filter :the_role_require
-  before_filter :the_role_object,   :only => [:new, :edit, :update, :destroy]
-  before_filter :the_owner_require, :only => [:new, :edit, :update, :destroy]
-
+  # actions
+  
 end
 ```
 

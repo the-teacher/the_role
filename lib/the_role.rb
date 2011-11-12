@@ -104,7 +104,7 @@ module TheRole
       # define class variable for *the_owner_require* filter with Controller class name
       # @the_role_object = @article
       def the_role_object
-        variable_name   = self.to_s.tableize.split('_').first.singularize.split('/').last
+        variable_name   = self.class.to_s.tableize.split('_').first.singularize.split('/').last
         @the_role_object = self.instance_variable_get("@#{variable_name}")
       end
 
