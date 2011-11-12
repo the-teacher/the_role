@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
   # You Auth system
   include AuthenticatedSystem
 
-  # define alias for correctly work of TheRole gem
+  # define aliases for correctly work of TheRole gem
   alias_method :the_login_required, :login_required
   alias_method :the_role_access_denied, :access_denied
 end
