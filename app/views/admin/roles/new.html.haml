@@ -4,7 +4,7 @@
   %p= m
 
 .form
-  %h5= t('.create')
+  %h5= raw t('.create')
   = form_for(@role, :url => admin_roles_path) do |f|
     %label= t('.name')
     %p= f.text_field :name

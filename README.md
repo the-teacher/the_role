@@ -53,6 +53,17 @@ class ApplicationController < ActionController::Base
 end
 ```
 
+##  Using with controllers
+
+``` ruby
+class ArticlesController < ApplicationController
+  before_filter :login_required
+
+  before_filter :the_role_require
+  before_filter :the_role_object,   :only => [:new, :edit, :update, :destroy]
+  before_filter :the_owner_require, :only => [:new, :edit, :update, :destroy]
+```
+
 ##  Manage roles
 
 ``` ruby

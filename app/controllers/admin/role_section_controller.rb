@@ -1,8 +1,10 @@
 class Admin::RoleSectionController < ApplicationController
   before_filter :login_required
   before_filter :the_role_require
-  before_filter :find_role, :only=>[:destroy, :delete_policy]
-  before_filter :the_owner_require, :only=>[:destroy, :delete_policy]
+
+  before_filter :the_role_find,     :only => [:destroy, :delete_policy]
+  before_filter :the_role_object,   :only => [:destroy, :delete_policy]
+  before_filter :the_owner_require, :only => [:destroy, :delete_policy]
   
   def destroy
     section_name = params[:id]
@@ -33,7 +35,7 @@ class Admin::RoleSectionController < ApplicationController
 
   protected
 
-  def find_role
+  def the_role_find
     @role = Role.find(params[:role_id])
   end
 end

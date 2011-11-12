@@ -8,7 +8,7 @@
 %p= link_to raw(t('.back')), admin_roles_path
 
 %h2
-  = t('.name')
+  = raw t('.name')
   = @role.title
 
 = form_for :role, :url => {:action=> :update }, :html => {:method => :put, :class => :form } do |f|
