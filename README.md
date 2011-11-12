@@ -36,17 +36,19 @@ rake db:roles:test
   >> Administrator, Moderator of pages, User, Demo
 ```
 
-Define alias method for **the_login_required** for correctly work of admin's controllers
+Define aliases method for correctly work TheRole controllers
 
 **login_required** or any other method from your auth system
+**access_denied** or any other method for processing access denied situation
 
 ``` ruby
 class ApplicationController < ActionController::Base
   # You Auth system
   include AuthenticatedSystem
 
-  # TheRole login_required method alias
+  # define alias for correctly work for TheRole
   alias_method :the_login_required, :login_required
+  alias_method :the_role_access_denied, :access_denied
 end
 ```
 
