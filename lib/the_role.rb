@@ -1,4 +1,5 @@
 require "haml"
+require "sass"
 
 require "the_role/hash"
 require "the_role/engine"
