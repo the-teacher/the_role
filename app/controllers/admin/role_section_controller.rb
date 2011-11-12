@@ -1,4 +1,5 @@
 class Admin::RoleSectionController < ApplicationController
+  before_filter :login_required
   before_filter :the_role_require
   before_filter :find_role, :only=>[:destroy, :delete_policy]
   before_filter :the_owner_require, :only=>[:destroy, :delete_policy]

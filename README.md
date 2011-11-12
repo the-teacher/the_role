@@ -36,6 +36,20 @@ rake db:roles:test
   >> Administrator, Moderator of pages, User, Demo
 ```
 
+Define alias method for **the_login_required** for correctly work of admin's controllers
+
+**login_required** or any other method from your auth system
+
+``` ruby
+class ApplicationController < ActionController::Base
+  # You Auth system
+  include AuthenticatedSystem
+
+  # TheRole login_required method alias
+  alias_method :the_login_required, :login_required
+end
+```
+
 ##  Manage roles
 
 ``` ruby
@@ -83,20 +97,6 @@ user.moderator? :any_crazy_name
 user.has_role? :any_crazy_name, :any_crazy_name
   => true
 
-```
-
-##  Extend TheRole's controllers with **login_require** method
-
-**config/initialisers/the_role.rb**
-
-``` ruby
-require 'authenticated_system'
-
-Admin::RolesController.send :include, AuthenticatedSystem
-Admin::RoleSectionController.send :include, AuthenticatedSystem
-
-Admin::RolesController.send :before_filter, :login_require
-Admin::RoleSectionController.send :before_filter, :login_require
 ```
 
 Copyright (c) 2011 [Ilya N. Zykin Github.com/the-teacher], released under the MIT license

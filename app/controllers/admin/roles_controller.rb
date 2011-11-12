@@ -2,6 +2,7 @@ require 'the_role'
 
 class Admin::RolesController < ApplicationController
   layout 'the_role'
+  before_filter :the_login_required
   before_filter :the_role_require
   before_filter :find_role, :only => [:show, :edit, :update, :destroy, :new_role_section, :new_role_policy]
   before_filter :the_owner_require, :only => [:show, :edit, :update, :destroy, :new_role_section, :new_role_policy]
