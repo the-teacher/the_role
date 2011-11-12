@@ -2,10 +2,10 @@ require 'the_role'
 
 class Admin::RolesController < ApplicationController
   layout 'the_role'
-  # before_filter :login_required
-  # before_filter :role_require
+  before_filter :the_role_require
+  before_filter :the_owner_require, :only => [:show, :edit, :update, :destroy, :new_role_section, :new_role_policy]
   before_filter :find_role, :only => [:show, :edit, :update, :destroy, :new_role_section, :new_role_policy]
-
+  
   def index
     @roles = Role.all(:order => "created_at ASC")
   end

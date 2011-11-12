@@ -4,3 +4,4 @@ source "http://rubygems.org"
 gemspec
 
 gem 'haml', '~> 3.0'
+gem 'sass'

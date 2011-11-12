@@ -46,7 +46,6 @@ rails s
 
 ##  How it works
 
-
 ``` ruby
 rails c
 
@@ -84,6 +83,20 @@ user.moderator? :any_crazy_name
 user.has_role? :any_crazy_name, :any_crazy_name
   => true
 
+```
+
+##  Extend TheRole's controllers with **login_require** method
+
+**config/initialisers/the_role.rb**
+
+``` ruby
+require 'authenticated_system'
+
+Admin::RolesController.send :include, AuthenticatedSystem
+Admin::RoleSectionController.send :include, AuthenticatedSystem
+
+Admin::RolesController.send :before_filter, :login_require
+Admin::RoleSectionController.send :before_filter, :login_require
 ```
 
 Copyright (c) 2011 [Ilya N. Zykin Github.com/the-teacher], released under the MIT license

@@ -14,6 +14,7 @@ module TheRole
 
   # TheRole.get(@role.the_role)
   def self.get str
+    str = str.is_a?(String) ? str : String.new
     hash = YAML::load(str)
     hash ? hash : Hash.new
   end
