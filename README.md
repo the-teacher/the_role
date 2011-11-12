@@ -62,6 +62,8 @@ class ArticlesController < ApplicationController
   before_filter :the_role_require
   before_filter :the_role_object,   :only => [:new, :edit, :update, :destroy]
   before_filter :the_owner_require, :only => [:new, :edit, :update, :destroy]
+
+end
 ```
 
 ##  Manage roles
