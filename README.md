@@ -69,6 +69,37 @@ class ArticlesController < ApplicationController
 end
 ```
 
+**the_role_object** try to define instance variable by current controller name and params[:id]
+@recipe for RecipesController
+@user for UserController
+
+Instance variable required for correctly work of **the_owner_require** method.
+
+If you want to define other finder method, you should define **@the_role_object** for correctly work of **the_owner_require** method.
+
+For example
+
+``` ruby
+class UsersController < ApplicationController
+  before_filter :require_login, :except => [:new, :create]
+  before_filter :the_role_require, :except => [:new, :create]
+  before_filter :find_user, :only => [:edit]
+  before_filter :the_owner_require, :only => [:edit]
+
+  def new; end
+  def create; end
+  def cabinet; end
+  def edit; end
+
+  private
+
+  def find_user
+    @user = User.where(:login => params[:id]).first
+    @the_role_object = @user
+  end
+end
+```
+
 ##  Manage roles
 
 ``` ruby

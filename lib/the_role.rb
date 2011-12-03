@@ -78,8 +78,8 @@ module TheRole
     def self.included(base)
       base.class_eval do
         has_many :users
-        validates :name,  :presence => {:message => I18n.translate('the_role.name_presence')}
-        validates :title, :presence => {:message => I18n.translate('the_role.title_presence')}
+        validates :name,  :presence => true
+        validates :title, :presence => true
       end
     end
   end#RoleModel
