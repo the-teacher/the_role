@@ -1,37 +1,43 @@
 - content_for :title do
   = t('.title')
 
-%p= flash[:notice]
+- content_for :js do
+  = stylesheet_link_tag   'the_role/style'
+  = stylesheet_link_tag   'the_role/headers'
+  = stylesheet_link_tag   'the_role/form'
 
-%h1= t('.title')
+.the_role
+  %p= flash[:notice]
 
-%p= link_to raw(t('.back')), admin_roles_path
+  %h1= t('.title')
 
-%h2
-  = raw t('.name')
-  = @role.title
+  %p= link_to raw(t('.back')), admin_roles_path
 
-= form_for :role, :url => {:action=> :update }, :html => {:method => :put, :class => :form } do |f|
-  = render :partial => 'form', :locals => {:f => f, :button => t('.update')}
+  %h2
+    = raw t('.name')
+    = @role.title
 
-%h4= t('.create_section')
-- role = TheRole.get(@role.the_role)
-  
-= form_tag(new_role_section_admin_role_path, :method => :post, :class => :new_action) do
-  = text_field_tag :section_name
-  = submit_tag t('.create_section')
+  = form_for :role, :url => {:action=> :update }, :html => {:method => :put, :class => :the_form } do |f|
+    = render :partial => 'form', :locals => {:f => f, :button => t('.update')}
 
-%h4= t('.create_access_policy')
+  %h4= t('.create_section')
+  - role = TheRole.get(@role.the_role)
+    
+  = form_tag(new_role_section_admin_role_path, :method => :post, :class => :new_action) do
+    = text_field_tag :section_name
+    = submit_tag t('.create_section')
 
-- unless role.empty?
-  = form_tag(new_role_policy_admin_role_path(@role), :method => :post, :class => :new_action) do
-    = text_field_tag :section_policy
+  %h4= t('.create_access_policy')
 
-    %select{ :name => :section_name }
-      -role.each do |name, set|
-        %option{ :value => name }
-          = name
-        
-      %input{ :type => :submit, :value => t('.create_policy') }
-- else
-  %p= t('.section_needs')
+  - unless role.empty?
+    = form_tag(new_role_policy_admin_role_path(@role), :method => :post, :class => :new_action) do
+      = text_field_tag :section_policy
+
+      %select{ :name => :section_name }
+        -role.each do |name, set|
+          %option{ :value => name }
+            = name
+          
+        %input{ :type => :submit, :value => t('.create_policy') }
+  - else
+    %p= t('.section_needs')

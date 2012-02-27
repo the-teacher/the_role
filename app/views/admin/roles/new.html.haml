@@ -1,13 +1,14 @@
-%p= link_to raw(t('.back')),  admin_roles_path
+.the_role
+  %p= link_to raw(t('.back')),  admin_roles_path
 
-- @role.errors.each do |f, m|
-  %p= m
+  - @role.errors.each do |f, m|
+    %p= m
 
-.form
-  %h5= raw t('.create')
-  = form_for(@role, :url => admin_roles_path) do |f|
-    %label= t('.name')
-    %p= f.text_field :name
-    %label= t('.title')
-    %p= f.text_field :title
-    = f.submit t('.new')
+  .form
+    %h5= raw t('.create')
+    = form_for(@role, :url => admin_roles_path) do |f|
+      %label= t('.name')
+      %p= f.text_field :name
+      %label= t('.title')
+      %p= f.text_field :title
+      = f.submit t('.new')

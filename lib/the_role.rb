@@ -77,9 +77,19 @@ module TheRole
   module RoleModel
     def self.included(base)
       base.class_eval do
-        has_many :users
-        validates :name,  :presence => true
-        validates :title, :presence => true
+        has_many  :users
+        validates :name,        :presence => true
+        validates :title,       :presence => true
+        validates :description, :presence => true
+        validates :the_role,    :presence => true
+
+        def to_yaml
+          the_role.to_yaml
+        end
+
+        def to_hash
+          TheRole.get(the_role)
+        end
       end
     end
   end#RoleModel

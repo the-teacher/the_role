@@ -1,7 +1,6 @@
 require 'the_role'
 
 class Admin::RolesController < ApplicationController
-  layout 'the_role'
   before_filter :the_login_required
   before_filter :the_role_require
   

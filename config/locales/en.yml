@@ -1,42 +1,43 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-ru:
+en:
   the_role:
-    name_presence: Установите имя роли
-    title_presence: Установите название роли
-    section_created: Правовая группа успешно создана
-    section_policy_created: В заданной группе успешно создана политика доступа
-    section_deleted: Политика доступа удалена
-    section_policy_deleted: Политика доступа удалена
-    section_name_is_wrong: Ошибочное название правовой группы
-    section_policy_wrong_name: Ошибочное название правовой политики
-    section_name_is_blank: Имя правовой группы оказалось пустым
-    section_exists: Правовая группа уже существует
-    role_created: Роль успешно создана
-    role_updated: Роль успешно обновлена
+    name_presence: Set the role name
+    title_presence: Set title of role
+    section_created: Role group is successfully created
+    section_policy_created: In a given group is successfully created an access policy
+    section_deleted: access policy is removed
+    section_policy_deleted: access policy is removed
+    section_name_is_wrong: Wrong name of Role
+    section_policy_wrong_name: Wrong name of Role Policy
+    section_name_is_blank: The name of the Role team was empty
+    section_exists: Role group already exists
+    role_created: The Role of successfully established
+    role_updated: Role updated successfully
+    delete_role: It is can make big problems. Delete this role?
   admin:
     roles:
       index:
-        list: Список ролей
-        delete: 'Удалить роль '
-        new: Создать новую роль
+        list: list of roles
+        delete: 'Delete role: '
+        new: Create a new role
       edit:
-        title: Редактирование роли
-        back: '&larr; К списку ролей'
-        name: 'Название роли &mdash; '
-        create_section: Создать правовую группу
-        create_access_policy: Создать политику доступа
-        create_policy: Создать политику
-        section_needs: Создайте хотя бы одну правовую группу
-        update: Обновить
+        title: Editing role
+        back: '← To the list of roles'
+        name: 'Name of role -'
+        create_section: Create a Role group
+        create_access_policy: Create an access policy
+        create_policy: New Policy
+        section_needs: Create at least one Role group
+        update: Update
       form:
-        destroy_section_confirm: Удалить правовую группу?
-        empty: Нет ни одной правовой группы
-        delete_policy_confirm: Удалить политику доступа?
-        delete: Удалить
+        destroy_section_confirm: Remove a role section?
+        empty: There is no role section
+        delete_policy_confirm: Remove the access policy?
+        delete: Delete
       new:
-        back: '&larr; К списку ролей'
-        create: Создать новую роль
-        name: Имя роли (латиницей)
-        title: Название роли
-        new: Создать
+        back: '← To the list of roles'
+        create: Create a new role
+        name: Name of the role (Latin)
+        title: Title of role
+        new: Create
