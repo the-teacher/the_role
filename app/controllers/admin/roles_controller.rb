@@ -30,10 +30,9 @@ class Admin::RolesController < ApplicationController
   end
 
   def update
-    role = TheRole.get(@role.the_role).the_reset!
     new_role = params[:role] ? params[:role][:the_role] : Hash.new
-    role.the_merge!(new_role)
-    if @role.update_attribute(:the_role, role.to_yaml)
+
+    if @role.role_merge! new_role
       flash[:notice] = t('the_role.role_updated')
       redirect_to edit_admin_role_path(@role)
     else
@@ -66,7 +65,7 @@ class Admin::RolesController < ApplicationController
 
     role[section_name.to_sym] = Hash.new
     
-    if @role.update_attributes({:the_role => role.to_yaml})
+    if @role.role_merge! role
       flash[:notice] = t('the_role.section_created')
       redirect_to edit_admin_role_path(@role)
     else

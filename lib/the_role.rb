@@ -83,12 +83,20 @@ module TheRole
         validates :description, :presence => true
         validates :the_role,    :presence => true
 
-        def to_yaml
-          the_role.to_yaml
+        def role_merge! new_role_hash
+          role = self.to_hash.deep_reset!.deep_merge! new_role_hash
+          update_attributes({:the_role => role.to_yaml})
         end
 
         def to_hash
-          TheRole.get(the_role)
+          str = self.the_role       
+          str = str.is_a?(String) ? str : String.new
+          hash = YAML::load(str)
+          hash ? hash : Hash.new
+        end
+
+        def to_yaml
+          the_role.to_yaml
         end
       end
     end
