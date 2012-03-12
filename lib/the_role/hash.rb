@@ -11,26 +11,18 @@ class Hash
     hash
   end
 
+  def deep_reset(default = false)
+    hash = dup
+    hash.each do |key, value|
+      hash[key] = hash[key].is_a?(Hash) ? hash[key].deep_reset(default) : default
+    end
+    hash
+  end
+
   def underscorify_keys!
     replace underscorify_keys
-  end  
-
-  def deep_reset(default = false)
-    hash = dup
-    hash.each do |key, value|
-      hash[key] = hash[key].is_a?(Hash) ? hash[key].deep_reset(default) : default
-    end
-    hash
   end
 
-  def deep_reset(default = false)
-    hash = dup
-    hash.each do |key, value|
-      hash[key] = hash[key].is_a?(Hash) ? hash[key].deep_reset(default) : default
-    end
-    hash
-  end
-  
   def deep_reset!(default = false)
     replace deep_reset(default)
   end
