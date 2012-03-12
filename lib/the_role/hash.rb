@@ -5,7 +5,7 @@ class Hash
   def underscorify_keys
     hash = {}
     self.each do |key, value|
-      new_key      = key.to_s.parameterize.underscore.to_sym
+      new_key       = key.to_s.parameterize.underscore.to_sym
       hash[new_key] = self[key].is_a?(Hash) ? self[key].underscorify_keys : self[key]
     end
     hash
