@@ -13,13 +13,6 @@ module TheRole
 
   NAME_SYMBOLS = /^[a-zA-Z][a-zA-Z0-9_\-]*[a-zA-Z0-9]$/
 
-  # TheRole.get(@role.the_role)
-  def self.get str
-    str = str.is_a?(String) ? str : String.new
-    hash = YAML::load(str)
-    hash ? hash : Hash.new
-  end
-
   module UserModel
     def self.included(base)
       base.class_eval do
@@ -84,15 +77,12 @@ module TheRole
         validates :the_role,    :presence => true
 
         def role_merge! new_role_hash
-          role = self.to_hash.deep_reset!.deep_merge! new_role_hash
+          role = self.to_hash.deep_reset.deep_merge(new_role_hash).stringify_keys!
           update_attributes({:the_role => role.to_yaml})
         end
 
         def to_hash
-          str = self.the_role       
-          str = str.is_a?(String) ? str : String.new
-          hash = YAML::load(str)
-          hash ? hash : Hash.new
+          begin YAML::load(self.the_role) rescue {} end
         end
 
         def to_yaml
