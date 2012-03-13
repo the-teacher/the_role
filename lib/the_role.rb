@@ -16,9 +16,8 @@ module TheRole
   module UserModel
     def self.included(base)
       base.class_eval do
-        belongs_to :role
+        belongs_to      :role
         attr_accessible :role
-        # when user changed - @the_role should be reload
         after_save { |user| user.instance_variable_set(:@the_role, nil) }
       end
     end
@@ -76,17 +75,58 @@ module TheRole
         validates :description, :presence => true
         validates :the_role,    :presence => true
 
-        def role_merge! new_role_hash
-          role = self.to_hash.deep_reset.deep_merge(new_role_hash).stringify_keys!
+        # C
+        def create_section section_name
+          return false unless section_name.is_a?(String) and !section_name.empty?
+          role         = to_hash
+          section_name = section_name.parameterize.underscore.to_sym
+          return false if role[section_name]
+          role[section_name] = {}
           update_attributes({:the_role => role.to_yaml})
         end
-
+                
+        def create_rule section_name, rule_name
+          return false unless create_section(section_name)
+          role         = to_hash
+          section_name = section_name.parameterize.underscore.to_sym
+          rule_name    = rule_name.parameterize.underscore.to_sym
+          return false if role[section_name][rule_name]
+          role[section_name][rule_name] = false
+          update_attributes({:the_role => role.to_yaml})
+        end
+        # R
         def to_hash
-          begin YAML::load(self.the_role) rescue {} end
+          begin YAML::load(the_role) rescue {} end
         end
 
         def to_yaml
           the_role.to_yaml
+        end
+        # U
+        def update_role new_role_hash
+          new_role = new_role_hash.underscorify_keys
+          role     = to_hash.underscorify_keys.deep_reset
+          role.deep_merge! new_role
+          update_attributes({:the_role => role.to_yaml})
+        end
+        # D
+        def delete_section section_name
+          return false unless section_name.is_a?(String) and !section_name.empty?
+          role         = to_hash
+          section_name = section_name.parameterize.underscore.to_sym
+          return false unless role[section_name]
+          role.delete  section_name
+          update_attributes({:the_role => role.to_yaml})
+        end
+
+        def delete_rule section_name, rule_name
+          role         = to_hash
+          section_name = section_name.parameterize.underscore.to_sym
+          rule_name    = rule_name.parameterize.underscore.to_sym
+          return false unless role[section_name]
+          return false unless role[section_name][rule_name]
+          role[section_name].delete rule_name
+          update_attributes({:the_role => role.to_yaml})
         end
       end
     end
