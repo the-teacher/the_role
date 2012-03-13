@@ -103,6 +103,10 @@ module TheRole
           the_role.to_yaml
         end
         # U
+        # source_hash will be reset to false
+        # except true items from new_role_hash
+        # all keys will become symbols
+        # look at lib/the_role/hash.rb to find definition of *underscorify_keys* method
         def update_role new_role_hash
           new_role = new_role_hash.underscorify_keys
           role     = to_hash.underscorify_keys.deep_reset
