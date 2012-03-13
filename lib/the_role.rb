@@ -87,10 +87,11 @@ module TheRole
         end
 
         # C
+        
         def create_section section_name
-          return false unless section_name.is_a?(String) and !section_name.empty?
           role         = to_hash
           section_name = param_prepare(section_name)
+          return false if section_name.empty?
           return false if role[section_name]
           role[section_name] = {}
           update_attributes({:the_role => role.to_yaml})
@@ -105,7 +106,9 @@ module TheRole
           role[section_name][rule_name] = false
           update_attributes({:the_role => role.to_yaml})
         end
+
         # R
+
         def to_hash
           begin YAML::load(the_role) rescue {} end
         end
@@ -113,7 +116,9 @@ module TheRole
         def to_yaml
           the_role.to_yaml
         end
+
         # U
+
         # source_hash will be reset to false
         # except true items from new_role_hash
         # all keys will become symbols
@@ -146,11 +151,13 @@ module TheRole
           role[section_name][rule_name] = false
           update_attributes({:the_role => role.to_yaml})
         end
+
         # D
+
         def delete_section section_name
-          return false unless section_name.is_a?(String) and !section_name.empty?
           role         = to_hash
           section_name = param_prepare(section_name)
+          return false if     section_name.empty?
           return false unless role[section_name]
           role.delete  section_name
           update_attributes({:the_role => role.to_yaml})
