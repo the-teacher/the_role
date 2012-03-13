@@ -109,6 +109,28 @@ module TheRole
           role.deep_merge! new_role
           update_attributes({:the_role => role.to_yaml})
         end
+
+        def rule_on section_name, rule_name
+          role         = to_hash
+          section_name = section_name.parameterize.underscore.to_sym
+          rule_name    = rule_name.parameterize.underscore.to_sym
+          return false unless role[section_name]
+          return false unless role[section_name].key? rule_name
+          return true  if role[section_name][rule_name] == true
+          role[section_name][rule_name] = true
+          update_attributes({:the_role => role.to_yaml})
+        end
+
+        def rule_off section_name, rule_name
+          role         = to_hash
+          section_name = section_name.parameterize.underscore.to_sym
+          rule_name    = rule_name.parameterize.underscore.to_sym
+          return false unless role[section_name]
+          return false unless role[section_name].key? rule_name
+          return true  if role[section_name][rule_name] == false
+          role[section_name][rule_name] = false
+          update_attributes({:the_role => role.to_yaml})
+        end
         # D
         def delete_section section_name
           return false unless section_name.is_a?(String) and !section_name.empty?
@@ -124,7 +146,7 @@ module TheRole
           section_name = section_name.parameterize.underscore.to_sym
           rule_name    = rule_name.parameterize.underscore.to_sym
           return false unless role[section_name]
-          return false unless role[section_name][rule_name]
+          return false unless role[section_name].key? rule_name
           role[section_name].delete rule_name
           update_attributes({:the_role => role.to_yaml})
         end
