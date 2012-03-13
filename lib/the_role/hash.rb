@@ -1,8 +1,7 @@
 class Hash
-  # load 'the_role/hash.rb' - UPDATE BUT NOT RELOAD
+  # load 'the_role/hash.rb' - UPDATE, BUT NOT RELOAD
 
-  # {'a b' => 1, "x y" => {'hello' => 1, :hello => 2} }.underscorify_keys
-  # {:a_b=>1, :x_y=>{:hello=>2}}
+  # {'a b' => 1, "x y" => {'hello' => 1, :hello => 2} }.underscorify_keys => {:a_b=>1, :x_y=>{:hello=>2}}
   def underscorify_keys
     hash = {}
     self.each do |key, value|

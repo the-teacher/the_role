@@ -11,8 +11,6 @@ module TheRole
   # include TheRole::UserModel
   # include TheRole::RoleModel
 
-  NAME_SYMBOLS = /^[a-zA-Z][a-zA-Z0-9_\-]*[a-zA-Z0-9]$/
-
   module UserModel
     def self.included(base)
       base.class_eval do
@@ -21,31 +19,39 @@ module TheRole
         after_save { |user| user.instance_variable_set(:@the_role, nil) }
       end
     end
+
+    # helper
+    def param_prepare param
+      param.to_s.parameterize.underscore.to_sym
+    end
     
     def the_role
-      @the_role ||= self.role ? TheRole.get(self.role.the_role) : Hash.new
+      @the_role ||= role.to_hash
     end
 
     def admin?
-      role = self.the_role[:system] ? self.the_role[:system][:administrator] : false
+      role = the_role[:system] ? the_role[:system][:administrator] : false
       role && role.is_a?(TrueClass)
     end
     
-    def moderator? section
-      return true if self.admin?
-      role = self.the_role[:moderator] ? self.the_role[:moderator][section.to_sym] : false
-      role && role.is_a?(TrueClass)
+    def moderator? section_name
+      return true  if admin?
+      section_name = param_prepare(section_name)
+      rule = the_role[:moderator] ? the_role[:moderator][section_name] : false
+      rule && rule.is_a?(TrueClass)
     end
 
     # TRUE if user has role - administartor of system
     # TRUE if user is moderator of this section (controller_name)
     # FALSE when this section (or role) is nil
     # return current value of role (TRUE|FALSE) if it exists
-    def has_role?(section, policy)
-      return true   if self.admin?
-      return true   if self.moderator? section 
-      if self.the_role[section.to_sym] && self.the_role[section.to_sym][policy.to_sym]
-        self.the_role[section.to_sym][policy.to_sym].is_a?(TrueClass)
+    def has_role?(section_name, rule_name)
+      return true if admin?
+      rule_name    = param_prepare(rule_name)
+      section_name = param_prepare(section_name)
+      return true if moderator? section_name 
+      if the_role[section_name] && the_role[section_name][rule_name]
+        the_role[section_name][rule_name].is_a?(TrueClass)
       else
         false
       end
@@ -57,11 +63,11 @@ module TheRole
     # Check for owner _object_ if owner field is not :user_id
     def owner?(obj)
       return false unless obj
-      return true if self.admin?
-      return true if self.moderator? obj.class.to_s.tableize # moderator? 'pages'
-      return self.id == obj.id          if obj.is_a?(User)
-      return self.id == obj[:user_id]   if obj[:user_id]
-      return self.id == obj[:user][:id] if obj[:user]
+      return true if admin?
+      return true if moderator? obj.class.to_s.tableize # moderator? 'pages'
+      return id == obj.id          if obj.is_a?(User)
+      return id == obj[:user_id]   if obj[:user_id]
+      return id == obj[:user][:id] if obj[:user]
       false
     end
   end#UserModel
@@ -75,11 +81,16 @@ module TheRole
         validates :description, :presence => true
         validates :the_role,    :presence => true
 
+        # helper
+        def param_prepare param
+          param.to_s.parameterize.underscore.to_sym
+        end
+
         # C
         def create_section section_name
           return false unless section_name.is_a?(String) and !section_name.empty?
           role         = to_hash
-          section_name = section_name.parameterize.underscore.to_sym
+          section_name = param_prepare(section_name)
           return false if role[section_name]
           role[section_name] = {}
           update_attributes({:the_role => role.to_yaml})
@@ -88,8 +99,8 @@ module TheRole
         def create_rule section_name, rule_name
           return false unless create_section(section_name)
           role         = to_hash
-          section_name = section_name.parameterize.underscore.to_sym
-          rule_name    = rule_name.parameterize.underscore.to_sym
+          rule_name    = param_prepare(rule_name)
+          section_name = param_prepare(section_name)
           return false if role[section_name][rule_name]
           role[section_name][rule_name] = false
           update_attributes({:the_role => role.to_yaml})
@@ -116,8 +127,8 @@ module TheRole
 
         def rule_on section_name, rule_name
           role         = to_hash
-          section_name = section_name.parameterize.underscore.to_sym
-          rule_name    = rule_name.parameterize.underscore.to_sym
+          rule_name    = param_prepare(rule_name)
+          section_name = param_prepare(section_name)
           return false unless role[section_name]
           return false unless role[section_name].key? rule_name
           return true  if role[section_name][rule_name] == true
@@ -127,8 +138,8 @@ module TheRole
 
         def rule_off section_name, rule_name
           role         = to_hash
-          section_name = section_name.parameterize.underscore.to_sym
-          rule_name    = rule_name.parameterize.underscore.to_sym
+          rule_name    = param_prepare(rule_name)
+          section_name = param_prepare(section_name)
           return false unless role[section_name]
           return false unless role[section_name].key? rule_name
           return true  if role[section_name][rule_name] == false
@@ -139,7 +150,7 @@ module TheRole
         def delete_section section_name
           return false unless section_name.is_a?(String) and !section_name.empty?
           role         = to_hash
-          section_name = section_name.parameterize.underscore.to_sym
+          section_name = param_prepare(section_name)
           return false unless role[section_name]
           role.delete  section_name
           update_attributes({:the_role => role.to_yaml})
@@ -147,8 +158,8 @@ module TheRole
 
         def delete_rule section_name, rule_name
           role         = to_hash
-          section_name = section_name.parameterize.underscore.to_sym
-          rule_name    = rule_name.parameterize.underscore.to_sym
+          rule_name    = param_prepare(rule_name)
+          section_name = param_prepare(section_name)
           return false unless role[section_name]
           return false unless role[section_name].key? rule_name
           role[section_name].delete rule_name
@@ -178,7 +189,7 @@ module TheRole
       # define class variable for *the_owner_require* filter with Controller class name
       # @the_role_object = @article
       def the_role_object
-        variable_name   = self.class.to_s.tableize.split('_').first.singularize.split('/').last
+        variable_name    = self.class.to_s.tableize.split('_').first.singularize.split('/').last
         @the_role_object = self.instance_variable_get("@#{variable_name}")
       end
 
