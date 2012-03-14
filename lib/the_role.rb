@@ -177,32 +177,32 @@ module TheRole
   end#RoleModel
 
   # for application controller
-  # @the_role_object should be defined with before_filter
-  # @the_role_object = @page
+  # @object_for_ownership_checking should be defined with before_filter
+  # @object_for_ownership_checking = @page
   module Requires
     private
     
-      def the_role_access_denied
+      def role_access_denied
         flash[:error] = t('the_role.access_denied')
         redirect_to root_path
       end
       
       # before_filter :role_require
-      def the_role_require
-        the_role_access_denied unless current_user.has_role?(controller_name, action_name)
+      def role_require
+        role_access_denied unless current_user.has_role?(controller_name, action_name)
       end
 
-      # before_filter :the_role_object
-      # define class variable for *the_owner_require* filter with Controller class name
-      # @the_role_object = @article
-      def the_role_object
-        variable_name    = self.class.to_s.tableize.split('_').first.singularize.split('/').last
-        @the_role_object = self.instance_variable_get("@#{variable_name}")
+      # before_filter :simple_object_finder
+      # define class variable for *owner_require* filter with Controller class name
+      # @object_for_ownership_checking = @article
+      def simple_object_finder
+        variable_name                  = self.class.to_s.tableize.split('_').first.singularize.split('/').last
+        @object_for_ownership_checking = self.instance_variable_get("@#{variable_name}")
       end
 
-      # before_filter :the_owner_require
-      def the_owner_require
-        the_role_access_denied unless current_user.owner?(@the_role_object)
+      # before_filter :owner_require
+      def owner_require
+        role_access_denied unless current_user.owner?(@object_for_ownership_checking)
       end
   end#Requires
 end#TheRole
