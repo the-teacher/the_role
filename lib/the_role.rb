@@ -82,16 +82,17 @@ module TheRole
         validates :the_role,    :presence => true
 
         # helper
-        def param_prepare param
+        def param_prepare param = ''
+          return String.new if param.blank?
           param.to_s.parameterize.underscore.to_sym
         end
 
         # C
         
-        def create_section section_name
-          role         = to_hash
-          section_name = param_prepare(section_name)
-          return false if section_name.empty?
+        def create_section section_name = ''
+          role         =  to_hash
+          section_name =  param_prepare(section_name)
+          return false if section_name.blank?
           return false if role[section_name]
           role[section_name] = {}
           update_attributes({:the_role => role.to_yaml})
@@ -154,10 +155,10 @@ module TheRole
 
         # D
 
-        def delete_section section_name
-          role         = to_hash
-          section_name = param_prepare(section_name)
-          return false if     section_name.empty?
+        def delete_section section_name = ''
+          role         =  to_hash
+          section_name =  param_prepare(section_name)
+          return false if section_name.blank?
           return false unless role[section_name]
           role.delete  section_name
           update_attributes({:the_role => role.to_yaml})
