@@ -61,7 +61,7 @@ module TheRole
     # If object is a USER - check for youself
     # Check for owner field - :user_id
     # Check for owner _object_ if owner field is not :user_id
-    def owner?(obj)
+    def owner? obj
       return false unless obj
       return true if admin?
       return true if moderator? obj.class.to_s.tableize # moderator? 'pages'

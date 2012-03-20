@@ -1,13 +1,11 @@
-require 'the_role'
-
 class Admin::RolesController < ApplicationController
-  before_filter :the_login_required
-  before_filter :the_role_require
-  
-  before_filter :the_role_find,     :only => [:show, :edit, :update, :destroy, :new_role_section, :new_role_policy]
-  before_filter :the_role_object,   :only => [:show, :edit, :update, :destroy, :new_role_section, :new_role_policy]
-  before_filter :the_owner_require, :only => [:show, :edit, :update, :destroy, :new_role_section, :new_role_policy]
-  
+  include TheRole::Requires
+
+  before_filter :role_login_required
+  before_filter :role_require
+  before_filter :role_find,           :only => [:show, :edit, :update, :destroy, :new_section, :new_rule]
+  before_filter :owner_require,       :only => [:show, :edit, :update, :destroy, :new_section, :new_rule]
+
   def index
     @roles = Role.all(:order => "created_at ASC")
   end
@@ -40,7 +38,7 @@ class Admin::RolesController < ApplicationController
     end
   end
   
-  def new_role_section
+  def new_section
     # validate 1
     if params[:section_name].blank?
       flash[:error] = t('the_role.section_name_is_blank')
@@ -71,27 +69,27 @@ class Admin::RolesController < ApplicationController
     else
       render :action => :edit
     end
-  end#new_role_section
+  end
   
-  def new_role_policy
-    params[:section_policy].downcase!
+  def new_rule
+    params[:section_rule].downcase!
     
     # validate 1
-    unless params[:section_policy].match(TheRole::NAME_SYMBOLS)
-      flash[:error] = t('the_role.section_policy_wrong_name')
+    unless params[:section_rule].match(TheRole::NAME_SYMBOLS)
+      flash[:error] = t('the_role.section_rule_wrong_name')
       redirect_to edit_admin_role_path(@role)
     end
 
     role = TheRole.get(@role.the_role)
-    role[params[:section_name].to_sym][params[:section_policy].to_sym] = true 
+    role[params[:section_name].to_sym][params[:section_rule].to_sym] = true 
 
     if @role.update_attributes({:the_role => role.to_yaml})
-      flash[:notice] = t('the_role.section_policy_created')
+      flash[:notice] = t('the_role.section_rule_created')
       redirect_to edit_admin_role_path(@role)
     else
       render :action => :edit
     end
-  end#new_role_policy
+  end
 
   def destroy
     @role.destroy
@@ -100,8 +98,9 @@ class Admin::RolesController < ApplicationController
 
   protected
 
-  def the_role_find
-    @role = Role.find(params[:id])
+  def role_find
+    @role = Role.find params[:id]
+    @object_for_ownership_checking = @role
   end
   
 end

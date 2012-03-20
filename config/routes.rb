@@ -1,18 +1,21 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :roles do
-      member do
+
+      collection do
         get  :new
         get  :index
-        post :new_role_section
-        post :new_role_policy
+        post :new_section
+        post :new_rule
       end
+
       resources :sections, :controller => :role_section do
         member do
-          get :new_policy
-          delete :delete_policy
+          get    :new_rule
+          delete :delete_rule
         end
-      end#sections
-    end#policy
-  end#admin
+      end
+
+    end
+  end
 end

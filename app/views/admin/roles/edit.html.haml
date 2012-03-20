@@ -21,7 +21,7 @@
     = render :partial => 'form', :locals => {:f => f, :button => t('.update')}
 
   %h4= t('.create_section')
-  - role = TheRole.get(@role.the_role)
+  - role = @role.to_hash
     
   = form_tag(new_role_section_admin_role_path, :method => :post, :class => :new_action) do
     = text_field_tag :section_name
