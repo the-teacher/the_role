@@ -4,14 +4,14 @@ en:
   the_role:
     name_presence: Set the role name
     title_presence: Set title of role
-    section_created: Role group is successfully created
-    section_policy_created: In a given group is successfully created an access policy
-    section_deleted: access policy is removed
-    section_policy_deleted: access policy is removed
+    section_created: Section is successfully created
+    section_rule_created: In a given group is successfully created an access rule
+    section_deleted: access rule is removed
+    section_rule_deleted: access rule is removed
     section_name_is_wrong: Wrong name of Role
-    section_policy_wrong_name: Wrong name of Role Policy
+    section_rule_wrong_name: Wrong name of Rule
     section_name_is_blank: The name of the Role team was empty
-    section_exists: Role group already exists
+    section_exists: Section already exists
     role_created: The Role of successfully established
     role_updated: Role updated successfully
     delete_role: It is can make big problems. Delete this role?
@@ -25,15 +25,15 @@ en:
         title: Editing role
         back: '← To the list of roles'
         name: 'Name of role -'
-        create_section: Create a Role group
-        create_access_policy: Create an access policy
-        create_policy: New Policy
-        section_needs: Create at least one Role group
+        create_section: Create a Section
+        create_access_rule: Create an access rule
+        create_rule: New Rule
+        section_needs: Create at least one Section
         update: Update
       form:
         destroy_section_confirm: Remove a role section?
         empty: There is no role section
-        delete_policy_confirm: Remove the access policy?
+        delete_rule_confirm: Remove the access rule?
         delete: Delete
       new:
         back: '← To the list of roles'

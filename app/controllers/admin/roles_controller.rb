@@ -39,31 +39,7 @@ class Admin::RolesController < ApplicationController
   end
   
   def new_section
-    # validate 1
-    if params[:section_name].blank?
-      flash[:error] = t('the_role.section_name_is_blank')
-      redirect_to edit_admin_role_path(@role) and return
-    end
-
-    # validate 2
-    section_name = params[:section_name]
-    unless section_name.match(TheRole::NAME_SYMBOLS)
-      flash[:error] = t('the_role.section_name_is_wrong')
-      redirect_to edit_admin_role_path(@role) and return
-    end
-
-    section_name.downcase!
-    role = TheRole.get(@role.the_role)
-
-    # validate 3
-    if role[section_name.to_sym]
-      flash[:error] = t('the_role.section_exists')
-      redirect_to edit_admin_role_path(@role) and return
-    end
-
-    role[section_name.to_sym] = Hash.new
-    
-    if @role.role_merge! role
+    if @role.create_section params[:section_name]
       flash[:notice] = t('the_role.section_created')
       redirect_to edit_admin_role_path(@role)
     else
@@ -72,19 +48,8 @@ class Admin::RolesController < ApplicationController
   end
   
   def new_rule
-    params[:section_rule].downcase!
-    
-    # validate 1
-    unless params[:section_rule].match(TheRole::NAME_SYMBOLS)
-      flash[:error] = t('the_role.section_rule_wrong_name')
-      redirect_to edit_admin_role_path(@role)
-    end
-
-    role = TheRole.get(@role.the_role)
-    role[params[:section_name].to_sym][params[:section_rule].to_sym] = true 
-
-    if @role.update_attributes({:the_role => role.to_yaml})
-      flash[:notice] = t('the_role.section_rule_created')
+    if @role.create_rule(params[:section_name], params[:section_rule])
+      flash[:notice] = t('the_role.section_created')
       redirect_to edit_admin_role_path(@role)
     else
       render :action => :edit

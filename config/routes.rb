@@ -3,8 +3,11 @@ Rails.application.routes.draw do
     resources :roles do
 
       collection do
-        get  :new
         get  :index
+        get  :new
+      end
+
+      member do
         post :new_section
         post :new_rule
       end

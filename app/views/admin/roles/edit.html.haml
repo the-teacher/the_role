@@ -22,22 +22,22 @@
 
   %h4= t('.create_section')
   - role = @role.to_hash
-    
-  = form_tag(new_role_section_admin_role_path, :method => :post, :class => :new_action) do
+  
+  = form_tag(new_section_admin_role_path(@role), :method => :post, :class => :new_action) do
     = text_field_tag :section_name
     = submit_tag t('.create_section')
 
-  %h4= t('.create_access_policy')
+  %h4= t('.create_access_rule')
 
   - unless role.empty?
-    = form_tag(new_role_policy_admin_role_path(@role), :method => :post, :class => :new_action) do
-      = text_field_tag :section_policy
+    = form_tag(new_rule_admin_role_path(@role), :method => :post, :class => :new_action) do
+      = text_field_tag :section_rule
 
       %select{ :name => :section_name }
         -role.each do |name, set|
           %option{ :value => name }
             = name
           
-        %input{ :type => :submit, :value => t('.create_policy') }
+        %input{ :type => :submit, :value => t('.create_rule') }
   - else
     %p= t('.section_needs')
