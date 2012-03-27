@@ -7,55 +7,44 @@ require "the_role/version"
 require "the_role/the_class_exists"
 
 module TheRole
+  # include TheRole::Base
   # include TheRole::Requires
   # include TheRole::UserModel
   # include TheRole::RoleModel
+  # include TheRole::ParamHelper
 
-  module UserModel
-    def self.included(base)
-      base.class_eval do
-        belongs_to      :role
-        attr_accessible :role
-        after_save { |user| user.instance_variable_set(:@the_role, nil) }
-      end
+  module Base
+    def has_role? section_name, rule_name
+      hash         =  role_hash
+      section_name =  param_prepare(section_name)
+      rule_name    =  param_prepare(rule_name)
+      return true  if hash[:system]    and hash[:system][:administrator]
+      return true  if hash[:moderator] and hash[:moderator][section_name]
+      return false unless hash[section_name]
+      return false unless hash[section_name].key? rule_name
+      hash[section_name][rule_name]
     end
 
-    # helper
-    def param_prepare param
-      param.to_s.parameterize.underscore.to_sym
-    end
-    
-    def the_role
-      @the_role ||= role.to_hash
+    def moderator? section_name
+      section_name = param_prepare(section_name)
+      has_role? section_name, :any_crazy_name
     end
 
     def admin?
-      role = the_role[:system] ? the_role[:system][:administrator] : false
-      role && role.is_a?(TrueClass)
+      has_role? :any_crazy_name, :any_crazy_name
     end
-    
-    def moderator? section_name
-      return true  if admin?
-      section_name = param_prepare(section_name)
-      rule = the_role[:moderator] ? the_role[:moderator][section_name] : false
-      rule && rule.is_a?(TrueClass)
-    end
+  end
 
-    # TRUE if user has role - administartor of system
-    # TRUE if user is moderator of this section (controller_name)
-    # FALSE when this section (or role) is nil
-    # return current value of role (TRUE|FALSE) if it exists
-    def has_role?(section_name, rule_name)
-      return true if admin?
-      rule_name    = param_prepare(rule_name)
-      section_name = param_prepare(section_name)
-      return true if moderator? section_name 
-      if the_role[section_name] && the_role[section_name][rule_name]
-        the_role[section_name][rule_name].is_a?(TrueClass)
-      else
-        false
-      end
+  module ParamHelper
+    def param_prepare param
+      param.to_s.parameterize.underscore.to_sym
     end
+  end
+
+  module UserModel
+    include TheRole::Base
+    include TheRole::ParamHelper
+    def role_hash; @role_hash ||= role.to_hash; end
 
     # FALSE if object is nil
     # If object is a USER - check for youself
@@ -63,16 +52,39 @@ module TheRole
     # Check for owner _object_ if owner field is not :user_id
     def owner? obj
       return false unless obj
-      return true if admin?
-      return true if moderator? obj.class.to_s.tableize # moderator? 'pages'
+      return true  if admin?
+
+      section_name = obj.class.to_s.tableize # => 'pages', 'articles' ect
+      return true  if moderator?(section_name)
+
       return id == obj.id          if obj.is_a?(User)
       return id == obj[:user_id]   if obj[:user_id]
       return id == obj[:user][:id] if obj[:user]
       false
     end
+
+    def self.included(base)
+      base.class_eval do
+        belongs_to      :role
+        attr_accessible :role
+        after_save { |user| user.instance_variable_set(:@role_hash, nil) }
+      end
+    end
+
   end#UserModel
 
   module RoleModel
+    include TheRole::Base
+    include TheRole::ParamHelper
+
+    def role_hash; to_hash; end
+    alias_method :has?, :has_role?
+
+    def has_section? section_name
+      section_name = param_prepare(section_name)
+      to_hash.key? section_name
+    end
+
     def self.included(base)
       base.class_eval do
         has_many  :users
@@ -81,31 +93,26 @@ module TheRole
         validates :description, :presence => true
         validates :the_role,    :presence => true
 
-        # helper
-        def param_prepare param = ''
-          return String.new if param.blank?
-          param.to_s.parameterize.underscore.to_sym
-        end
-
         # C
         
-        def create_section section_name = ''
+        def create_section section_name = nil
+          return false unless section_name
           role         =  to_hash
           section_name =  param_prepare(section_name)
           return false if section_name.blank?
-          return false if role[section_name]
+          return true  if role[section_name]
           role[section_name] = {}
-          update_attributes({:the_role => role.to_yaml})
+          update_attributes(:the_role => role.to_yaml)
         end
                 
         def create_rule section_name, rule_name
           return false unless create_section(section_name)
-          role         = to_hash
-          rule_name    = param_prepare(rule_name)
-          section_name = param_prepare(section_name)
-          return false if role[section_name][rule_name]
+          role         =  to_hash
+          rule_name    =  param_prepare(rule_name)
+          section_name =  param_prepare(section_name)
+          return true  if role[section_name][rule_name]
           role[section_name][rule_name] = false
-          update_attributes({:the_role => role.to_yaml})
+          update_attributes(:the_role => role.to_yaml)
         end
 
         # R
@@ -128,18 +135,18 @@ module TheRole
           new_role = new_role_hash.underscorify_keys
           role     = to_hash.underscorify_keys.deep_reset
           role.deep_merge! new_role
-          update_attributes({:the_role => role.to_yaml})
+          update_attributes(:the_role => role.to_yaml)
         end
 
         def rule_on section_name, rule_name
-          role         = to_hash
-          rule_name    = param_prepare(rule_name)
-          section_name = param_prepare(section_name)
+          role         =  to_hash
+          rule_name    =  param_prepare(rule_name)
+          section_name =  param_prepare(section_name)
           return false unless role[section_name]
           return false unless role[section_name].key? rule_name
-          return true  if role[section_name][rule_name] == true
+          return true  if     role[section_name][rule_name]
           role[section_name][rule_name] = true
-          update_attributes({:the_role => role.to_yaml})
+          update_attributes(:the_role => role.to_yaml)
         end
 
         def rule_off section_name, rule_name
@@ -148,20 +155,21 @@ module TheRole
           section_name = param_prepare(section_name)
           return false unless role[section_name]
           return false unless role[section_name].key? rule_name
-          return true  if role[section_name][rule_name] == false
+          return true  unless role[section_name][rule_name]
           role[section_name][rule_name] = false
-          update_attributes({:the_role => role.to_yaml})
+          update_attributes(:the_role => role.to_yaml)
         end
 
         # D
 
-        def delete_section section_name = ''
+        def delete_section section_name = nil
+          return false unless section_name
           role         =  to_hash
           section_name =  param_prepare(section_name)
           return false if section_name.blank?
           return false unless role[section_name]
           role.delete  section_name
-          update_attributes({:the_role => role.to_yaml})
+          update_attributes(:the_role => role.to_yaml)
         end
 
         def delete_rule section_name, rule_name
@@ -171,7 +179,7 @@ module TheRole
           return false unless role[section_name]
           return false unless role[section_name].key? rule_name
           role[section_name].delete rule_name
-          update_attributes({:the_role => role.to_yaml})
+          update_attributes(:the_role => role.to_yaml)
         end
       end
     end
@@ -206,4 +214,4 @@ module TheRole
         role_access_denied unless current_user.owner?(@object_for_ownership_checking)
       end
   end#Requires
-end#TheRole
+end

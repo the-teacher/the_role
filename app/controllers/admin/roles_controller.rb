@@ -28,9 +28,7 @@ class Admin::RolesController < ApplicationController
   end
 
   def update
-    new_role = params[:role] ? params[:role][:the_role] : Hash.new
-
-    if @role.role_merge! new_role
+    if @role.update_role params[:role][:the_role]
       flash[:notice] = t('the_role.role_updated')
       redirect_to edit_admin_role_path(@role)
     else
