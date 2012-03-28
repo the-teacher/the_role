@@ -8,16 +8,25 @@ class Admin::RoleSectionController < ApplicationController
   
   def destroy
     section_name = params[:id]
-    role = TheRole.get(@role.the_role)
-    role.delete(section_name.to_sym)
 
-    if @role.update_attributes({:the_role => role.to_yaml})
+    if @role.delete_section section_name
       flash[:notice] = t('the_role.section_deleted')
       redirect_to edit_admin_role_path(@role)
     else
       render :action => :edit
     end   
-  end#destroy
+  end
+
+  def delete_rule
+    section_name = params[:id]
+
+    if @role.delete_section section_name
+      flash[:notice] = t('the_role.section_deleted')
+      redirect_to edit_admin_role_path(@role)
+    else
+      render :action => :edit
+    end
+  end
   
   def delete_policy
     section_name = params[:id]
