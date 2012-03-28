@@ -47,7 +47,7 @@ role = {
 ### Виртуальные секции и правила
 
 Мы можете ассоциировать секции и правила роли с именами контроллеров и действий.
-Например, что бы проверить возможность доступа пользователя к контроллеру **pages** и действию *show* вам потребуется выполнить проверку следующего вида:
+Например, что бы проверить возможность доступа пользователя к контроллеру **pages** и действию **show** вам потребуется выполнить проверку следующего вида:
 
 ``` ruby
 current_user.has_role?(:pages, :show)
@@ -155,7 +155,7 @@ current_user.owner?(@article)             => true | false
 # User like methods
 
 @role.has?(:pages, :show)       => true | false
-@role.moderator?(:pages, :show) => true | false
+@role.moderator?(:pages)        => true | false
 @role.admin?                    => true | false
 ```
 
