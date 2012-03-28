@@ -179,6 +179,12 @@ current_user.owner?(@article)             => true | false
 ``` ruby
 # Получить роль в виде хеша
 @role.to_hash => Hash
+
+# Получить роль в виде YAML string
+@role.to_yaml => String
+
+# Получить роль в виде YAML string
+@role.to_s => String
 ```
 
 ### UPDATE
@@ -195,9 +201,7 @@ new_role_hash = {
     :show => true
   }
 }
-```
 
-``` ruby
 @role.update_role(new_role_hash)
 ```
 
