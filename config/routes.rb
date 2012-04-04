@@ -9,7 +9,6 @@ Rails.application.routes.draw do
           delete :destroy_rule
         end
       end
-
     end
   end
 end

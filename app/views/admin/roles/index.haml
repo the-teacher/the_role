@@ -3,9 +3,19 @@
   = stylesheet_link_tag   'the_role/headers'
   = stylesheet_link_tag   'the_role/form'
 
-%p= link_to 'new r', new_admin_role_path
 %p= link_to 'index r', admin_roles_path
-%p= link_to 'index r', admin_role_path(Role.first, :method => :delete)
+%p= link_to 'new r',   new_admin_role_path
+%p= link_to 'edit r',  edit_admin_role_path(Role.first)
+%p= link_to 'show r',  admin_role_path(Role.first)
+
+= form_tag(admin_role_path(Role.first), :method => :put) do
+  = submit_tag 'update'
+
+= form_tag(admin_role_path(Role.first), :method => :delete) do
+  = submit_tag 'delete'
+
+
+-#%p= link_to 'rm r', delete_admin_role_path(Role.first, :method => :delete)
 
 -#
   .the_role
