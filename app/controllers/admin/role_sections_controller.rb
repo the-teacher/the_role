@@ -3,12 +3,10 @@ class Admin::RoleSectionController < ApplicationController
 
   before_filter :role_login_required
   before_filter :role_require
-  before_filter :role_find,           :only => [:destroy, :delete_rule]
-  before_filter :owner_require,       :only => [:destroy, :delete_rule]
+  before_filter :role_find,           :only => [:new, :new_rule, :destroy, :destroy_rule]
+  before_filter :owner_require,       :only => [:new, :new_rule, :destroy, :destroy_rule]
 
-  # CREATE
-
-  def new_section
+  def new
     if @role.create_section params[:section_name]
       flash[:notice] = t('the_role.section_created')
       redirect_to edit_admin_role_path(@role)
@@ -25,8 +23,6 @@ class Admin::RoleSectionController < ApplicationController
       render :action => :edit
     end
   end
-
-  # UPDATE
   
   def destroy
     section_name = params[:id]
@@ -39,7 +35,7 @@ class Admin::RoleSectionController < ApplicationController
     end   
   end
   
-  def delete_section
+  def destroy_rule
     section_name = params[:id]
     rule_name    = params[:name]
     role         = TheRole.get(@role.the_role)

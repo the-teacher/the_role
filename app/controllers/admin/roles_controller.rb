@@ -3,8 +3,8 @@ class Admin::RolesController < ApplicationController
 
   before_filter :role_login_required
   before_filter :role_require
-  before_filter :role_find,           :only => [:show, :edit, :update, :destroy, :new_section, :new_rule]
-  before_filter :owner_require,       :only => [:show, :edit, :update, :destroy, :new_section, :new_rule]
+  before_filter :role_find,           :only => [:show, :edit, :update, :destroy]
+  before_filter :owner_require,       :only => [:show, :edit, :update, :destroy]
 
   def index
     @roles = Role.all(:order => "created_at ASC")
