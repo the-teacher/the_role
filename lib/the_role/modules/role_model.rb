@@ -62,9 +62,9 @@ module TheRole
         # all keys will become symbols
         # look at lib/the_role/hash.rb to find definition of *underscorify_keys* method
         def update_role new_role_hash
-          return true unless new_role_hash.instance_of? Hash
-          new_role    = new_role_hash.underscorify_keys
-          role        = to_hash.underscorify_keys.deep_reset
+          new_role_hash = new_role_hash.try(:to_hash) || {}
+          new_role      = new_role_hash.underscorify_keys
+          role          = to_hash.underscorify_keys.deep_reset
           role.deep_merge! new_role
           update_attributes(:the_role => role.to_yaml)
         end

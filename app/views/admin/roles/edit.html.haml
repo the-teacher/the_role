@@ -6,6 +6,8 @@
   = stylesheet_link_tag   'the_role/headers'
   = stylesheet_link_tag   'the_role/form'
 
+= new_section_admin_role_path(@role)
+
 .the_role
   %p= flash[:notice]
 
