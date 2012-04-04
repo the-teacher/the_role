@@ -14,9 +14,7 @@ class Admin::RolesController < ApplicationController
     @role = Role.new
   end
 
-  def edit
-    #render :text => @role.to_hash and return
-  end
+  def edit; end
 
   def create
     @role = Role.new(params[:role])
@@ -32,24 +30,6 @@ class Admin::RolesController < ApplicationController
   def update
     if @role.update_role params[:role].try(:[],:the_role)
       flash[:notice] = t('the_role.role_updated')
-      redirect_to edit_admin_role_path(@role)
-    else
-      render :action => :edit
-    end
-  end
-  
-  def new_section
-    if @role.create_section params[:section_name]
-      flash[:notice] = t('the_role.section_created')
-      redirect_to edit_admin_role_path(@role)
-    else
-      render :action => :edit
-    end
-  end
-  
-  def new_rule
-    if @role.create_rule(params[:section_name], params[:section_rule])
-      flash[:notice] = t('the_role.section_created')
       redirect_to edit_admin_role_path(@role)
     else
       render :action => :edit
