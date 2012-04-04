@@ -3,13 +3,18 @@
   = stylesheet_link_tag   'the_role/headers'
   = stylesheet_link_tag   'the_role/form'
 
-.the_role
-  %h3= t('.list')
-  %ul.index
-    - @roles.each do |role|
-      %li
-        %p
-          = link_to role.title, edit_admin_role_url(role)
-          = link_to t('.delete') + role.title , admin_role_url(role), :method => :delete, :confirm => t('the_role.delete_role'), :class => :delete
+%p= link_to 'new r', new_admin_role_path
+%p= link_to 'index r', admin_roles_path
+%p= link_to 'index r', admin_role_path(Role.first, :method => :delete)
 
-  %p= link_to t('.new'),  new_admin_role_path
+-#
+  .the_role
+    %h3= t('.list')
+    %ul.index
+      - @roles.each do |role|
+        %li
+          %p
+            = link_to role.title, edit_admin_role_url(role)
+            = link_to t('.delete') + role.title , admin_role_url(role), :method => :delete, :confirm => t('the_role.delete_role'), :class => :delete
+
+    %p= link_to t('.new'),  new_admin_role_path

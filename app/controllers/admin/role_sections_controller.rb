@@ -3,10 +3,10 @@ class Admin::RoleSectionController < ApplicationController
 
   before_filter :role_login_required
   before_filter :role_require
-  before_filter :role_find,           :only => [:new, :new_rule, :destroy, :destroy_rule]
-  before_filter :owner_require,       :only => [:new, :new_rule, :destroy, :destroy_rule]
+  before_filter :role_find,           :only => [:create, :create_rule, :destroy, :destroy_rule]
+  before_filter :owner_require,       :only => [:create, :create_rule, :destroy, :destroy_rule]
 
-  def new
+  def create
     if @role.create_section params[:section_name]
       flash[:notice] = t('the_role.section_created')
       redirect_to edit_admin_role_path(@role)
@@ -15,7 +15,7 @@ class Admin::RoleSectionController < ApplicationController
     end
   end
   
-  def new_rule
+  def create_rule
     if @role.create_rule(params[:section_name], params[:section_rule])
       flash[:notice] = t('the_role.section_created')
       redirect_to edit_admin_role_path(@role)
