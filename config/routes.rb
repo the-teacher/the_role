@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         post :new_rule
       end
 
-      resources :sections, :controller => :role_section do
+      resources :sections, :controller => :role_sections do
         member do
           get    :new_rule
           delete :delete_rule
