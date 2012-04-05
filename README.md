@@ -69,6 +69,11 @@ current_user.has_role?(:facebook, :like)
 These sections and the rules are not associated with real controllers and actions.
 And you can use them as well as other access rules.
 
+### Who is the administrator?
+
+Administrator - a user who can access any section and the rules of your application.
+The administrator is the owner of any objects in your application.
+Administrator - a user in the role-hash of which there is a section **system** and rule **administrator**.
 
 
 
