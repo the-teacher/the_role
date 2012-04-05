@@ -1,4 +1,4 @@
-class Admin::RoleSectionController < ApplicationController
+class Admin::RoleSectionsController < ApplicationController
   include TheRole::Requires
 
   before_filter :role_login_required
@@ -38,10 +38,7 @@ class Admin::RoleSectionController < ApplicationController
   def destroy_rule
     section_name = params[:id]
     rule_name    = params[:name]
-    role         = TheRole.get(@role.the_role)
-    role[section_name.to_sym].delete(rule_name.to_sym)
-    
-    if @role.update_attributes({:the_role => role.to_yaml})
+    if @role.delete_rule(section_name, rule_name)
       flash[:notice] = t('the_role.section_rule_deleted')
       redirect_to edit_admin_role_path(@role)
     else
