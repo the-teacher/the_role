@@ -1,16 +1,16 @@
+# gem 'the_role'
+
 ## Bye bye CanCan, I got The Role!
 
-## gem 'the_role'
-
-Семантичная, легковеская ролевая система с административным интерфейсом
+Semantic, lightweight role system with an administrative interface
 
 ![TheSortableTree](https://github.com/the-teacher/the_role/raw/master/pic.png)
 
-### Что значит сематничная?
+## What does it mean semantic?
 
-Семантика - наука о понимании.
-Устройство ролевой системы должно быть таким, что бы человек мог легко понять, доступ к каким действиям позволен для данного пользователя, а к каким запрещен.
-Посмотрите на нижеприведенную структуру:
+Semantic - the science of meaning. Human should fast to understand what is happening in a role system.
+
+Look at hash. If you can understand access rules - this role system is semantically.
 
 ``` ruby
 role = {
@@ -32,8 +32,6 @@ role = {
   }
 }
 ```
-
-Если вы можете с ходу сказать, к каким действиям разрешен доступ для данной роли, а к каким запрещен - значит данный гем семантичен.
 
 ### Как это работает?
 
