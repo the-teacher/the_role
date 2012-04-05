@@ -15,9 +15,12 @@ module TheRole
       base.class_eval do
         has_many  :users
         validates :name,        :presence => true, :uniqueness => true
-        validates :title,       :presence => true
+        validates :title,       :presence => true, :uniqueness => true
         validates :description, :presence => true
-        before_create { self.the_role = {}.to_yaml }
+        before_create do
+          self.name     = param_prepare(name) 
+          self.the_role = {}.to_yaml
+        end
 
         # C
         

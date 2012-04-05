@@ -1,4 +1,4 @@
-- content_for :js do
+- content_for :css do
   = stylesheet_link_tag   'the_role/style'
   = stylesheet_link_tag   'the_role/headers'
   = stylesheet_link_tag   'the_role/form'
@@ -13,16 +13,3 @@
           = link_to t('.delete'), admin_role_url(role), :method => :delete, :title => role.title, :confirm => t('the_role.delete_role'), :class => :delete
 
   %p= link_to t('.new'),  new_admin_role_path
--#
-  %p= link_to 'index r',  admin_roles_path
-  %p= link_to 'new r',    new_admin_role_path
-  %p= link_to 'edit r',   edit_admin_role_path(Role.first)
-  %p= link_to 'show r',   admin_role_path(Role.first)
-  %p= link_to 'update r', admin_role_path(Role.first), :method => :update
-  %p= link_to 'delete r', admin_role_path(Role.first), :method => :delete
-
-  %p= link_to 'create sec',  admin_role_section_path(Role.first.name, :some_name)
-  %p= link_to 'create rule', create_rule_admin_role_section_path(Role.first.name, :some_name)
-
-  %p= link_to 'delete sec',  admin_role_section_path(Role.first.name, :some_name), :method => :delete
-  %p= link_to 'delete rule', destroy_rule_admin_role_section_path(Role.first.name, :some_name, :name => :some_rule), :method => :delete
