@@ -37,12 +37,14 @@ role = {
 
 Role - is a two-level hash, consisting of the sections and rules.
 
-**Section** may be associated with the name of a specific controller.
+**Section** may be associated with the name of a **controller**.
 
-**Rule** may be associated with the name of the action in the controller.
+**Rule** may be associated with the name of **action** in the controller.
 
+Section may contain a set of rules.
 
-Роль - это двухуровневый хеш-массив состоящий из секций и правил.
+**Rule in Section** can be set to **true** and **false**, this provide **ACL** (**Access Control List**)
+
 
 ### Как это работает?
 
