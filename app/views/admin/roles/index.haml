@@ -3,19 +3,18 @@
   = stylesheet_link_tag   'the_role/headers'
   = stylesheet_link_tag   'the_role/form'
 
-%p= link_to 'index r', admin_roles_path
-%p= link_to 'new r',   new_admin_role_path
-%p= link_to 'edit r',  edit_admin_role_path(Role.first)
-%p= link_to 'show r',  admin_role_path(Role.first)
+%p= link_to 'index r',  admin_roles_path
+%p= link_to 'new r',    new_admin_role_path
+%p= link_to 'edit r',   edit_admin_role_path(Role.first)
+%p= link_to 'show r',   admin_role_path(Role.first)
+%p= link_to 'update r', admin_role_path(Role.first), :method => :update
+%p= link_to 'delete r', admin_role_path(Role.first), :method => :delete
 
-= form_tag(admin_role_path(Role.first), :method => :put) do
-  = submit_tag 'update'
+%p= link_to 'create sec',  admin_role_section_path(Role.first.name, :some_name)
+%p= link_to 'create rule', create_rule_admin_role_section_path(Role.first.name, :some_name)
 
-= form_tag(admin_role_path(Role.first), :method => :delete) do
-  = submit_tag 'delete'
-
-
--#%p= link_to 'rm r', delete_admin_role_path(Role.first, :method => :delete)
+%p= link_to 'delete sec',  admin_role_section_path(Role.first.name, :some_name), :method => :delete
+%p= link_to 'delete rule', destroy_rule_admin_role_section_path(Role.first.name, :some_name, :name => :some_rule), :method => :delete
 
 -#
   .the_role
