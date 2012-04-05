@@ -45,6 +45,37 @@ Section may contain a set of rules.
 
 **Rule in Section** can be set to **true** and **false**, this provide **ACL** (**Access Control List**)
 
+Role hash **stored in the database as YAML** string.
+Using of hashes, makes it extremely easy to configure access rules in the role.
+
+### Virtual sections and rules
+
+Usually, we use real names of controllers as names of sections, and we use names of real actions in controllers as names of section's rules.
+
+Like this:
+
+``` ruby
+current_user.has_role?(:pages, :show)
+```
+
+But you can also create virtual sections and rules:
+
+
+``` ruby
+current_user.has_role?(:twitter, :button)
+current_user.has_role?(:facebook, :like)
+```
+
+These sections and the rules are not associated with real controllers and actions.
+And you can use them as well as other access rules.
+
+
+
+
+
+
+
+
 
 ### Как это работает?
 
