@@ -69,6 +69,80 @@ current_user.has_role?(:facebook, :like)
 These sections and the rules are not associated with real controllers and actions.
 And you can use them as well as other access rules.
 
+### Install and use
+
+``` ruby
+  gem 'the_role'
+```
+
+``` ruby
+  bundle install
+```
+
+Add **role_id:integer** to User Model Migration
+
+
+``` ruby
+rake the_role_engine:install:migrations
+  >> Copied migration 20111028145956_create_roles.rb from the_role_engine
+```
+
+``` ruby
+rails g model role --migration=false
+```
+
+``` ruby
+rake db:create && rake db:migrate
+```
+
+Creating roles for test (**not required**)
+
+``` ruby
+rake db:roles:test
+  >> Administrator, Moderator of pages, User, Demo
+```
+
+Define aliases method for correctly work TheRole's controllers
+
+**login_required** or any other method from your auth system
+
+**access_denied** or any other method for processing access denied situation
+
+
+** Example for Devise2**
+
+``` ruby
+class ApplicationController < ActionController::Base
+  protect_from_forgery
+
+  def access_denied
+    render :text => 'access_denied: requires an role' and return
+  end
+
+  # define aliases for correctly work of TheRole admin panel
+  # *authenticate_user!* - method from Devise2
+  # *access_denied* - define it before alias_method
+  # before_filter :role_object_finder, :only   => [:edit, :update, :rebuild, :destroy]
+  alias_method :role_login_required, :authenticate_user!
+  alias_method :role_access_denied,  :access_denied
+
+end
+```
+
+Using with any controller
+
+``` ruby
+class PagesController < ApplicationController
+  # Devise2 and TheRole before_filters
+  before_filter :role_login_required, :except => [:index, :show]
+  before_filter :role_require,        :except => [:index, :show]
+
+  before_filter :find_page,           :only   => [:edit, :update, :destroy]
+  before_filter :owner_require,       :only   => [:edit, :update, :destroy]
+
+end
+```
+
 ### Who is the Administrator?
 
 Administrator - a user who can access any section and the rules of your application.
@@ -134,7 +208,7 @@ current_user.owner?(@blog)                => true | false
 current_user.owner?(@article)             => true | false
 ```
 
-### Role methods?
+### Role methods
 
 ``` ruby
 # Find a Role by name
