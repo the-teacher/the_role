@@ -104,12 +104,11 @@ rake db:roles:test
 
 Define aliases method for correctly work TheRole's controllers
 
-**login_required** or any other method from your auth system
+**authenticate_user!** or any other method from your auth system
 
 **access_denied** or any other method for processing access denied situation
 
-
-** Example for Devise2**
+**Example for Devise2**
 
 ``` ruby
 class ApplicationController < ActionController::Base
@@ -140,6 +139,26 @@ class PagesController < ApplicationController
   before_filter :find_page,           :only   => [:edit, :update, :destroy]
   before_filter :owner_require,       :only   => [:edit, :update, :destroy]
 
+end
+```
+
+### WARNING! IT'S IMPORTANT
+
+When you checking **owner_require** - you should before this to define variable **@object_for_ownership_checking** in finder method.
+
+For example:
+
+``` ruby
+class PagesController < ApplicationController
+  before_filter :find_page,           :only   => [:edit, :update, :destroy]
+  before_filter :owner_require,       :only   => [:edit, :update, :destroy]
+  
+  private
+
+  def find_page
+    @page = Page.find params[:id]
+    @object_for_ownership_checking = @page
+  end
 end
 ```
 
