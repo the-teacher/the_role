@@ -69,15 +69,144 @@ current_user.has_role?(:facebook, :like)
 These sections and the rules are not associated with real controllers and actions.
 And you can use them as well as other access rules.
 
-### Who is the administrator?
+### Who is the Administrator?
 
 Administrator - a user who can access any section and the rules of your application.
 The administrator is the owner of any objects in your application.
 Administrator - a user in the role-hash of which there is a section **system** and rule **administrator**.
 
 
+``` ruby
+admin_role_fragment = {
+  :system => {
+    :administrator => true
+  }
+}
+```
 
+### Who is the Moderator?
 
+Moderator - a user who can access any actions of sections.
+Moderator is the owner of any objects of this class.
+Moderator - user which has in a section **moderator** rule with name of real or virtual section (controller).
 
+There is role hash of Moderator of Pages (controller) and Twitter (virtual section)
 
+``` ruby
+moderator_role_fragment = {
+  :moderator => {
+    :pages   => true,
+    :blogs   => false,
+    :twitter => true
+  }
+}
+```
 
+### User methods
+
+Has a user an access to **action** of **section**?
+
+``` ruby
+current_user.has_role?(:pages,    :show)  => true | false
+current_user.has_role?(:blogs,    :new)   => true | false
+current_user.has_role?(:articles, :edit)  => true | false
+```
+
+Is it Moderator?
+
+``` ruby
+current_user.moderator?(:pages)           => true | false
+current_user.moderator?(:blogs)           => true | false
+current_user.moderator?(:articles)        => true | false
+```
+
+Is it Administrator?
+
+``` ruby
+current_user.admin?                       => true | false
+```
+
+Is it **Owner** of object?
+
+``` ruby
+current_user.owner?(@page)                => true | false
+current_user.owner?(@blog)                => true | false
+current_user.owner?(@article)             => true | false
+```
+
+### Role methods?
+
+``` ruby
+# Find a Role by name
+@role.find_by_name(:user)
+```
+
+``` ruby
+# User Model like methods
+
+@role.has?(:pages, :show)       => true | false
+@role.moderator?(:pages)        => true | false
+@role.admin?                    => true | false
+```
+
+## CRUD API
+
+#### CREATE
+
+``` ruby
+# Create a section of rules
+@role.create_section(:pages)
+```
+
+``` ruby
+# Create rule in section (false value by default)
+@role.create_rule(:pages, :index)
+```
+
+#### READ
+
+``` ruby
+@role.to_hash => Hash
+
+# YAML string
+@role.to_yaml => String
+
+# YAML string
+@role.to_s => String
+```
+
+#### UPDATE
+
+``` ruby
+# Incoming hash is true-mask-hash
+# All rules of Role will be reset to false
+# Only rules from true-mask-hash will be set on true
+new_role_hash = {
+  :pages => {
+    :index => true,
+    :show => true
+  }
+}
+
+@role.update_role(new_role_hash)
+```
+
+``` ruby
+# set this rule on true
+@role.rule_on(:pages, :index)
+```
+
+``` ruby
+# set this rule on false
+@role.rule_off(:pages, :index)
+```
+
+### DELETE
+
+``` ruby
+# delete a section
+@role.delete_section(:pages)
+
+# delete rule in section
+@role.delete_rule(:pages, :show)
+```
