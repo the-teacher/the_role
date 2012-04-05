@@ -14,10 +14,10 @@ module TheRole
     def self.included(base)
       base.class_eval do
         has_many  :users
-        validates :name,        :presence => true
+        validates :name,        :presence => true, :uniqueness => true
         validates :title,       :presence => true
         validates :description, :presence => true
-        validates :the_role,    :presence => true
+        before_create { self.the_role = {}.to_yaml }
 
         # C
         

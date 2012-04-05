@@ -12,7 +12,7 @@ module TheRole
       return false unless obj
       return true  if admin?
 
-      section_name = obj.class.to_s.tableize # => 'pages', 'articles' ect
+      section_name = obj.class.to_s.tableize
       return true  if moderator?(section_name)
 
       return id == obj.id          if obj.is_a?(User)

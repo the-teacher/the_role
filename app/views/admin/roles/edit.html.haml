@@ -27,8 +27,7 @@
     = submit_tag t('.create_section')
 
   %h4= t('.create_access_rule')
-
-  - unless role.empty?
+  - unless @role.to_hash.empty?
     = form_tag(create_rule_admin_role_sections_path(@role), :method => :post, :class => :new_rule) do
       = text_field_tag :section_rule
 

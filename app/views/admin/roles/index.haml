@@ -10,7 +10,7 @@
       %li
         %p
           = link_to role.title, edit_admin_role_url(role)
-          = link_to t('.delete') + role.title , admin_role_url(role), :method => :delete, :confirm => t('the_role.delete_role'), :class => :delete
+          = link_to t('.delete'), admin_role_url(role), :method => :delete, :title => role.title, :confirm => t('the_role.delete_role'), :class => :delete
 
   %p= link_to t('.new'),  new_admin_role_path
 -#

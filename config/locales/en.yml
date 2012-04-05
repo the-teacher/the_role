@@ -19,7 +19,7 @@ en:
     roles:
       index:
         list: list of roles
-        delete: 'Delete role: '
+        delete: 'Delete Role'
         new: Create a new role
       edit:
         title: Editing role
