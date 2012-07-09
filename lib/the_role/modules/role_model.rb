@@ -17,9 +17,10 @@ module TheRole
         validates :name,        :presence => true, :uniqueness => true
         validates :title,       :presence => true, :uniqueness => true
         validates :description, :presence => true
+
         before_create do
-          self.name     = param_prepare(name) 
-          self.the_role = {}.to_yaml
+          self.name     = param_prepare(name)
+          self.the_role = {}.to_yaml if self.the_role.blank?
         end
 
         # C
