@@ -8,5 +8,5 @@ module TheRole
       User.send :include, TheRole::UserModel if the_class_exists? :User
       ApplicationController.send :include, TheRole::Requires if the_class_exists? :ApplicationController
     end
-  end#Engine
-end#TheRole
+  end
+end
