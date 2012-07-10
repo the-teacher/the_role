@@ -20,7 +20,7 @@ module TheRole
 
         before_create do
           self.name     = param_prepare(name)
-          self.the_role = {}.to_yaml if self.the_role.blank?
+          self.the_role = {}.to_json if self.the_role.blank?
         end
 
         # C
@@ -32,7 +32,7 @@ module TheRole
           return false if section_name.blank?
           return true  if role[section_name]
           role[section_name] = {}
-          update_attributes(:the_role => role.to_yaml)
+          update_attributes(:the_role => role.to_json)
         end
                 
         def create_rule section_name, rule_name
@@ -42,18 +42,18 @@ module TheRole
           section_name =  param_prepare(section_name)
           return true  if role[section_name][rule_name]
           role[section_name][rule_name] = false
-          update_attributes(:the_role => role.to_yaml)
+          update_attributes(:the_role => role.to_json)
         end
 
         # R
 
         def to_hash
-          begin YAML::load(the_role) rescue {} end
+          begin JSON.load(the_role) rescue {} end
         end
 
-        def to_yaml
-          the_role
-        end
+        #def to_json
+        #  the_role
+        #end
 
         def to_s
           the_role
@@ -70,7 +70,7 @@ module TheRole
           new_role      = new_role_hash.underscorify_keys
           role          = to_hash.underscorify_keys.deep_reset
           role.deep_merge! new_role
-          update_attributes(:the_role => role.to_yaml)
+          update_attributes(:the_role => role.to_json)
         end
 
         def rule_on section_name, rule_name
@@ -81,7 +81,7 @@ module TheRole
           return false unless role[section_name].key? rule_name
           return true  if     role[section_name][rule_name]
           role[section_name][rule_name] = true
-          update_attributes(:the_role => role.to_yaml)
+          update_attributes(:the_role => role.to_json)
         end
 
         def rule_off section_name, rule_name
@@ -92,7 +92,7 @@ module TheRole
           return false unless role[section_name].key? rule_name
           return true  unless role[section_name][rule_name]
           role[section_name][rule_name] = false
-          update_attributes(:the_role => role.to_yaml)
+          update_attributes(:the_role => role.to_json)
         end
 
         # D
@@ -104,7 +104,7 @@ module TheRole
           return false if section_name.blank?
           return false unless role[section_name]
           role.delete  section_name
-          update_attributes(:the_role => role.to_yaml)
+          update_attributes(:the_role => role.to_json)
         end
 
         def delete_rule section_name, rule_name
@@ -114,7 +114,7 @@ module TheRole
           return false unless role[section_name]
           return false unless role[section_name].key? rule_name
           role[section_name].delete rule_name
-          update_attributes(:the_role => role.to_yaml)
+          update_attributes(:the_role => role.to_json)
         end
       end
     end

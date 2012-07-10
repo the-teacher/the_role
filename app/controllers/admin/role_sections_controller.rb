@@ -1,10 +1,10 @@
 class Admin::RoleSectionsController < ApplicationController
   include TheRole::Requires
 
-  before_filter :role_login_required
-  before_filter :role_require
+  before_filter :login_required
+  before_filter :role_required
   before_filter :role_find,           :only => [:create, :create_rule, :destroy, :destroy_rule]
-  before_filter :owner_require,       :only => [:create, :create_rule, :destroy, :destroy_rule]
+  before_filter :owner_required,       :only => [:create, :create_rule, :destroy, :destroy_rule]
 
   def create
     if @role.create_section params[:section_name]
@@ -50,6 +50,6 @@ class Admin::RoleSectionsController < ApplicationController
 
   def role_find
     @role = Role.find params[:role_id]
-    @object_for_ownership_checking = @role
+    @ownership_checking_object = @role
   end
 end
