@@ -51,9 +51,9 @@ module TheRole
           begin JSON.load(the_role) rescue {} end
         end
 
-        #def to_json
-        #  the_role
-        #end
+        def to_json
+          the_role
+        end
 
         def to_s
           the_role
