@@ -3,6 +3,7 @@ class Admin::RoleSectionsController < ApplicationController
 
   before_filter :login_required
   before_filter :role_required
+
   before_filter :role_find,           :only => [:create, :create_rule, :destroy, :destroy_rule]
   before_filter :owner_required,      :only => [:create, :create_rule, :destroy, :destroy_rule]
 
