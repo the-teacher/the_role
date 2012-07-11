@@ -1,10 +1,11 @@
 class Admin::RolesController < ApplicationController
   include TheRole::Requires
 
-  before_filter :role_login_required
-  before_filter :role_require
-  before_filter :role_find,           :only => [:show, :edit, :update, :destroy]
-  before_filter :owner_require,       :only => [:show, :edit, :update, :destroy]
+  before_filter :login_required
+  before_filter :role_required
+
+  before_filter :role_find,      :only => [:edit, :update, :destroy]
+  before_filter :owner_required, :only => [:edit, :update, :destroy]
 
   def index
     @roles = Role.all(:order => "created_at ASC")
@@ -45,7 +46,7 @@ class Admin::RolesController < ApplicationController
 
   def role_find
     @role = Role.find params[:id]
-    @object_for_ownership_checking = @role
+    @ownership_checking_object = @role
   end
   
 end
