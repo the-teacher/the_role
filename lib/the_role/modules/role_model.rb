@@ -63,7 +63,7 @@ module TheRole
 
         # source_hash will be reset to false
         # except true items from new_role_hash
-        # all keys will become symbols
+        # all keys will become 'strings'
         # look at lib/the_role/hash.rb to find definition of *underscorify_keys* method
         def update_role new_role_hash
           new_role_hash = new_role_hash.try(:to_hash) || {}
