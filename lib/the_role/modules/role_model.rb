@@ -68,7 +68,7 @@ module TheRole
         def update_role new_role_hash
           new_role_hash = new_role_hash.try(:to_hash) || {}
           new_role      = new_role_hash.underscorify_keys
-          role          = to_hash.underscorify_keys.deep_reset
+          role          = to_hash.underscorify_keys.deep_reset(false)
           role.deep_merge! new_role
           update_attributes(:the_role => role.to_json)
         end

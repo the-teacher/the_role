@@ -1,49 +1,57 @@
-# load 'the_role/hash.rb' - UPDATE, BUT NOT RELOAD
-# {'a b' => 1, "x y" => {'hello' => 1, :hello => 2} }.underscorify_keys => {:a_b=>1, :x_y=>{:hello=>2}}
+# load 'the_role/hash.rb' - UPDATE, BUT NOT RELOAD [for console testing]
 
 class Hash
-  # DEEP TRANSFORM
-  def deep_transform_keys(&block)
-    result = {}
-    each do |key, value|
-      result[yield(key)] = value.is_a?(Hash) ? value.deep_transform_keys(&block) : value
+  # Puts message about potential compatibility problem
+  if respond_to? :underscorify_keys
+    puts "\nWARNING!\nHASH#underscorify_keys detected.\nIf now it's native active_support/core_ext/hash method,\nyou should to create new issue for https://github.com/the-teacher/the_role\n\n"
+  end
+
+  # RAILS 4 like methods for RAILS 3
+  # DEEP TRANSFORM HELPER METHODS
+  unless respond_to? :deep_transform_keys
+    def deep_transform_keys(&block)
+      result = {}
+      each do |key, value|
+        result[yield(key)] = value.is_a?(Hash) ? value.deep_transform_keys(&block) : value
+      end
+      result
     end
-    result
-  end
 
-  def deep_transform_keys!(&block)
-    keys.each do |key|
-      value = delete(key)
-      self[yield(key)] = value.is_a?(Hash) ? value.deep_transform_keys!(&block) : value
+    def deep_transform_keys!(&block)
+      keys.each do |key|
+        value = delete(key)
+        self[yield(key)] = value.is_a?(Hash) ? value.deep_transform_keys!(&block) : value
+      end
+      self
     end
-    self
+    puts "TheRole => RAILS 4 like method **deep_transform_keys** mixed to HASH class"
   end
 
-  # DEEP STRINGIFY
-  def deep_stringify_keys
-    deep_transform_keys{ |key| key.to_s }
+  # RAILS 4 like methods for RAILS 3
+  # DEEP TRANSFORM HELPER METHODS
+  unless respond_to? :deep_stringify_keys
+    def deep_stringify_keys
+      deep_transform_keys{ |key| key.to_s }
+    end
+
+    def deep_stringify_keys!
+      deep_transform_keys!{ |key| key.to_s }
+    end
+    puts "TheRole => RAILS 4 like method **deep_stringify_keys** mixed to HASH class"
   end
 
-  def deep_stringify_keys!
-    deep_transform_keys!{ |key| key.to_s }
-  end
-
-  # UNDERSCORIFY KEYS
+  # Potential compatibility problem with RAILS_VERSION > 4.0
+  # But I hope nobody will create function with this name
   def underscorify_keys
-    hash = {}
-    self.each do |key, value|
-      new_key       = TheRole::ParamHelper.prepare(key)
-      hash[new_key] = self[key].is_a?(Hash) ? self[key].underscorify_keys : value
-    end
-    hash
+    deep_transform_keys{ |key| TheRole::ParamHelper.prepare(key) }
   end
 
   def underscorify_keys!
     replace underscorify_keys
   end
 
-  #DEEP RESET
-  def deep_reset(default = false)
+  # DEEP RESET VALUES
+  def deep_reset(default = nil)
     hash = dup
     hash.each do |key, value|
       hash[key] = hash[key].is_a?(Hash) ? hash[key].deep_reset(default) : default
@@ -51,7 +59,7 @@ class Hash
     hash
   end
 
-  def deep_reset!(default = false)
+  def deep_reset!(default = nil)
     replace deep_reset(default)
   end
 end
