@@ -1,0 +1,20 @@
+@import "mixins.less";
+@import "variables.less";
+@import "buttons.less";
+@import "button-groups.less";
+@import "dropdowns.less";
+
+.btn-group{
+  ul.dropdown-menu{
+    li.alert-success{
+      margin-bottom: 3px;
+    }
+    li.error a{
+      color: @errorText;
+    }
+    li.error a:hover{
+      color: @white;
+      background: @btnDangerBackgroundHighlight;
+    }
+  }
+}

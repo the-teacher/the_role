@@ -1,0 +1,41 @@
+@mixin corp_font { font-family: AnyCorpFont, Arial, sans-serif        }
+@mixin treb_ms   { font-family: 'Trebuchet MS', Helvetica, sans-serif }
+@mixin arial     { font-family: Arial, Helvetica, sans-serif          }
+@mixin times     { font-family: 'Times New Roman', Times, serif       }
+
+@mixin overblock{ overflow: hidden; zoom: 1 }
+
+@mixin inline-block{
+  display: inline-block;
+  *display: inline;
+  zoom: 1
+}
+
+/* for sliders building */
+@mixin nobr{ white-space: nowrap }
+
+@mixin nobr_item{
+  @include inline-block;
+  vertical-align: top
+}
+
+/* no text elements select */
+@mixin no_text_select{
+  -webkit-touch-callout: none;
+  -webkit-user-select:   none;
+  -khtml-user-select:    none;
+  -moz-user-select:      none;
+  -ms-user-select:       none;
+  -o-user-select:        none;
+  user-select:           none;
+}
+
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0){
+  .class{
+   .element{
+     display: inline-table;
+   }
+  }
+}
+*/

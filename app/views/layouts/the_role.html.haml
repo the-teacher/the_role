@@ -1,0 +1,15 @@
+!!! 5
+%html
+  %head
+    %meta{ :charset => 'utf-8' }
+    %title Bay bay, CanCan, I got The Role
+
+    = stylesheet_link_tag    'admin_the_role'
+    = javascript_include_tag 'admin_the_role'
+
+    -# BOOTSTRAP
+    %link{ :href => '/assets/role_set.css', :rel => 'stylesheet/less', :type => "text/css" }
+    = javascript_include_tag 'less'
+
+  %body
+    = yield
