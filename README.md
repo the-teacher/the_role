@@ -1,8 +1,9 @@
 # gem 'the_role' (under development)
 
 
-|:-----------|------------:|:------------:|
-| This       |        This |     This     
+|  | | 
+|:-----------|:------------|
+| This       |        This |
 
 
 ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png)
