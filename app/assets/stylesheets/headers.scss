@@ -1,0 +1,15 @@
+@import "mix";
+
+h1,h2,h3,h4,h5,h6{
+  @include arial;
+  color: #333;
+  font-weight: normal;
+  line-height: 100%;
+  margin-bottom: 15px
+}
+h1{ font-size:2.3em }
+h2{ font-size:2.7em }
+h3{ font-size:2.3em }
+h4{ font-size:1.9em }
+h5{ font-size:1.5em }
+h6{ font-size:1.1em }

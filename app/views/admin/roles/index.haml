@@ -1,15 +1,45 @@
-- content_for :css do
-  = stylesheet_link_tag   'the_role/style'
-  = stylesheet_link_tag   'the_role/headers'
-  = stylesheet_link_tag   'the_role/form'
+- content_for :sidebar do
+  %h3= t '.roles_list'
 
-.the_role
-  %h3= t('.list')
-  %ul.index
-    - @roles.each do |role|
-      %li
-        %p
-          = link_to role.title, edit_admin_role_url(role)
-          = link_to t('.delete'), admin_role_url(role), :method => :delete, :title => role.title, :confirm => t('the_role.delete_role'), :class => :delete
+  - @roles.each do |role|
+    %p
+      = link_to role.title, edit_admin_role_url(role)
+      = link_to raw('&times;'), admin_role_url(role), :method => :delete, :title => role.title, :confirm => t('the_role.delete_role'), :class => :delete
 
   %p= link_to t('.new'),  new_admin_role_path
+
+- role = @roles.first
+
+.role_info
+  %h3
+    %b Role name:
+    = role.name
+
+  %h5
+    %b Title: 
+    = role.title
+
+  %p.description
+    %b Description of role:
+    = role.description
+
+- role.to_hash.each_pair do |section, rules|
+  .section
+    %h3= section
+    .delete
+      .btn-group
+        %button.btn.btn-danger Delete section
+
+    - rules.each_pair do |rule, value|
+      .rule
+        %h4= rule
+        .controls
+          .btn-group
+            %button.btn.btn-success Enable
+            %button.btn.btn-success.dropdown-toggle{ 'data-toggle' => :dropdown }
+              %span.caret
+            %ul.dropdown-menu
+              %li.success= link_to 'Enable',  '#'
+              %li.info=    link_to 'Disable', '#'
+              %li.divider
+              %li.error= link_to 'Delete rule', '#'

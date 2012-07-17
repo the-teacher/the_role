@@ -3,9 +3,14 @@
   %head
     %meta{ :charset => 'utf-8' }
     %title Bye bye, CanCan, I got the Role!
-
     = stylesheet_link_tag    'admin_the_role'
     = javascript_include_tag 'admin_the_role'
-
   %body
-    = yield
+    .crusty
+      .container
+        .row
+          .span3
+            .sidebar= yield :sidebar
+          .span9
+            .content= yield
+    

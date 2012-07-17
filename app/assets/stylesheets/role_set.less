@@ -9,6 +9,35 @@
 @import "grid.less";
 @import "layouts.less";
 
+.sidebar, .content{
+  padding: 15px;
+}
+
+.sidebar{
+  p{
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    .delete{
+      color: red;
+      margin-left: 10px;
+    }
+  }
+}
+
+.content{
+  .role_info{
+    padding: 15px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    background: @grayLighter;
+    border-radius: 5px;
+    border: 1px solid gray;
+  }
+  .description{
+    font-size: 1.5em;
+  }
+}
+
 .btn-group{
   ul.dropdown-menu{
     li.alert-success{
@@ -42,6 +71,49 @@
   padding: 10px;
 
   .row [class*="span"]{
-    background: #EEF;
+    background: @white;
+  }
+}
+
+.dropdown-menu a{
+  font-size: 1.3em;
+}
+
+.section{
+  position: relative;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid Gray;
+
+  h3{
+    color: @grayDarker;
+    padding: 10px;
+    border-radius: 3px;
+    background: lighten(@btnInfoBackground, 18%);
+  }
+  .delete{
+    position: absolute;
+    top: 8px; right: 5px;
+  }
+  .rule{
+    background: red;
+    position: relative;
+    padding: 7px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    background: @tableBackgroundAccent;
+
+    h4{
+      margin-bottom: 0;
+      padding-left: 20px;
+    }
+    .controls{ 
+      position: absolute;
+      top: 2px; right: 0;
+    }
+  }
+  .rule:hover{
+    cursor: pointer;
+    background: darken(@tableBackgroundAccent, 15%);
   }
 }
