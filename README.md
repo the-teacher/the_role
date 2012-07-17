@@ -170,6 +170,14 @@ moderator_role_fragment = {
 }
 ```
 
+### Who is Owner?
+
+Administrator is owner of any object in system.
+
+Moderator of pages is owner of any page.
+
+User is owner of object, when **Object#user_id == User#id**.
+
 # User methods for VIEWS
 
 Has a user an access to **rule** of **section** (action of controller)?
