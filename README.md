@@ -1,7 +1,7 @@
 # gem 'the_role' (under development)
 | Bye bye CanCan, I got The Role! | Description |
 |:------------- |:-------------|
-| ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) | TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Each role set - is a two-level hash, consisting of the **sections** and nested **rules**.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> |
+| ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) | TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the **sections** and nested **rules**.<br><br>**Section** may be associated with **controller** name.<br><br>**Rule** may be associated with **action** name.<br><br><br><br><br><br><br><br><br> |
 
 ## 
 
@@ -36,9 +36,6 @@ role = {
 
 ### How it  works 
 
-**Section** may be associated with the name of a **controller**.
-
-**Rule** may be associated with the name of **action** in the controller.
 
 Section may contain a set of rules.
 
