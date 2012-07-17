@@ -90,7 +90,7 @@ rake db:roles:test
   >> Administrator, Moderator of pages, User, Demo
 ```
 
-### Change your application.rb
+### Change your ApplicationController
 
 **Example for Devise2**
 
