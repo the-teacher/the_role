@@ -54,14 +54,14 @@ current_user.has_role?(:facebook, :like)
 
 And you can use them as well as other access rules.
 
-### Install and use
+# Install and use
 
 ``` ruby
   gem 'the_role'
 ```
 
 ``` ruby
-  bundle install
+  bundle
 ```
 
 Add **role_id:integer** to User Model Migration
@@ -107,8 +107,8 @@ class ApplicationController < ActionController::Base
   # *authenticate_user!* - method from Devise2
   # *access_denied* - define it before alias_method
   # before_filter :role_object_finder, :only   => [:edit, :update, :rebuild, :destroy]
-  alias_method :role_login_required, :authenticate_user!
-  alias_method :role_access_denied,  :access_denied
+  alias_method :login_required,     :authenticate_user!
+  alias_method :role_access_denied, :access_denied
 
 end
 ```
@@ -118,36 +118,25 @@ Using with any controller
 ``` ruby
 class PagesController < ApplicationController
   # Devise2 and TheRole before_filters
-  before_filter :role_login_required, :except => [:index, :show]
-  before_filter :role_require,        :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show]
+  before_filter :role_required,  :except => [:index, :show]
 
-  before_filter :find_page,           :only   => [:edit, :update, :destroy]
-  before_filter :owner_require,       :only   => [:edit, :update, :destroy]
+  before_filter :find_page,      :only   => [:edit, :update, :destroy]
+  before_filter :owner_required, :only   => [:edit, :update, :destroy]
 
-end
-```
-
-### WARNING! IT'S IMPORTANT
-
-When you checking **owner_require** - you should before this to define variable **@object_for_ownership_checking** in finder method.
-
-For example:
-
-``` ruby
-class PagesController < ApplicationController
-  before_filter :find_page,           :only   => [:edit, :update, :destroy]
-  before_filter :owner_require,       :only   => [:edit, :update, :destroy]
-  
   private
 
   def find_page
     @page = Page.find params[:id]
-    @object_for_ownership_checking = @page
+    @ownership_checking_object = @page
   end
 end
 ```
 
-### Who is the Administrator?
+**owner_required** method require **@ownership_checking_object** variable, with cheked object.
+
+
+### Who is Administrator?
 
 Administrator - a user who can access any section and the rules of your application.
 The administrator is the owner of any objects in your application.
@@ -162,7 +151,7 @@ admin_role_fragment = {
 }
 ```
 
-### Who is the Moderator?
+### Who is Moderator?
 
 Moderator - a user who can access any actions of sections.
 Moderator is the owner of any objects of this class.
