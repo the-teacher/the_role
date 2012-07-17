@@ -1,11 +1,11 @@
 # gem 'the_role' (under development)
 
 <table>
-  <th>
-    <td>
+  <tr>
+    <th>
       Bye bye CanCan, I got The Role!
-    </td>
-  </th>
+    </th>
+  </tr>
 
   <tr>
     <td>
