@@ -1,9 +1,9 @@
 # gem 'the_role' (under development)
 
 
-| Except this | which is a poor alternative     |
---------------------------------------------------
-| There really      | should be one              |
+| Left align | Right align | Center align |
+|:-----------|------------:|:------------:|
+| This       |        This |     This     
 
 
 ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png)
