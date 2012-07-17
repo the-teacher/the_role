@@ -3,7 +3,7 @@
 
 |Bye bye CanCan, I got The Role!| 
 |:-----------------------|
-| <p style='float:left'> ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) </p> Semantic, lightweight role system with an administrative interface     |
+| <img style='float:left' alt='Bye bye CanCan, I got The Role!', src='https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png'> Semantic, lightweight role system with an administrative interface |
 
 
 ## 
