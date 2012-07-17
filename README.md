@@ -1,10 +1,12 @@
 # gem 'the_role'
 
+![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png)
+
 ## Bye bye CanCan, I got The Role!
 
 Semantic, lightweight role system with an administrative interface
 
-![TheSortableTree](https://github.com/the-teacher/the_role/raw/master/pic.png)
+![TheRole](https://github.com/the-teacher/the_role/raw/master/pic.png)
 
 ## What does it mean semantic?
 
