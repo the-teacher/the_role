@@ -1,4 +1,4 @@
-# gem 'the_role'
+# gem 'the_role' (under development)
 
 ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png)
 
@@ -16,21 +16,21 @@ Look at hash. If you can understand access rules - this role system is semantica
 
 ``` ruby
 role = {
-  :pages => {
-    :index => true,
-    :show => true,
-    :new => false,
-    :edit => false,
-    :update => false,
-    :destroy => false
+  'pages' => {
+    'index' => true,
+    'show' => true,
+    'new' => false,
+    'edit' => false,
+    'update' => false,
+    'destroy' => false
   },
-  :articles => {
-    :index => true,
-    :show => true
+  'articles' => {
+    'index' => true,
+    'show' => true
   }
-  :twitter => {
-    :button => true,
-    :follow => false
+  'twitter' => {
+    'button' => true,
+    'follow' => false
   }
 }
 ```
@@ -47,7 +47,7 @@ Section may contain a set of rules.
 
 **Rule in Section** can be set to **true** and **false**, this provide **ACL** (**Access Control List**)
 
-Role hash **stored in the database as YAML** string.
+Role hash **stored in the database as JSON** string.
 Using of hashes, makes it extremely easy to configure access rules in the role.
 
 ### Virtual sections and rules
@@ -263,10 +263,10 @@ current_user.owner?(@article)             => true | false
 ``` ruby
 @role.to_hash => Hash
 
-# YAML string
-@role.to_yaml => String
+# JSON string
+@role.to_json => String
 
-# YAML string
+# JSON string
 @role.to_s => String
 ```
 
