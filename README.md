@@ -1,7 +1,6 @@
 # gem 'the_role' (under development)
 
 
-| Left align | Right align | Center align |
 |:-----------|------------:|:------------:|
 | This       |        This |     This     
 
