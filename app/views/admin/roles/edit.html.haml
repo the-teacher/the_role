@@ -1,42 +1,6 @@
-- content_for :title do
-  = t('.title')
+= render :partial => 'sidebar'
+= render :partial => 'role', :locals => { :role => @role }
 
-- content_for :css do
-  = stylesheet_link_tag   'the_role/style'
-  = stylesheet_link_tag   'the_role/headers'
-  = stylesheet_link_tag   'the_role/form'
-
-.the_role
-  %p= flash[:notice]
-
-  %h1= t('.title')
-
-  %p= link_to raw(t('.back')), admin_roles_path
-
-  %h2
-    = @role.name
-    \-
-    = @role.title
-
-  = form_for :role, :url => {:action=> :update }, :html => {:method => :put, :class => :the_form } do |f|
-    = render :partial => 'form', :locals => {:f => f, :button => t('.update')}
-
-  %h4= t('.create_section')
-  - role = @role.to_hash
-  = form_tag(admin_role_sections_path(@role), :method => :post, :class => :new_rule) do
-    = text_field_tag :section_name
-    = submit_tag t('.create_section')
-
-  %h4= t('.create_access_rule')
-  - unless @role.to_hash.empty?
-    = form_tag(create_rule_admin_role_sections_path(@role), :method => :post, :class => :new_rule) do
-      = text_field_tag :section_rule
-
-      %select{ :name => :section_name }
-        -role.each do |name, set|
-          %option{ :value => name }
-            = name
-          
-        %input{ :type => :submit, :value => t('.create_rule') }
-  - else
-    %p= t('.section_needs')
+-#
+  admin_role_sections_path(@role)
+  create_rule_admin_role_sections_path(@role)

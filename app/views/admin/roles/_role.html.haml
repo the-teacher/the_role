@@ -1,0 +1,35 @@
+.role_info
+  %h3
+    %b Role name:
+    = role.name
+
+  %h5
+    %b Title: 
+    = role.title
+
+  %p.description
+    %b Description of role:
+    = role.description
+
+- role.to_hash.each_pair do |section, rules|
+  .section
+    %h3= section
+    .delete
+      .btn-group
+        %button.btn.btn-danger Delete section
+
+    - rules.each_pair do |rule, value|
+      .rule
+        %h4
+          &rarr;
+          = rule
+        .controls
+          .btn-group
+            %button.btn.btn-success Enable
+            %button.btn.btn-success.dropdown-toggle{ 'data-toggle' => :dropdown }
+              %span.caret
+            %ul.dropdown-menu
+              %li.success= link_to 'Enable',  '#'
+              %li.info=    link_to 'Disable', '#'
+              %li.divider
+              %li.error= link_to 'Delete rule', '#'
