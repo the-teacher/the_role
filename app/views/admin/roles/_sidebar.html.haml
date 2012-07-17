@@ -5,4 +5,4 @@
       = link_to role.title, edit_admin_role_url(role)
       = link_to raw('&times;'), admin_role_url(role), :method => :delete, :title => role.title, :confirm => t('the_role.delete_role'), :class => :delete
 
-  %p.new= link_to t('.new'),  new_admin_role_path
+  %p.new= link_to t('.new_role'),  new_admin_role_path
