@@ -4,7 +4,7 @@
 |:------------- |:-------------|
 | ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) | TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the **sections** and nested **rules**.<br><br>**Section** may be associated with **controller** name.<br><br>**Rule** may be associated with **action** name.<br><br>Section can have many rules.<br><br>Rule can have **true** or **false** value<br><br>**Sections** and nested **Rules** provide **ACL** (**Access Control List**)<br><br>Role **stored in the database as JSON** string.<br><br>Using of hashes, makes role system extremely easy to configure and use.<br> |
 
-## GUI
+### GUI
 
 | TheRole management web interface |
 |:-------------:|
@@ -37,30 +37,21 @@ role = {
 }
 ```
 
-### How it  works 
-
-
-Using of hashes, makes role system extremely easy to configure access rules in the role.
-
 ### Virtual sections and rules
 
-Usually, we use real names of controllers as names of sections, and we use names of real actions in controllers as names of section's rules.
-
-Like this:
+Usually, we use real names of controllers and actions for names of sections and rules:
 
 ``` ruby
 current_user.has_role?(:pages, :show)
 ```
 
-But you can also create virtual sections and rules:
-
+But, also, you can use virtual names of sections, and virtual names of section's rules.
 
 ``` ruby
 current_user.has_role?(:twitter, :button)
 current_user.has_role?(:facebook, :like)
 ```
 
-These sections and the rules are not associated with real controllers and actions.
 And you can use them as well as other access rules.
 
 ### Install and use
