@@ -22,4 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sass'
   s.add_dependency 'sass-rails'
   s.add_dependency 'coffee-rails'
+  # less for tw bootstrap 
+  s.add_dependency 'therubyracer'
+  s.add_dependency 'less-rails'
 end
