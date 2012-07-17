@@ -1,4 +1,4 @@
-.role_info
+.well
   %h3
     %b Role name:
     = role.name
@@ -16,7 +16,7 @@
     %h3= section
     .delete
       .btn-group
-        %button.btn.btn-danger Delete section
+        = button_to 'Delete section', admin_role_section_path(role, section), :method => :delete, :class => 'btn btn-danger', :confirm => 'Are you sure?'
 
     - rules.each_pair do |rule, value|
       .rule
@@ -25,11 +25,25 @@
           = rule
         .controls
           .btn-group
-            %button.btn.btn-success Enable
-            %button.btn.btn-success.dropdown-toggle{ 'data-toggle' => :dropdown }
+            - klass = value ? :success : :info
+            - state = value ? :Enable : :Disable
+            %button{ :class => "btn btn-#{klass}" }= state
+            %button{ :class => "btn btn-#{klass} dropdown-toggle", 'data-toggle' => :dropdown }
               %span.caret
             %ul.dropdown-menu
               %li.success= link_to 'Enable',  '#'
               %li.info=    link_to 'Disable', '#'
               %li.divider
               %li.error= link_to 'Delete rule', '#'
+
+= form_tag admin_role_sections_path(role), :class => 'well form-inline' do |f|
+  = text_field_tag :section_name, '', :class => 'input-xlarge', :placeholder => "New Section Name"
+  = submit_tag 'Create Section', :class => :btn
+
+= form_tag create_rule_admin_role_sections_path(role), :class => 'well form-inline' do |f|
+  %select.span3{ :name => :section_name }
+    - role.to_hash.each_pair do |section, rules|
+      %option{ :value => section }= section
+
+  = text_field_tag :rule_name, '', :class => 'input-large', :placeholder => "New Rule Name"
+  = submit_tag 'Create Rule', :class => :btn

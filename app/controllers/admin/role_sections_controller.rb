@@ -18,7 +18,7 @@ class Admin::RoleSectionsController < ApplicationController
   end
   
   def create_rule
-    if @role.create_rule(params[:section_name], params[:section_rule])
+    if @role.create_rule(params[:section_name], params[:rule_name])
       flash[:notice] = t('the_role.section_created')
       redirect_to edit_admin_role_path(@role)
     else

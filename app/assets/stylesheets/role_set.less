@@ -9,6 +9,23 @@
 @import "grid.less";
 @import "layouts.less";
 
+@import "forms.less";
+@import "wells.less";
+
+.well{
+  input{
+    margin-top: -4px;  
+  }
+}
+
+.the_role{
+  width: 910px;
+  margin: auto;
+  margin-top: 10px;
+  h3{
+    margin-botoom: 0;
+  }
+}
 .sidebar, .content{
   padding: 15px;
 }
@@ -39,13 +56,10 @@
 }
 
 .content{
-  .role_info{
+  .well{
     padding: 15px;
     padding-bottom: 5px;
     margin-bottom: 10px;
-    background: @grayLighter;
-    border-radius: 5px;
-    border: 1px solid gray;
   }
   .description{
     font-size: 1.5em;
@@ -67,20 +81,9 @@
   }
 }
 
-.liquid{
-  border: 1px solid Gray;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding: 10px;
-
-  .row-fluid [class*="span"]{
-    background: #EEE;
-  }
-}
-
 .crusty{
   border: 1px solid LightBlue;
-  margin-top: 30px;
+  margin-top: 15px;
   margin-bottom: 30px;
   padding: 10px;
 
