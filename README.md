@@ -54,7 +54,7 @@ current_user.has_role?(:facebook, :like)
 
 And you can use them as well as other access rules.
 
-# Install and use
+# Install
 
 ``` ruby
   gem 'the_role'
@@ -64,8 +64,9 @@ And you can use them as well as other access rules.
   bundle
 ```
 
-Add **role_id:integer** to User Model Migration
+### Migrate
 
+Add **role_id:integer** to User Model Migration
 
 ``` ruby
 rake the_role_engine:install:migrations
@@ -80,18 +81,16 @@ rails g model role --migration=false
 rake db:create && rake db:migrate
 ```
 
-Creating roles for test (**not required**)
+### Fake roles for test (not required)
+
+Creating roles for test 
 
 ``` ruby
 rake db:roles:test
   >> Administrator, Moderator of pages, User, Demo
 ```
 
-Define aliases method for correctly work TheRole's controllers
-
-**authenticate_user!** or any other method from your auth system
-
-**access_denied** or any other method for processing access denied situation
+### Change your application.rb
 
 **Example for Devise2**
 
@@ -103,17 +102,20 @@ class ApplicationController < ActionController::Base
     render :text => 'access_denied: requires an role' and return
   end
 
-  # define aliases for correctly work of TheRole admin panel
-  # *authenticate_user!* - method from Devise2
-  # *access_denied* - define it before alias_method
-  # before_filter :role_object_finder, :only   => [:edit, :update, :rebuild, :destroy]
   alias_method :login_required,     :authenticate_user!
   alias_method :role_access_denied, :access_denied
 
 end
 ```
 
-Using with any controller
+Define aliases method for correctly work TheRole's controllers
+
+**authenticate_user!** or any other method from your auth system
+
+**access_denied** or any other method for processing access denied situation
+
+
+### Using with any controller
 
 ``` ruby
 class PagesController < ApplicationController
@@ -134,7 +136,6 @@ end
 ```
 
 **owner_required** method require **@ownership_checking_object** variable, with cheked object.
-
 
 ### Who is Administrator?
 
@@ -169,9 +170,9 @@ moderator_role_fragment = {
 }
 ```
 
-### User methods
+# User methods for VIEWS
 
-Has a user an access to **action** of **section**?
+Has a user an access to **rule** of **section** (action of controller)?
 
 ``` ruby
 current_user.has_role?(:pages,    :show)  => true | false
@@ -201,22 +202,20 @@ current_user.owner?(@blog)                => true | false
 current_user.owner?(@article)             => true | false
 ```
 
-### Role methods
+# Base Role methods
 
 ``` ruby
 # Find a Role by name
-@role.find_by_name(:user)
+@role = Role.find_by_name(:user)
 ```
 
 ``` ruby
-# User Model like methods
-
 @role.has?(:pages, :show)       => true | false
 @role.moderator?(:pages)        => true | false
 @role.admin?                    => true | false
 ```
 
-## CRUD API
+# CRUD API (for console users)
 
 #### CREATE
 
