@@ -1,7 +1,7 @@
 # gem 'the_role' (under development)
-| Bye bye CanCan, I got The Role! ||
+| Bye bye CanCan, I got The Role! | Description |
 |:------------- |:-------------|
-| ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) | Content Cell  |
+| ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) | TheRole - Semantic, lightweight role system with an administrative interface |
 
 ## 
 
