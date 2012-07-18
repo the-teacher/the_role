@@ -5,12 +5,15 @@
     %title Bye bye, CanCan, I got the Role!
     = stylesheet_link_tag    'admin_the_role'
     = javascript_include_tag 'admin_the_role'
+    = csrf_meta_tags
   %body
     .the_role
       %h3
         = link_to 'The Role', 'https://github.com/the-teacher/the_role'
         \|
         Role system for Rails Apps
+        \|
+        User: #{current_user.try(:name) || current_user.id}
     .crusty
       .container
         .row

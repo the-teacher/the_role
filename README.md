@@ -2,7 +2,7 @@
 
 | Bye bye CanCan, I got The Role! | Description |
 |:------------- |:-------------|
-| ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) | TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the **sections** and nested **rules**.<br><br>**Section** may be associated with **controller** name.<br><br>**Rule** may be associated with **action** name.<br><br>Section can have many rules.<br><br>Rule can have **true** or **false** value<br><br>**Sections** and nested **Rules** provide **ACL** (**Access Control List**)<br><br>Role **stored in the database as JSON** string.<br><br>Using of hashes, makes role system extremely easy to configure and use.<br> |
+| ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) | TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with 2-level-hash, and store in database with JSON.<br><br>TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the **sections** and nested **rules**.<br><br>**Section** may be associated with **controller** name.<br><br>**Rule** may be associated with **action** name.<br><br>Section can have many rules.<br><br>Rule can have **true** or **false** value<br><br>**Sections** and nested **Rules** provide **ACL** (**Access Control List**)<br><br>Role **stored in the database as JSON** string.<br><br>Using of hashes, makes role system extremely easy to configure and use.<br> |
 
 ### GUI
 
@@ -19,18 +19,18 @@ Look at hash. If you can understand access rules - this role system is semantica
 ``` ruby
 role = {
   'pages' => {
-    'index' => true,
-    'show' => true,
-    'new' => false,
-    'edit' => false,
-    'update' => false,
+    'index'   => true,
+    'show'    => true,
+    'new'     => false,
+    'edit'    => false,
+    'update'  => false,
     'destroy' => false
   },
   'articles' => {
-    'index' => true,
-    'show' => true
-  }
-  'twitter' => {
+    'index'  => true,
+    'show'   => true
+  },
+  'twitter'  => {
     'button' => true,
     'follow' => false
   }
@@ -139,9 +139,11 @@ end
 
 ### Who is Administrator?
 
-Administrator - a user who can access any section and the rules of your application.
-The administrator is the owner of any objects in your application.
-Administrator - a user in the role-hash of which there is a section **system** and rule **administrator**.
+Administrator it's a user who can access any section and the rules of your application.
+
+Administrator is the owner of any objects in your application.
+
+Administrator it's a user, which has virtual section **system** and rule **administrator** in the role-hash.
 
 
 ``` ruby
@@ -154,11 +156,13 @@ admin_role_fragment = {
 
 ### Who is Moderator?
 
-Moderator - a user who can access any actions of sections.
-Moderator is the owner of any objects of this class.
-Moderator - user which has in a section **moderator** rule with name of real or virtual section (controller).
+Moderator it's a user, which has access to any actions of some section(s).
 
-There is role hash of Moderator of Pages (controller) and Twitter (virtual section)
+Moderator is's owner of any objects of some class.
+
+Moderator it's a user, which has a virtual section **moderator**, with **section name** as rule name.
+
+There is Moderator of Pages (controller) and Twitter (virtual section)
 
 ``` ruby
 moderator_role_fragment = {
@@ -178,7 +182,7 @@ Moderator of pages is owner of any page.
 
 User is owner of object, when **Object#user_id == User#id**.
 
-# User methods for VIEWS
+# User Model methods
 
 Has a user an access to **rule** of **section** (action of controller)?
 
@@ -211,6 +215,11 @@ current_user.owner?(@article)             => true | false
 ```
 
 # Base Role methods
+
+``` ruby
+# User's role
+@role = current_user.role
+```
 
 ``` ruby
 # Find a Role by name

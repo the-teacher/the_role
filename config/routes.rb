@@ -8,6 +8,9 @@ Rails.application.routes.draw do
         end
 
         member do
+          put :rule_on
+          put :rule_off
+
           delete :destroy
           delete :destroy_rule
         end

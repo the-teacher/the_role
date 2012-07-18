@@ -31,14 +31,18 @@
             %button{ :class => "btn btn-#{klass} dropdown-toggle", 'data-toggle' => :dropdown }
               %span.caret
             %ul.dropdown-menu
-              %li.success= link_to 'Enable',  '#'
-              %li.info=    link_to 'Disable', '#'
+              %li.success= link_to 'Enable',  rule_on_admin_role_section_path(role, section, :name => rule), :method => :put
+              %li.info=    link_to 'Disable', rule_off_admin_role_section_path(role, section, :name => rule), :method => :put
               %li.divider
               %li.error= link_to 'Delete rule', destroy_rule_admin_role_section_path(role, section, :name => rule), :method => :delete, :confirm => 'Are you sure?'
+
+%h4 Create new section
 
 = form_tag admin_role_sections_path(role), :class => 'well form-inline' do |f|
   = text_field_tag :section_name, '', :class => 'input-xlarge', :placeholder => "New Section Name"
   = submit_tag 'Create Section', :class => :btn
+
+%h4 Create new rule
 
 = form_tag create_rule_admin_role_sections_path(role), :class => 'well form-inline' do |f|
   %select.span3{ :name => :section_name }
