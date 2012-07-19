@@ -13,6 +13,8 @@ module TheRole
 
     def self.included(base)
       base.class_eval do
+        attr_accessible :name, :title, :description, :the_role
+
         has_many  :users
         validates :name,        :presence => true, :uniqueness => true
         validates :title,       :presence => true, :uniqueness => true
