@@ -8,6 +8,14 @@
 
 http://rubygems.org/gems/the_role
 
+### TheRole and Devise 2
+
+https://github.com/the-teacher/the_role/wiki/Integration-with-Devise2
+
+### TheRole and Sorcery
+
+https://github.com/the-teacher/the_role/wiki/Integration-with-Sorcery
+
 ### GUI
 
 | TheRole management web interface |
