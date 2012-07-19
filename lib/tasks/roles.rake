@@ -13,7 +13,7 @@ namespace :db do
         :name => :admin,
         :title => 'Administrator',
         :description => 'Role for administrator',
-        :the_role => role.to_yaml
+        :the_role => role.to_json
       ).save!
       puts 'Administrator'
 
@@ -30,7 +30,7 @@ namespace :db do
         :name => :moderator,
         :title => 'Moderator of pages',
         :description => "Moderator #1",
-        :the_role => role.to_yaml
+        :the_role => role.to_json
       ).save!
       puts 'Moderator of pages'
 
@@ -69,7 +69,7 @@ namespace :db do
         :name => :user,
         :title => 'User',
         :description => "Role for User",
-        :the_role => role.to_yaml
+        :the_role => role.to_json
       ).save!
       puts 'User'
 
@@ -110,7 +110,7 @@ namespace :db do
         :name => :demo,
         :title => 'Demo',
         :description => "Demo user",
-        :the_role => role.to_yaml
+        :the_role => role.to_json
       ).save!
       puts 'Demo'
 
