@@ -89,36 +89,55 @@ And you can use them as well as other access rules.
 
 ### Migrate
 
-Add **role_id:integer** to User Model Migration
+#### Add **role_id:integer** field to your User Model
 
-``` ruby
-rake the_role_engine:install:migrations
-  >> Copied migration 20111028145956_create_roles.rb from the_role_engine
+``ruby
+def self.up
+  create_table :users do |t|
+    t.string :login,            :null    => false
+    t.string :email,            :default => nil
+    t.string :crypted_password, :default => nil
+    t.string :salt,             :default => nil
+
+    t.integer :role_id,         :default => nil
+
+    t.timestamps
+  end
+end
 ```
+
+#### Generate Role Model without migration
 
 ``` ruby
 rails g model role --migration=false
 ```
 
+#### Generate predefined Role migration
+
+``` ruby
+rake the_role_engine:install:migrations
+```
+
+#### Create database and migrate
+
 ``` ruby
 rake db:create && rake db:migrate
 ```
 
-### Fake roles for test (not required)
-
-Creating roles for test 
+#### Create fake roles for test (not required)
 
 ``` ruby
 rake db:roles:test
-  >> Administrator, Moderator of pages, User, Demo
 ```
 
-### Change your ApplicationController
+#### Change your ApplicationController
 
 **Example for Devise2**
 
 ``` ruby
 class ApplicationController < ActionController::Base
+  include TheRole::Requires
+
   protect_from_forgery
 
   def access_denied
@@ -127,7 +146,6 @@ class ApplicationController < ActionController::Base
 
   alias_method :login_required,     :authenticate_user!
   alias_method :role_access_denied, :access_denied
-
 end
 ```
 
@@ -138,7 +156,7 @@ Define aliases method for correctly work TheRole's controllers
 **access_denied** or any other method for processing access denied situation
 
 
-### Using with any controller
+#### Using with any controller
 
 ``` ruby
 class PagesController < ApplicationController
@@ -157,6 +175,8 @@ class PagesController < ApplicationController
   end
 end
 ```
+
+### Owner checking
 
 **owner_required** method require **@ownership_checking_object** variable, with cheked object.
 
