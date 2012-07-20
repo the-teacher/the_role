@@ -91,7 +91,7 @@ And you can use them as well as other access rules.
 
 #### Add **role_id:integer** field to your User Model
 
-``ruby
+```ruby
 def self.up
   create_table :users do |t|
     t.string :login,            :null    => false
