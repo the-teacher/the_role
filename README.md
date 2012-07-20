@@ -31,7 +31,7 @@ http://rubygems.org/gems/the_role
 
 [Specs with Devise 2](https://github.com/the-teacher/devise2_on_the_role/tree/master/spec)
 
-Read **Want to improve this gem?** manual for running specs
+Read **How to start development process** manual for running specs
 
 ## What does it mean semantic?
 
