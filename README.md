@@ -16,19 +16,19 @@ http://rubygems.org/gems/the_role
 
 ### TheRole and Devise 2
 
-https://github.com/the-teacher/the_role/wiki/Integration-with-Devise2
+[Integration with Devise2](https://github.com/the-teacher/the_role/wiki/Integration-with-Devise2)
 
 ### TheRole and Sorcery
 
-https://github.com/the-teacher/the_role/wiki/Integration-with-Sorcery
+[Integration with Sorcery](https://github.com/the-teacher/the_role/wiki/Integration-with-Sorcery)
 
 ### Want to improve this gem?
 
-https://github.com/the-teacher/the_role/wiki/Want-to-improve-this-gem%3F
+[Want to improve this gem?](https://github.com/the-teacher/the_role/wiki/Want-to-improve-this-gem%3F)
 
 ### Rspec for TheRole
 
-https://github.com/the-teacher/devise2_on_the_role/tree/master/spec
+[Specs with Devise 2](https://github.com/the-teacher/devise2_on_the_role/tree/master/spec)
 
 Read **Want to improve this gem?** manual for running specs
 
