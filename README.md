@@ -24,7 +24,8 @@ http://rubygems.org/gems/the_role
 
 ### Want to improve this gem?
 
-[Want to improve this gem?](https://github.com/the-teacher/the_role/wiki/Want-to-improve-this-gem%3F)
+* I need for your feedback and issues
+* [How to start development process](https://github.com/the-teacher/the_role/wiki/Want-to-improve-this-gem%3F)
 
 ### Rspec for TheRole
 
