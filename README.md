@@ -192,6 +192,21 @@ You should to define **@ownership_checking_object** before invoke of **owner_req
 <% end %>
 ```
 
+### Way to set default role for new User
+
+```ruby
+class User
+  after_create :set_default_role
+
+  private
+
+  def set_default_role
+    self.role = Role.where(:name => :user).first
+    self.save
+  end
+end
+```
+
 ### Who is Administrator?
 
 Administrator it's a user who can access any section and the rules of your application.
