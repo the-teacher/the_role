@@ -112,7 +112,7 @@ end
 rails g model role --migration=false
 ```
 
-#### Generate predefined Role migration
+#### Generate Role migration
 
 ``` ruby
 rake the_role_engine:install:migrations
