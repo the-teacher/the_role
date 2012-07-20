@@ -176,11 +176,21 @@ class PagesController < ApplicationController
 end
 ```
 
-### Owner checking
+### Ownership checking
 
 **owner_required** method require **@ownership_checking_object** variable, with cheked object.
 
 You should to define **@ownership_checking_object** before invoke of **owner_required** method.
+
+### Using with Views
+
+```ruby
+<% if @user.has_role?(:twitter, :button) %>
+  Twitter Button is Here
+<% else %>
+  Access Denied
+<% end %>
+```
 
 ### Who is Administrator?
 
