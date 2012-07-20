@@ -87,9 +87,9 @@ And you can use them as well as other access rules.
   bundle
 ```
 
-### Migrate
+### User Model migration
 
-#### Add **role_id:integer** field to your User Model
+Add **role_id:integer** field to your User Model
 
 ```ruby
 def self.up
