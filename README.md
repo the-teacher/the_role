@@ -180,6 +180,8 @@ end
 
 **owner_required** method require **@ownership_checking_object** variable, with cheked object.
 
+You should to define **@ownership_checking_object** before invoke of **owner_required** method.
+
 ### Who is Administrator?
 
 Administrator it's a user who can access any section and the rules of your application.
