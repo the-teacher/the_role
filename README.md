@@ -37,7 +37,7 @@ Read **How to start development process** manual for running specs
 
 Semantic - the science of meaning. Human should fast to understand what is happening in a role system.
 
-Look at naxt Role hash. If you can understand access rules - this authorization system is semantically.
+Look at next Role hash. If you can understand access rules - this authorization system is semantically.
 
 ``` ruby
 role = {
