@@ -1,0 +1,41 @@
+es:
+  the_role:
+    name_presence: Define el nombre del rol
+    title_presence: Definir el titulo del rol
+    section_created: "Sección creada exitosamente"
+    section_rule_created: En un grupo determinado se ha creado un rol de acceso exitosamente
+    section_deleted: regla de acceso eliminada
+    section_rule_deleted: regla de acceso eliminada
+    section_name_is_wrong: Nombre de rol erroneo
+    section_rule_wrong_name: Nombre de regla erroneo
+    section_name_is_blank: "El nombre del equipo de roles esta vacía"
+    section_exists: "La sección ya existe"
+    role_created: El Rol ha sido establecido exitosamente
+    role_updated: Rol actualizado exitosamente
+    delete_role: Esto puede ser un gran problema. ¿Eliminar este rol?
+  admin:
+    roles:
+      index:
+        list: lista de roles
+        delete: 'Borrar Rol'
+        new: Crear un nuevo rol
+      edit:
+        title: Editar rol
+        back: '← A la lista de roles'
+        name: 'Nombre del rol -'
+        create_section: "Crear una Sección"
+        create_access_rule: Crear una regla de acceso
+        create_rule: Nueva Regla
+        section_needs: "Crear al menos una sección"
+        update: Actualizar
+      form:
+        destroy_section_confirm: "¿Eliminar una sección de roles?"
+        empty: "No hay una sección de roles"
+        delete_rule_confirm: ¿Eliminar la regla de acceso?
+        delete: Eliminar
+      new:
+        back: '← A la lista de roles'
+        create: Crear un nuevo rol
+        name: Nombre del rol (Latin)
+        title: Titulo del rol
+        new: Crear
