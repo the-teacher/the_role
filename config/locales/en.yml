@@ -5,6 +5,7 @@ en:
     name_presence: Set the role name
     title_presence: Set title of role
     section_created: Section is successfully created
+    section_not_created: Section is not created
     section_rule_created: In a given group is successfully created an access rule
     section_deleted: access rule is removed
     section_rule_deleted: access rule is removed

@@ -16,9 +16,18 @@
         User: #{current_user.try(:name) || current_user.id}
     .crusty
       .container
+
+        - if flash[:notice]
+          .alert.alert-block
+            %a.close{:href => '#', 'data-dismiss' => :alert } &times;
+            = flash[:notice]
+
+        - if flash[:error]
+          .alert.alert-error
+            %a.close{:href => '#', 'data-dismiss' => :alert } &times;
+            = flash[:error]
         .row
           .span3
             .sidebar= yield :sidebar
           .span9
             .content= yield
-    

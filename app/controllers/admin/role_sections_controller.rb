@@ -11,19 +11,19 @@ class Admin::RoleSectionsController < ApplicationController
   def create
     if @role.create_section params[:section_name]
       flash[:notice] = t 'the_role.section_created'
-      redirect_to edit_admin_role_path @role
     else
-      render :action => :edit
+      flash[:error]  = t 'the_role.section_not_created'
     end
+    redirect_to_edit
   end
   
   def create_rule
     if @role.create_rule params[:section_name], params[:rule_name]
-      flash[:notice] = t 'the_role.section_created'
-      redirect_to edit_admin_role_path @role
+      flash[:notice] = t 'the_role.section_rule_created'
     else
-      render :action => :edit
+      flash[:error]  = t 'the_role.section_rule_not_created'
     end
+    redirect_to_edit
   end
 
   def rule_on
@@ -31,10 +31,10 @@ class Admin::RoleSectionsController < ApplicationController
     rule_name    = params[:name]
     if @role.rule_on section_name, rule_name
       flash[:notice] = t 'the_role.section_rule_on'
-      redirect_to edit_admin_role_path @role
     else
-      render :action => :edit
+      flash[:error]  = t 'the_role.section_rule_state_not_changed'
     end
+    redirect_to_edit
   end
 
   def rule_off
@@ -42,20 +42,20 @@ class Admin::RoleSectionsController < ApplicationController
     rule_name    = params[:name]
     if @role.rule_off section_name, rule_name
       flash[:notice] = t 'the_role.section_rule_off'
-      redirect_to edit_admin_role_path @role
     else
-      render :action => :edit
+      flash[:error]  = t 'the_role.section_rule_state_not_changed'
     end
+    redirect_to_edit
   end
   
   def destroy
     section_name = params[:id]
     if @role.delete_section section_name
       flash[:notice] = t 'the_role.section_deleted'
-      redirect_to edit_admin_role_path @role
     else
-      render :action => :edit
-    end   
+      flash[:error]  = t 'the_role.section_not_deleted'
+    end
+    redirect_to_edit
   end
   
   def destroy_rule
@@ -63,10 +63,10 @@ class Admin::RoleSectionsController < ApplicationController
     rule_name    = params[:name]
     if @role.delete_rule section_name, rule_name
       flash[:notice] = t 'the_role.section_rule_deleted'
-      redirect_to edit_admin_role_path @role
     else
-      render :action => :edit
+      flash[:error]  = t 'the_role.section_rule_not_deleted'
     end
+    redirect_to_edit
   end
 
   protected
@@ -74,5 +74,9 @@ class Admin::RoleSectionsController < ApplicationController
   def role_find
     @role = Role.find params[:role_id]
     @ownership_checking_object = @role
+  end
+
+  def redirect_to_edit
+    redirect_to edit_admin_role_path @role
   end
 end
