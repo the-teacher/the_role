@@ -370,6 +370,7 @@ new_role_hash = {
 
 ### Changelog
 
+* 1.6.5 - has_section?, fixes, tests (alpha 0.3)
 * 1.6.4 - En locale (alpha 0.2)
 * 1.6.3 - notifications
 * 1.6.0 - stabile release (alpha 0.1)
