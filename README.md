@@ -132,35 +132,32 @@ rake db:roles:test
 
 #### Change your ApplicationController
 
-**Example for Devise2**
+Define aliases method for correctly work TheRole's controllers
 
 ``` ruby
 class ApplicationController < ActionController::Base
-  include TheRole::Requires
-
   protect_from_forgery
 
   def access_denied
     render :text => 'access_denied: requires an role' and return
   end
 
-  alias_method :login_required,     :authenticate_user!
+  alias_method :login_required,     :YOUR_AUTH_SYSTEM_LOGIN_REQUIRE_METHOD
   alias_method :role_access_denied, :access_denied
 end
 ```
 
-Define aliases method for correctly work TheRole's controllers
-
-**authenticate_user!** or any other method from your auth system
-
 **access_denied** or any other method for processing access denied situation
 
+##### YOUR_AUTH_SYSTEM_LOGIN_REQUIRE_METHOD!
+
+* **authenticate_user!** - method for Devise 2
+* **require_login!** - method for Sorcery
 
 #### Using with any controller
 
 ``` ruby
 class PagesController < ApplicationController
-  # Devise2 and TheRole before_filters
   before_filter :login_required, :except => [:index, :show]
   before_filter :role_required,  :except => [:index, :show]
 
