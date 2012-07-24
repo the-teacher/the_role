@@ -1,4 +1,4 @@
-# gem 'the_role' (alpha v0.2) 
+# gem 'the_role' (alpha v0.3) 
 
 | Bye bye CanCan, I got The Role! | Description |
 |:------------- |:-------------|
