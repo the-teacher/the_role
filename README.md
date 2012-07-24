@@ -24,7 +24,7 @@ http://rubygems.org/gems/the_role
 
 [Integration with Sorcery](https://github.com/the-teacher/the_role/wiki/Integration-with-Sorcery)
 
-## Want to improve this gem?
+## Want to help or improve this gem?
 
 * Don't say to Ryan Bates about this project :)
 * Say to your friends about this project
