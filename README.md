@@ -1,7 +1,5 @@
 # gem 'the_role' (alpha v0.3)
 
-### Hello, Ryan! I glad to see you!
-
 | Bye bye CanCan, I got The Role! | Description |
 |:------------- |:-------------|
 | ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) | TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with 2-level-hash, and store in database with JSON.<br><br>TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the **sections** and nested **rules**.<br><br>**Section** may be associated with **controller** name.<br><br>**Rule** may be associated with **action** name.<br><br>Section can have many rules.<br><br>Rule can have **true** or **false** value<br><br>**Sections** and nested **Rules** provide **ACL** (**Access Control List**)<br><br>Role **stored in the database as JSON** string.<br><br>Using of hashes, makes role system extremely easy to configure and use.<br> |
@@ -28,7 +26,7 @@ http://rubygems.org/gems/the_role
 
 ## Want to improve this gem?
 
-* Say to Ryan Bates about this project :D
+* Don't say to Ryan Bates about this project :)
 * Say to your friends about this project
 * I need for your feedback and issues
 * [How to start development process](https://github.com/the-teacher/the_role/wiki/Want-to-improve-this-gem%3F)
