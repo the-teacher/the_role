@@ -28,7 +28,8 @@ http://rubygems.org/gems/the_role
 
 ## Want to improve this gem?
 
-* Say to your friends about this project.
+* Say to Ryan Bates about this project :D
+* Say to your friends about this project
 * I need for your feedback and issues
 * [How to start development process](https://github.com/the-teacher/the_role/wiki/Want-to-improve-this-gem%3F)
 
