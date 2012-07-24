@@ -324,6 +324,12 @@ current_user.owner?(@article)             => true | false
 
 # JSON string
 @role.to_s => String
+
+# check method
+@role.has_section?(:pages) => true | false
+
+# check method
+@role.has_rule?(:pages, :index) => true | false
 ```
 
 #### UPDATE
