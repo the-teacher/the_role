@@ -26,7 +26,7 @@ http://rubygems.org/gems/the_role
 
 ## Want to help or improve this gem?
 
-* Don't say to Ryan Bates about this project :)
+* Don't say to Ryan Bates about this project :) <3
 * Say to your friends about this project
 * I need for your feedback and issues
 * [How to start development process](https://github.com/the-teacher/the_role/wiki/Want-to-improve-this-gem%3F)
