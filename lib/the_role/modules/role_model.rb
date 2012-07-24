@@ -38,6 +38,7 @@ module TheRole
         end
                 
         def create_rule section_name, rule_name
+          return false if     rule_name.blank?
           return false unless create_section(section_name)
           role         =  to_hash
           rule_name    =  param_prepare(rule_name)

@@ -1,5 +1,12 @@
 module TheRole
   module Base
+    def has_section? section_name
+      hash         =  role_hash
+      section_name =  param_prepare section_name
+      return true  if hash[section_name]
+      false
+    end
+
     def has_role? section_name, rule_name
       hash         =  role_hash
       section_name =  param_prepare(section_name)
