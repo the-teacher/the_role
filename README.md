@@ -6,7 +6,7 @@
 
 ### GUI
 
-| TheRole management web interface |
+| TheRole management web interface => localhost:3000/admin/roles |
 |:-------------:|
 |![TheRole](https://github.com/the-teacher/the_role/raw/master/pic.png)|
 
@@ -149,10 +149,11 @@ end
 
 **access_denied** or any other method for processing access denied situation
 
-##### YOUR_AUTH_SYSTEM_LOGIN_REQUIRE_METHOD!
+#### YOUR_AUTH_SYSTEM_LOGIN_REQUIRE_METHOD!
 
 * **authenticate_user!** - method for Devise 2
-* **require_login!** - method for Sorcery
+* **require_login** - method for Sorcery
+* **some_method** - from your Auth system
 
 #### Using with any controller
 
