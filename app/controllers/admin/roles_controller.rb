@@ -1,5 +1,4 @@
 class Admin::RolesController < ApplicationController
-  include TheRole::Requires
   layout 'the_role'
 
   before_filter :login_required
@@ -9,7 +8,7 @@ class Admin::RolesController < ApplicationController
   before_filter :owner_required, :only => [:edit, :update, :destroy]
 
   def index
-    @roles = Role.all(:order => "created_at ASC")
+    @roles = Role.all :order => 'created_at ASC'
   end
 
   def new
@@ -19,11 +18,11 @@ class Admin::RolesController < ApplicationController
   def edit; end
 
   def create
-    @role = Role.new(params[:role])
+    @role = Role.new params[:role]
 
     if @role.save
-      flash[:notice] = t('the_role.role_created')
-      redirect_to edit_admin_role_path(@role)
+      flash[:notice] = t 'the_role.role_created'
+      redirect_to_edit
     else
       render :action => :new
     end
@@ -31,8 +30,8 @@ class Admin::RolesController < ApplicationController
 
   def update
     if @role.update_role params[:role].try(:[],:the_role)
-      flash[:notice] = t('the_role.role_updated')
-      redirect_to edit_admin_role_path(@role)
+      flash[:notice] = t 'the_role.role_updated'
+      redirect_to_edit
     else
       render :action => :edit
     end
@@ -40,6 +39,7 @@ class Admin::RolesController < ApplicationController
 
   def destroy
     @role.destroy
+    flash[:notice] = t 'the_role.role_deleted'
     redirect_to admin_roles_url
   end
 
@@ -48,6 +48,10 @@ class Admin::RolesController < ApplicationController
   def role_find
     @role = Role.find params[:id]
     @ownership_checking_object = @role
+  end
+
+  def redirect_to_edit
+    redirect_to edit_admin_role_path @role
   end
   
 end

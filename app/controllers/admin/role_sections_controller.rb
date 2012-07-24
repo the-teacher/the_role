@@ -1,5 +1,4 @@
 class Admin::RoleSectionsController < ApplicationController
-  include TheRole::Requires
   layout 'the_role'
 
   before_filter :login_required
@@ -32,7 +31,7 @@ class Admin::RoleSectionsController < ApplicationController
     if @role.rule_on section_name, rule_name
       flash[:notice] = t 'the_role.section_rule_on'
     else
-      flash[:error]  = t 'the_role.section_rule_state_not_changed'
+      flash[:error]  = t 'the_role.state_not_changed'
     end
     redirect_to_edit
   end
@@ -43,7 +42,7 @@ class Admin::RoleSectionsController < ApplicationController
     if @role.rule_off section_name, rule_name
       flash[:notice] = t 'the_role.section_rule_off'
     else
-      flash[:error]  = t 'the_role.section_rule_state_not_changed'
+      flash[:error]  = t 'the_role.state_not_changed'
     end
     redirect_to_edit
   end

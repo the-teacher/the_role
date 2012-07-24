@@ -1,44 +1,41 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 en:
   the_role:
-    name_presence: Set the role name
-    title_presence: Set title of role
-    section_created: Section is successfully created
-    section_not_created: Section is not created
-    section_rule_created: In a given group is successfully created an access rule
-    section_deleted: access rule is removed
-    section_rule_deleted: access rule is removed
-    section_name_is_wrong: Wrong name of Role
-    section_rule_wrong_name: Wrong name of Rule
-    section_name_is_blank: The name of the Role team was empty
-    section_exists: Section already exists
-    role_created: The Role of successfully established
-    role_updated: Role updated successfully
-    delete_role: It is can make big problems. Delete this role?
+    role_created:             Role created
+    role_updated:             Role updated
+    role_deleted:             Role deleted
+    section_created:          Section created
+    section_not_created:      Section not created
+    section_rule_created:     "Section's rule created"
+    section_rule_not_created: "Section's rule not created"
+    section_rule_on:          "Section's rule is enable"
+    section_rule_off:         "Section's rule is disable"
+    state_not_changed:        "Section's rule not changed"
+    section_deleted:          Section deleted
+    section_not_deleted:      Section not deleted
+    section_rule_deleted:     "Section's rule deleted"
+    section_rule_not_deleted: "Section's rule not deleted"
+
   admin:
     roles:
-      index:
-        list: list of roles
-        delete: 'Delete Role'
-        new: Create a new role
-      edit:
-        title: Editing role
-        back: '← To the list of roles'
-        name: 'Name of role -'
-        create_section: Create a Section
-        create_access_rule: Create an access rule
-        create_rule: New Rule
-        section_needs: Create at least one Section
-        update: Update
-      form:
-        destroy_section_confirm: Remove a role section?
-        empty: There is no role section
-        delete_rule_confirm: Remove the access rule?
-        delete: Delete
       new:
-        back: '← To the list of roles'
-        create: Create a new role
-        name: Name of the role (Latin)
-        title: Title of role
-        new: Create
+        create: Create new Role
+        name: Name of role (underscored latin string)
+        title: Title of role (text)
+        description: Description of role (text)
+      role:
+        role_name: 'Role name:'
+        title:     'Title:'
+        role_description: 'Description of role:'
+        delete_section: Delete section
+        section_delete_confirm: 'Do you want to delete section?'
+        rule_delete_confirm: 'Do you want to delete rule?'
+        enable: Enable
+        disable: Disable
+        delete_rule: Delete rule
+        new_section_placeholder: New section name
+        create_section: Create new section
+        new_rule_placeholder: New rule name
+        create_rule: Create new rule
+      sidebar:
+        new_role: Create new role
+        delete_role_confirm: 'Are you sure? It can dangerous!'

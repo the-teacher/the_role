@@ -13,12 +13,13 @@
         \|
         Role system for Rails Apps
         \|
-        User: #{current_user.try(:name) || current_user.id}
+        - u = current_user
+        User: #{u.try(:name) || u.try(:username) || u.try(:login)|| u.try(:email) || u.id}
     .crusty
       .container
 
         - if flash[:notice]
-          .alert.alert-block
+          .alert.alert-success
             %a.close{:href => '#', 'data-dismiss' => :alert } &times;
             = flash[:notice]
 
