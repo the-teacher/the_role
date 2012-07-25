@@ -1,43 +1,42 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 ru:
   the_role:
-    name_presence: Установите имя роли
-    title_presence: Установите название роли
-    section_created: Правовая группа успешно создана
-    section_rule_created: В заданной группе успешно создана политика доступа
-    section_deleted: Политика доступа удалена
-    section_rule_deleted: Политика доступа удалена
-    section_name_is_wrong: Ошибочное название правовой группы
-    section_rule_wrong_name: Ошибочное название правовой политики
-    section_name_is_blank: Имя правовой группы оказалось пустым
-    section_exists: Правовая группа уже существует
-    role_created: Роль успешно создана
-    role_updated: Роль успешно обновлена
-    delete_role: Удаление роли может повлиять не работу всей системы. Удалить эту роль?
+    role_created:             Роль создана
+    role_updated:             Роль обновлена
+    role_deleted:             Роль удалена
+    section_created:          Раздел создан
+    section_not_created:      Раздел не создан
+    section_rule_created:     Правило создано
+    section_rule_not_created: Правило не создано
+    section_rule_on:          Правило доступа включено
+    section_rule_off:         Правило доступа отключено
+    state_not_changed:        Состояние правила не изменилось
+    section_deleted:          Раздел удален
+    section_not_deleted:      Раздел не удален
+    section_rule_deleted:     Правило удалено
+    section_rule_not_deleted: Правило не удалено
+
   admin:
     roles:
-      index:
-        list: Список ролей
-        delete: 'Удалить роль '
-        new: Создать новую роль
-      edit:
-        title: Редактирование роли
-        back: '&larr; К списку ролей'
-        name: 'Название роли &mdash; '
-        create_section: Создать правовую группу
-        create_access_rule: Создать политику доступа
-        create_rule: Создать политику
-        section_needs: Создайте хотя бы одну правовую группу
-        update: Обновить
-      form:
-        destroy_section_confirm: Удалить правовую группу?
-        empty: Нет ни одной правовой группы
-        delete_rule_confirm: Удалить политику доступа?
-        delete: Удалить
       new:
-        back: '&larr; К списку ролей'
         create: Создать новую роль
-        name: Имя роли (латиницей)
-        title: Название роли
-        new: Создать
+        name: Имя роли (строка из латинских символов + нижнее подчеркивание)
+        title: Заголовок роли
+        description: Описание роли
+      role:
+        role_name: 'Имя роли:'
+        title:     'Заголовок:'
+        role_description: 'Описание:'
+        delete_section: Удалить раздел
+        section_delete_confirm: 'Вы хотите удалить раздел?'
+        rule_delete_confirm: 'Вы хотите удалить правило?'
+        enable: Включено
+        disable: Отключено
+        delete_rule: Удалить правило
+        new_section_placeholder: Имя нового раздела
+        create_section: Создать раздел
+        new_rule_placeholder: Имя нового правила
+        create_rule: Создать правило
+      sidebar:
+        roles_list: Список ролей
+        new_role: Создать новое праивло
+        delete_role_confirm: 'Удалить роль? Это может быть опасно! Уверены?'

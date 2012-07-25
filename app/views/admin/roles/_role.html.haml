@@ -36,13 +36,13 @@
               %li.divider
               %li.error= link_to t('.delete_rule'), destroy_rule_admin_role_section_path(role, section, :name => rule), :method => :delete, :confirm => t('.rule_delete_confirm')
 
-%h4 Create new section
+%h4= t '.create_section'
 
 = form_tag admin_role_sections_path(role), :class => 'well form-inline' do |f|
   = text_field_tag :section_name, '', :class => 'input-xlarge', :placeholder => t('.new_section_placeholder')
   = submit_tag t('.create_section'), :class => :btn
 
-%h4 Create new rule
+%h4= t '.create_rule'
 
 = form_tag create_rule_admin_role_sections_path(role), :class => 'well form-inline' do |f|
   %select.span3{ :name => :section_name }

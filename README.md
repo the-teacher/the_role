@@ -1,4 +1,4 @@
-# gem 'the_role' (alpha v0.3)
+# gem 'the_role' (beta v0.1)
 
 | Bye bye CanCan, I got The Role! | Description |
 |:------------- |:-------------|
@@ -374,6 +374,7 @@ new_role_hash = {
 
 ### Changelog
 
+* 1.6.6 - Ru locale, localization (beta 0.1)
 * 1.6.5 - has_section?, fixes, tests (alpha 0.3)
 * 1.6.4 - En locale (alpha 0.2)
 * 1.6.3 - notifications
