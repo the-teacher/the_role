@@ -1,42 +1,42 @@
 es:
   the_role:
-    role_created: El papel de la establecida
-    role_updated: El papel de la actualización
-    role_deleted: El papel de la eliminada
-    section_created: Sección establecida
-    section_not_created: Sección no se crea
-    section_rule_created: La regla fue creada
-    section_rule_not_created: La regla no se crea
-    section_rule_on: Regla de acceso incluye
-    section_rule_off: Acceso para discapacitados Regla
-    state_not_changed: Las reglas del estado no se modifican
-    section_deleted: una sección eliminada
-    section_not_deleted: Esta sección no se quita
-    section_rule_deleted: La regla se retira
-    section_rule_not_deleted: La regla se retira
+    role_created: Establecer el rol
+    role_updated: Actualizar el rol
+    role_deleted: Eliminar el rol
+    section_created: Crear sección
+    section_not_created: Sección no creada
+    section_rule_created: Sección de roles creado
+    section_rule_not_created: Sección de roles no creado
+    section_rule_on: Rol de acceso incluye
+    section_rule_off: Deshabilitar el rol
+    state_not_changed: Rol de estado no se ha modificado
+    section_deleted: sección eliminada
+    section_not_deleted: Sección no se ha sido eliminada
+    section_rule_deleted: Regla eliminada
+    section_rule_not_deleted: Regla no ha sido eliminada
 
   admin:
     roles:
       new:
-        create: Crear un nuevo papel
-        name: El nombre de la función (una cadena de caracteres latinos + subrayado)
-        title: el papel del título
-        description: El papel de la
+        create: Crear un nuevo rol
+        name: El nombre de la función (una cadena de caracteres simples + subrayado)
+        title: título del rol
+        description: Descripción del rol
       role:
         role_name: 'Nombre del rol'
         title: 'Título'
         role_description: 'Descripción'
-        delete_section: Suprimir sección
-        section_delete_confirm: "¿Quiere borrar la partición?"
+        delete_section: Eliminar sección
+        section_delete_confirm: "¿Quiere borrar la sección?"
         rule_delete_confirm: "¿Quieres eliminar una regla?"
         enable: Habilitar
-        disable: Desactiva
-        delete_rule: Eliminar una regla
+        disable: Desactivar
+        delete_rule: Eliminar regla
         new_section_placeholder: Nombre de un nuevo tema
-        create_section: Crear una partición
-        new_rule_placeholder: El nombre de la nueva norma
+        create_section: "Crear una sección"
+        new_rule_placeholder: El nombre de la nueva regla
         create_rule: Nueva regla
       sidebar:
         roles_list: Lista de funciones
-        new_role: Crear una nueva praivlo
-        delete_role_confirm: "Retire el papel? Puede ser peligroso! ¿Está seguro?"
+        new_role: Crear nuevo rol
+        delete_role_confirm: "Quitar el rol? Puede ser peligroso! ¿Está seguro?"
