@@ -1,41 +1,42 @@
 es:
   the_role:
-    name_presence: Define el nombre del rol
-    title_presence: Definir el titulo del rol
-    section_created: "Sección creada exitosamente"
-    section_rule_created: En un grupo determinado se ha creado un rol de acceso exitosamente
-    section_deleted: regla de acceso eliminada
-    section_rule_deleted: regla de acceso eliminada
-    section_name_is_wrong: Nombre de rol erroneo
-    section_rule_wrong_name: Nombre de regla erroneo
-    section_name_is_blank: "El nombre del equipo de roles esta vacía"
-    section_exists: "La sección ya existe"
-    role_created: El Rol ha sido establecido exitosamente
-    role_updated: Rol actualizado exitosamente
-    delete_role: Esto puede ser un gran problema. ¿Eliminar este rol?
+    role_created: El papel de la establecida
+    role_updated: El papel de la actualización
+    role_deleted: El papel de la eliminada
+    section_created: Sección establecida
+    section_not_created: Sección no se crea
+    section_rule_created: La regla fue creada
+    section_rule_not_created: La regla no se crea
+    section_rule_on: Regla de acceso incluye
+    section_rule_off: Acceso para discapacitados Regla
+    state_not_changed: Las reglas del estado no se modifican
+    section_deleted: una sección eliminada
+    section_not_deleted: Esta sección no se quita
+    section_rule_deleted: La regla se retira
+    section_rule_not_deleted: La regla se retira
+
   admin:
     roles:
-      index:
-        list: lista de roles
-        delete: 'Borrar Rol'
-        new: Crear un nuevo rol
-      edit:
-        title: Editar rol
-        back: '← A la lista de roles'
-        name: 'Nombre del rol -'
-        create_section: "Crear una Sección"
-        create_access_rule: Crear una regla de acceso
-        create_rule: Nueva Regla
-        section_needs: "Crear al menos una sección"
-        update: Actualizar
-      form:
-        destroy_section_confirm: "¿Eliminar una sección de roles?"
-        empty: "No hay una sección de roles"
-        delete_rule_confirm: ¿Eliminar la regla de acceso?
-        delete: Eliminar
       new:
-        back: '← A la lista de roles'
-        create: Crear un nuevo rol
-        name: Nombre del rol (Latin)
-        title: Titulo del rol
-        new: Crear
+        create: Crear un nuevo papel
+        name: El nombre de la función (una cadena de caracteres latinos + subrayado)
+        title: el papel del título
+        description: El papel de la
+      role:
+        role_name: 'Nombre del rol'
+        title: 'Título'
+        role_description: 'Descripción'
+        delete_section: Suprimir sección
+        section_delete_confirm: "¿Quiere borrar la partición?"
+        rule_delete_confirm: "¿Quieres eliminar una regla?"
+        enable: Habilitar
+        disable: Desactiva
+        delete_rule: Eliminar una regla
+        new_section_placeholder: Nombre de un nuevo tema
+        create_section: Crear una partición
+        new_rule_placeholder: El nombre de la nueva norma
+        create_rule: Nueva regla
+      sidebar:
+        roles_list: Lista de funciones
+        new_role: Crear una nueva praivlo
+        delete_role_confirm: "Retire el papel? Puede ser peligroso! ¿Está seguro?"

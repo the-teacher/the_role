@@ -24,7 +24,7 @@ class Hash
       end
       self
     end
-    puts "TheRole => RAILS 4 like method **deep_transform_keys** mixed to HASH class"
+    puts "[TheRole] RAILS 4 like method **deep_transform_keys** mixed to HASH class"
   end
 
   # RAILS 4 like methods for RAILS 3
@@ -37,7 +37,7 @@ class Hash
     def deep_stringify_keys!
       deep_transform_keys!{ |key| key.to_s }
     end
-    puts "TheRole => RAILS 4 like method **deep_stringify_keys** mixed to HASH class"
+    puts "[TheRole] RAILS 4 like method **deep_stringify_keys** mixed to HASH class"
   end
 
   # Potential compatibility problem with RAILS_VERSION > 4.0
