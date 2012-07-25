@@ -26,6 +26,7 @@ http://rubygems.org/gems/the_role
 
 ## Want to help or improve this gem?
 
+* Help me to create locale file for your language
 * Don't say to Ryan Bates about this project :) <3
 * Say to your friends about this project
 * I need for your feedback and issues
@@ -380,6 +381,14 @@ new_role_hash = {
 * 1.6.4 - En locale (alpha 0.2)
 * 1.6.3 - notifications
 * 1.6.0 - stabile release (alpha 0.1)
+
+### i18n
+
+**Ru, En** (by me)
+
+**Es** by @igmarin
+
+... waiting for contributors
 
 ##### Copyright (c) 2012 [Ilya N.Zykin]
 
