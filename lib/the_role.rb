@@ -5,7 +5,6 @@ require 'the_role/hash'
 
 require 'the_role/engine'
 require 'the_role/version'
-require 'the_role/the_class_exists'
 
 require 'the_role/modules/base'
 require 'the_role/modules/user_model'
