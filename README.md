@@ -1,6 +1,6 @@
 # gem 'the_role'
 
-First release with tested production mode start
+First release with tested production mode start.
 
 | Bye bye CanCan, I got The Role! | Description |
 |:------------- |:-------------|
