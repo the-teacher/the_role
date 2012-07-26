@@ -1,6 +1,4 @@
 require 'haml'
-require 'sass'
-require 'less-rails'
 
 require 'the_role/param_helper'
 require 'the_role/hash'

@@ -6,11 +6,20 @@
 
 ### GUI
 
-Twitter Bootstrap dependencies will be removed in future. It's just for quick start.
+No more dependencies of Bootstrap, Less, Coffee. Just pure JS and CSS for admin section.
 
 | TheRole management web interface => localhost:3000/admin/roles |
 |:-------------:|
 |![TheRole](https://github.com/the-teacher/the_role/raw/master/pic.png)|
+
+
+### AssetsPipline
+
+Add next line in **config/application.rb** (for production mode)
+
+```ruby
+config.assets.precompile += %w( admin_the_role.js admin_the_role.css )
+```
 
 ### rubygems page
 
