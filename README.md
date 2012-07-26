@@ -1,4 +1,6 @@
-# gem 'the_role' (beta v0.2)
+# gem 'the_role'
+
+First release with tested production mode start
 
 | Bye bye CanCan, I got The Role! | Description |
 |:------------- |:-------------|
@@ -146,10 +148,14 @@ rake db:roles:test
 
 #### Change your ApplicationController
 
+**include TheRole::Requires** in your Application controller
+
 Define aliases method for correctly work TheRole's controllers
 
 ``` ruby
 class ApplicationController < ActionController::Base
+  include TheRole::Requires
+
   protect_from_forgery
 
   def access_denied
