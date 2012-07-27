@@ -5,7 +5,7 @@ require "the_role/version"
 Gem::Specification.new do |s|
   s.name        = "the_role"
   s.version     = TheRole::VERSION
-  s.authors     = ["Ilya N. Zykin"]
+  s.authors     = ["Ilya N. Zykin [the-teacher], John Henderson [jhenderson]"]
   s.email       = ["zykin-ilya@ya.ru"]
   s.homepage    = "https://github.com/the-teacher/the_role"
   s.summary     = %q{Authorization lib for Rails 3 with Web Interface, aka CanCan killer}

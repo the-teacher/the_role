@@ -1,7 +1,5 @@
 # gem 'the_role'
 
-First release with tested production mode start.
-
 | Bye bye CanCan, I got The Role! | Description |
 |:------------- |:-------------|
 | ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) | TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with 2-level-hash, and store in database with JSON.<br><br>TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the **sections** and nested **rules**.<br><br>**Section** may be associated with **controller** name.<br><br>**Rule** may be associated with **action** name.<br><br>Section can have many rules.<br><br>Rule can have **true** or **false** value<br><br>**Sections** and nested **Rules** provide **ACL** (**Access Control List**)<br><br>Role **stored in the database as JSON** string.<br><br>Using of hashes, makes role system extremely easy to configure and use.<br> |
@@ -13,15 +11,6 @@ No more dependencies of Bootstrap, Less, Coffee. Just pure JS and CSS for admin 
 | TheRole management web interface => localhost:3000/admin/roles |
 |:-------------:|
 |![TheRole](https://github.com/the-teacher/the_role/raw/master/pic.png)|
-
-
-### AssetsPipline
-
-Add next line in **config/application.rb** (for production mode)
-
-```ruby
-config.assets.precompile += %w( admin_the_role.js admin_the_role.css )
-```
 
 ### rubygems page
 
@@ -390,6 +379,8 @@ new_role_hash = {
 
 ### Changelog
 
+* 1.6.9 - assets precompile addon
+* 1.6.8 - doc, re dependencies
 * 1.6.7 - Es locale (beta 0.2)
 * 1.6.6 - Ru locale, localization (beta 0.1)
 * 1.6.5 - has_section?, fixes, tests (alpha 0.3)
