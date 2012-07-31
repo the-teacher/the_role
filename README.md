@@ -203,13 +203,12 @@ You should to define **@ownership_checking_object** before invoke of **owner_req
 
 ```ruby
 class User
-  after_create :set_default_role
+  before_create :set_default_role
 
   private
 
   def set_default_role
     self.role = Role.where(:name => :user).first
-    self.save
   end
 end
 ```
@@ -379,6 +378,7 @@ new_role_hash = {
 
 ### Changelog
 
+* 1.7.0 - mass assignment for User#role_id, doc, locales, changes in test app
 * 1.6.9 - assets precompile addon
 * 1.6.8 - doc, re dependencies
 * 1.6.7 - Es locale (beta 0.2)
@@ -393,6 +393,8 @@ new_role_hash = {
 **Ru, En** (by me)
 
 **Es** by @igmarin
+
+**zh_CN** by @doabit & @linjunpop
 
 ... waiting for contributors
 

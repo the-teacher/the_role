@@ -1,0 +1,42 @@
+zh_CN:
+  the_role:
+    role_created:             角色已创建
+    role_updated:             角色已更新
+    role_deleted:             角色已删除
+    section_created:          章节已创建
+    section_not_created:      章节没有被创建
+    section_rule_created:     "章节的规则已创建"
+    section_rule_not_created: "章节的规则没有被创建"
+    section_rule_on:          "章节的规则可有"
+    section_rule_off:         "章节的规则不可有"
+    state_not_changed:        "章节的规则没有改变"
+    section_deleted:          章节已删除
+    section_not_deleted:      章节没有被删除
+    section_rule_deleted:     "章节的规则已被删除"
+    section_rule_not_deleted: "章节的规则没有被删除"
+
+  admin:
+    roles:
+      new:
+        create: 创建新角色
+        name: 角色名称 (字符串)
+        title: 角色标题 (文本)
+        description: 角色描述 (文本)
+      role:
+        role_name: '角色名称:'
+        title:     '角色标题:'
+        role_description: '角色描述:'
+        delete_section: 删除章节
+        section_delete_confirm: '你想要删除章节?'
+        rule_delete_confirm: '你想删除规则?'
+        enable: 可用
+        disable: 不可用
+        delete_rule: 删除规则
+        new_section_placeholder: 新章节名称
+        create_section: 创建新章节
+        new_rule_placeholder: 新规则名称
+        create_rule: 创建新规则
+      sidebar:
+        roles_list: 角色列表
+        new_role: 创建新角色
+        delete_role_confirm: '你确定? 可能存在风险!'

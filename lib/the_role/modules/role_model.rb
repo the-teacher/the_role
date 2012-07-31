@@ -58,10 +58,6 @@ module TheRole
           the_role
         end
 
-        def to_s
-          the_role
-        end
-
         # U
 
         # source_hash will be reset to false

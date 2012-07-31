@@ -23,8 +23,7 @@ module TheRole
 
     def self.included(base)
       base.class_eval do
-        belongs_to      :role
-        attr_accessible :role
+        belongs_to :role
         after_save { |user| user.instance_variable_set(:@role_hash, nil) }
       end
     end

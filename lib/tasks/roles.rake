@@ -1,5 +1,6 @@
 namespace :db do
   namespace :roles do
+
     # rake db:roles:test
     desc 'create roles'
     task :test => :environment do
@@ -9,16 +10,23 @@ namespace :db do
           :administrator => true
         }
       }
-      Role.new(
-        :name => :admin,
-        :title => 'Administrator',
+
+      Role.create!(
+        :name        => :admin,
+        :title       => 'Administrator',
         :description => 'Role for administrator',
-        :the_role => role.to_json
-      ).save!
+        :the_role    => role.to_json
+      )
+
       puts 'Administrator'
 
       # MODERATOR
       role = {
+        :users => {
+          :edit   => true,
+          :show   => true,
+          :update => true
+        },
         :moderator => {
           :pages => true
         },
@@ -26,95 +34,101 @@ namespace :db do
           :html => true
         }
       }
-      Role.new(
+
+      Role.create!(
         :name => :moderator,
-        :title => 'Moderator of pages',
+        :title       => 'Moderator of pages',
         :description => "Moderator #1",
-        :the_role => role.to_json
-      ).save!
+        :the_role    => role.to_json
+      )
+
       puts 'Moderator of pages'
 
       # USER
       role = {
         :users => {
-          :cabinet => true,
-          :update => true,
-          :avatar_upload => true
-        },
-        :profiles => {
-          :edit => true,
+          :edit   => true,
+          :show   => true,
           :update => true
         },
-        :articles => {
-          :new => true,
-          :create => true,
-          :edit => true,
-          :update => true,
+        :profiles => {
+          :edit   => true,
+          :update => true
+        },
+        :articles  => {
+          :new     => true,
+          :create  => true,
+          :edit    => true,
+          :update  => true,
           :destroy => true,
-          :tags => false
+          :tags    => false
         },
         :pages => {
-          :new => true,
-          :create => true,
-          :edit => true,
-          :update => true,
+          :new     => true,
+          :create  => true,
+          :edit    => true,
+          :update  => true,
           :destroy => true,
-          :tags => true
+          :tags    => true
         },
         :markup => {
           :html => false
         }
       }
-      Role.new(
-        :name => :user,
-        :title => 'User',
+
+      Role.create!(
+        :name        => :user,
+        :title       => 'User',
         :description => "Role for User",
-        :the_role => role.to_json
-      ).save!
+        :the_role    => role.to_json
+      )
+
       puts 'User'
 
       # DEMO
       role = {
         :users => {
-          :cabinet => true,
-          :update => false,
-          :avatar_upload => false
+          :edit   => true,
+          :show   => true,
+          :update => true
         },
         :profiles => {
-          :edit => true,
+          :edit   => true,
           :update => false
         },
-        :articles => {
-          :new => true,
-          :show => true,
-          :create => false,
-          :edit => true,
-          :update => false,
+        :articles  => {
+          :new     => true,
+          :show    => true,
+          :create  => false,
+          :edit    => true,
+          :update  => false,
           :destroy => false,
-          :tags => false
+          :tags    => false
         },
         :pages => {
-          :new => true,
-          :show => true,
-          :create => false,
-          :edit => true,
-          :update => false,
+          :new     => true,
+          :show    => true,
+          :create  => false,
+          :edit    => true,
+          :update  => false,
           :destroy => false,
-          :tags => false
+          :tags    => false
         },
         :markup => {
           :html => false
         }
       }
-      Role.new(
-        :name => :demo,
-        :title => 'Demo',
+
+      Role.create!(
+        :name        => :demo,
+        :title       => 'Demo',
         :description => "Demo user",
-        :the_role => role.to_json
-      ).save!
+        :the_role    => role.to_json
+      )
+
       puts 'Demo'
 
       puts 'Roles created'
-    end#test
-  end#roles
-end#db
+    end
+  end
+end
