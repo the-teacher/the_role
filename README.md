@@ -398,6 +398,8 @@ new_role_hash = {
 
 ... waiting for contributors
 
+### MIT-LICENSE
+
 ##### Copyright (c) 2012 [Ilya N.Zykin]
 
 Permission is hereby granted, free of charge, to any person obtaining
