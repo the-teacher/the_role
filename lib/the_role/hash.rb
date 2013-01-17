@@ -1,14 +1,8 @@
 # load 'the_role/hash.rb' - UPDATE, BUT NOT RELOAD [for console testing]
-
 class Hash
-  # Puts message about potential compatibility problem
-  if respond_to? :underscorify_keys
-    puts "\nWARNING!\nHASH#underscorify_keys detected.\nIf now it's native active_support/core_ext/hash method,\nyou should to create new issue for https://github.com/the-teacher/the_role\n\n"
-  end
-
-  # RAILS 4 like methods for RAILS 3
+  # RAILS 4 methods for RAILS 3
   # DEEP TRANSFORM HELPER METHODS
-  unless respond_to? :deep_transform_keys
+  if Rails::VERSION::MAJOR == 3    
     def deep_transform_keys(&block)
       result = {}
       each do |key, value|
@@ -24,12 +18,9 @@ class Hash
       end
       self
     end
-    puts "[TheRole] RAILS 4 like method **deep_transform_keys** mixed to HASH class"
-  end
 
-  # RAILS 4 like methods for RAILS 3
-  # DEEP TRANSFORM HELPER METHODS
-  unless respond_to? :deep_stringify_keys
+    puts "[TheRole] RAILS 4 method **deep_transform_keys** mixed to HASH class of Rails 3"
+    
     def deep_stringify_keys
       deep_transform_keys{ |key| key.to_s }
     end
@@ -37,7 +28,8 @@ class Hash
     def deep_stringify_keys!
       deep_transform_keys!{ |key| key.to_s }
     end
-    puts "[TheRole] RAILS 4 like method **deep_stringify_keys** mixed to HASH class"
+
+    puts "[TheRole] RAILS 4 method **deep_stringify_keys** mixed to HASH class of Rails 3"
   end
 
   # Potential compatibility problem with RAILS_VERSION > 4.0
@@ -62,4 +54,6 @@ class Hash
   def deep_reset!(default = nil)
     replace deep_reset(default)
   end
+
+  puts "[TheRole] Notification: Hash class extended: Hash#underscorify_keys, Hash#deep_reset"
 end
