@@ -1,7 +1,17 @@
 module TheRole
   module UserModel
+    extend ActiveSupport::Concern
+
     include TheRole::Base
     include TheRole::ParamHelper
+    
+    included do
+      class_eval do
+        belongs_to :role
+        after_save { |user| user.instance_variable_set(:@role_hash, nil) }
+      end
+    end
+
     def role_hash; @role_hash ||= role.to_hash; end
 
     # FALSE if object is nil
@@ -19,13 +29,6 @@ module TheRole
       return id == obj[:user_id]   if obj[:user_id]
       return id == obj[:user][:id] if obj[:user]
       false
-    end
-
-    def self.included(base)
-      base.class_eval do
-        belongs_to :role
-        after_save { |user| user.instance_variable_set(:@role_hash, nil) }
-      end
     end
   end
 end

@@ -1,8 +1,11 @@
 - content_for :sidebar do
+  %h3= link_to raw('&larr; Home'), root_path
+  %br
   %h3= t '.roles_list'
   - (@roles || Role.all).each do |role|
     %p
       = link_to role.title, edit_admin_role_url(role)
+      (#{role.users.count})
       = link_to raw('&times;'), admin_role_url(role), :method => :delete, :title => role.title, :confirm => t('.delete_role_confirm'), :class => :delete
 
   %p.new= link_to t('.new_role'),  new_admin_role_path
