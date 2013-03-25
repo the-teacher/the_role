@@ -11,8 +11,10 @@ require 'the_role/modules/base'
 require 'the_role/modules/user_model'
 require 'the_role/modules/role_model'
 require 'the_role/modules/controller_requires'
+require 'the_role/config'
 
 module TheRole
+  class Engine < Rails::Engine; end
   # include TheRole::Base
   # include TheRole::Requires
   # include TheRole::UserModel
