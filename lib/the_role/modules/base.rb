@@ -10,9 +10,17 @@ module TheRole
     def has_role? section_name, rule_name
       hash         =  role_hash
       section_name =  param_prepare(section_name)
-      rule_name    =  param_prepare(rule_name)
-      return true  if hash['system']    and hash['system']['administrator']
-      return true  if hash['moderator'] and hash['moderator'][section_name]
+      rule_name    =  param_prepare(rule_name)  
+      
+      if hash['system'].try(:[], 'administrator')
+        # next lines are for some admin functionality restrictions
+        # useful for almost almighty roles
+        hash_rule = hash[section_name].try(:[], rule_name)
+        return (hash_rule.nil? ? true : hash_rule)
+      end
+      
+      return true  if hash['moderator'].try(:[], section_name)
+      
       return false unless hash[section_name]
       return false unless hash[section_name].key? rule_name
       hash[section_name][rule_name]
