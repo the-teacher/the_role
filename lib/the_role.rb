@@ -1,21 +1,24 @@
 require 'haml'
 
-require 'the_role/param_helper'
 require 'the_role/hash'
-
-require 'the_role/engine'
 require 'the_role/version'
-require 'the_role/the_class_exists'
+require 'the_role/param_helper'
 
-require 'the_role/modules/base'
-require 'the_role/modules/user_model'
-require 'the_role/modules/role_model'
-require 'the_role/modules/controller_requires'
+# require 'rails'
+# require 'the_role/the_class_exists'
 
 module TheRole
-  # include TheRole::Base
-  # include TheRole::Requires
-  # include TheRole::UserModel
-  # include TheRole::RoleModel
-  # include TheRole::ParamHelper
+  class Engine < Rails::Engine
+    initializer "TheRole precompile hook", :group => :all do |app|
+      app.config.assets.precompile += %w( admin_the_role.js admin_the_role.css )
+    end
+
+    # http://stackoverflow.com/questions/6279325/adding-to-rails-autoload-path-from-gem
+
+    # config.to_prepare do
+    #   Role.send :include, TheRole::RoleModel if the_class_exists? :Role
+    #   User.send :include, TheRole::UserModel if the_class_exists? :User
+    #   ApplicationController.send :include, TheRole::Requires if the_class_exists? :ApplicationController
+    # end
+  end
 end
