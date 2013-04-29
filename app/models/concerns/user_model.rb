@@ -7,7 +7,6 @@ module UserModel
   included do
     class_eval do
       belongs_to :role
-      attr_accessible :role
       validates :role, presence: true
       before_validation :set_default_role, on: :create
       after_save { |user| user.instance_variable_set(:@role_hash, nil) }

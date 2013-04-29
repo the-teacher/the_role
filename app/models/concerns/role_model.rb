@@ -13,8 +13,6 @@ module RoleModel
   end
 
   included do
-    attr_accessible :name, :title, :description, :the_role
-
     has_many  :users
     validates :name,        :presence => true, :uniqueness => true
     validates :title,       :presence => true, :uniqueness => true
@@ -24,7 +22,7 @@ module RoleModel
       self.name     = param_prepare(name)
       self.the_role = {}.to_json if self.the_role.blank?
     end
-  end#included
+  end
 
   # C
   
