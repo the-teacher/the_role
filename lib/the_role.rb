@@ -4,9 +4,6 @@ require 'the_role/hash'
 require 'the_role/version'
 require 'the_role/param_helper'
 
-# require 'rails'
-# require 'the_role/the_class_exists'
-
 module TheRole
   class Engine < Rails::Engine
     initializer "TheRole precompile hook", :group => :all do |app|
