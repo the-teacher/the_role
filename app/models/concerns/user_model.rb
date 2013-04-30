@@ -41,7 +41,7 @@ module UserModel
   private
 
   def set_default_role
-    default_role = Role.where(name: :user).first
+    default_role = Role.where(name: TheRole.config.default_user_role).first
     self.role = default_role if default_role
   end
 end
