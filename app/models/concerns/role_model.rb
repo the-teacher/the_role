@@ -24,6 +24,12 @@ module RoleModel
     end
   end
 
+  module ClassMethods
+    def with_name name
+      where(name: name).first
+    end
+  end
+
   # C
   
   def create_section section_name = nil
