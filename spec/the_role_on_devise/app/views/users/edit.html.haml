@@ -1,0 +1,34 @@
+- if flash[:notice]
+  %p{ :style => 'background: LightGreen; padding: 10px;' }= flash[:notice]
+
+%h2{ :style => 'color: gray' } Editable User: #{@user.name} | Role: #{@user.role.name}
+%h3{ :style => 'color: lightGray' } Current User: #{current_user.name} | Role: #{current_user.role.name}
+
+%p= link_to 'To index page', '/'
+
+= form_for @user, :method => :put do |f|
+  .field
+    %p= f.label :name
+    %p= f.text_field :name
+
+  .field
+    %p= f.label :email
+    %p= f.text_field :email
+
+  .field
+    %p= f.label :role_id, 'Protected field'
+    %p= f.text_field :role_id
+
+  .field
+    %p= f.label :some_protected_field, 'Protected field'
+    %p= f.text_field :some_protected_field
+
+  .field
+    %p= f.submit
+
+
+- if current_user.admin?
+  = form_tag change_role_path, :method => :put do
+    = hidden_field_tag :user_id, @user.id
+    = select_tag :role_id, options_for_select(Role.all.collect{ |r| [r.name, r.id] })
+    = submit_tag

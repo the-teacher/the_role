@@ -1,0 +1,23 @@
+%p= link_to 'Back', root_path
+
+%h1 Listing of #{@pages.count} pages
+
+%table
+  %tr
+    %th Num
+    %th User
+    %th Title
+    %th State
+    %th
+    %th
+    %th
+
+  - @pages.each_with_index do |page, index|
+    %tr
+      %td= index.next
+      %td= page.user_id
+      %td= page.title
+      %td= page.state
+      %td= link_to 'Show', page
+      %td= link_to 'Edit', edit_page_path(page)
+      %td= link_to 'Destroy', page, :data => { :confirm => 'Are you sure?' }, :method => :delete

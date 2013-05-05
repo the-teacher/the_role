@@ -1,0 +1,15 @@
+%h1 Current user
+
+%p
+  - if user_signed_in?
+    %b= current_user.name
+    |
+    %i role: #{current_user.role.name}
+    |
+    = link_to "Sign out", destroy_user_session_path, :method => :delete
+  - else
+    %i Guest
+    |
+    = link_to "Sign in", new_user_session_path
+    |
+    = link_to "Sign up", new_user_registration_path

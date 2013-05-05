@@ -1,0 +1,43 @@
+= render :partial => 'layouts/current_user_info'
+
+%h1 Users info
+
+%ol
+  - User.all.each do |user|
+    %li
+      %b= user.name
+      \-
+      %i= user.email
+      \-
+      %b role: #{user.role.name}
+      |
+      = link_to 'Login now!', autologin_path(:email => user.email)
+%p
+  %b password:
+  %i qwerty
+
+%h1 Edit Users
+
+%ol
+  - User.all.each do |user|
+    %li= link_to "Edit user: #{user.name} [#{user.role.name}]",  edit_user_path(user)
+
+%h1 Roles info
+
+%ol
+  - Role.all.each do |role|
+    %li
+      %b= role.name
+      \-
+      %i= role.description
+      \-
+      - users_list = role.users.map(&:name).join(', ')
+      %b users: [#{users_list}]
+ 
+%h1 Management panel
+
+%ol
+  %li= link_to 'pages/index',  pages_path
+  %li= link_to 'pages/manage', manage_pages_path
+  %li= link_to 'pages/my',     my_pages_path
+  %li= link_to 'admin/roles',  admin_roles_path

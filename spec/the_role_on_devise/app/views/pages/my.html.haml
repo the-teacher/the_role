@@ -1,0 +1,10 @@
+%p= link_to 'Back', root_path
+%h1 Current user: #{current_user.name}
+
+%h2 User's pages
+
+%ol
+  - @pages.each do |page|
+    %li
+      %i user_id: #{page.user_id}
+      %b= page.title
