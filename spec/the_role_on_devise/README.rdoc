@@ -19,5 +19,5 @@ bin/rake db:migrate RAILS_ENV=test
 ### Test App
 
 ```
-bin/rake spec
+bundle exec rspec spec/models/user_spec.rb
 ```

@@ -13,6 +13,10 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
+p 'X'*30
+p FactoryGirl.definition_file_paths
+p 'X'*30
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -22,25 +26,22 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
 
-
   # Devise Addons for Testing
   config.include Devise::TestHelpers, :type => :controller
-
-  # Add TheRole::Requires to ApplicationController
-  # ApplicationController.send :include, TheRole::Requires
 
   # Exclusion Filter
   config.exclusion_filter = { :ruby => lambda {|version|
     !(RUBY_VERSION.to_s =~ /^#{version.to_s}/)
   }}
     
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/factories"
+  # config.fixture_path = "#{::Rails.root}/spec/factories"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  # config.use_transactional_fixtures = true
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
