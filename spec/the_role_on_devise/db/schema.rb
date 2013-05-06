@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 20120314061307) do
   end
 
   create_table "roles", force: true do |t|
-    t.string   "name",        null: false
-    t.string   "title",       null: false
-    t.text     "description", null: false
-    t.text     "the_role",    null: false
+    t.string   "name"
+    t.string   "title"
+    t.text     "description"
+    t.text     "the_role"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

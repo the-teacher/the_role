@@ -1,4 +1,15 @@
 #############################################
+# EMPTY role
+#############################################
+FactoryGirl.define do
+  factory :role_without_rules, class: Role do
+    name        'user'
+    title       'User role'
+    description 'Default Role for users'
+  end
+end
+
+#############################################
 # USER role
 #############################################
 user_role = {
