@@ -1,16 +1,12 @@
-module UserModel
+module TheRoleUserModel
   extend ActiveSupport::Concern
 
   include TheRoleBase
-  include TheRole::ParamHelper
-  
+
   included do
-    class_eval do
-      belongs_to :role
-      validates :role, presence: true
-      before_validation :set_default_role, on: :create
-      after_save { |user| user.instance_variable_set(:@role_hash, nil) }
-    end
+    belongs_to :role
+    before_validation :set_default_role, on: :create
+    after_save { |user| user.instance_variable_set(:@role_hash, nil) }
   end
 
   module ClassMethods

@@ -1,41 +1,55 @@
 # encoding: UTF-8
+
 require 'spec_helper'
 
-p 'Y'*30
-p FactoryGirl.definition_file_paths
-p 'Y'*30
-
 describe User do
-  context "no users" do
-    it "no body here" do
+  context "No users" do
+    it "nobody here" do
       User.all.should be_empty
     end
   end
     
-  context "one user test" do
-    # before(:all) do
-    # end
+  describe "Create user without any Role" do
+    before(:each){ FactoryGirl.create(:user) }
 
-    before(:all) do
-      Role.destroy_all
-      User.destroy_all
-    end
-
-    it "only one" do
-      p '================'
-      role = FactoryGirl.create(:role)
-      u = FactoryGirl.build(:user)
-      u.role = role
-      p '================>'
-      p u.role
-      u.save!
-      p '================'
+    it "Create test user" do
       User.count.should be 1
     end
 
-    # it "only one again" do
-    #   User.count.should be 1
-    # end
+    it "User have not any role" do
+      User.first.role.should be_nil
+    end
+  end
+
+  describe "Create user with default Role" do
+    before(:each) do
+      FactoryGirl.create(:role_user)
+      FactoryGirl.create(:user)
+      @user = User.first
+    end
+    
+    it "User and Role should exists" do
+      Role.count.should be 1
+      User.count.should be 1
+    end
+
+    it "Role should nave name :user" do
+      Role.first.name.should eq 'user'
+    end
+
+    it "User should have default Role" do
+      @user.role.should_not be_nil
+    end
+
+    it "User has Role for Pages" do
+      @user.has_role?(:pages, :index).should      be_true
+      @user.has_role?(:pages, :destroy).should    be_true
+      @user.has_role?(:pages, :wrong_name).should be_false
+    end
+
+    it "User has not Role for Atricles" do
+      @user.has_role?(:articles, :index).should be_false
+    end
   end
 
   # context 'User has role' do

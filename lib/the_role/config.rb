@@ -15,6 +15,6 @@ module TheRole
 
   configure do |config|
     config.layout = :the_role
-    config.default_user_role = :user
+    config.default_user_role = nil
   end
 end

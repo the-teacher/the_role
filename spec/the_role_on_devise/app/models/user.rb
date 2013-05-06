@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  include UserModel
+  include TheRoleUserModel
 
   # Setup accessible (or protected) attributes for your model
   # attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   private
 
   def set_default_role
-    # self.role = Role.where(:name => :user).first
+    role_name = TheRole.config.default_user_role
+    self.role = Role.with_name(role_name) if role_name
   end
 end

@@ -2,12 +2,6 @@
 
 Test App for TheRole
 
-### RSpec install
-
-```
-bin/rails generate rspec:install
-```
-
 ### Prepare app
 
 ```
@@ -19,5 +13,5 @@ bin/rake db:migrate RAILS_ENV=test
 ### Test App
 
 ```
-bundle exec rspec spec/models/user_spec.rb
+bundle exec rspec spec/models/user_spec.rb --format documentation
 ```

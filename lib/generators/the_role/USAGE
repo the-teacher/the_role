@@ -1,0 +1,19 @@
+---------------------------------------
+TheRole
+---------------------------------------
+
+Description:
+  This generators helps to install TheRole gem into your Application
+
+This text:
+  bundle exec rails g the_role --help
+
+Generators:
+  bundle exec rails g the_role install
+
+Migrations:
+  bundle exec rake the_role_engine:install:migrations
+
+---------------------------------------
+TheRole
+---------------------------------------

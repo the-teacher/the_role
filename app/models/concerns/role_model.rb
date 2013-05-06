@@ -2,25 +2,27 @@ module RoleModel
   extend ActiveSupport::Concern
 
   include TheRoleBase
-  include TheRole::ParamHelper
 
   def role_hash; to_hash; end
   alias_method :has?, :has_role?
 
   def has_section? section_name
-    section_name = param_prepare(section_name)
+    section_name = TheRoleParam.process(section_name)
     to_hash.key? section_name
   end
 
   included do
     has_many  :users
-    validates :name,        :presence => true, :uniqueness => true
-    validates :title,       :presence => true, :uniqueness => true
-    validates :description, :presence => true
+    validates :name,        presence: true, uniqueness: true
+    validates :title,       presence: true, uniqueness: true
+    validates :description, presence: true
 
-    before_create do
-      self.name     = param_prepare(name)
-      self.the_role = {}.to_json if self.the_role.blank?
+    before_save do
+      self.name = TheRoleParam.process(name)
+
+      rules_set     = self.the_role
+      self.the_role = {}.to_json        if rules_set.blank?      # blank
+      self.the_role = rules_set.to_json if rules_set.is_a?(Hash) # Hash
     end
   end
 
@@ -35,7 +37,7 @@ module RoleModel
   def create_section section_name = nil
     return false unless section_name
     role         =  to_hash
-    section_name =  param_prepare(section_name)
+    section_name =  TheRoleParam.process(section_name)
     return false if section_name.blank?
     return true  if role[section_name]
     role[section_name] = {}
@@ -46,8 +48,8 @@ module RoleModel
     return false if     rule_name.blank?
     return false unless create_section(section_name)
     role         =  to_hash
-    rule_name    =  param_prepare(rule_name)
-    section_name =  param_prepare(section_name)
+    rule_name    =  TheRoleParam.process(rule_name)
+    section_name =  TheRoleParam.process(section_name)
     return true  if role[section_name][rule_name]
     role[section_name][rule_name] = false
     update_attributes(:the_role => role.to_json)
@@ -79,8 +81,8 @@ module RoleModel
 
   def rule_on section_name, rule_name
     role         =  to_hash
-    rule_name    =  param_prepare(rule_name)
-    section_name =  param_prepare(section_name)
+    rule_name    =  TheRoleParam.process(rule_name)
+    section_name =  TheRoleParam.process(section_name)
     return false unless role[section_name]
     return false unless role[section_name].key? rule_name
     return true  if     role[section_name][rule_name]
@@ -90,8 +92,8 @@ module RoleModel
 
   def rule_off section_name, rule_name
     role         = to_hash
-    rule_name    = param_prepare(rule_name)
-    section_name = param_prepare(section_name)
+    rule_name    = TheRoleParam.process(rule_name)
+    section_name = TheRoleParam.process(section_name)
     return false unless role[section_name]
     return false unless role[section_name].key? rule_name
     return true  unless role[section_name][rule_name]
@@ -104,7 +106,7 @@ module RoleModel
   def delete_section section_name = nil
     return false unless section_name
     role         =  to_hash
-    section_name =  param_prepare(section_name)
+    section_name =  TheRoleParam.process(section_name)
     return false if section_name.blank?
     return false unless role[section_name]
     role.delete  section_name
@@ -113,8 +115,8 @@ module RoleModel
 
   def delete_rule section_name, rule_name
     role         = to_hash
-    rule_name    = param_prepare(rule_name)
-    section_name = param_prepare(section_name)
+    rule_name    = TheRoleParam.process(rule_name)
+    section_name = TheRoleParam.process(section_name)
     return false unless role[section_name]
     return false unless role[section_name].key? rule_name
     role[section_name].delete rule_name
