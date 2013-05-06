@@ -15,7 +15,7 @@ module TheRoleUserModel
     end
   end
 
-  def role_hash; @role_hash ||= role.to_hash; end
+  def role_hash; @role_hash ||= role.try(:to_hash) || {} end
 
   # FALSE if object is nil
   # If object is a USER - check for youself

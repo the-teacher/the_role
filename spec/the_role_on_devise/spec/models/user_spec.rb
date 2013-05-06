@@ -2,26 +2,24 @@
 
 require 'spec_helper'
 
-describe User do
-  context "No users" do
-    it "nobody here" do
-      User.all.should be_empty
-    end
-  end
-    
+describe User do    
   describe "Create user without any Role" do
-    before(:each){ FactoryGirl.create(:user) }
+    before(:each) do
+      FactoryGirl.create(:user)
+      @user = User.first
+    end
 
     it "Create test user" do
       User.count.should be 1
     end
 
     it "User have not any role" do
-      User.first.role.should be_nil
+      @user.role.should be_nil
     end
 
     it "User should gives false on any request" do
-      User.first.has_role?(:pages, :index).should be_false
+      @user.has_role?(:pages, :index).should     be_false
+      @user.has_role?(:moderator, :pages).should be_false
     end
   end
 
@@ -46,11 +44,8 @@ describe User do
     end
 
     it "User has Role for Pages" do
-      @user.has_role?(:pages, :index).should      be_true
-      @user.has_role?(:pages, :destroy).should    be_true
-
-      
-      @user.has_role?(:pages, :wrong_name).should be_false
+      @user.has_role?(:pages, :index).should   be_true
+      @user.has_role?(:pages, :destroy).should be_true
     end
 
     it "User has disabled rule" do
@@ -64,22 +59,5 @@ describe User do
     it "User has not Role for Atricles" do
       @user.has_role?(:articles, :index).should be_false
     end
-  end
-
-  describe "User without " do
-    # before(:each) do
-    #   FactoryGirl.create(:role_moderator)
-    #   FactoryGirl.create(:user, role: )
-    #   @moderator = User.first
-    # end
-
-    # it 'User should has a role' do
-    # end
-
-    # it "Any Page's rules should gives true" do
-    #   @moderator.has_role?(:pages, :index).should      be_true
-    #   @moderator.has_role?(:pages, :any_name).should   be_true
-    #   @moderator.has_role?(:pages, :wrong_name).should be_true
-    # end
   end
 end
