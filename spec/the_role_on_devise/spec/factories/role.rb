@@ -10,7 +10,8 @@ user_role = {
     edit:    true,
     update:  true,
     destroy: true,
-    my:      true
+    my:      true,
+    secret:  false
   }
 }
 
@@ -23,11 +24,24 @@ FactoryGirl.define do
   end
 end
 
+#############################################
+# MODERATOR role
+#############################################
 
+moderator_role = {
+  pages: {
+    moderator: true
+  }
+}
 
-
-
-
+FactoryGirl.define do
+  factory :role_moderator, class: Role do
+    name        'pages_moderator'
+    title       'Pages moderator'
+    description 'Can do anything with pages'
+    the_role     moderator_role
+  end
+end
 
 
 
