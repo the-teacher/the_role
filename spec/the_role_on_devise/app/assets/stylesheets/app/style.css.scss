@@ -1,0 +1,32 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/reset";
+
+// Grid system and page structure
+@import "bootstrap/scaffolding";
+@import "bootstrap/grid";
+@import "bootstrap/layouts";
+
+// Components: Nav
+@import "bootstrap/navs";
+@import "bootstrap/navbar";
+
+.header{
+  margin: 10px 0;
+  background-color: #DCEAF4;
+  padding: 5px 10px 10px 10px;
+  border-radius: 5px;
+}
+
+.manage_panel, .main_content{
+  background-color: #DCEAF4;
+  padding: 5px 10px 10px 10px;
+  border-radius: 5px;
+}
+
+.main_content{
+  h1{
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+  }
+}

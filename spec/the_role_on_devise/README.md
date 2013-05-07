@@ -13,5 +13,14 @@ bin/rake db:migrate RAILS_ENV=test
 ### Test App
 
 ```
-bundle exec rspec spec/models/user_spec.rb --format documentation
+bundle exec rspec spec/models/ --format documentation
+```
+
+### Start App
+
+```
+bin/rake db:drop &&
+bin/rake db:create &&
+bin/rake db:migrate
+bin/rake db:seed
 ```

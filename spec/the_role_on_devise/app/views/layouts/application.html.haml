@@ -9,16 +9,38 @@
     = yield :css 
     
   %body
-    = yield 
-    %p
-      = link_to 'en', '/?locale=en'
-      \|
-      = link_to 'ru', '/?locale=ru'
-      \|
-      = link_to 'es', '/?locale=es'
-      \|
-      = link_to 'zh_CN', '/?locale=zh_CN'
-      \|
-      %b
-        = t '.current_locale'
-        = I18n.locale
+    .container-fluid
+      .row-fluid
+        .span12.header
+          %h2 TheRole - Authorization Gem for Ruby on Rails with administrative interface.
+          %h3 Semantic, Flexible, Lightweight
+
+      .row-fluid
+        .span3.manage_panel
+          %h4 Basic links
+
+          %ul
+            %li= link_to 'pages/index',  pages_path
+            %li= link_to 'pages/manage', manage_pages_path
+            %li= link_to 'pages/my',     my_pages_path
+            %li= link_to 'admin/roles',  admin_roles_path
+          =# yield :manage_panel
+        .span9.main_content
+          = yield 
+      .row-fluid
+        .span3
+          %p
+            = link_to 'TheRole 2', 'https://github.com/the-teacher/the_role'
+        .span9
+          %p
+            = link_to 'en', '/?locale=en'
+            \|
+            = link_to 'ru', '/?locale=ru'
+            \|
+            = link_to 'es', '/?locale=es'
+            \|
+            = link_to 'zh_CN', '/?locale=zh_CN'
+            \|
+            %b
+              = t '.current_locale'
+              = I18n.locale

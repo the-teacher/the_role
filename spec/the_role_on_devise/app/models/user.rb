@@ -11,20 +11,10 @@ class User < ActiveRecord::Base
   # User accessible fields
   # attr_accessible :name, :company, :address
 
-  # Set default role
-  before_create :set_default_role
-
   # When we uncomment this string - test should give fail
   # just for example, do not uncomment it
   # attr_accessible :some_protected_field
 
   # RELATIONS
   has_many :pages
-
-  private
-
-  def set_default_role
-    role_name = TheRole.config.default_user_role
-    self.role = Role.with_name(role_name) if role_name
-  end
 end

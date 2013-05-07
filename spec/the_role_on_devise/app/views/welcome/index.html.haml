@@ -7,9 +7,11 @@
     %li
       %b= user.name
       \-
-      %i= user.email
+      - if user.role
+        %b role: #{user.role.name}
+      - else
+        %b User has not role
       \-
-      %b role: #{user.role.name}
       |
       = link_to 'Login now!', autologin_path(:email => user.email)
 %p
@@ -20,7 +22,10 @@
 
 %ol
   - User.all.each do |user|
-    %li= link_to "Edit user: #{user.name} [#{user.role.name}]",  edit_user_path(user)
+    - if user.role
+      %li= link_to "Edit user: #{user.name} [#{user.role.name}]",  edit_user_path(user)
+    - else
+      %li User #{user.name} has not role
 
 %h1 Roles info
 
@@ -33,11 +38,3 @@
       \-
       - users_list = role.users.map(&:name).join(', ')
       %b users: [#{users_list}]
- 
-%h1 Management panel
-
-%ol
-  %li= link_to 'pages/index',  pages_path
-  %li= link_to 'pages/manage', manage_pages_path
-  %li= link_to 'pages/my',     my_pages_path
-  %li= link_to 'admin/roles',  admin_roles_path
