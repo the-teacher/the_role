@@ -7,8 +7,7 @@ module RoleModel
   alias_method :has?, :has_role?
 
   def has_section? section_name
-    section_name = TheRoleParam.process(section_name)
-    to_hash.key? section_name
+    to_hash.key? TheRoleParam.process(section_name)
   end
 
   included do

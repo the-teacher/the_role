@@ -1,7 +1,9 @@
 # load 'the_role/hash.rb' - UPDATE, BUT NOT RELOAD [for console testing]
 class Hash
-  # RAILS 4 methods for RAILS 3
-  # DEEP TRANSFORM HELPER METHODS
+  # deep_transform_keys
+  # deep_stringify_keys
+  # underscorify_keys
+  # deep_reset
   unless {}.respond_to?(:deep_transform_keys)
     def deep_transform_keys(&block)
       result = {}
@@ -32,7 +34,7 @@ class Hash
 
   unless {}.respond_to?(:underscorify_keys)
     def underscorify_keys
-      deep_transform_keys{ |key| TheRole::ParamHelper.prepare(key) }
+      deep_transform_keys{ |key| TheRoleParam.process(key) }
     end
 
     def underscorify_keys!
