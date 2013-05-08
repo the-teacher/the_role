@@ -23,12 +23,12 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = Page.new(params[:page])
+    @page = Page.new page_params
 
     if @page.save
-      redirect_to @page, :notice => 'Page was successfully created.'
+      redirect_to @page, notice: 'Page was successfully created.'
     else
-      render :action => 'new'
+      render action: 'new'
     end
   end
 
@@ -41,10 +41,10 @@ class PagesController < ApplicationController
   def edit; end
 
   def update
-    if @page.update_attributes(params[:page])
-      redirect_to @page, :notice => 'Page was successfully updated.'
+    if @page.update_attributes page_params
+      redirect_to @page, notice: 'Page was successfully updated.'
     else
-      render :action => 'edit'
+      render action: :edit
     end
   end
 
@@ -67,5 +67,9 @@ class PagesController < ApplicationController
     # TheRole: You should define OWNER CHECK OBJECT
     # When editable object was found
     @owner_check_object = @page
+  end
+
+  def page_params
+    params.require(:page).permit(:user_id, :title, :content, :state)
   end
 end

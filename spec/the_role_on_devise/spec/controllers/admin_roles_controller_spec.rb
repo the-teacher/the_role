@@ -1,90 +1,51 @@
 require 'spec_helper'
 
 describe Admin::RolesController do
-  before(:all) do
-    @role = FactoryGirl.create(:role_user)
-    @user = FactoryGirl.create(:user, :role => @role)
-  end
-
-  after(:all) do
-    Role.destroy_all
-    User.destroy_all
-  end
-
   describe "Admin Section" do
-
     describe 'Unauthorized' do
-      describe "GET" do
-        [:index, :new].each do |action|
-          it "#{action.to_s.upcase}" do
-            get action
-            response.should redirect_to new_user_session_path
-          end
-        end
+      before(:each) do
+        @role = FactoryGirl.create(:role_user)
+      end
 
-        it "EDIT" do
-          get :edit, { :id => @role.id }
+      %w{ index new }.each do |action|
+        it action.upcase do
+          get action
           response.should redirect_to new_user_session_path
         end
       end
 
-      describe "PUT" do
-        it "UPDATE" do
-          get :update, { :id => @role.id }
-          response.should redirect_to new_user_session_path
-        end
-      end
-
-      describe "POST" do
-        it "CREATE" do
-          get :create, { :id => @role.id }
-          response.should redirect_to new_user_session_path
-        end
-      end
-
-      describe "DELETE" do
-        it "DESTROY" do
-          get :destroy, { :id => @role.id }
+      %w{ edit update create destroy }.each do |action|
+        it action.upcase do
+          get action, { id: @role.id }
           response.should redirect_to new_user_session_path
         end
       end
     end
 
     describe "Authorized / Regular user" do
-      before(:each) { sign_in @user }
+      def access_denied_match
+        "access_denied"
+      end
 
-      describe "GET" do
-        [:index, :new].each do |action|
-          it "#{action.to_s.upcase}" do
+      describe "Can't do something with Roles" do
+        before(:each) do
+          @user = FactoryGirl.create(:user)
+          @role = FactoryGirl.create(:role_user)
+          sign_in @user
+        end
+
+        %w{ index new }.each do |action|
+          it action.upcase do
             get action
-            response.body.should match 'access_denied: requires an role'
+            response.body.should match access_denied_match
           end
         end
 
-        it "EDIT" do
-          get :edit, { :id => @role.id }
-          response.body.should match 'access_denied: requires an role'
-        end
-      end
-
-      describe "PUT" do
-        it "UPDATE" do
-          get :update, { :id => @role.id }
-          response.body.should match 'access_denied: requires an role'
-        end
-      end
-
-      describe "POST" do
-        it "CREATE" do
-          get :create, { :id => @role.id }
-          response.body.should match 'access_denied: requires an role'
-        end
-      end
-
-      describe "DELETE" do
-        it "DESTROY" do
-          get :destroy, { :id => @role.id }
-          response.body.should match 'access_denied: requires an role'
+        %w{ edit update create destroy }.each do |action|
+          it action.upcase do
+            get action, { id: @role.id }
+            response.body.should match access_denied_match
+          end
         end
       end
     end
