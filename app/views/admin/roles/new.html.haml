@@ -1,23 +1,24 @@
-= render :partial => 'sidebar'
+= render partial: 'sidebar'
 
-.well
-  - @role.errors.each do |field, message|
-    %p
-      = field
-      \:
-      = message
+- content_for :role_main do
+  .well
+    - @role.errors.each do |field, message|
+      %p
+        = field
+        \:
+        = message
 
-  .form
-    %h3= raw t('.create')
+    .form
+      %h3= raw t('.create')
 
-    = form_for(@role, :url => admin_roles_path) do |f|
-      %label= t('.name')
-      %p= f.text_field :name
+      = form_for(@role, :url => admin_roles_path) do |f|
+        %label= t('.name')
+        %p= f.text_field :name
 
-      %label= t('.title')
-      %p= f.text_field :title
+        %label= t('.title')
+        %p= f.text_field :title
 
-      %label= t('.description')
-      %p= f.text_field :description
+        %label= t('.description')
+        %p= f.text_field :description
 
-      = f.submit t('.create'), :class => :btn
+        = f.submit t('.create'), :class => :btn

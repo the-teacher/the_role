@@ -5,8 +5,8 @@ class Admin::RoleSectionsController < ApplicationController
   before_filter :login_required
   before_filter :role_required
 
-  before_filter :role_find,           :only => [:create, :create_rule, :rule_on, :rule_off, :destroy, :destroy_rule]
-  before_filter :owner_required,      :only => [:create, :create_rule, :rule_on, :rule_off, :destroy, :destroy_rule]
+  before_filter :role_find,      only: [:create, :create_rule, :rule_on, :rule_off, :destroy, :destroy_rule]
+  before_filter :owner_required, only: [:create, :create_rule, :rule_on, :rule_off, :destroy, :destroy_rule]
 
   def create
     if @role.create_section params[:section_name]

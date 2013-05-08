@@ -1,6 +1,5 @@
 # gem 'the_role' 
 
-
 ## Gem under active development
 
 This gem under active development. I try to make it ready for Rails 4
