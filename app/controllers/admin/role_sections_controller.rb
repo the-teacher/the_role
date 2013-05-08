@@ -73,7 +73,10 @@ class Admin::RoleSectionsController < ApplicationController
 
   def role_find
     @role = Role.find params[:role_id]
-    @ownership_checking_object = @role
+
+    # TheRole: You should define OWNER CHECK OBJECT
+    # When editable object was found
+    @owner_check_object = @role
   end
 
   def redirect_to_edit

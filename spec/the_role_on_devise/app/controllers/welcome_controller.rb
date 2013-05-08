@@ -7,7 +7,6 @@ class WelcomeController < ApplicationController
   def autologin
     user = User.find_by_email params[:email]
     sign_in user if user
-    # warden.set_user user if user
     redirect_to request.referrer || root_path
   end
 

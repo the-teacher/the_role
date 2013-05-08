@@ -3,10 +3,7 @@ class Page < ActiveRecord::Base
   belongs_to :user
 
   # VALIDATIONS
-  validates :user,    :presence => true
-  validates :title,   :presence => true
-  validates :content, :presence => true
-
-  scope :draft,     where(:state => :draft)
-  scope :published, where(:state => :published)
+  validates :user,    :presence: true
+  validates :title,   :presence: true
+  validates :content, :presence: true
 end

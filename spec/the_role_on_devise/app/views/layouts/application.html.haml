@@ -20,11 +20,16 @@
           %h4 Basic links
 
           %ul
+            %li= link_to 'Home',         root_path
             %li= link_to 'pages/index',  pages_path
             %li= link_to 'pages/manage', manage_pages_path
             %li= link_to 'pages/my',     my_pages_path
             %li= link_to 'admin/roles',  admin_roles_path
+          
+          = render :partial => 'layouts/current_user_info'
+
           =# yield :manage_panel
+
         .span9.main_content
           = yield 
       .row-fluid

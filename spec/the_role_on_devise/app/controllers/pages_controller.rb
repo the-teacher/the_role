@@ -9,11 +9,11 @@ class PagesController < ApplicationController
   # Public
 
   def index
-    @pages = Page.published.all
+    @pages = Page.wuth_state(:published).all
   end
 
   def show
-    @page = Page.published.find params[:id]
+    @page = Page.wuth_state(:published).find params[:id]
   end
 
   # Login && role
@@ -63,6 +63,9 @@ class PagesController < ApplicationController
 
   def find_page
     @page = Page.find params[:id]
-    @ownership_checking_object = @page
+
+    # TheRole: You should define OWNER CHECK OBJECT
+    # When editable object was found
+    @owner_check_object = @page
   end
 end

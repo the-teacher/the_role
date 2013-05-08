@@ -14,7 +14,11 @@
 
   - @pages.each_with_index do |page, index|
     %tr
-      %td= index.next
+      %td
+        - if current_user and current_user.owner?(page)
+          %span{ style: "color:red" }= index.next
+        - else
+          = index.next
       %td= page.user_id
       %td= page.title
       %td= page.state

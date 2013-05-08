@@ -1,5 +1,14 @@
 # gem 'the_role' 
 
+
+## Gem under active development
+
+This gem under active development. I try to make it ready for Rails 4
+
+You can use current version of code from GitHub page with Rails 4 projects
+
+You can find RSpec tests in dummy application **spec/the_role_on_devise**
+
 | Bye bye CanCan, I got The Role! | Description |
 |:------------- |:-------------|
 | ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) | TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with 2-level-hash, and store in database with JSON.<br><br>TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the **sections** and nested **rules**.<br><br>**Section** may be associated with **controller** name.<br><br>**Rule** may be associated with **action** name.<br><br>Section can have many rules.<br><br>Rule can have **true** or **false** value<br><br>**Sections** and nested **Rules** provide **ACL** (**Access Control List**)<br><br>Role **stored in the database as JSON** string.<br><br>Using of hashes, makes role system extremely easy to configure and use.<br> |
@@ -178,16 +187,19 @@ class PagesController < ApplicationController
 
   def find_page
     @page = Page.find params[:id]
-    @ownership_checking_object = @page
+
+    # TheRole: You should define OWNER CHECK OBJECT
+    # When editable object was found
+    @owner_check_object = @page
   end
 end
 ```
 
 ### Ownership checking
 
-**owner_required** method require **@ownership_checking_object** variable, with cheked object.
+**owner_required** method require **@owner_check_object** variable, with cheked object.
 
-You should to define **@ownership_checking_object** before invoke of **owner_required** method.
+You should to define **@owners_check_object** before invoke of **owner_required** method.
 
 ### Using with Views
 
