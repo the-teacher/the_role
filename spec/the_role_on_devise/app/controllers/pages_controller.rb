@@ -9,11 +9,11 @@ class PagesController < ApplicationController
   # Public
 
   def index
-    @pages = Page.wuth_state(:published).all
+    @pages = Page.with_state(:published).all
   end
 
   def show
-    @page = Page.wuth_state(:published).find params[:id]
+    @page = Page.with_state(:published).find params[:id]
   end
 
   # Login && role

@@ -1,16 +1,3 @@
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
-@import "bootstrap/reset";
-
-// Grid system and page structure
-@import "bootstrap/scaffolding";
-@import "bootstrap/grid";
-@import "bootstrap/layouts";
-
-// Components: Nav
-@import "bootstrap/navs";
-@import "bootstrap/navbar";
-
 .header{
   margin: 10px 0;
   background-color: #DCEAF4;

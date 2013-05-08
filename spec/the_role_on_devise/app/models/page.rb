@@ -3,7 +3,7 @@ class Page < ActiveRecord::Base
   belongs_to :user
 
   # VALIDATIONS
-  validates :user,    :presence: true
-  validates :title,   :presence: true
-  validates :content, :presence: true
+  validates :user,    presence: true
+  validates :title,   presence: true
+  validates :content, presence: true
 end

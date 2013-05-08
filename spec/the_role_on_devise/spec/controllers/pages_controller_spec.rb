@@ -10,7 +10,7 @@ describe PagesController do
   end
 
   before(:all) do
-    @role = FactoryGirl.create(:user_role)
+    @role = FactoryGirl.create(:role_user)
     @user = FactoryGirl.create(:user, :role => @role)
     @page = @user.pages.create! valid_page_attrs
   end

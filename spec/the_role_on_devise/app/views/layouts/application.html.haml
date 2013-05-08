@@ -2,8 +2,8 @@
 %html
   %head
     %title TheRoleTestcase
-    = stylesheet_link_tag    "application", 'admin_the_role'
-    = javascript_include_tag "application",  'admin_the_role'
+    = stylesheet_link_tag    :application, :the_role
+    = javascript_include_tag "application"
     = csrf_meta_tags
 
     = yield :js 

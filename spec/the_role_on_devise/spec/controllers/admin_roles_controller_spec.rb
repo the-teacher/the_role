@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::RolesController do
   before(:all) do
-    @role = FactoryGirl.create(:user_role)
+    @role = FactoryGirl.create(:role_user)
     @user = FactoryGirl.create(:user, :role => @role)
   end
 

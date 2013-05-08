@@ -17,7 +17,7 @@ describe Admin::RolesController do
 
     describe "member block" do
       before(:all) do
-        @role = FactoryGirl.create(:user_role)
+        @role = FactoryGirl.create(:role_user)
       end
 
       after(:all) do
