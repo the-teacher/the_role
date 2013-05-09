@@ -1,6 +1,4 @@
-# gem 'the_role' 
-
-[![Build Status](https://travis-ci.org/the-teacher/the_role.png?branch=master)](https://travis-ci.org/the-teacher/the_role)
+# gem 'the_role' [![Build Status](https://travis-ci.org/the-teacher/the_role.png?branch=master)](https://travis-ci.org/the-teacher/the_role)
 
 ## Gem under active development
 
