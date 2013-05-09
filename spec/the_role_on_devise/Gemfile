@@ -29,6 +29,10 @@ group :development, :test do
   gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
 end
 
+group :test do
+  gem "rake", "~> 10.0.4"
+end
+
 # gem 'rails',     path: '/home/the_teacher/rails/rails4/the_role/spec/rails'
 # gem 'arel',      github: 'rails/arel'
 

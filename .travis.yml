@@ -1,0 +1,5 @@
+language: ruby
+rvm:
+  - 1.9.3
+gemfile: spec/the_role_on_devise/Gemfile
+script: cd spec/the_role_on_devise && bundle exec rspec
