@@ -19,7 +19,7 @@ gem 'haml' ,     git: 'https://github.com/haml/haml.git', tag: '4.0.1'
 
 group :development, :test do
   gem 'faker'
-  gem 'database_cleaner', git: "git@github.com:bmabey/database_cleaner.git"
+  gem 'database_cleaner', git: "https://github.com/bmabey/database_cleaner.git"
   gem "factory_girl_rails", "~> 4.0"
 
   gem "rspec",              git: "git://github.com/rspec/rspec.git"
