@@ -21,7 +21,14 @@ describe PagesController do
 
       it "CREATE / invalid page attr" do
         post :create, { page: { fake: true } }
+        Page.count.should eq 0
         response.should render_template :new
+      end
+
+      it "should create page" do
+        Page.count.should eq 0
+        post :create , { page: @page_params }
+        Page.count.should eq 1
       end
 
       it "CREATE / valid page attr" do
