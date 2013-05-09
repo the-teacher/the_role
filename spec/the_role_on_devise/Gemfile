@@ -4,7 +4,7 @@ gem 'rails', github: 'rails/rails'
 gem 'arel',  github: 'rails/arel'
 
 gem 'sqlite3'
-gem 'devise', git: "git@github.com:plataformatec/devise.git", branch: 'rails4'
+gem 'devise', git: "https://github.com/plataformatec/devise.git", branch: 'rails4'
 
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'coffee-rails',    github: 'rails/coffee-rails'
@@ -15,18 +15,18 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
 
 gem 'the_role' , path: '../../'
-gem 'haml' ,     git: 'git@github.com:haml/haml.git', tag: '4.0.1'
+gem 'haml' ,     git: 'https://github.com/haml/haml.git', tag: '4.0.1'
 
 group :development, :test do
   gem 'faker'
   gem 'database_cleaner', git: "git@github.com:bmabey/database_cleaner.git"
   gem "factory_girl_rails", "~> 4.0"
 
-  gem "rspec",              :git => "git://github.com/rspec/rspec.git"
-  gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
-  gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
-  gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
-  gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
+  gem "rspec",              git: "git://github.com/rspec/rspec.git"
+  gem "rspec-rails",        git: "git://github.com/rspec/rspec-rails.git"
+  gem "rspec-core",         git: "git://github.com/rspec/rspec-core.git"
+  gem "rspec-expectations", git: "git://github.com/rspec/rspec-expectations.git"
+  gem "rspec-mocks",        git: "git://github.com/rspec/rspec-mocks.git"
 end
 
 group :test do
