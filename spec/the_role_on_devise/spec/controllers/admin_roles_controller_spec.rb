@@ -23,10 +23,6 @@ describe Admin::RolesController do
     end
 
     describe "Authorized / Regular user" do
-      def access_denied_match
-        "access_denied"
-      end
-
       describe "Can't do something with Roles" do
         before(:each) do
           @user = FactoryGirl.create(:user)

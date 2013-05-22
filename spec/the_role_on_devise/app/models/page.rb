@@ -4,6 +4,6 @@ class Page < ActiveRecord::Base
 
   # VALIDATIONS
   validates :user,    presence: true
-  validates :title,   presence: true
+  validates :title,   presence: true, uniqueness: true
   validates :content, presence: true
 end

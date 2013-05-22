@@ -12,7 +12,7 @@ end
 #############################################
 # USER role
 #############################################
-user_role = {
+role_user = {
   pages: {
     index:   true,
     show:    true,
@@ -31,7 +31,7 @@ FactoryGirl.define do
     name        'user'
     title       'User role'
     description 'Default Role for users'
-    the_role     user_role
+    the_role     role_user
   end
 end
 
@@ -39,7 +39,7 @@ end
 # MODERATOR role
 #############################################
 
-moderator_role = {
+role_moderator = {
   pages: {
     moderator: true
   }
@@ -50,7 +50,7 @@ FactoryGirl.define do
     name        'pages_moderator'
     title       'Pages moderator'
     description 'Can do anything with pages'
-    the_role     moderator_role
+    the_role     role_moderator
   end
 end
 

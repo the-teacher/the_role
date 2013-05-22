@@ -13,6 +13,11 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
+# Return default text on "Access Denied" page
+def access_denied_match
+  "access_denied"
+end
+
 RSpec.configure do |config|
   # Devise Addons for Testing
   config.include Devise::TestHelpers, type: :controller

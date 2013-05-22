@@ -9,163 +9,102 @@ describe PagesController do
     }
   end
 
-  describe "Pages/Create" do
-    before(:each) do
-      @role = FactoryGirl.create(:role_user)
-      @user = FactoryGirl.create(:user, role: @role)
-      @page_params = valid_page_attrs.merge(user_id: @user.id)
-    end
-
-    describe 'AUTORIZED/NO ROLE/NOT OWNER' do
-      before(:each) { sign_in @user } 
-
-      it "CREATE / invalid page attr" do
+  describe "Guest" do
+    describe 'NOT AUTORIZED/NO ROLE/NOT OWNER' do
+      it "CREATE / but should be redirected" do
         post :create, { page: { fake: true } }
-        Page.count.should eq 0
-        response.should render_template :new
-      end
-
-      it "should create page" do
-        Page.count.should eq 0
-        post :create , { page: @page_params }
-        Page.count.should eq 1
-      end
-
-      it "CREATE / valid page attr" do
-        post :create , { page: @page_params }
-        assigns(:page).errors.should be_empty
-      end
-
-      it "CREATE / valid / redirect to SHOW" do
-        post :create, { page: @page_params }
-        response.should redirect_to page_path assigns(:page)
+        response.should redirect_to new_user_session_path
       end
     end
   end
 
-  # end
+  describe "User" do
+    before(:each) do
+      @role        = FactoryGirl.create(:role_user)
+      @owner       = FactoryGirl.create(:user, role: @role)
+      @page_params = valid_page_attrs.merge(user_id: @owner.id)
+    end
 
-  # before(:all) do
-  #   @role = FactoryGirl.create(:role_user)
-  #   @user = FactoryGirl.create(:user, :role => @role)
-  #   @page = @user.pages.create! valid_page_attrs
-  # end
+    describe 'AUTORIZED/HAS ROLE/OWNER' do
+      before(:each) { sign_in @owner }
 
-  # describe :ACCESS do
+      context "CREATE" do
+        it "valid" do
+          expect {
+            post :create , { page: @page_params }
+          }.to change(Page, :count).from(0).to(1)
 
-    # describe "=> Public pages" do
-    #   describe "GET" do
+          expect {
+            post :create , { page: @page_params }
+          }.to_not change(Page, :count).by(1)
+        end
 
-    #     it "INDEX" do
-    #       get :index
-    #       assigns(:pages).should eq [@page]
-    #     end
+        it "invalid params" do
+          expect {
+            post :create, { page: { fake: true } }
+          }.to_not change(Page, :count)
 
-    #     it "SHOW" do
-    #       get :show, { :id => @page.id }
-    #       assigns(:page).should eq @page
-    #     end
+          response.should render_template :new
+        end
 
-    #   end
-    # end
+        it "valid, no errors" do
+          post :create , { page: @page_params }
+          assigns(:page).errors.should be_empty
+        end
 
-    # describe "=> Login && role" do
-    #   describe "GET" do
-    #     describe 'authorized' do
-    #       before(:each) { sign_in @user }
+        it "valid, redirect to SHOW" do
+          post :create, { page: @page_params }
+          response.should redirect_to page_path assigns(:page)
+        end
+      end
 
-    #       it "MY" do
-    #         get :my
-    #         response.should render_template :my
-    #       end
+      context "UPDATE" do
+        before(:each) do
+          sign_in @owner
+          @owner.pages.create! @page_params
+          @page = @owner.pages.first
+        end
 
-    #       it "NEW" do
-    #         get :new
-    #         response.should render_template :new
-    #       end
-    #     end
+        it "should has test objects" do
+          User.count.should    eq 1
+          Page.count.should    eq 1
+          Page.first.id.should eq User.first.id
 
-    #     describe 'unauthorized' do
-    #       it "NEW" do
-    #         get :new
-    #         response.should redirect_to new_user_session_path
-    #       end          
-    #     end
-    #   end
+          @owner.has_role?(:pages, :update).should be_true
+        end
 
+        it "page should be updated" do
+          old_title = @page_params[:title]
+          new_title = "test_title"
 
+          expect {
+            patch :update, id: @page, page: { title: "test_title" }
+            @page.reload  
+          }.to change(@page, :title).from(old_title).to(new_title)
+        end
+      end
+    end
 
-    # describe "=> Login && role && ownership" do
-    #   describe "GET" do
-    #     describe "unauthorized" do
-    #       it 'EDIT' do
-    #         get :edit, { :id => @page }
-    #         response.should redirect_to new_user_session_path
-    #       end
-    #     end
+    describe 'AUTORIZED/HAS ROLE/NOT OWNER' do
+      before(:each) do        
+        @hacker = FactoryGirl.create(:user, role: @role)
+        @owner.pages.create! @page_params
+        @page = @owner.pages.last
+      end
 
-    #     describe "authorized" do
-    #       describe "owner" do
-    #         it 'EDIT' do
-    #           sign_in @user
-    #           get :edit, { :id => @page }
-    #           response.should render_template :edit
-    #         end
-    #       end
+      it "hacker should be blocked" do
+        sign_in @hacker
+        patch :update, id: @page, page: { title: "test_title" }
+        response.body.should match access_denied_match
+      end
+    end
+  end
 
-    #       describe "NOT owner" do
-    #         before(:all) do
-    #           @another_user = FactoryGirl.create(:user, :role => @role)
-    #           @another_page = Page.create! valid_page_attrs.merge(:user_id => @another_user.id)
-    #         end
+  describe "Moderator" do
 
-    #         it 'EDIT / Access denied ' do
-    #           sign_in @user
-    #           get :edit, { :id => @another_page }
-    #           response.body.should match 'access_denied: requires an role'
-    #         end
-    #       end
-    #     end
-    #   end
-    # end
-
-    # describe "=> Only Admin or Moderator" do
-    #   describe "Regular user" do
-    #     it 'MANAGE / Access denied' do
-    #       sign_in @user
-    #       get :manage
-    #       response.body.should match 'access_denied: requires an role'
-    #     end
-    #   end
-
-    #   describe "Moderator" do
-    #     before(:all) do
-    #       role = FactoryGirl.create(:pages_moderator_role)
-    #       @user.role = role
-    #       @user.save
-    #     end
-
-    #     it 'MANAGE' do
-    #       sign_in @user
-    #       get :manage
-    #       response.should render_template :manage
-    #     end
-    #   end
-
-    #   describe "Admin" do
-    #     before(:all) do
-    #       role = FactoryGirl.create(:admin_role)
-    #       @user.role = role
-    #       @user.save
-    #     end
-        
-    #     it 'MANAGE' do
-    #       sign_in @user
-    #       get :manage
-    #       response.should render_template :manage
-    #     end
-    #   end
-    # end
-
-  # end
+  end
 end
+
+# assigns(:page).should eq @page
+# response.should render_template :manage
+# response.should redirect_to new_user_session_path
