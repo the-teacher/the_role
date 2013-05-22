@@ -40,8 +40,8 @@ end
 #############################################
 
 role_moderator = {
-  pages: {
-    moderator: true
+  moderator: {
+    pages: true
   }
 }
 

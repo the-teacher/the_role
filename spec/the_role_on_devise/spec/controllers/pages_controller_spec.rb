@@ -9,6 +9,21 @@ describe PagesController do
     }
   end
 
+  def valid_page_for user
+    valid_page_attrs.merge(user_id: user.id)
+  end
+
+  before(:each) do
+    @role           = FactoryGirl.create(:role_user)
+    @moderator_role = FactoryGirl.create(:role_moderator)
+
+    @owner     = FactoryGirl.create(:user, role: @role)
+    @hacker    = FactoryGirl.create(:user, role: @role)
+    @moderator = FactoryGirl.create(:user, role: @moderator_role)
+    
+    @owner.pages.create! valid_page_for(@owner)
+  end
+
   describe "Guest" do
     describe 'NOT AUTORIZED/NO ROLE/NOT OWNER' do
       it "CREATE / but should be redirected" do
@@ -19,24 +34,14 @@ describe PagesController do
   end
 
   describe "User" do
-    before(:each) do
-      @role        = FactoryGirl.create(:role_user)
-      @owner       = FactoryGirl.create(:user, role: @role)
-      @page_params = valid_page_attrs.merge(user_id: @owner.id)
-    end
-
     describe 'AUTORIZED/HAS ROLE/OWNER' do
       before(:each) { sign_in @owner }
 
       context "CREATE" do
         it "valid" do
           expect {
-            post :create , { page: @page_params }
-          }.to change(Page, :count).from(0).to(1)
-
-          expect {
-            post :create , { page: @page_params }
-          }.to_not change(Page, :count).by(1)
+            post :create , { page: valid_page_for(@owner) }
+          }.to change(Page, :count).by(1)
         end
 
         it "invalid params" do
@@ -48,12 +53,12 @@ describe PagesController do
         end
 
         it "valid, no errors" do
-          post :create , { page: @page_params }
+          post :create , { page: valid_page_for(@owner) }
           assigns(:page).errors.should be_empty
         end
 
         it "valid, redirect to SHOW" do
-          post :create, { page: @page_params }
+          post :create, { page: valid_page_for(@owner) }
           response.should redirect_to page_path assigns(:page)
         end
       end
@@ -61,24 +66,20 @@ describe PagesController do
       context "UPDATE" do
         before(:each) do
           sign_in @owner
-          @owner.pages.create! @page_params
-          @page = @owner.pages.first
+          @page = @owner.pages.last
         end
 
-        it "should has test objects" do
-          User.count.should    eq 1
-          Page.count.should    eq 1
-          Page.first.id.should eq User.first.id
-
-          @owner.has_role?(:pages, :update).should be_true
+        it "users should has rules" do
+          @owner.has_role?(:pages, :update).should  be_true
+          @hacker.has_role?(:pages, :update).should be_true
         end
 
         it "page should be updated" do
-          old_title = @page_params[:title]
+          old_title = @page.title
           new_title = "test_title"
 
           expect {
-            patch :update, id: @page, page: { title: "test_title" }
+            patch :update, id: @page, page: { title: new_title }
             @page.reload  
           }.to change(@page, :title).from(old_title).to(new_title)
         end
@@ -86,11 +87,7 @@ describe PagesController do
     end
 
     describe 'AUTORIZED/HAS ROLE/NOT OWNER' do
-      before(:each) do        
-        @hacker = FactoryGirl.create(:user, role: @role)
-        @owner.pages.create! @page_params
-        @page = @owner.pages.last
-      end
+      before(:each) { @page = @owner.pages.last }
 
       it "hacker should be blocked" do
         sign_in @hacker
@@ -101,7 +98,39 @@ describe PagesController do
   end
 
   describe "Moderator" do
+    before(:each) do
+      @page = @owner.pages.last
 
+      @old_title = @page.title
+      @new_title = Faker::Lorem.sentence
+    end
+
+    it "Owner can update page" do
+      sign_in @owner
+
+      expect {
+        patch :update, id: @page, page: { title: @new_title }
+        @page.reload  
+      }.to change(@page, :title).from(@old_title).to(@new_title)
+    end
+
+    it "Moderator can update page" do
+      sign_in @moderator
+
+      expect {
+        patch :update, id: @page, page: { title: @new_title }
+        @page.reload 
+      }.to change(@page, :title).from(@old_title).to(@new_title)
+    end
+
+    it "Hacker cant update page" do
+      sign_in @hacker
+
+      expect {
+        patch :update, id: @page, page: { title: @new_title }
+        @page.reload  
+      }.to_not change(@page, :title).from(@old_title).to(@new_title)
+    end
   end
 end
 

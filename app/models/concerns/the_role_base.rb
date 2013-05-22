@@ -10,8 +10,10 @@ module TheRoleBase
     hash         =  role_hash
     section_name =  TheRoleParam.process(section_name)
     rule_name    =  TheRoleParam.process(rule_name)
+
     return true  if hash.try(:[], 'system').try(:[], 'administrator')
     return true  if hash.try(:[], 'moderator').try(:[], section_name)
+
     return false unless hash[section_name]
     return false unless hash[section_name].key? rule_name
     hash[section_name][rule_name]
