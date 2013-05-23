@@ -29,32 +29,31 @@ gem "the_role", "~> 2.0.0"
 
 I think, **CanCan** it's classic solution **for programmers**. It's great for many projects! But...
 
-For endpoint users (moderators, admins) CanCan is useless, because it's hasn't User Interface for role management.
+For endpoint users (moderators, admins) CanCan is useless, because it's hasn't default simple User Interface for role management.
 
-**TheRole** oriented **to people**. TheRole inspired by Rails **MVC** structure.
+**TheRole** oriented **to people**. TheRole inspired by Rails **MVC** structure. If you need simple, powerful and flexible authorization system TheRole can be useful for you.
 
-
-| Bye bye CanCan, I got The Role! | Description |
-|:------------- |:-------------|
-| ![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png) | TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with 2-level-hash, and store in database with JSON.<br><br>TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the **sections** and nested **rules**.<br><br>**Section** may be associated with **controller** name.<br><br>**Rule** may be associated with **action** name.<br><br>Section can have many rules.<br><br>Rule can have **true** or **false** value<br><br>**Sections** and nested **Rules** provide **ACL** (**Access Control List**)<br><br>Role **stored in the database as JSON** string.<br><br>Using of hashes, makes role system extremely easy to configure and use.<br> |
+<table>
+<tr>
+<th align="left">Bye bye CanCan, I got The Role!</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td>![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png)</td>
+<td>TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with 2-level-hash, and store in database with JSON.<br><br>TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the **sections** and nested **rules**.<br><br>**Section** may be associated with **controller** name.<br><br>**Rule** may be associated with **action** name.<br><br>Section can have many rules.<br><br>Rule can have **true** or **false** value<br><br>**Sections** and nested **Rules** provide **ACL** (**Access Control List**)<br><br>Role **stored in the database as JSON** string.<br><br>Using of hashes, makes role system extremely easy to configure and use.<br></td>
+</tr>
+</table>  
 
 ### GUI
 
-No more dependencies of Bootstrap, Less, Coffee. Just pure JS and CSS for admin section.
-
-| TheRole management web interface => localhost:3000/admin/roles |
-|:-------------:|
-|![TheRole](https://github.com/the-teacher/the_role/raw/master/pic.png)|
-
-
-
-### TheRole and Devise 2
-
-[Integration with Devise2](https://github.com/the-teacher/the_role/wiki/Integration-with-Devise2)
-
-### TheRole and Sorcery
-
-[Integration with Sorcery](https://github.com/the-teacher/the_role/wiki/Integration-with-Sorcery)
+<table>
+<tr>
+  <td>TheRole management web interface => localhost:3000/admin/roles</td>
+</tr>
+<tr>
+  <td>![TheRole](https://github.com/the-teacher/the_role/raw/master/pic.png)</td>
+</tr>
+</table> 
 
 ## Want to help or improve this gem?
 
