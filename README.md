@@ -62,7 +62,7 @@ gem "the_role", "~> 2.0.0"
 bundle
 ```
 
-### Change User Model migration
+### Change User migration
 
 Add **role_id:integer** field to your User Model
 
@@ -82,7 +82,9 @@ def self.up
 end
 ```
 
-### Generate Role Model
+### Role Model
+
+Generate Role model
 
 ``` ruby
 rails g model role --migration=false
@@ -90,21 +92,21 @@ rails g model role --migration=false
 
 Change your Role model
 
-```
+```ruby
 class Role < ActiveRecord::Base
   include RoleModel
 end
 ```
 
-### Generate Role migration
+install TheRole migrations
 
-``` ruby
+```ruby
 rake the_role_engine:install:migrations
 ```
 
-### Create database and migrate
+### Invoke migration
 
-``` ruby
+```ruby
 rake db:create && rake db:migrate
 ```
 
@@ -127,13 +129,13 @@ role.rule_on(:system, :administrator)
 role.admin? # => true
 ```
 
-### Makes any user as Admin 
+### Makes any user as Admin
 
 ```
 User.first.update( role: Role.with_name(:admin) )
 ```
 
-#### Change your ApplicationController
+### Change your ApplicationController
 
 **include TheRoleController** in your Application controller
 
@@ -145,24 +147,20 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
+  # your Access Denied processor
   def access_denied
-    render :text => 'access_denied: requires an role' and return
+    return render(text: 'access_denied: requires an role')
   end
 
-  alias_method :login_required,     :YOUR_AUTH_SYSTEM_LOGIN_REQUIRE_METHOD
+  # 1) LOGIN_REQUIRE => authenticate_user! for Devise
+  # 2) LOGIN_REQUIRE => require_login      for Sorcery
+
+  alias_method :login_required,     :LOGIN_REQUIRE
   alias_method :role_access_denied, :access_denied
 end
 ```
 
-**access_denied** or any other method for processing access denied situation
-
-#### YOUR_AUTH_SYSTEM_LOGIN_REQUIRE_METHOD!
-
-* **authenticate_user!** - method for Devise 2
-* **require_login** - method for Sorcery
-* **some_method** - from your Auth system
-
-#### Using with any controller
+### Using with any controller
 
 ``` ruby
 class PagesController < ApplicationController
@@ -193,7 +191,7 @@ end
 <% if @user.has_role?(:twitter, :button) %>
   Twitter Button is Here
 <% else %>
-  Access Denied
+  Nothing here :(
 <% end %>
 ```
 
