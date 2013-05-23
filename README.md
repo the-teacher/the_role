@@ -1,12 +1,38 @@
-# gem 'the_role' [![Build Status](https://travis-ci.org/the-teacher/the_role.png?branch=master)](https://travis-ci.org/the-teacher/the_role)
+## TheRole - Authorization Gem for Ruby on Rails with administrative interface.
 
-## Gem under active development
+### Semantic, Flexible, Lightweight
 
-This gem under active development. I try to make it ready for Rails 4
+[rubygems](http://rubygems.org/gems/the_role)
 
-You can use current version of code from GitHub page with Rails 4 projects
+[ruby-toolbox](https://www.ruby-toolbox.com/categories/rails_authorization)
 
-You can find RSpec tests in dummy application **spec/the_role_on_devise**
+[![Build Status](https://travis-ci.org/the-teacher/the_role.png?branch=master)](https://travis-ci.org/the-teacher/the_role)
+
+### Stabile versions
+
+**Rails 3**
+
+This version - first prototype. Not recommended for use.
+
+```
+gem "the_role", "~> 1.7.0"
+```
+
+**Rails 4**
+
+Stabile, tested, configurable. I like it ;)
+```
+gem "the_role", "~> 2.0.0"
+```
+
+### TheRole instead CanCan?
+
+I think, **CanCan** it's classic solution **for programmers**. It's great for many projects! But...
+
+For endpoint users (moderators, admins) CanCan is useless, because it's hasn't User Interface for role management.
+
+**TheRole** oriented **to people**. TheRole inspired by Rails **MVC** structure.
+
 
 | Bye bye CanCan, I got The Role! | Description |
 |:------------- |:-------------|
@@ -20,9 +46,7 @@ No more dependencies of Bootstrap, Less, Coffee. Just pure JS and CSS for admin 
 |:-------------:|
 |![TheRole](https://github.com/the-teacher/the_role/raw/master/pic.png)|
 
-### rubygems page
 
-http://rubygems.org/gems/the_role
 
 ### TheRole and Devise 2
 
