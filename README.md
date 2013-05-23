@@ -1,37 +1,8 @@
 ## TheRole - Authorization Gem for Ruby on Rails with administrative interface.
 
+[rubygems](http://rubygems.org/gems/the_role) | [ruby-toolbox](https://www.ruby-toolbox.com/categories/rails_authorization) | [![Build Status](https://travis-ci.org/the-teacher/the_role.png?branch=master)](https://travis-ci.org/the-teacher/the_role)
+
 ### Semantic, Flexible, Lightweight
-
-[rubygems](http://rubygems.org/gems/the_role)
-
-[ruby-toolbox](https://www.ruby-toolbox.com/categories/rails_authorization)
-
-[![Build Status](https://travis-ci.org/the-teacher/the_role.png?branch=master)](https://travis-ci.org/the-teacher/the_role)
-
-### Stabile versions
-
-**Rails 3**
-
-This version - first prototype. Not recommended for use.
-
-```
-gem "the_role", "~> 1.7.0"
-```
-
-**Rails 4**
-
-Stabile, tested, configurable. I like it ;)
-```
-gem "the_role", "~> 2.0.0"
-```
-
-### TheRole instead CanCan?
-
-I think, **CanCan** it's classic solution **for programmers**. It's great for many projects! But...
-
-For endpoint users (moderators, admins) CanCan is useless, because it's hasn't default simple User Interface for role management.
-
-**TheRole** oriented **to people**. TheRole inspired by Rails **MVC** structure. If you need simple, powerful and flexible authorization system TheRole can be useful for you.
 
 <table>
 <tr>
@@ -44,6 +15,32 @@ For endpoint users (moderators, admins) CanCan is useless, because it's hasn't d
 </tr>
 </table>  
 
+### Stabile versions
+
+**Rails 4**
+
+Stabile, tested, configurable. I like it ;)
+
+```
+gem "the_role", "~> 2.0.0"
+```
+
+**Rails 3**
+
+First prototype. Not recommended for use.
+
+```
+gem "the_role", "~> 1.7.0"
+```
+
+### TheRole instead CanCan?
+
+I think, **CanCan** it's classic solution **for programmers**. It's great for many projects! But...
+
+For endpoint users (moderators, admins) CanCan is useless, because it's hasn't default simple User Interface for role management.
+
+**TheRole** oriented **to people**. TheRole inspired by Rails **MVC** structure. If you need simple, powerful and flexible authorization system - TheRole can be useful for you.
+
 ### GUI
 
 <table>
@@ -54,64 +51,6 @@ For endpoint users (moderators, admins) CanCan is useless, because it's hasn't d
   <td><img src="https://github.com/the-teacher/the_role/raw/master/pic.png" alt="TheRole"></td>
 </tr>
 </table> 
-
-## Want to help or improve this gem?
-
-* Help me to create locale file for your language
-* Don't say to Ryan Bates about this project :) <3
-* Say to your friends about this project
-* I need for your feedback and issues
-* [How to start development process](https://github.com/the-teacher/the_role/wiki/Want-to-improve-this-gem%3F)
-
-### Rspec for TheRole
-
-[Specs with Devise 2](https://github.com/the-teacher/devise2_on_the_role/tree/master/spec)
-
-Read **How to start development process** manual for running specs
-
-## What does it mean semantic?
-
-Semantic - the science of meaning. Human should fast to understand what is happening in a role system.
-
-Look at next Role hash. If you can understand access rules - this authorization system is semantically.
-
-``` ruby
-role = {
-  'pages' => {
-    'index'   => true,
-    'show'    => true,
-    'new'     => false,
-    'edit'    => false,
-    'update'  => false,
-    'destroy' => false
-  },
-  'articles' => {
-    'index'  => true,
-    'show'   => true
-  },
-  'twitter'  => {
-    'button' => true,
-    'follow' => false
-  }
-}
-```
-
-### Virtual sections and rules
-
-Usually, we use real names of controllers and actions for names of sections and rules:
-
-``` ruby
-current_user.has_role?(:pages, :show)
-```
-
-But, also, you can use virtual names of sections, and virtual names of section's rules.
-
-``` ruby
-current_user.has_role?(:twitter, :button)
-current_user.has_role?(:facebook, :like)
-```
-
-And you can use them as well as other access rules.
 
 # Install
 
@@ -174,7 +113,7 @@ Define aliases method for correctly work TheRole's controllers
 
 ``` ruby
 class ApplicationController < ActionController::Base
-  include TheRole::Requires
+  include TheRoleController
 
   protect_from_forgery
 
@@ -212,16 +151,11 @@ class PagesController < ApplicationController
 
     # TheRole: You should define OWNER CHECK OBJECT
     # When editable object was found
+    # You should to define @owner_check_object before invoke of **owner_required** method
     @owner_check_object = @page
   end
 end
 ```
-
-### Ownership checking
-
-**owner_required** method require **@owner_check_object** variable, with cheked object.
-
-You should to define **@owners_check_object** before invoke of **owner_required** method.
 
 ### Using with Views
 
@@ -231,20 +165,6 @@ You should to define **@owners_check_object** before invoke of **owner_required*
 <% else %>
   Access Denied
 <% end %>
-```
-
-### Way to set default role for new User
-
-```ruby
-class User
-  before_create :set_default_role
-
-  private
-
-  def set_default_role
-    self.role = Role.where(:name => :user).first
-  end
-end
 ```
 
 ### Who is Administrator?
@@ -291,6 +211,50 @@ Administrator is owner of any object in system.
 Moderator of pages is owner of any page.
 
 User is owner of object, when **Object#user_id == User#id**.
+
+## What does it mean semantic?
+
+Semantic - the science of meaning. Human should fast to understand what is happening in a role system.
+
+Look at next Role hash. If you can understand access rules - this authorization system is semantically.
+
+``` ruby
+role = {
+  'pages' => {
+    'index'   => true,
+    'show'    => true,
+    'new'     => false,
+    'edit'    => false,
+    'update'  => false,
+    'destroy' => false
+  },
+  'articles' => {
+    'index'  => true,
+    'show'   => true
+  },
+  'twitter'  => {
+    'button' => true,
+    'follow' => false
+  }
+}
+```
+
+### Virtual sections and rules
+
+Usually, we use real names of controllers and actions for names of sections and rules:
+
+``` ruby
+current_user.has_role?(:pages, :show)
+```
+
+But, also, you can use virtual names of sections, and virtual names of section's rules.
+
+``` ruby
+current_user.has_role?(:twitter, :button)
+current_user.has_role?(:facebook, :like)
+```
+
+And you can use them as well as other access rules.
 
 # User Model methods
 
@@ -412,6 +376,7 @@ new_role_hash = {
 
 ### Changelog
 
+* 2.0.0 - Rails 4 ready, configurable, tests
 * 1.7.0 - mass assignment for User#role_id, doc, locales, changes in test app
 * 1.6.9 - assets precompile addon
 * 1.6.8 - doc, re dependencies
@@ -429,8 +394,6 @@ new_role_hash = {
 **Es** by @igmarin
 
 **zh_CN** by @doabit & @linjunpop
-
-... waiting for contributors
 
 ### MIT-LICENSE
 
