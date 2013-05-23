@@ -4,6 +4,7 @@ gem 'rails', github: 'rails/rails'
 gem 'arel',  github: 'rails/arel'
 
 gem 'sqlite3'
+gem 'state_machine'
 gem 'devise', git: "https://github.com/plataformatec/devise.git", branch: 'rails4'
 
 gem 'sprockets-rails', github: 'rails/sprockets-rails'

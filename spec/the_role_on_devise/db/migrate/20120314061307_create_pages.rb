@@ -4,7 +4,7 @@ class CreatePages < ActiveRecord::Migration
       t.integer :user_id
       t.string  :title
       t.text    :content
-      t.string  :state, :default => 'draft'
+      t.string  :state, default: :draft
 
       t.timestamps
     end
