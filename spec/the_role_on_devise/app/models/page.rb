@@ -1,7 +1,7 @@
 class Page < ActiveRecord::Base
-  state_machine :state do
-    state :draft, :published, :deleted
-  end
+  # state_machine :state do
+  #   state :draft, :published, :deleted
+  # end
 
   # RELATIONS
   belongs_to :user

@@ -39,8 +39,8 @@ For endpoint users (moderators, admins) CanCan is useless, because it's hasn't d
 <th align="left">Description</th>
 </tr>
 <tr>
-<td>![Bye bye CanCan, I got The Role!](https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png)</td>
-<td>TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with 2-level-hash, and store in database with JSON.<br><br>TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the **sections** and nested **rules**.<br><br>**Section** may be associated with **controller** name.<br><br>**Rule** may be associated with **action** name.<br><br>Section can have many rules.<br><br>Rule can have **true** or **false** value<br><br>**Sections** and nested **Rules** provide **ACL** (**Access Control List**)<br><br>Role **stored in the database as JSON** string.<br><br>Using of hashes, makes role system extremely easy to configure and use.<br></td>
+<td><img src="https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png" alt="Bye bye CanCan, I got The Role!"></td>
+<td>TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with 2-level-hash, and store in database with JSON.<br><br>TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the <b>sections</b> and nested <b>rules</b>.<br><br><b>Section</b> may be associated with <b>controller</b> name.<br><br><b>Rule</b> may be associated with <b>action</b> name.<br><br>Section can have many rules.<br><br>Rule can have <b>true</b> or <b>false</b> value<br><br><b>Sections</b> and nested <b>Rules</b> provide <b>ACL</b> (<b>Access Control List</b>)<br><br>Role <b>stored in the database as JSON</b> string.<br><br>Using of hashes, makes role system extremely easy to configure and use.<br></td>
 </tr>
 </table>  
 
@@ -51,7 +51,7 @@ For endpoint users (moderators, admins) CanCan is useless, because it's hasn't d
   <td>TheRole management web interface => localhost:3000/admin/roles</td>
 </tr>
 <tr>
-  <td>![TheRole](https://github.com/the-teacher/the_role/raw/master/pic.png)</td>
+  <td><img src="https://github.com/the-teacher/the_role/raw/master/pic.png" alt="TheRole"></td>
 </tr>
 </table> 
 
