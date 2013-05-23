@@ -183,6 +183,15 @@ class PagesController < ApplicationController
 end
 ```
 
+## Configuration
+
+```ruby
+TheRole.configure do |config|
+  config.layout = :application
+  config.default_user_role = :user
+end
+```
+
 ## Understanding 
 
 ### Using with Views
