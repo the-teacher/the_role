@@ -52,17 +52,17 @@ For endpoint users (moderators, admins) CanCan is useless, because it's hasn't d
 </tr>
 </table> 
 
-# Install
+## Install
 
 ``` ruby
-  gem 'the_role'
+gem "the_role", "~> 2.0.0"
 ```
 
 ``` ruby
-  bundle
+bundle
 ```
 
-### User Model migration
+### Change User Model migration
 
 Add **role_id:integer** field to your User Model
 
@@ -74,6 +74,7 @@ def self.up
     t.string :crypted_password, :default => nil
     t.string :salt,             :default => nil
 
+    # TheRole field
     t.integer :role_id,         :default => nil
 
     t.timestamps
@@ -81,33 +82,60 @@ def self.up
 end
 ```
 
-#### Generate Role Model without migration
+### Generate Role Model
 
 ``` ruby
 rails g model role --migration=false
 ```
 
-#### Generate Role migration
+Change your Role model
+
+```
+class Role < ActiveRecord::Base
+  include RoleModel
+end
+```
+
+### Generate Role migration
 
 ``` ruby
 rake the_role_engine:install:migrations
 ```
 
-#### Create database and migrate
+### Create database and migrate
 
 ``` ruby
 rake db:create && rake db:migrate
 ```
 
-#### Create fake roles for test (not required)
+### Create Admin Role
+
+```
+bin/rails c
+```
 
 ``` ruby
-rake db:roles:test
+role             = Role.new
+role.name        = "admin"
+role.title       = "role for admin"
+role.description = "this user can do anything"
+role.save
+
+role.create_rule(:system, :administrator)
+role.rule_on(:system, :administrator)
+
+role.admin? # => true
+```
+
+### Makes any user as Admin 
+
+```
+User.first.update( role: Role.with_name(:admin) )
 ```
 
 #### Change your ApplicationController
 
-**include TheRole::Requires** in your Application controller
+**include TheRoleController** in your Application controller
 
 Define aliases method for correctly work TheRole's controllers
 
@@ -156,6 +184,8 @@ class PagesController < ApplicationController
   end
 end
 ```
+
+## Understanding 
 
 ### Using with Views
 
