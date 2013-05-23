@@ -185,6 +185,8 @@ end
 
 ## Configuration
 
+config/initializers/the_role.rb
+
 ```ruby
 TheRole.configure do |config|
   config.layout = :application
