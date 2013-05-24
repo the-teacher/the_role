@@ -4,6 +4,8 @@
 
 ### Semantic, Flexible, Lightweight
 
+### INTRO
+
 <table>
 <tr>
 <th align="left">Bye bye CanCan, I got The Role!</th>
@@ -15,30 +17,6 @@
 </tr>
 </table>  
 
-### Stabile versions
-
-**Rails 4**
-
-Stabile, tested, configurable. I like it ;)
-
-```
-gem "the_role", "~> 2.0.0"
-```
-
-**Rails 3**
-
-First prototype. Not recommended for use.
-
-```
-gem "the_role", "1.7.0"
-```
-
-### TheRole instead CanCan?
-
-TheRole in contrast to CanCan has simple and predefined way to find access state for current role. If you didn't want to create your own role scheme with CanCan Abilities - TheRole can be great solution for your.
-
-You can manage roles with simple UI. TheRole's ACL structure inspired by Rails controllers, that is why it's so great for Rails application.
-
 ### GUI
 
 <table>
@@ -48,7 +26,47 @@ You can manage roles with simple UI. TheRole's ACL structure inspired by Rails c
 <tr>
   <td><img src="https://github.com/the-teacher/the_role/raw/master/pic.png" alt="TheRole"></td>
 </tr>
-</table> 
+</table>
+
+### Stabile versions
+
+**Rails 4**
+
+Stabile, tested, configurable. I like it ;)
+
+```
+gem 'the_role', '~> 2.0.0'
+```
+
+**Rails 3**
+
+First prototype. Not recommended for use.
+
+```
+gem 'the_role', '1.7.0'
+```
+
+## Instalation
+
+* [INSTALL](#install)
+* [GUI](#gui)
+* [Configuration](#configuration)
+* [Bootstrap Assets](#bootstrap-assets)
+* [Versions for Rails 3/4](#stabile-versions)
+
+## Understanding
+
+* [TheRole instead CanCan?](#therole-instead-cancan)
+* [Who is Administrator?](#who-is-administrator)
+* [Who is Moderator?](#who-is-moderator)
+* [Who is Owner?](#who-is-owner)
+* [Virtual sections and rules](#virtual-sections-and-rules)
+* [Using with Views](#using-with-views)
+
+## API
+
+* [User](#user-api)
+* [Role](#role-api)
 
 ## Install
 
@@ -186,7 +204,13 @@ class PagesController < ApplicationController
 end
 ```
 
-## Configuration
+### TheRole instead CanCan?
+
+TheRole in contrast to CanCan has simple and predefined way to find access state for current role. If you didn't want to create your own role scheme with CanCan Abilities - TheRole can be great solution for your.
+
+You can manage roles with simple UI. TheRole's ACL structure inspired by Rails controllers, that is why it's so great for Rails application.
+
+### Configuration
 
 config/initializers/the_role.rb
 
@@ -197,7 +221,7 @@ TheRole.configure do |config|
 end
 ```
 
-## Assets
+## Bootstrap Assets
 
 Bootstrap components
 
