@@ -28,33 +28,22 @@
 </tr>
 </table>
 
-### Stabile versions
-
-**Rails 4**
-
-Stabile, tested, configurable. I like it ;)
+### Rails 4 version
 
 ```
 gem 'the_role', '~> 2.0.0'
 ```
 
-**Rails 3**
+[Rails 3 version](http://rubygems.org/gems/the_role/versions/1.7.0) (not recommended for use)
 
-First prototype. Not recommended for use.
-
-```
-gem 'the_role', '1.7.0'
-```
-
-## Instalation
+### Instalation
 
 * [INSTALL](#install)
 * [GUI](#gui)
 * [Configuration](#configuration)
 * [Bootstrap Assets](#bootstrap-assets)
-* [Versions for Rails 3/4](#stabile-versions)
 
-## Understanding
+### Understanding
 
 * [TheRole instead CanCan?](#therole-instead-cancan)
 * [Who is Administrator?](#who-is-administrator)
@@ -63,7 +52,7 @@ gem 'the_role', '1.7.0'
 * [Virtual sections and rules](#virtual-sections-and-rules)
 * [Using with Views](#using-with-views)
 
-## API
+### API
 
 * [User](#user-api)
 * [Role](#role-api)
@@ -83,7 +72,7 @@ gem "the_role", "~> 2.0.0"
 bundle
 ```
 
-### Change User migration
+#### Change User migration
 
 Add **role_id:integer** field to your User Model
 
@@ -103,7 +92,7 @@ def self.up
 end
 ```
 
-### Role Model
+#### Role Model
 
 Generate Role model
 
@@ -125,13 +114,13 @@ install TheRole migrations
 rake the_role_engine:install:migrations
 ```
 
-### Invoke migration
+#### Invoke migration
 
 ```ruby
-rake db:create && rake db:migrate
+rake db:migrate
 ```
 
-### Create Admin Role
+#### Create Admin Role
 
 ```
 bin/rails c
@@ -150,13 +139,13 @@ role.rule_on(:system, :administrator)
 role.admin? # => true
 ```
 
-### Makes any user as Admin
+#### Makes any user as Admin
 
 ```
 User.first.update( role: Role.with_name(:admin) )
 ```
 
-### Change your ApplicationController
+#### Change your ApplicationController
 
 **include TheRoleController** in your Application controller
 
@@ -181,7 +170,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-### Using with any controller
+#### Using with any controller
 
 ``` ruby
 class PagesController < ApplicationController
