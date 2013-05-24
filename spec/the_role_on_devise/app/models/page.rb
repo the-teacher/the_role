@@ -1,8 +1,4 @@
 class Page < ActiveRecord::Base
-  # state_machine :state do
-  #   state :draft, :published, :deleted
-  # end
-
   # RELATIONS
   belongs_to :user
 
@@ -10,4 +6,19 @@ class Page < ActiveRecord::Base
   validates :user,    presence: true
   validates :title,   presence: true, uniqueness: true
   validates :content, presence: true
+
+  state_machine :state, :initial => :draft do
+    # events
+    event :to_draft do 
+      transition all => :draft
+    end
+
+    event :to_published do
+      transition all => :published
+    end
+
+    event :to_deleted do
+      transition all => :deleted
+    end
+  end
 end

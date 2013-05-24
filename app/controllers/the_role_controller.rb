@@ -7,7 +7,7 @@ module TheRoleController
   end
 
   def role_required
-    role_access_denied unless current_user.has_role?(controller_name, action_name)
+    role_access_denied unless current_user.has_role?(controller_path, action_name)
   end
 
   def owner_required

@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', github: 'rails/rails'
+gem 'rails', github: 'rails/rails', branch: 'v4.0.0.rc1'
 gem 'arel',  github: 'rails/arel'
 
 gem 'sqlite3'
-gem 'state_machine'
+gem "state_machine", "~> 1.2.0"
 gem 'devise', git: "https://github.com/plataformatec/devise.git", branch: 'rails4'
 
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
