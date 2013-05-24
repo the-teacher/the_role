@@ -53,6 +53,11 @@ You can manage roles with simple UI. TheRole's ACL structure inspired by Rails c
 ## Install
 
 ``` ruby
+# Optional for UI.
+# You can use any Bootstrap version (CSS, LESS, SCSS)
+# See required components below
+gem 'bootstrap-sass', '~> 2.3.1.0'
+
 gem "the_role", "~> 2.0.0"
 ```
 
@@ -190,6 +195,41 @@ TheRole.configure do |config|
   config.layout = :application
   config.default_user_role = :user
 end
+```
+
+## Assets
+
+Bootstrap components
+
+**app/assets/stylesheets/the_role/bootstrap_components.css.scss**
+
+```
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/reset";
+
+@import "bootstrap/scaffolding";
+@import "bootstrap/grid";
+@import "bootstrap/layouts";
+
+@import "bootstrap/navs";
+@import "bootstrap/wells";
+@import "bootstrap/forms";
+@import "bootstrap/close";
+@import "bootstrap/tables";
+@import "bootstrap/navbar";
+@import "bootstrap/dropdowns";
+
+@import "bootstrap/alerts";
+@import "bootstrap/buttons";
+@import "bootstrap/button-groups";
+```
+
+**application.css**
+
+```
+//= require the_role/bootstrap_components
+//= require the_role
 ```
 
 ## Understanding 
