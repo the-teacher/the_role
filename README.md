@@ -30,16 +30,14 @@ gem "the_role", "~> 2.0.0"
 First prototype. Not recommended for use.
 
 ```
-gem "the_role", "~> 1.7.0"
+gem "the_role", "1.7.0"
 ```
 
 ### TheRole instead CanCan?
 
-I think, **CanCan** it's classic solution **for programmers**. It's great for many projects! But...
+TheRole in contrast to CanCan has simple and predefined way to find access state for current role. If you didn't want to create your own role scheme with CanCan Abilities - TheRole can be great solution for your.
 
-For endpoint users (moderators, admins) CanCan is useless, because it's hasn't default simple User Interface for role management.
-
-**TheRole** oriented **to people**. TheRole inspired by Rails **MVC** structure. If you need simple, powerful and flexible authorization system - TheRole can be useful for you.
+You can manage roles with simple UI. TheRole's ACL structure inspired by Rails controllers, that is why it's so great for Rails application.
 
 ### GUI
 
