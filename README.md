@@ -58,7 +58,7 @@ gem 'the_role', '~> 2.0.0'
 * [Role](#role-api)
 
 <hr>
-## Install
+### Install
 <hr>
 
 ``` ruby
