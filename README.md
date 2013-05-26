@@ -106,14 +106,6 @@ Generate Role model
 bundle exec rails g the_role install
 ```
 
-copy following files:
-
-```
-app/models/role.rb
-
-config/initializers/the_role.rb
-```
-
 install TheRole migrations
 
 ```ruby
