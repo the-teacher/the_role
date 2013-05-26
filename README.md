@@ -57,9 +57,7 @@ gem 'the_role', '~> 2.0.0'
 * [User](#user-api)
 * [Role](#role-api)
 
-<hr>
-### Install
-<hr>
+## Install
 
 ``` ruby
 # Optional for UI.
@@ -180,7 +178,49 @@ class PagesController < ApplicationController
 end
 ```
 
-<hr>
+### Configuration
+
+config/initializers/the_role.rb
+
+```ruby
+TheRole.configure do |config|
+  config.layout            = :application # default Layout for TheRole UI
+  config.default_user_role = nil          # set default role (name)
+end
+```
+
+### Bootstrap Assets
+
+**application.css**
+
+```
+//= require the_role/bootstrap_sass
+//= require the_role
+```
+
+If you not use **bootstrap-sass** gem you should add following componetns from your bootstrap version instead **the_role/bootstrap_sass**:
+
+```
+bootstrap/variables
+bootstrap/mixins
+bootstrap/reset
+
+bootstrap/scaffolding
+bootstrap/grid
+bootstrap/layouts
+
+bootstrap/navs
+bootstrap/wells
+bootstrap/forms
+bootstrap/close
+bootstrap/tables
+bootstrap/navbar
+bootstrap/dropdowns
+
+bootstrap/alerts
+bootstrap/buttons
+bootstrap/button-groups
+```
 
 ### TheRole instead CanCan?
 
@@ -188,51 +228,14 @@ TheRole in contrast to CanCan has simple and predefined way to find access state
 
 You can manage roles with simple UI. TheRole's ACL structure inspired by Rails controllers, that is why it's so great for Rails application.
 
-### Configuration
-
-config/initializers/the_role.rb
-
-```ruby
-TheRole.configure do |config|
-  config.layout = :application
-  config.default_user_role = :user
-end
-```
-
-## Bootstrap Assets
+## 
 
 Bootstrap components
 
 **app/assets/stylesheets/the_role/bootstrap_components.css.scss**
 
-```
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
-@import "bootstrap/reset";
 
-@import "bootstrap/scaffolding";
-@import "bootstrap/grid";
-@import "bootstrap/layouts";
 
-@import "bootstrap/navs";
-@import "bootstrap/wells";
-@import "bootstrap/forms";
-@import "bootstrap/close";
-@import "bootstrap/tables";
-@import "bootstrap/navbar";
-@import "bootstrap/dropdowns";
-
-@import "bootstrap/alerts";
-@import "bootstrap/buttons";
-@import "bootstrap/button-groups";
-```
-
-**application.css**
-
-```
-//= require the_role/bootstrap_components
-//= require the_role
-```
 
 ## Understanding 
 
