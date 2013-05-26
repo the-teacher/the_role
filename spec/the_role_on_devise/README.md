@@ -22,5 +22,7 @@ bundle exec rspec spec/models/ --format documentation
 bin/rake db:drop &&
 bin/rake db:create &&
 bin/rake db:migrate
+
+bin/rails g the_role admin &&
 bin/rake db:seed
 ```

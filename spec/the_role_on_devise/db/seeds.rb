@@ -1,7 +1,3 @@
-Role.destroy_all
-User.destroy_all
-Page.destroy_all
-
 ##############################
 # Roles
 ##############################
@@ -63,7 +59,8 @@ User.create!(
     company: Faker::Company.name,
     address: Faker::Address.street_address,
     password: 'qwerty',
-    password_confirmation: 'qwerty'
+    password_confirmation: 'qwerty',
+    role: Role.with_name(:user)
   )
 end
 

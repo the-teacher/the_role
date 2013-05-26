@@ -28,6 +28,13 @@
 </tr>
 </table>
 
+puts following yields into your layout:
+
+```ruby
+= yield :role_sidebar
+= yield :role_main
+```
+
 ### Rails 4 version
 
 ```
@@ -99,7 +106,7 @@ def self.up
 end
 ```
 
-### Role Model
+### Create Role model
 
 Generate Role model
 
@@ -119,13 +126,15 @@ rake the_role_engine:install:migrations
 rake db:migrate
 ```
 
-#### Create Admin Role
+### Create Admin
+
+Create admin role
 
 ```
 bundle exec rails g the_role admin
 ```
 
-#### Makes any user as Admin
+Makes any user as Admin
 
 ```
 User.first.update( role: Role.with_name(:admin) )
@@ -133,7 +142,7 @@ User.first.update( role: Role.with_name(:admin) )
 
 ## Integration
 
-### Change your ApplicationController
+#### Change your ApplicationController
 
 **include TheRoleController** in your Application controller
 
@@ -150,15 +159,16 @@ class ApplicationController < ActionController::Base
     return render(text: 'access_denied: requires an role')
   end
 
-  # 1) LOGIN_REQUIRE => authenticate_user! for Devise
-  # 2) LOGIN_REQUIRE => require_login      for Sorcery
+  # 1) LOGIN_REQUIRE => authenticate_user!    for Devise
+  # 2) LOGIN_REQUIRE => require_login         for Sorcery
+  # 3) LOGIN_REQUIRE => user_require_method   for other Authentication solution
 
   alias_method :login_required,     :LOGIN_REQUIRE
   alias_method :role_access_denied, :access_denied
 end
 ```
 
-### Using with any controller
+#### Using with any controller
 
 ``` ruby
 class PagesController < ApplicationController
