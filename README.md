@@ -175,12 +175,12 @@ class PagesController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
   before_filter :role_required,  :except => [:index, :show]
 
-  before_filter :find_page,      :only   => [:edit, :update, :destroy]
+  before_filter :set_page,       :only   => [:edit, :update, :destroy]
   before_filter :owner_required, :only   => [:edit, :update, :destroy]
 
   private
 
-  def find_page
+  def set_page
     @page = Page.find params[:id]
 
     # TheRole: You should define OWNER CHECK OBJECT
@@ -200,7 +200,7 @@ end
 //= require the_role
 ```
 
-If you not use **bootstrap-sass** gem you should add following componetns from your bootstrap version instead **the_role/bootstrap_sass**:
+If you not use **bootstrap-sass** gem you should to add following componetns from your bootstrap version instead **the_role/bootstrap_sass**:
 
 ```
 bootstrap/variables
@@ -241,16 +241,7 @@ TheRole in contrast to CanCan has simple and predefined way to find access state
 
 You can manage roles with simple UI. TheRole's ACL structure inspired by Rails controllers, that is why it's so great for Rails application.
 
-## 
-
-Bootstrap components
-
-**app/assets/stylesheets/the_role/bootstrap_components.css.scss**
-
-
-
-
-## Understanding 
+## Understanding
 
 ### Using with Views
 
