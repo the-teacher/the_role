@@ -57,7 +57,9 @@ gem 'the_role', '~> 2.0.0'
 * [User](#user-api)
 * [Role](#role-api)
 
+<hr>
 ## Install
+<hr>
 
 ``` ruby
 # Optional for UI.
