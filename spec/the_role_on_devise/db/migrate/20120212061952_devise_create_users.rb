@@ -20,7 +20,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
-      t.integer  :role_id, :null => true
+      # TheRole FIELD
+      t.integer  :role_id
 
       ## Rememberable
       t.datetime :remember_created_at

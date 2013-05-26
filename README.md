@@ -72,6 +72,12 @@ gem "the_role", "~> 2.0.0"
 bundle
 ```
 
+install note
+
+```
+bundle exec rails g the_role --help
+```
+
 #### Change User migration
 
 Add **role_id:integer** field to your User Model
@@ -85,7 +91,7 @@ def self.up
     t.string :salt,             :default => nil
 
     # TheRole field
-    t.integer :role_id,         :default => nil
+    t.integer :role_id
 
     t.timestamps
   end
@@ -96,16 +102,16 @@ end
 
 Generate Role model
 
-``` ruby
-rails g model role --migration=false
+```ruby
+bundle exec rails g the_role install
 ```
 
-Change your Role model
+copy following files:
 
-```ruby
-class Role < ActiveRecord::Base
-  include RoleModel
-end
+```
+app/models/role.rb
+
+config/initializers/the_role.rb
 ```
 
 install TheRole migrations
@@ -123,20 +129,7 @@ rake db:migrate
 #### Create Admin Role
 
 ```
-bin/rails c
-```
-
-``` ruby
-role             = Role.new
-role.name        = "admin"
-role.title       = "role for admin"
-role.description = "this user can do anything"
-role.save
-
-role.create_rule(:system, :administrator)
-role.rule_on(:system, :administrator)
-
-role.admin? # => true
+bundle exec rails g the_role admin
 ```
 
 #### Makes any user as Admin

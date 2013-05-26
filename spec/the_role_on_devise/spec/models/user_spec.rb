@@ -25,6 +25,7 @@ describe User do
 
   describe "Create user with default Role" do
     before(:each) do
+      TheRole.config.default_user_role = :user
       FactoryGirl.create(:role_user)
       FactoryGirl.create(:user)
       @user = User.first

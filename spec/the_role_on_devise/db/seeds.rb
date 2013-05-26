@@ -25,13 +25,6 @@ Role.create!(
 )
 
 Role.create!(
-  name: :admin,
-  title: :admin_role,
-  description: :god_of_this_system,
-  the_role: { system: { administrator: true } }
-)
-
-Role.create!(
   name: :pages_moderator,
   title: :pages_moderator,
   description: :can_do_anything_with_pages,
