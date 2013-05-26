@@ -39,9 +39,10 @@ gem 'the_role', '~> 2.0.0'
 ### Instalation
 
 * [INSTALL](#install)
-* [GUI](#gui)
-* [Configuration](#configuration)
+* [INTEGRATION](#integration)
 * [Bootstrap Assets](#bootstrap-assets)
+* [Configuration (optional)](#configuration)
+* [GUI](#gui)
 
 ### Understanding
 
@@ -130,6 +131,8 @@ bundle exec rails g the_role admin
 User.first.update( role: Role.with_name(:admin) )
 ```
 
+## Integration
+
 ### Change your ApplicationController
 
 **include TheRoleController** in your Application controller
@@ -178,18 +181,7 @@ class PagesController < ApplicationController
 end
 ```
 
-### Configuration
-
-config/initializers/the_role.rb
-
-```ruby
-TheRole.configure do |config|
-  config.layout            = :application # default Layout for TheRole UI
-  config.default_user_role = nil          # set default role (name)
-end
-```
-
-### Bootstrap Assets
+## Bootstrap Assets
 
 **application.css**
 
@@ -220,6 +212,17 @@ bootstrap/dropdowns
 bootstrap/alerts
 bootstrap/buttons
 bootstrap/button-groups
+```
+
+### Configuration
+
+config/initializers/the_role.rb
+
+```ruby
+TheRole.configure do |config|
+  config.layout            = :application # default Layout for TheRole UI
+  config.default_user_role = nil          # set default role (name)
+end
 ```
 
 ### TheRole instead CanCan?
