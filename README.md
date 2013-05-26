@@ -1,6 +1,6 @@
 ## TheRole - Authorization Gem for Ruby on Rails with administrative interface.
 
-[![Gem Version](https://badge.fury.io/rb/the_role.png)](http://badge.fury.io/rb/the_role) | [ruby-toolbox](https://www.ruby-toolbox.com/categories/rails_authorization) | [![Build Status](https://travis-ci.org/the-teacher/the_role.png?branch=master)](https://travis-ci.org/the-teacher/the_role)
+[![Gem Version](https://badge.fury.io/rb/the_role.png)](http://badge.fury.io/rb/the_role) | [![Build Status](https://travis-ci.org/the-teacher/the_role.png?branch=master)](https://travis-ci.org/the-teacher/the_role) | [![Code Climate](https://codeclimate.com/github/the-teacher/the_role.png)](https://codeclimate.com/github/the-teacher/the_role) | [ruby-toolbox](https://www.ruby-toolbox.com/categories/rails_authorization)
 
 ### Semantic, Flexible, Lightweight
 
