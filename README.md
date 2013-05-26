@@ -78,7 +78,7 @@ install note
 bundle exec rails g the_role --help
 ```
 
-#### Change User migration
+### Change User migration
 
 Add **role_id:integer** field to your User Model
 
@@ -98,7 +98,7 @@ def self.up
 end
 ```
 
-#### Role Model
+### Role Model
 
 Generate Role model
 
@@ -130,7 +130,7 @@ bundle exec rails g the_role admin
 User.first.update( role: Role.with_name(:admin) )
 ```
 
-#### Change your ApplicationController
+### Change your ApplicationController
 
 **include TheRoleController** in your Application controller
 
@@ -155,7 +155,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-#### Using with any controller
+### Using with any controller
 
 ``` ruby
 class PagesController < ApplicationController
@@ -177,6 +177,8 @@ class PagesController < ApplicationController
   end
 end
 ```
+
+<hr>
 
 ### TheRole instead CanCan?
 
