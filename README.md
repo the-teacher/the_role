@@ -342,9 +342,9 @@ Moderator of pages is owner of any page.
 User is owner of object, when **Object#user_id == User#id**.
 
 
-## API
+# API
 
-### User
+## User
 
 ```ruby
 # User's role
@@ -381,7 +381,7 @@ Is it **Owner** of object?
 @user.owner?(@article)             => true | false
 ```
 
-### Role
+## Role
 
 ```ruby
 # Find a Role by name
