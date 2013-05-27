@@ -177,6 +177,10 @@ class PagesController < ApplicationController
   before_action :set_page,       only: [:edit, :update, :destroy]
   before_action :owner_required, only: [:edit, :update, :destroy]
 
+  def edit
+     # ONLY OWNER CAN EDIT THIS PAGE
+  end
+
   private
 
   def set_page
