@@ -55,19 +55,19 @@ gem 'the_role', '~> 2.0.0'
 * [TheRole instead CanCan?](#therole-instead-cancan)
 * [What does it mean semantic?](#what-does-it-mean-semantic)
 * [Virtual sections and rules](#virtual-sections-and-rules)
+* [Using with Views](#using-with-views)
 * [Who is Administrator?](#who-is-administrator)
 * [Who is Moderator?](#who-is-moderator)
 * [Who is Owner?](#who-is-owner)
-* [Using with Views](#using-with-views)
 
 ### API
 
-* [User](#user-api)
-* [Role](#role-api)
+* [User](#user)
+* [Role](#role)
 
 ## Install
 
-``` ruby
+```ruby
 # Optional for UI.
 # You can use any Bootstrap version (CSS, LESS, SCSS)
 # You can find required components below
@@ -76,7 +76,7 @@ gem 'bootstrap-sass', '~> 2.3.1.0'
 gem "the_role", "~> 2.0.0"
 ```
 
-``` ruby
+```ruby
 bundle
 ```
 
@@ -146,7 +146,7 @@ User.first.update( role: Role.with_name(:admin) )
 
 **include TheRoleController** in your Application controller
 
-``` ruby
+```ruby
 class ApplicationController < ActionController::Base
   include TheRoleController
 
@@ -169,7 +169,7 @@ end
 
 #### Using with any controller
 
-``` ruby
+```ruby
 class PagesController < ApplicationController
   before_action :login_required, except: [:index, :show]
   before_action :role_required,  except: [:index, :show]
@@ -248,7 +248,7 @@ Semantic - the science of meaning. Human should fast to understand what is happe
 
 Look at next Role hash. If you can understand access rules - this authorization system is semantically.
 
-``` ruby
+```ruby
 role = {
   'pages' => {
     'index'   => true,
@@ -273,18 +273,28 @@ role = {
 
 Usually, we use real names of controllers and actions for names of sections and rules:
 
-``` ruby
+```ruby
 @user.has_role?(:pages, :show)
 ```
 
 But, also, you can use virtual names of sections, and virtual names of section's rules.
 
-``` ruby
+```ruby
 @user.has_role?(:twitter, :button)
 @user.has_role?(:facebook, :like)
 ```
 
 And you can use them as well as other access rules.
+
+#### Using with Views
+
+```ruby
+<% if @user.has_role?(:twitter, :button) %>
+  Twitter Button is Here
+<% else %>
+  Nothing here :(
+<% end %>
+```
 
 #### Who is Administrator?
 
@@ -295,7 +305,7 @@ Administrator is the owner of any objects in your application.
 Administrator it's a user, which has virtual section **system** and rule **administrator** in the role-hash.
 
 
-``` ruby
+```ruby
 admin_role_fragment = {
   :system => {
     :administrator => true
@@ -313,7 +323,7 @@ Moderator it's a user, which has a virtual section **moderator**, with **section
 
 There is Moderator of Pages (controller) and Twitter (virtual section)
 
-``` ruby
+```ruby
 moderator_role_fragment = {
   :moderator => {
     :pages   => true,
@@ -331,34 +341,25 @@ Moderator of pages is owner of any page.
 
 User is owner of object, when **Object#user_id == User#id**.
 
-#### Using with Views
-
-```ruby
-<% if @user.has_role?(:twitter, :button) %>
-  Twitter Button is Here
-<% else %>
-  Nothing here :(
-<% end %>
-```
 
 ## API
 
 ### User
 
-``` ruby
+```ruby
 # User's role
 @user.role # => Role obj
 ```
 
 Is it Administrator?
 
-``` ruby
+```ruby
 @user.admin?                       => true | false
 ```
 
 Is it Moderator?
 
-``` ruby
+```ruby
 @user.moderator?(:pages)           => true | false
 @user.moderator?(:blogs)           => true | false
 @user.moderator?(:articles)        => true | false
@@ -366,7 +367,7 @@ Is it Moderator?
 
 Has a user an access to **rule** of **section** (action of controller)?
 
-``` ruby
+```ruby
 @user.has_role?(:pages,    :show)  => true | false
 @user.has_role?(:blogs,    :new)   => true | false
 @user.has_role?(:articles, :edit)  => true | false
@@ -374,7 +375,7 @@ Has a user an access to **rule** of **section** (action of controller)?
 
 Is it **Owner** of object?
 
-``` ruby
+```ruby
 @user.owner?(@page)                => true | false
 @user.owner?(@blog)                => true | false
 @user.owner?(@article)             => true | false
@@ -382,12 +383,12 @@ Is it **Owner** of object?
 
 ### Role
 
-``` ruby
+```ruby
 # Find a Role by name
 @role = Role.with_name(:user)
 ```
 
-``` ruby
+```ruby
 @role.has?(:pages, :show)       => true | false
 @role.moderator?(:pages)        => true | false
 @role.admin?                    => true | false
@@ -395,19 +396,19 @@ Is it **Owner** of object?
 
 #### CREATE
 
-``` ruby
+```ruby
 # Create a section of rules
 @role.create_section(:pages)
 ```
 
-``` ruby
+```ruby
 # Create rule in section (false value by default)
 @role.create_rule(:pages, :index)
 ```
 
 #### READ
 
-``` ruby
+```ruby
 @role.to_hash => Hash
 
 # JSON string
@@ -419,17 +420,17 @@ Is it **Owner** of object?
 
 #### UPDATE
 
-``` ruby
+```ruby
 # set this rule on true
 @role.rule_on(:pages, :index)
 ```
 
-``` ruby
+```ruby
 # set this rule on false
 @role.rule_off(:pages, :index)
 ```
 
-``` ruby
+```ruby
 # Incoming hash is true-mask-hash
 # All rules of Role will be reset to false
 # Only rules from true-mask-hash will be set on true
@@ -445,7 +446,7 @@ new_role_hash = {
 
 #### DELETE
 
-``` ruby
+```ruby
 # delete a section
 @role.delete_section(:pages)
 
@@ -453,8 +454,10 @@ new_role_hash = {
 @role.delete_rule(:pages, :show)
 ```
 
-### Changelog
+#### Changelog
 
+* 2.0.2 - code cleanup, readme
+* 2.0.1 - code cleanup
 * 2.0.0 - Rails 4 ready, configurable, tests
 * 1.7.0 - mass assignment for User#role_id, doc, locales, changes in test app
 * 1.6.9 - assets precompile addon
