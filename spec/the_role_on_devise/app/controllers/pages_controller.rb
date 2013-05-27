@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
-  # Devise2 and TheRole before_filters
-  before_filter :login_required, :except => [:index, :show]
-  before_filter :role_required,  :except => [:index, :show]
+  # Devise2 and TheRole before_actions
+  before_action :login_required, except: [:index, :show]
+  before_action :role_required,  except: [:index, :show]
 
-  before_filter :find_page,      :only   => [:edit, :update, :destroy]
-  before_filter :owner_required, :only   => [:edit, :update, :destroy]
+  before_action :set_page,       only:   [:edit, :update, :destroy]
+  before_action :owner_required, only:   [:edit, :update, :destroy]
 
   # Public
 
@@ -61,7 +61,7 @@ class PagesController < ApplicationController
 
   private
 
-  def find_page
+  def set_page
     @page = Page.find params[:id]
 
     # TheRole: You should define OWNER CHECK OBJECT

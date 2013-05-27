@@ -47,17 +47,17 @@ gem 'the_role', '~> 2.0.0'
 
 * [INSTALL](#install)
 * [INTEGRATION](#integration)
-* [Bootstrap Assets](#bootstrap-assets)
+* [Assets and Bootstrap](#assets-and-bootstrap)
 * [Configuration (optional)](#configuration)
-* [GUI](#gui)
 
 ### Understanding
 
 * [TheRole instead CanCan?](#therole-instead-cancan)
+* [What does it mean semantic?](#what-does-it-mean-semantic)
+* [Virtual sections and rules](#virtual-sections-and-rules)
 * [Who is Administrator?](#who-is-administrator)
 * [Who is Moderator?](#who-is-moderator)
 * [Who is Owner?](#who-is-owner)
-* [Virtual sections and rules](#virtual-sections-and-rules)
 * [Using with Views](#using-with-views)
 
 ### API
@@ -70,7 +70,7 @@ gem 'the_role', '~> 2.0.0'
 ``` ruby
 # Optional for UI.
 # You can use any Bootstrap version (CSS, LESS, SCSS)
-# See required components below
+# You can find required components below
 gem 'bootstrap-sass', '~> 2.3.1.0'
 
 gem "the_role", "~> 2.0.0"
@@ -93,10 +93,10 @@ Add **role_id:integer** field to your User Model
 ```ruby
 def self.up
   create_table :users do |t|
-    t.string :login,            :null    => false
-    t.string :email,            :default => nil
-    t.string :crypted_password, :default => nil
-    t.string :salt,             :default => nil
+    t.string :login
+    t.string :email
+    t.string :crypted_password
+    t.string :salt
 
     # TheRole field
     t.integer :role_id
@@ -172,11 +172,11 @@ end
 
 ``` ruby
 class PagesController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
-  before_filter :role_required,  :except => [:index, :show]
+  before_action :login_required, except: [:index, :show]
+  before_action :role_required,  except: [:index, :show]
 
-  before_filter :set_page,       :only   => [:edit, :update, :destroy]
-  before_filter :owner_required, :only   => [:edit, :update, :destroy]
+  before_action :set_page,       only: [:edit, :update, :destroy]
+  before_action :owner_required, only: [:edit, :update, :destroy]
 
   private
 
@@ -191,7 +191,7 @@ class PagesController < ApplicationController
 end
 ```
 
-## Bootstrap Assets
+## Assets and Bootstrap
 
 **application.css**
 
@@ -224,7 +224,7 @@ bootstrap/buttons
 bootstrap/button-groups
 ```
 
-### Configuration
+## Configuration
 
 config/initializers/the_role.rb
 
@@ -235,23 +235,57 @@ TheRole.configure do |config|
 end
 ```
 
+## Understanding
+
 ### TheRole instead CanCan?
 
 TheRole in contrast to CanCan has simple and predefined way to find access state for current role. If you didn't want to create your own role scheme with CanCan Abilities - TheRole can be great solution for your.
 
 You can manage roles with simple UI. TheRole's ACL structure inspired by Rails controllers, that is why it's so great for Rails application.
 
-## Understanding
+## What does it mean semantic?
 
-### Using with Views
+Semantic - the science of meaning. Human should fast to understand what is happening in a role system.
 
-```ruby
-<% if @user.has_role?(:twitter, :button) %>
-  Twitter Button is Here
-<% else %>
-  Nothing here :(
-<% end %>
+Look at next Role hash. If you can understand access rules - this authorization system is semantically.
+
+``` ruby
+role = {
+  'pages' => {
+    'index'   => true,
+    'show'    => true,
+    'new'     => false,
+    'edit'    => false,
+    'update'  => false,
+    'destroy' => false
+  },
+  'articles' => {
+    'index'  => true,
+    'show'   => true
+  },
+  'twitter'  => {
+    'button' => true,
+    'follow' => false
+  }
+}
 ```
+
+### Virtual sections and rules
+
+Usually, we use real names of controllers and actions for names of sections and rules:
+
+``` ruby
+@user.has_role?(:pages, :show)
+```
+
+But, also, you can use virtual names of sections, and virtual names of section's rules.
+
+``` ruby
+@user.has_role?(:twitter, :button)
+@user.has_role?(:facebook, :like)
+```
+
+And you can use them as well as other access rules.
 
 ### Who is Administrator?
 
@@ -298,92 +332,60 @@ Moderator of pages is owner of any page.
 
 User is owner of object, when **Object#user_id == User#id**.
 
-## What does it mean semantic?
+### Using with Views
 
-Semantic - the science of meaning. Human should fast to understand what is happening in a role system.
-
-Look at next Role hash. If you can understand access rules - this authorization system is semantically.
-
-``` ruby
-role = {
-  'pages' => {
-    'index'   => true,
-    'show'    => true,
-    'new'     => false,
-    'edit'    => false,
-    'update'  => false,
-    'destroy' => false
-  },
-  'articles' => {
-    'index'  => true,
-    'show'   => true
-  },
-  'twitter'  => {
-    'button' => true,
-    'follow' => false
-  }
-}
+```ruby
+<% if @user.has_role?(:twitter, :button) %>
+  Twitter Button is Here
+<% else %>
+  Nothing here :(
+<% end %>
 ```
 
-### Virtual sections and rules
+## API
 
-Usually, we use real names of controllers and actions for names of sections and rules:
-
-``` ruby
-current_user.has_role?(:pages, :show)
-```
-
-But, also, you can use virtual names of sections, and virtual names of section's rules.
+### User
 
 ``` ruby
-current_user.has_role?(:twitter, :button)
-current_user.has_role?(:facebook, :like)
-```
-
-And you can use them as well as other access rules.
-
-# User Model methods
-
-Has a user an access to **rule** of **section** (action of controller)?
-
-``` ruby
-current_user.has_role?(:pages,    :show)  => true | false
-current_user.has_role?(:blogs,    :new)   => true | false
-current_user.has_role?(:articles, :edit)  => true | false
-```
-
-Is it Moderator?
-
-``` ruby
-current_user.moderator?(:pages)           => true | false
-current_user.moderator?(:blogs)           => true | false
-current_user.moderator?(:articles)        => true | false
+# User's role
+@user.role # => Role obj
 ```
 
 Is it Administrator?
 
 ``` ruby
-current_user.admin?                       => true | false
+@user.admin?                       => true | false
+```
+
+Is it Moderator?
+
+``` ruby
+@user.moderator?(:pages)           => true | false
+@user.moderator?(:blogs)           => true | false
+@user.moderator?(:articles)        => true | false
+```
+
+Has a user an access to **rule** of **section** (action of controller)?
+
+``` ruby
+@user.has_role?(:pages,    :show)  => true | false
+@user.has_role?(:blogs,    :new)   => true | false
+@user.has_role?(:articles, :edit)  => true | false
 ```
 
 Is it **Owner** of object?
 
 ``` ruby
-current_user.owner?(@page)                => true | false
-current_user.owner?(@blog)                => true | false
-current_user.owner?(@article)             => true | false
+@user.owner?(@page)                => true | false
+@user.owner?(@blog)                => true | false
+@user.owner?(@article)             => true | false
 ```
 
-# Base Role methods
-
-``` ruby
-# User's role
-@role = current_user.role
-```
+### Role
 
 ``` ruby
 # Find a Role by name
-@role = Role.find_by_name(:user)
+@role = Role.with_name(:user)
 ```
 
 ``` ruby
@@ -391,8 +393,6 @@ current_user.owner?(@article)             => true | false
 @role.moderator?(:pages)        => true | false
 @role.admin?                    => true | false
 ```
-
-# CRUD API (for console users)
 
 #### CREATE
 
@@ -414,17 +414,21 @@ current_user.owner?(@article)             => true | false
 # JSON string
 @role.to_json => String
 
-# JSON string
-@role.to_s => String
-
 # check method
 @role.has_section?(:pages) => true | false
-
-# check method
-@role.has_rule?(:pages, :index) => true | false
 ```
 
 #### UPDATE
+
+``` ruby
+# set this rule on true
+@role.rule_on(:pages, :index)
+```
+
+``` ruby
+# set this rule on false
+@role.rule_off(:pages, :index)
+```
 
 ``` ruby
 # Incoming hash is true-mask-hash
@@ -440,17 +444,7 @@ new_role_hash = {
 @role.update_role(new_role_hash)
 ```
 
-``` ruby
-# set this rule on true
-@role.rule_on(:pages, :index)
-```
-
-``` ruby
-# set this rule on false
-@role.rule_off(:pages, :index)
-```
-
-### DELETE
+#### DELETE
 
 ``` ruby
 # delete a section
