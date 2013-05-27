@@ -120,7 +120,7 @@ install TheRole migrations
 rake the_role_engine:install:migrations
 ```
 
-#### Invoke migration
+Invoke migration
 
 ```ruby
 rake db:migrate
@@ -146,8 +146,6 @@ User.first.update( role: Role.with_name(:admin) )
 
 **include TheRoleController** in your Application controller
 
-Define aliases method for correctly work TheRole's controllers
-
 ``` ruby
 class ApplicationController < ActionController::Base
   include TheRoleController
@@ -163,6 +161,7 @@ class ApplicationController < ActionController::Base
   # 2) LOGIN_REQUIRE => require_login         for Sorcery
   # 3) LOGIN_REQUIRE => user_require_method   for other Authentication solution
 
+  # Define aliases method for correctly work TheRole's controllers
   alias_method :login_required,     :LOGIN_REQUIRE
   alias_method :role_access_denied, :access_denied
 end
@@ -191,7 +190,7 @@ class PagesController < ApplicationController
 end
 ```
 
-## Assets and Bootstrap
+### Assets and Bootstrap
 
 **application.css**
 
@@ -224,7 +223,7 @@ bootstrap/buttons
 bootstrap/button-groups
 ```
 
-## Configuration
+### Configuration
 
 config/initializers/the_role.rb
 
@@ -237,13 +236,13 @@ end
 
 ## Understanding
 
-### TheRole instead CanCan?
+#### TheRole instead CanCan?
 
 TheRole in contrast to CanCan has simple and predefined way to find access state for current role. If you didn't want to create your own role scheme with CanCan Abilities - TheRole can be great solution for your.
 
 You can manage roles with simple UI. TheRole's ACL structure inspired by Rails controllers, that is why it's so great for Rails application.
 
-## What does it mean semantic?
+#### What does it mean semantic?
 
 Semantic - the science of meaning. Human should fast to understand what is happening in a role system.
 
@@ -270,7 +269,7 @@ role = {
 }
 ```
 
-### Virtual sections and rules
+#### Virtual sections and rules
 
 Usually, we use real names of controllers and actions for names of sections and rules:
 
@@ -287,7 +286,7 @@ But, also, you can use virtual names of sections, and virtual names of section's
 
 And you can use them as well as other access rules.
 
-### Who is Administrator?
+#### Who is Administrator?
 
 Administrator it's a user who can access any section and the rules of your application.
 
@@ -304,7 +303,7 @@ admin_role_fragment = {
 }
 ```
 
-### Who is Moderator?
+#### Who is Moderator?
 
 Moderator it's a user, which has access to any actions of some section(s).
 
@@ -324,7 +323,7 @@ moderator_role_fragment = {
 }
 ```
 
-### Who is Owner?
+#### Who is Owner?
 
 Administrator is owner of any object in system.
 
@@ -332,7 +331,7 @@ Moderator of pages is owner of any page.
 
 User is owner of object, when **Object#user_id == User#id**.
 
-### Using with Views
+#### Using with Views
 
 ```ruby
 <% if @user.has_role?(:twitter, :button) %>
