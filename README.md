@@ -154,14 +154,14 @@ class ApplicationController < ActionController::Base
 
   # your Access Denied processor
   def access_denied
-    return render(text: 'access_denied: requires an role')
+    return render(text: 'access_denied: requires a role')
   end
 
   # 1) LOGIN_REQUIRE => authenticate_user!    for Devise
   # 2) LOGIN_REQUIRE => require_login         for Sorcery
   # 3) LOGIN_REQUIRE => user_require_method   for other Authentication solution
 
-  # Define aliases method for correctly work TheRole's controllers
+  # Define method aliases for the correct TheRole's controller work
   alias_method :login_required,     :LOGIN_REQUIRE
   alias_method :role_access_denied, :access_denied
 end
@@ -188,7 +188,7 @@ class PagesController < ApplicationController
 
     # TheRole: You should define OWNER CHECK OBJECT
     # When editable object was found
-    # You should to define @owner_check_object before invoke of **owner_required** method
+    # You should define @owner_check_object before invoke of the **owner_required** method
     @owner_check_object = @page
   end
 end
@@ -203,7 +203,7 @@ end
 //= require the_role
 ```
 
-If you not use **bootstrap-sass** gem you should to add following componetns from your bootstrap version instead **the_role/bootstrap_sass**:
+If you don't use **bootstrap-sass** gem you should add the following componetns from your bootstrap version instead **the_role/bootstrap_sass**:
 
 ```
 bootstrap/variables
@@ -240,17 +240,17 @@ end
 
 ## Understanding
 
-#### TheRole instead CanCan?
+#### TheRole instead of CanCan?
 
-TheRole in contrast to CanCan has simple and predefined way to find access state for current role. If you didn't want to create your own role scheme with CanCan Abilities - TheRole can be great solution for your.
+TheRole in contrast to CanCan has simple and predefined way to find access state of current role. If you don't want to create your own role scheme with CanCan Abilities - TheRole can be a great solution for your.
 
-You can manage roles with simple UI. TheRole's ACL structure inspired by Rails controllers, that is why it's so great for Rails application.
+You can manage roles with simple UI. TheRole's ACL structure is inspired by Rails controllers, that is why it's so great for Rails application.
 
 #### What does it mean semantic?
 
-Semantic - the science of meaning. Human should fast to understand what is happening in a role system.
+Semantic - the science of meaning. Human should be able to understand fast what is happening in a role system.
 
-Look at next Role hash. If you can understand access rules - this authorization system is semantically.
+Look at the next Role hash. If you can understand access rules - this authorization system is semantic.
 
 ```ruby
 role = {
@@ -302,11 +302,11 @@ And you can use them as well as other access rules.
 
 #### Who is Administrator?
 
-Administrator it's a user who can access any section and the rules of your application.
+Administrator is the user who can access any section and the rules of your application.
 
 Administrator is the owner of any objects in your application.
 
-Administrator it's a user, which has virtual section **system** and rule **administrator** in the role-hash.
+Administrator is the user, which has virtual section **system** and rule **administrator** in the role-hash.
 
 
 ```ruby
@@ -319,11 +319,11 @@ admin_role_fragment = {
 
 #### Who is Moderator?
 
-Moderator it's a user, which has access to any actions of some section(s).
+Moderator is the user, which has access to any actions of some section(s).
 
-Moderator is's owner of any objects of some class.
+Moderator is the owner of any objects of some class.
 
-Moderator it's a user, which has a virtual section **moderator**, with **section name** as rule name.
+Moderator is the user, which has a virtual section **moderator**, with **section name** as rule name.
 
 There is Moderator of Pages (controller) and Twitter (virtual section)
 
@@ -369,7 +369,7 @@ Is it Moderator?
 @user.moderator?(:articles)        => true | false
 ```
 
-Has a user an access to **rule** of **section** (action of controller)?
+Has user got an access to **rule** of **section** (action of controller)?
 
 ```ruby
 @user.has_role?(:pages,    :show)  => true | false
@@ -377,7 +377,7 @@ Has a user an access to **rule** of **section** (action of controller)?
 @user.has_role?(:articles, :edit)  => true | false
 ```
 
-Is it **Owner** of object?
+Is user **Owner** of object?
 
 ```ruby
 @user.owner?(@page)                => true | false
@@ -425,19 +425,19 @@ Is it **Owner** of object?
 #### UPDATE
 
 ```ruby
-# set this rule on true
+# set this rule on
 @role.rule_on(:pages, :index)
 ```
 
 ```ruby
-# set this rule on false
+# set this rule off
 @role.rule_off(:pages, :index)
 ```
 
 ```ruby
 # Incoming hash is true-mask-hash
-# All rules of Role will be reset to false
-# Only rules from true-mask-hash will be set on true
+# All the rules of the Role will be reseted to false
+# Only rules from true-mask-hash will be set true
 new_role_hash = {
   :pages => {
     :index => true,
@@ -454,7 +454,7 @@ new_role_hash = {
 # delete a section
 @role.delete_section(:pages)
 
-# delete rule in section
+# delete a rule in section
 @role.delete_rule(:pages, :show)
 ```
 
