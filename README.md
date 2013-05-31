@@ -188,7 +188,7 @@ class PagesController < ApplicationController
 
     # TheRole: You should define OWNER CHECK OBJECT
     # When editable object was found
-    # You should define @owner_check_object before invoke of the **owner_required** method
+    # You should define @owner_check_object before invoking **owner_required** method
     @owner_check_object = @page
   end
 end
