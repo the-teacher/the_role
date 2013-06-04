@@ -106,6 +106,16 @@ def self.up
 end
 ```
 
+### Change User model
+
+```ruby
+class User < ActiveRecord::Base
+  include TheRoleUserModel
+
+  # has_many :pages
+end
+```
+
 ### Create Role model
 
 Generate Role model
