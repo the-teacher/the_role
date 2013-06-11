@@ -19,7 +19,7 @@ class Admin::RolesController < ApplicationController
   def edit; end
 
   def create
-    @role = Role.new params[:role]
+    @role = Role.new role_params
 
     if @role.save
       flash[:notice] = t 'the_role.role_created'
@@ -45,6 +45,10 @@ class Admin::RolesController < ApplicationController
   end
 
   protected
+
+  def role_params
+    params.require(:role).permit(:name, :title, :description)
+  end
 
   def role_find
     @role = Role.find params[:id]

@@ -470,6 +470,7 @@ new_role_hash = {
 
 #### Changelog
 
+* 2.0.3 - create role fix, cleanup
 * 2.0.2 - code cleanup, readme
 * 2.0.1 - code cleanup
 * 2.0.0 - Rails 4 ready, configurable, tests

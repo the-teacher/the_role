@@ -33,7 +33,7 @@ p "Roles created"
 # Users
 ##############################
 User.create!(
-  email: Faker::Internet.email,
+  email: 'admin@site.com',
   name:  Faker::Name.name,
   company: Faker::Company.name,
   address: Faker::Address.street_address,
