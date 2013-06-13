@@ -2,7 +2,79 @@
 
 require 'spec_helper'
 
-describe User do    
+describe User do
+  describe "Owner check for User and object" do
+    context "Regular user" do
+      before(:each) do
+        @user_1 = FactoryGirl.create(:user)
+        @user_2 = FactoryGirl.create(:user)
+
+        @user_1_page = FactoryGirl.create(:page, user: @user_1)
+        @user_2_page = FactoryGirl.create(:page, user: @user_2)
+      end
+
+      it 'should have test varaibles' do
+        @user_1.should be_instance_of User
+        @user_2.should be_instance_of User
+
+        @user_1_page.should be_instance_of Page
+        @user_2_page.should be_instance_of Page
+      end
+
+      it 'should be owner of page' do
+        @user_1.owner?(@user_1_page).should be_true
+        @user_2.owner?(@user_2_page).should be_true
+      end
+
+      it 'should not be owner of page' do
+        @user_1.owner?(@user_2_page).should be_false
+        @user_2.owner?(@user_1_page).should be_false
+      end
+    end
+
+    context "Moderator" do
+      before(:each) do
+        mrole = FactoryGirl.create(:role_moderator)
+
+        @moderator = FactoryGirl.create(:user, role: mrole)
+        @user      = FactoryGirl.create(:user)
+
+        @moderator_page = FactoryGirl.create(:page, user: @moderator)
+        @user_page      = FactoryGirl.create(:page, user: @user)
+      end
+
+      it 'Moderator is owner of any Page' do
+        @moderator.owner?(@moderator_page).should be_true
+        @moderator.owner?(@user_page).should      be_true
+      end
+
+      it 'User is owner of his Pages' do
+        @user.owner?(@user_page).should      be_true
+        @user.owner?(@moderator_page).should be_false
+      end
+    end
+
+    context "Admin" do
+      # not important. to implement later
+    end
+
+    # context "Custom Page relation to User" do
+    #   before(:each) do
+    #     Page.class_eval do
+    #       belongs_to :user, class_name: User, foreign_key: 'person_id'
+    #     end
+
+    #     @user = FactoryGirl.create(:user)
+    #     @page = FactoryGirl.create(:page, user: @user)
+    #   end
+
+    #   it 'relation via person_id' do
+    #     @page.user_id.should   eq @user.id
+    #     @page.person_id.should eq @user.id
+    #   end
+    # end
+  end
+
   describe "Create user without any Role" do
     before(:each) do
       FactoryGirl.create(:user)
