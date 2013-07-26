@@ -17,7 +17,7 @@
       %h3= section
       .delete
         .btn-group
-          = button_to t('.delete_section'), admin_role_section_path(role, section), :method => :delete, :class => 'btn btn-danger', :confirm => t('.section_delete_confirm')
+          = button_to t('.delete_section'), admin_role_section_path(role, section), :method => :delete, :class => 'btn btn-danger', data: { confirm: t('.section_delete_confirm')}
 
       - rules.each_pair do |rule, value|
         .rule
@@ -35,7 +35,7 @@
                 %li.success= link_to t('.enable'),  rule_on_admin_role_section_path(role, section, :name => rule), :method => :put
                 %li.info=    link_to t('.disable'), rule_off_admin_role_section_path(role, section, :name => rule), :method => :put
                 %li.divider
-                %li.error= link_to t('.delete_rule'), destroy_rule_admin_role_section_path(role, section, :name => rule), :method => :delete, :confirm => t('.rule_delete_confirm')
+                %li.error= link_to t('.delete_rule'), destroy_rule_admin_role_section_path(role, section, :name => rule), :method => :delete, data: { confirm: t('.rule_delete_confirm') }
 
   %h4= t '.create_section'
 

@@ -7,7 +7,7 @@
     %h4
       = name
       %span.controls
-        = link_to(t('.delete'), admin_role_section_path(@role, name), :method => :delete, :confirm => t('.destroy_section_confirm'))
+        = link_to(t('.delete'), admin_role_section_path(@role, name), :method => :delete, data: { confirm: t('.destroy_section_confirm') })
 
     - if set.is_a?(Hash)
       %ul.rights
@@ -16,7 +16,7 @@
             = check_box_tag "role[the_role][#{name}][#{n}]", true, v
             = n
             .controls
-              = link_to t('.delete'), destroy_rule_admin_role_section_path(@role, name, :name => n), :method => :delete, :confirm => t('.delete_rule_confirm')
+              = link_to t('.delete'), destroy_rule_admin_role_section_path(@role, name, :name => n), :method => :delete, data: { confirm: t('.delete_rule_confirm') }
 
   = f.submit button
 
