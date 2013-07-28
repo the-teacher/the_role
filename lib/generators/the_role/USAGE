@@ -6,24 +6,27 @@ Description:
   This generators helps to install TheRole gem into your Application
 
 This text:
-  bundle exec rails g the_role --help
+  > bundle exec rails g the_role --help
 
 Generators:
-  bundle exec rails g the_role install
+  > bundle exec rails g the_role install
   - Install config file and models
 
-  bundle exec rails g the_role setup
+  > bundle exec rails g the_role setup
   - Install config file
 
-  bundle exec rails g the_role models
+  > bundle exec rails g the_role models
   - Install models
 
-  bundle exec rails g the_role admin
+  > bundle exec rails g the_role admin
+  - Create Admin Role
+
+  > rake db:roles:admin
   - Create Admin Role
 
 Migrations:
-  bundle exec rake the_role_engine:install:migrations
+  > bundle exec rake the_role_engine:install:migrations
 
 ---------------------------------------
-TheRole
+~ TheRole
 ---------------------------------------
