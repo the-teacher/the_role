@@ -17,7 +17,7 @@
       %h3= section
       .delete
         .btn-group
-          = button_to t('.delete_section'), admin_role_section_path(role, section), :method => :delete, :class => 'btn btn-danger', :confirm => t('.section_delete_confirm')
+          = button_to t('.delete_section'), admin_role_section_path(role, section), method: :delete, class: 'btn btn-danger', data: { confirm: t('.section_delete_confirm') }
 
       - rules.each_pair do |rule, value|
         .rule
@@ -28,27 +28,27 @@
             .btn-group
               - klass = value ? :success : :info
               - state = value ? t('.enable') : t('.disable')
-              %button{ :class => "btn btn-#{klass}" }= state
-              %button{ :class => "btn btn-#{klass} dropdown-toggle", 'data-toggle' => :dropdown }
+              %button{ class: "btn btn-#{klass}" }= state
+              %button{ class: "btn btn-#{klass} dropdown-toggle", 'data-toggle' => :dropdown }
                 %span.caret
               %ul.dropdown-menu
                 %li.success= link_to t('.enable'),  rule_on_admin_role_section_path(role, section, :name => rule), :method => :put
                 %li.info=    link_to t('.disable'), rule_off_admin_role_section_path(role, section, :name => rule), :method => :put
                 %li.divider
-                %li.error= link_to t('.delete_rule'), destroy_rule_admin_role_section_path(role, section, :name => rule), :method => :delete, :confirm => t('.rule_delete_confirm')
+                %li.error= link_to t('.delete_rule'), destroy_rule_admin_role_section_path(role, section, :name => rule), method: :delete, data: { confirm: t(".rule_delete_confirm") }
 
   %h4= t '.create_section'
 
-  = form_tag admin_role_sections_path(role), :class => 'well form-inline' do |f|
-    = text_field_tag :section_name, '', :class => 'input-xlarge', :placeholder => t('.new_section_placeholder')
-    = submit_tag t('.create_section'), :class => :btn
+  = form_tag admin_role_sections_path(role), class: 'well form-inline' do |f|
+    = text_field_tag :section_name, '', class: 'input-xlarge', :placeholder => t('.new_section_placeholder')
+    = submit_tag t('.create_section'), class: :btn
 
   %h4= t '.create_rule'
 
-  = form_tag create_rule_admin_role_sections_path(role), :class => 'well form-inline' do |f|
+  = form_tag create_rule_admin_role_sections_path(role), class:  'well form-inline' do |f|
     %select.span3{ :name => :section_name }
       - role.to_hash.each_pair do |section, rules|
         %option{ :value => section }= section
 
-    = text_field_tag :rule_name, '', :class => 'input-large', :placeholder => t('.new_rule_placeholder')
-    = submit_tag t('.create_rule'), :class => :btn
+    = text_field_tag :rule_name, '', class:  'input-large', :placeholder => t('.new_rule_placeholder')
+    = submit_tag t('.create_rule'), class:  :btn

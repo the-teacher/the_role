@@ -30,7 +30,7 @@ class Admin::RolesController < ApplicationController
   end
 
   def update
-    if @role.update_role params[:role].try(:[],:the_role)
+    if @role.update_role params[:role][:the_role]
       flash[:notice] = t 'the_role.role_updated'
       redirect_to_edit
     else
@@ -47,7 +47,7 @@ class Admin::RolesController < ApplicationController
   protected
 
   def role_params
-    params.require(:role).permit(:name, :title, :description)
+    params.require(:role).permit(:name, :title, :description, :the_role)
   end
 
   def role_find
