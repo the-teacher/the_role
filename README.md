@@ -385,6 +385,9 @@ Has user got an access to **rule** of **section** (action of controller)?
 @user.has_role?(:pages,    :show)  => true | false
 @user.has_role?(:blogs,    :new)   => true | false
 @user.has_role?(:articles, :edit)  => true | false
+
+# return true if one of roles is true
+@user.any_role?(pages: :show, posts: :show) => true | false
 ```
 
 Is user **Owner** of object?
@@ -406,6 +409,9 @@ Is user **Owner** of object?
 @role.has?(:pages, :show)       => true | false
 @role.moderator?(:pages)        => true | false
 @role.admin?                    => true | false
+
+# return true if one of roles is true
+@role.any?(pages: :show, posts: :show) => true | false
 ```
 
 #### CREATE
@@ -470,6 +476,7 @@ new_role_hash = {
 
 #### Changelog
 
+* 2.1.0 - User#any_role? & Role#any?
 * 2.0.3 - create role fix, cleanup
 * 2.0.2 - code cleanup, readme
 * 2.0.1 - code cleanup
