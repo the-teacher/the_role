@@ -187,5 +187,32 @@ describe Role do
 
       @role.has?(:articles, :index).should be_true
     end
+
+    it "should has any rules 1" do
+      @role.has?(:pages, :index).should  be_true
+      @role.has?(:pages, :update).should be_true
+
+      @role.any?({ pages: :index  }).should be_true
+      @role.any?({ pages: :update }).should be_true
+      @role.any?({ pages: :index, pages: :update}).should be_true
+    end
+
+    it "should has any rules 2" do
+      @role.has?(:pages,    :index).should be_true
+      @role.has?(:articles, :index).should be_false
+
+      @role.any?({ pages:    :index }).should be_true
+      @role.any?({ articles: :index }).should be_false
+
+      @role.any?({ articles: :index }).should be_false
+      @role.any?({ pages: :index, articles: :index}).should be_true
+      @role.any?({ pages: :index, pages:    :update}).should be_true
+    end
+
+    it "should has any rules 3, easy syntaxis" do
+      @role.any?(articles: :index).should be_false
+      @role.any?(pages: :index, articles: :index).should be_true
+      @role.any?(pages: :index, pages:    :update).should be_true
+    end
   end
 end

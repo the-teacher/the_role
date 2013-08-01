@@ -5,6 +5,7 @@ module RoleModel
 
   def role_hash; to_hash; end
   alias_method :has?, :has_role?
+  alias_method :any?, :any_role?
 
   def has_section? section_name
     to_hash.key? TheRoleParam.process(section_name)

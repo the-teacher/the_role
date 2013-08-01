@@ -132,5 +132,33 @@ describe User do
     it "User has not Role for Atricles" do
       @user.has_role?(:articles, :index).should be_false
     end
+
+    # Any
+    it "should has any rules 1" do
+      @user.has_role?(:pages, :index).should  be_true
+      @user.has_role?(:pages, :update).should be_true
+
+      @user.any_role?({ pages: :index  }).should be_true
+      @user.any_role?({ pages: :update }).should be_true
+      @user.any_role?({ pages: :index, pages: :update}).should be_true
+    end
+
+    it "should has any rules 2" do
+      @user.has_role?(:pages,    :index).should be_true
+      @user.has_role?(:articles, :index).should be_false
+
+      @user.any_role?({ pages:    :index }).should be_true
+      @user.any_role?({ articles: :index }).should be_false
+
+      @user.any_role?({ articles: :index }).should be_false
+      @user.any_role?({ pages: :index, articles: :index}).should be_true
+      @user.any_role?({ pages: :index, pages:    :update}).should be_true
+    end
+
+    it "should has any rules 3, easy syntaxis" do
+      @user.any_role?(articles: :index).should be_false
+      @user.any_role?(pages: :index, articles: :index).should be_true
+      @user.any_role?(pages: :index, pages:    :update).should be_true
+    end
   end
 end

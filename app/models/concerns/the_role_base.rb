@@ -19,6 +19,11 @@ module TheRoleBase
     hash[section_name][rule_name]
   end
 
+  def any_role? roles_hash = {}
+    roles_hash.each_pair{|section, action| return true if has_role?(section, action)}
+    false
+  end
+
   def moderator? section_name
     section_name = TheRoleParam.process(section_name)
     has_role? section_name, 'any_crazy_name'
