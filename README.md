@@ -52,7 +52,7 @@ gem 'the_role', '~> 2.0.0'
 
 ### Understanding
 
-* [TheRole instead CanCan?](#therole-instead-cancan)
+* [TheRole instead of CanCan?](#therole-instead-of-cancan)
 * [What does it mean semantic?](#what-does-it-mean-semantic)
 * [Virtual sections and rules](#virtual-sections-and-rules)
 * [Using with Views](#using-with-views)
