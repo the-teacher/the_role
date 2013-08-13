@@ -38,5 +38,5 @@ ru:
         create_rule: Создать правило
       sidebar:
         roles_list: Список ролей
-        new_role: Создать новое праивло
+        new_role: Создать новое правило
         delete_role_confirm: 'Удалить роль? Это может быть опасно! Уверены?'
