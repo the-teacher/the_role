@@ -7,6 +7,11 @@ showForm = (e) ->
     e.parentNode.reset()
   $(e).find('.btn-success').click ->
     e.parentNode.submit()
+  $(e).children('span.b').find('input').keypress( (x) ->
+    if x.which == 13
+      e.parentNode.submit()
+      console.log('enter pressed')
+  )
 
 hideForm = (e) ->
   $(e).children('span.a').show()
