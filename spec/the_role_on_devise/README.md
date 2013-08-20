@@ -1,22 +1,37 @@
 ## TheRole test App
 
-Test App for TheRole
+App for development and testing TheRole gem
 
-### Start App
+### How to get?
 
 ```
-bin/rake db:bootstrap
+git clone git@github.com:the-teacher/the_role.git
 
-rails g the_role admin
+cd the_role/spec/the_role_on_devise/
 
-rake db:seed
+bundle
+```
+
+### Start it!
+
+```
+rake db:test_launch
 
 rails s
 ```
 
-### Test App
+### Test it!
 
 ```
 rake db:bootstrap RAILS_ENV=test
 rspec spec/models/ --format documentation
+```
+
+### Production mode
+
+```
+rake assets:build   RAILS_ENV=production
+rake db:test_launch RAILS_ENV=production
+
+rails s -e production
 ```

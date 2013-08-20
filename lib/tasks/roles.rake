@@ -33,15 +33,7 @@ namespace :db do
     desc 'create roles'
     task :test => :environment do
       # ADMIN
-      role = Role.create(
-        name: :admin,
-        title: "Role for admin",
-        description:"This user can do anything"
-      )
-
-      role.create_rule(:system, :administrator)
-      role.rule_on(:system, :administrator)
-
+      Rake::Task["db:roles:admin"].invoke
       puts 'Administrator'
 
       # MODERATOR

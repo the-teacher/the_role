@@ -1,15 +1,19 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.0.0'
+gem 'rake',  '~> 10.0.4'
 
 gem 'sqlite3'
-gem "state_machine", "~> 1.2.0"
-gem 'devise', git: "https://github.com/plataformatec/devise.git", branch: 'rails4'
+gem 'state_machine', '~> 1.2.0'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'rails4'
 
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'coffee-rails',    github: 'rails/coffee-rails'
 gem 'sass-rails',      github: 'rails/sass-rails'
 gem 'bootstrap-sass', '~> 2.3.1.0'
+
+gem 'faker'
+gem 'uglifier'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
@@ -17,16 +21,11 @@ gem 'jbuilder', '~> 1.0.1'
 gem 'the_role' , path: '../../'
 gem 'haml' ,     git: 'https://github.com/haml/haml.git', tag: '4.0.1'
 
-group :development, :test do
-  gem 'faker'
-  gem "factory_girl_rails", "~> 4.0"
-  gem 'database_cleaner', git: "https://github.com/bmabey/database_cleaner.git", tag: "v1.0.0"
+group :test do
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git', tag: 'v1.0.0'
 
   gem 'rspec', '2.14.1'
   gem 'rspec-core', '2.14.4'
   gem 'rspec-rails', '2.14.0'
-end
-
-group :test do
-  gem "rake", "~> 10.0.4"
 end

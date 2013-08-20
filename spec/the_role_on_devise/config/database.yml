@@ -1,3 +1,9 @@
+production:
+  adapter: sqlite3
+  database: db/the_role_prod.db
+  pool: 5
+  timeout: 5000
+
 development:
   adapter: sqlite3
   database: db/the_role_dev.db
