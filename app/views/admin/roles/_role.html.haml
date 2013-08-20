@@ -1,16 +1,38 @@
 - content_for :role_main do
   .well
-    %h3
-      %b= t '.role_name'
-      = role.name
+    = form_for(role, :url => change_admin_role_path(role)) do |f|
+      %h3.name
+        %b= t '.role_name'
+        %span.a= role.name
+        %span.b{style: 'visibility:hidden'}
+          = f.text_field :name
+          .btn-group
+            %a.btn.btn-warning
+              %i.icon-repeat
+            %a.btn.btn-success
+              %i.icon-ok
 
-    %h5
-      %b= t '.title'
-      = role.title
+      %h5.title
+        %b= t '.title'
+        %span.a= role.title
+        %span.b{style: 'visibility:hidden'}
+          = f.text_field :title
+          .btn-group
+            %a.btn.btn-warning
+              %i.icon-repeat
+            %a.btn.btn-success
+              %i.icon-ok
 
-    %p.description
-      %b= t '.role_description'
-      = role.description
+      %h5.description
+        %b= t '.role_description'
+        %span.a= role.description
+        %span.b{style: 'visibility:hidden'}
+          = f.text_field :description
+          .btn-group
+            %a.btn.btn-warning
+              %i.icon-repeat
+            %a.btn.btn-success
+              %i.icon-ok
 
   - role.to_hash.each_pair do |section, rules|
     .section
