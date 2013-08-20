@@ -3,3 +3,4 @@
 Gemfile.lock
 pkg/*
 .rvmrc
+spec/the_role_on_devise/public/assets
