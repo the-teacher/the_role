@@ -18,7 +18,7 @@ class TheRoleGenerator < Rails::Generators::NamedBase
     end
   end
 
-  private
+  protected
 
   def gen_name
     name.to_s.downcase

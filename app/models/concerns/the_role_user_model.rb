@@ -34,7 +34,7 @@ module TheRoleUserModel
     false
   end
 
-  private
+  protected
 
   def set_default_role
     unless role
