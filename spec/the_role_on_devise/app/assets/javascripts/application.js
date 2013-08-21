@@ -15,3 +15,4 @@
 
 //= require bootstrap-alert
 //= require bootstrap-dropdown
+//= require the_role

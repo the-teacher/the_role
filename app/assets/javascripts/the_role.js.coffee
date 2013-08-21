@@ -1,25 +1,31 @@
-showForm = (e) ->
-  $(e).children('span.a').hide()
-  $(e).children('span.b').css('visibility', 'visible')
-  $(e).children('span.a').off('click')
-  $(e).find('.btn-warning').click ->
-    hideForm(e)
-    e.parentNode.reset()
-  $(e).find('.btn-success').click ->
-    e.parentNode.submit()
-  $(e).children('span.b').find('input').keypress( (x) ->
-    if x.which == 13
-      e.parentNode.submit()
-  )
+showForm = (event) ->
+  item   = $ event
 
-hideForm = (e) ->
-  $(e).children('span.a').show()
-  $(e).children('span.b').css('visibility', 'hidden')
-  $(e).find('.btn').off('click')
-  $(e).children('span.a').click ->
-    showForm(e)
+  a_item = item.children('span.a')
+  b_item = item.children('span.b')
 
+  a_item.hide().off 'click'
+  b_item.css('visibility', 'visible')
+
+  item.find('.btn-warning').click ->
+    hideForm(event)
+    event.parentNode.reset()
+
+  item.find('.btn-success').click -> event.parentNode.submit()
+  
+  b_item.find('input').keypress (e) ->
+    ENTER = 13
+    event.parentNode.submit() if e.which is ENTER
+
+hideForm = (event) ->
+  item   = $ event
+  a_item = item.children('span.a')
+  b_item = item.children('span.b')
+  
+  a_item.show()
+  b_item.css('visibility', 'hidden')
+  item.find('.btn').off('click')
+  a_item.click -> showForm(event)
 
 $ ->
-  $('.name span.a, .title span.a, .description span.a').click ->
-    showForm(this.parentNode)
+  $('span.a', '.title, .name, .description').click -> showForm @parentNode
