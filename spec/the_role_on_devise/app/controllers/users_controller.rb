@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def change_role
     @user = User.find params[:user_id]
-    @role = Role.find params[:role_id]
+    @role = TheRole.role_class.find params[:role_id]
     @user.update_attribute(:role, @role)
     redirect_to edit_user_path @user
   end

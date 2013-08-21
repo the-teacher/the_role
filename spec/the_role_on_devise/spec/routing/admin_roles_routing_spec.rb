@@ -21,7 +21,7 @@ describe Admin::RolesController do
       end
 
       after(:all) do
-        Role.destroy_all
+        TheRole.role_class.destroy_all
       end
 
       describe "post" do

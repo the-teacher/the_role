@@ -8,8 +8,8 @@ namespace :db do
       puts 'TheRole'
       puts '~'*40
 
-      unless Role.with_name(:admin)
-        role = Role.create(
+      unless TheRole.role_class.with_name(:admin)
+        role = TheRole.role_class.create(
           name: :admin,
           title: "Role for admin",
           description:"This user can do anything"
@@ -25,7 +25,7 @@ namespace :db do
 
       puts "Now you can makes any user as Admin:"
       puts "> rails c"
-      puts "> User.first.update( role: Role.with_name(:admin) )"
+      puts "> User.first.update( role: TheRole.role_class.with_name(:admin) )"
       puts '~'*40
     end
 

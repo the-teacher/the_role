@@ -102,14 +102,14 @@ describe User do
       FactoryGirl.create(:user)
       @user = User.first
     end
-    
+
     it "User and Role should exists" do
-      Role.count.should be 1
+      TheRole.role_class.count.should be 1
       User.count.should be 1
     end
 
     it "Role should nave name :user" do
-      Role.first.name.should eq 'user'
+      TheRole.role_class.first.name.should eq 'user'
     end
 
     it "User should have default Role" do
