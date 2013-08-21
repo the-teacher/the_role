@@ -20,9 +20,12 @@ module RoleModel
     before_save do
       self.name = TheRoleParam.process(name)
 
-      rules_set     = self.the_role
-      self.the_role = {}.to_json        if rules_set.blank?      # blank
-      self.the_role = rules_set.to_json if rules_set.is_a?(Hash) # Hash
+      rules_set = self[TheRole.role_attribute]
+      if rules_set.blank?         # blank
+        self[TheRole.role_attribute] = {}.to_json
+      elsif rules_set.is_a?(Hash) # Hash
+        self[TheRole.role_attribute] = rules_set.to_json
+      end
     end
   end
 
@@ -33,7 +36,7 @@ module RoleModel
   end
 
   # C
-  
+
   def create_section section_name = nil
     return false unless section_name
     role         =  to_hash
@@ -41,9 +44,9 @@ module RoleModel
     return false if section_name.blank?
     return true  if role[section_name]
     role[section_name] = {}
-    update(the_role: role)
+    update(TheRole.role_attribute => role)
   end
-          
+
   def create_rule section_name, rule_name
     return false if     rule_name.blank?
     return false unless create_section(section_name)
@@ -52,17 +55,17 @@ module RoleModel
     section_name =  TheRoleParam.process(section_name)
     return true  if role[section_name][rule_name]
     role[section_name][rule_name] = false
-    update(the_role: role)
+    update(TheRole.role_attribute => role)
   end
 
   # R
 
   def to_hash
-    begin JSON.load(the_role) rescue {} end
+    begin JSON.load(self[TheRole.role_attribute]) rescue {} end
   end
 
   def to_json
-    the_role
+    self[TheRole.role_attribute]
   end
 
   # U
@@ -76,7 +79,7 @@ module RoleModel
     new_role      = new_role_hash.underscorify_keys
     role          = to_hash.underscorify_keys.deep_reset(false)
     role.deep_merge! new_role
-    update(the_role: role)
+    update(TheRole.role_attribute => role)
   end
 
   def rule_on section_name, rule_name
@@ -87,7 +90,7 @@ module RoleModel
     return false unless role[section_name].key? rule_name
     return true  if     role[section_name][rule_name]
     role[section_name][rule_name] = true
-    update(the_role: role)
+    update(TheRole.role_attribute => role)
   end
 
   def rule_off section_name, rule_name
@@ -98,7 +101,7 @@ module RoleModel
     return false unless role[section_name].key? rule_name
     return true  unless role[section_name][rule_name]
     role[section_name][rule_name] = false
-    update(the_role: role)
+    update(TheRole.role_attribute => role)
   end
 
   # D
@@ -110,7 +113,7 @@ module RoleModel
     return false if section_name.blank?
     return false unless role[section_name]
     role.delete  section_name
-    update(the_role: role)
+    update(TheRole.role_attribute => role)
   end
 
   def delete_rule section_name, rule_name
@@ -120,6 +123,6 @@ module RoleModel
     return false unless role[section_name]
     return false unless role[section_name].key? rule_name
     role[section_name].delete rule_name
-    update(the_role: role)
+    update(TheRole.role_attribute => role)
   end
 end

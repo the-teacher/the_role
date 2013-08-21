@@ -1,7 +1,7 @@
 ##############################
 # Roles
 ##############################
-Role.create!(
+TheRole.role_class.create!(
   name: :user,
   title: :role_for_users,
   description: :user_can_edit_his_pages,
@@ -20,7 +20,7 @@ Role.create!(
   }
 )
 
-Role.create!(
+TheRole.role_class.create!(
   name: :pages_moderator,
   title: :pages_moderator,
   description: :can_do_anything_with_pages,
@@ -39,7 +39,7 @@ User.create!(
   address: Faker::Address.street_address,
   password: 'qwerty',
   password_confirmation: 'qwerty',
-  role: Role.with_name(:admin)
+  role: TheRole.role_class.with_name(:admin)
 )
 
 User.create!(
@@ -49,7 +49,7 @@ User.create!(
   address: Faker::Address.street_address,
   password: 'qwerty',
   password_confirmation: 'qwerty',
-  role: Role.with_name(:pages_moderator)
+  role: TheRole.role_class.with_name(:pages_moderator)
 )
 
 5.times do
@@ -60,7 +60,7 @@ User.create!(
     address: Faker::Address.street_address,
     password: 'qwerty',
     password_confirmation: 'qwerty',
-    role: Role.with_name(:user)
+    role: TheRole.role_class.with_name(:user)
   )
 end
 
@@ -71,7 +71,7 @@ p "Users created"
 ##############################
 
 User.all.each do |user|
-  10.times do 
+  10.times do
     user.pages.create!(
       title:   Faker::Lorem.sentence,
       content: Faker::Lorem.paragraphs(3).join,

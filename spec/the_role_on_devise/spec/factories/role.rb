@@ -2,7 +2,7 @@
 # EMPTY role
 #############################################
 FactoryGirl.define do
-  factory :role_without_rules, class: Role do
+  factory :role_without_rules, class: TheRole.role_class do
     name        'user'
     title       'User role'
     description 'Default Role for users'
@@ -27,7 +27,7 @@ role_user = {
 }
 
 FactoryGirl.define do
-  factory :role_user, class: Role do
+  factory :role_user, class: TheRole.role_class do
     name        'user'
     title       'User role'
     description 'Default Role for users'
@@ -46,7 +46,7 @@ role_moderator = {
 }
 
 FactoryGirl.define do
-  factory :role_moderator, class: Role do
+  factory :role_moderator, class: TheRole.role_class do
     name        'pages_moderator'
     title       'Pages moderator'
     description 'Can do anything with pages'

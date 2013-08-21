@@ -1,28 +1,28 @@
 require 'spec_helper'
 
-describe Role do
+describe TheRole.role_class do
   context "Role *Create* methods" do
     it "New/Create invalid" do
-      role = Role.new
+      role = TheRole.role_class.new
       role.save.should be_false
-      
+
       role.should have(1).error_on(:name)
       role.should have(1).error_on(:title)
       role.should have(1).error_on(:description)
     end
 
     it "New/Create valid, without Role hash" do
-      role = Role.new
+      role = TheRole.role_class.new
 
       role.name        = :user
       role.title       = :user_title
       role.description = :role_description
-      
+
       role.save.should be_true
     end
 
     it "New/Create valid, without Role hash (2)" do
-      Role.new(
+      TheRole.role_class.new(
         name: :user,
         title: :user_title,
         description: :role_description
@@ -72,7 +72,7 @@ describe Role do
     before(:each) do
       @role = FactoryGirl.create :role_user
     end
-    
+
     it "aliace methods" do
       @role.has?(:pages, :index).should      be_true
       @role.has_role?(:pages, :index).should be_true
@@ -112,11 +112,11 @@ describe Role do
     end
 
     it "Role.with_name(:name) method" do
-      Role.with_name(:user).should  be_an_instance_of Role
-      Role.with_name('user').should be_an_instance_of Role
-      
-      Role.with_name(:moderator).should  be_nil
-      Role.with_name('moderator').should be_nil
+      TheRole.role_class.with_name(:user).should  be_an_instance_of TheRole.role_class
+      TheRole.role_class.with_name('user').should be_an_instance_of TheRole.role_class
+
+      TheRole.role_class.with_name(:moderator).should  be_nil
+      TheRole.role_class.with_name('moderator').should be_nil
     end
   end
 

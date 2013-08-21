@@ -26,10 +26,10 @@ module TheRoleBase
 
   def moderator? section_name
     section_name = TheRoleParam.process(section_name)
-    has_role? section_name, 'any_crazy_name'
+    has_role? section_name, TheRole.config.admin_role_name
   end
 
   def admin?
-    has_role? 'any_crazy_name', 'any_crazy_name'
+    has_role? TheRole.config.admin_role_name, TheRole.config.admin_role_name
   end
 end

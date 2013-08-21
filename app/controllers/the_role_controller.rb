@@ -1,5 +1,5 @@
 module TheRoleController
-  private
+  protected
 
   def role_access_denied
     flash[:error] = t('the_role.access_denied')

@@ -7,14 +7,29 @@ module TheRole
     @config
   end
 
+  def self.role_class
+    @@role_class ||= TheRoleParam.constantize(config.role_class_name)
+  end
+
+  def self.role_attribute
+    @@role_attribute ||= TheRole.config.role_attribute.to_sym
+  end
+
   # Configuration class
   class Configuration
     include ActiveSupport::Configurable
-    config_accessor :layout, :default_user_role
+    config_accessor :layout,
+                    :default_user_role,
+                    :admin_role_name,
+                    :role_class_name,
+                    :role_attribute
   end
 
-  configure do |config|
-    config.layout = :application
-    config.default_user_role = nil
+  configure do |c|
+    c.layout            = :application
+    c.default_user_role = nil
+    c.admin_role_name   = 'any_crazy_name'
+    c.role_class_name   = 'Role'
+    c.role_attribute    = :the_role
   end
 end
