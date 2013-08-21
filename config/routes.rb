@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :roles, :except => :show do
+      patch 'change', on: :member
       resources :sections, :controller => :role_sections, :only => :none do
         collection do
           post :create

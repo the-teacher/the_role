@@ -5,8 +5,8 @@ class Admin::RolesController < ApplicationController
   before_filter :login_required
   before_filter :role_required
 
-  before_filter :role_find,      only: [:edit, :update, :destroy]
-  before_filter :owner_required, only: [:edit, :update, :destroy]
+  before_filter :role_find,      only: [:edit, :update, :destroy, :change]
+  before_filter :owner_required, only: [:edit, :update, :destroy, :change]
 
   def index
     @roles = Role.all.order('created_at ASC')
@@ -31,6 +31,15 @@ class Admin::RolesController < ApplicationController
 
   def update
     if @role.update_role params[:role][:the_role]
+      flash[:notice] = t 'the_role.role_updated'
+      redirect_to_edit
+    else
+      render :action => :edit
+    end
+  end
+
+  def change
+    if @role.update_attributes!(role_params)
       flash[:notice] = t 'the_role.role_updated'
       redirect_to_edit
     else
