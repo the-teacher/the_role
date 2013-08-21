@@ -20,8 +20,8 @@ module TheRole
     include ActiveSupport::Configurable
     config_accessor :layout,
                     :default_user_role,
-                    :default_admin_role_name,
-                    :role_class,
+                    :admin_role_name,
+                    :role_class_name,
                     :role_attribute
   end
 
