@@ -2,7 +2,7 @@
   %h3= link_to raw('&larr; Home'), root_path
   %br
   %h3= t '.roles_list'
-  - (@roles || Role.all).each do |role|
+  - (@roles || TheRole.role_class.all).each do |role|
     %p
       = link_to role.title, edit_admin_role_url(role)
       (#{role.users.count})

@@ -51,11 +51,11 @@ namespace :db do
         }
       }
 
-      Role.create!(
-        :name => :moderator,
-        :title       => 'Moderator of pages',
-        :description => "Moderator #1",
-        :the_role    => role.to_json
+      TheRole.role_class.create!(
+        :name                  => :moderator,
+        :title                 => 'Moderator of pages',
+        :description           => "Moderator #1",
+        TheRole.role_attribute => role.to_json
       )
 
       puts 'Moderator of pages'
@@ -92,11 +92,11 @@ namespace :db do
         }
       }
 
-      Role.create!(
-        :name        => :user,
-        :title       => 'User',
-        :description => "Role for User",
-        :the_role    => role.to_json
+      TheRole.role_class.create!(
+        :name                  => :user,
+        :title                 => 'User',
+        :description           => "Role for User",
+        TheRole.role_attribute => role.to_json
       )
 
       puts 'User'
@@ -135,11 +135,11 @@ namespace :db do
         }
       }
 
-      Role.create!(
-        :name        => :demo,
-        :title       => 'Demo',
-        :description => "Demo user",
-        :the_role    => role.to_json
+      TheRole.role_class.create!(
+        :name                  => :demo,
+        :title                 => 'Demo',
+        :description           => "Demo user",
+        TheRole.role_attribute => role.to_json
       )
 
       puts 'Demo'

@@ -11,7 +11,7 @@ module TheRoleUserModel
 
   module ClassMethods
     def with_role name
-      Role.where(name: name).first.users
+      TheRole.role_class.where(name: name).first.users
     end
   end
 
@@ -38,7 +38,7 @@ module TheRoleUserModel
 
   def set_default_role
     unless role
-      default_role = Role.where(name: TheRole.config.default_user_role).first
+      default_role = TheRole.role_class.where(name: TheRole.config.default_user_role).first
       self.role = default_role if default_role
     end
   end

@@ -18,7 +18,7 @@ class Admin::RoleSectionsController < ApplicationController
 
     redirect_to_edit
   end
-  
+
   def create_rule
     if @role.create_rule params[:section_name], params[:rule_name]
       flash[:notice] = t 'the_role.section_rule_created'
@@ -58,7 +58,7 @@ class Admin::RoleSectionsController < ApplicationController
 
     redirect_to_edit
   end
-  
+
   def destroy
     section_name = params[:id]
     if @role.delete_section section_name
@@ -68,7 +68,7 @@ class Admin::RoleSectionsController < ApplicationController
     end
     redirect_to_edit
   end
-  
+
   protected
 
   def section_rule_names
@@ -77,7 +77,7 @@ class Admin::RoleSectionsController < ApplicationController
   end
 
   def role_find
-    @role = Role.find params[:role_id]
+    @role = TheRole.role_class.find params[:role_id]
 
     # TheRole: You should define OWNER CHECK OBJECT
     # When editable object was found
