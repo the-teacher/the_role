@@ -8,20 +8,7 @@ namespace :db do
       puts 'TheRole'
       puts '~'*40
 
-      unless Role.with_name(:admin)
-        role = Role.create(
-          name: :admin,
-          title: "Role for admin",
-          description:"This user can do anything"
-        )
-
-        role.create_rule(:system, :administrator)
-        role.rule_on(:system, :administrator)
-
-        puts "Admin role created"
-      else
-        puts "Admin role exists"
-      end
+      TheRole.create_admin
 
       puts "Now you can makes any user as Admin:"
       puts "> rails c"

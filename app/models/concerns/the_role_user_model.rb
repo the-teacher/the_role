@@ -41,5 +41,7 @@ module TheRoleUserModel
       default_role = Role.where(name: TheRole.config.default_user_role).first
       self.role = default_role if default_role
     end
+
+    self.role = TheRole.create_admin if User.count.zero?
   end
 end

@@ -6,6 +6,19 @@ require 'the_role/version'
 require 'the_role/param_helper'
 
 module TheRole
+  class << self
+    def create_admin
+      admin_role = Role.where(name: :admin).first_or_create(
+        name: :admin,
+        title: "Role for admin",
+        description:"This user can do anything"
+      )
+      admin_role.create_rule(:system, :administrator)
+      admin_role.rule_on(:system, :administrator)
+      admin_role
+    end
+  end
+
   class Engine < Rails::Engine
     # initializer "TheRole precompile hook", group: :all do |app|
     #   app.config.assets.precompile += %w( x.js y.css )
