@@ -499,6 +499,8 @@ new_role_hash = {
 
 **zh_CN** by @doabit & @linjunpop
 
+**PL** by @egb3
+
 ### MIT-LICENSE
 
 ##### Copyright (c) 2012 [Ilya N.Zykin]
