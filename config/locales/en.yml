@@ -5,15 +5,15 @@ en:
     role_deleted:             Role deleted
     section_created:          Section created
     section_not_created:      Section not created
-    section_rule_created:     "Section's rule created"
-    section_rule_not_created: "Section's rule not created"
-    section_rule_on:          "Section's rule is enable"
-    section_rule_off:         "Section's rule is disable"
-    state_not_changed:        "Section's rule not changed"
+    section_rule_created:     "Sections rule created"
+    section_rule_not_created: "Sections rule not created"
+    section_rule_on:          "Sections rule is enable"
+    section_rule_off:         "Sections rule is disable"
+    state_not_changed:        "Sections rule not changed"
     section_deleted:          Section deleted
     section_not_deleted:      Section not deleted
-    section_rule_deleted:     "Section's rule deleted"
-    section_rule_not_deleted: "Section's rule not deleted"
+    section_rule_deleted:     "Sections rule deleted"
+    section_rule_not_deleted: "Sections rule not deleted"
 
   admin:
     roles:
