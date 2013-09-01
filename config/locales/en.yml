@@ -39,4 +39,4 @@ en:
       sidebar:
         roles_list: Roles list
         new_role: Create new role
-        delete_role_confirm: 'Are you sure? It can dangerous!'
+        delete_role_confirm: 'Are you sure? It can be dangerous!'
