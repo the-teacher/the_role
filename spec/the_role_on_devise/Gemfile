@@ -5,7 +5,7 @@ gem 'rake',  '~> 10.0.4'
 
 gem 'sqlite3'
 gem 'state_machine', '~> 1.2.0'
-gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'rails4'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'coffee-rails',    github: 'rails/coffee-rails'

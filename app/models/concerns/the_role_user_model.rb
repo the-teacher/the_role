@@ -28,9 +28,14 @@ module TheRoleUserModel
     section_name = obj.class.to_s.tableize
     return true  if moderator?(section_name)
 
-    return id == obj.id          if obj.is_a?(User)
+    # obj is User, simple way to define user_id
+    return id == obj.id if obj.is_a?(User)
+
+    # few ways to define user_id
+    return id == obj.user_id     if obj.respond_to? :user_id
     return id == obj[:user_id]   if obj[:user_id]
     return id == obj[:user][:id] if obj[:user]
+
     false
   end
 
@@ -39,9 +44,11 @@ module TheRoleUserModel
   def set_default_role
     unless role
       default_role = Role.where(name: TheRole.config.default_user_role).first
-      self.role = default_role if default_role
+      self.role    = default_role if default_role
     end
 
-    self.role = TheRole.create_admin if User.count.zero?
+    if User.count.zero? && TheRole.config.first_user_should_be_admin
+      self.role = TheRole.create_admin
+    end
   end
 end
