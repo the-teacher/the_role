@@ -5,15 +5,15 @@ en:
     role_deleted:             Role deleted
     section_created:          Section created
     section_not_created:      Section not created
-    section_rule_created:     "Section's rule created"
-    section_rule_not_created: "Section's rule not created"
-    section_rule_on:          "Section's rule is enable"
-    section_rule_off:         "Section's rule is disable"
-    state_not_changed:        "Section's rule not changed"
+    section_rule_created:     "Section rule created"
+    section_rule_not_created: "Section rule not created"
+    section_rule_on:          "Section rule is enable"
+    section_rule_off:         "Section rule is disable"
+    state_not_changed:        "Section rule not changed"
     section_deleted:          Section deleted
     section_not_deleted:      Section not deleted
-    section_rule_deleted:     "Section's rule deleted"
-    section_rule_not_deleted: "Section's rule not deleted"
+    section_rule_deleted:     "Section rule deleted"
+    section_rule_not_deleted: "Section rule not deleted"
 
   admin:
     roles:
@@ -39,4 +39,4 @@ en:
       sidebar:
         roles_list: Roles list
         new_role: Create new role
-        delete_role_confirm: 'Are you sure? It can dangerous!'
+        delete_role_confirm: 'Are you sure? It can be dangerous!'
