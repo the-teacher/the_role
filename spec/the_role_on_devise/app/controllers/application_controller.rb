@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     locale = 'en'
-    langs  = %w{ en ru es zh_CN }
+    langs  = %w{ en ru es pl zh_CN }
 
     if params[:locale]
       lang = params[:locale]
@@ -35,5 +35,6 @@ class ApplicationController < ActionController::Base
     end
 
     I18n.locale = locale
+    redirect_to(:back) if params[:locale]
   end
 end
