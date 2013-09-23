@@ -23,15 +23,6 @@ ActiveRecord::Schema.define(version: 20120314061307) do
     t.datetime "updated_at"
   end
 
-  create_table "roles", force: true do |t|
-    t.string   "name"
-    t.string   "title"
-    t.text     "description"
-    t.text     "the_role"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "company"

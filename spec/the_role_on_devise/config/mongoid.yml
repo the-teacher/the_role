@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: the_role_development
+      hosts:
+        - localhost:27017

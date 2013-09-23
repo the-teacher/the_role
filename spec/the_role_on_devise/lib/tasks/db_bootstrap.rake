@@ -5,6 +5,7 @@ namespace :db do
     Rake::Task["db:drop"].invoke
     Rake::Task["db:create"].invoke
     Rake::Task["db:migrate"].invoke
+    Role.first.destroy
   end
 
   # rake db:test_launch

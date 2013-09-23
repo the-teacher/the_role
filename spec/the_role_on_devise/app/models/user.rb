@@ -16,5 +16,5 @@ class User < ActiveRecord::Base
   # attr_accessible :some_protected_field
 
   # RELATIONS
-  has_many :pages
+  # has_many :pages
 end

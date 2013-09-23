@@ -4,6 +4,10 @@ gem 'rails', '~> 4.0.0'
 gem 'rake',  '~> 10.0.4'
 
 gem 'sqlite3'
+gem 'bson_ext'
+gem 'tenacity' # AR <=> MONGOID relations
+gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
+
 gem 'state_machine', '~> 1.2.0'
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 
