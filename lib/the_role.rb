@@ -7,8 +7,8 @@ require 'the_role/param_helper'
 
 module TheRole
   class << self
-    def create_admin
-      admin_role = Role.where(name: :admin).first_or_create(
+    def create_admin_role!
+      admin_role = Role.where(name: :admin).first_or_create!(
         name: :admin,
         title: "Role for admin",
         description:"This user can do anything"

@@ -8,7 +8,7 @@ namespace :db do
       puts 'TheRole'
       puts '~'*40
 
-      TheRole.create_admin
+      TheRole.create_admin!
 
       puts "Now you can makes any user as Admin:"
       puts "> rails c"
