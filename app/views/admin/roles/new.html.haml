@@ -1,24 +1,25 @@
 = render partial: 'sidebar'
 
 - content_for :role_main do
-  .well
+  - unless @role.errors.blank?
     - @role.errors.each do |field, message|
-      %p
-        = field
+      .alert.alert-danger
+        %b= t(".#{field}")
         \:
         = message
 
-    .form
-      %h3= raw t('.create')
+  .panel.panel-success
+    .panel-heading= raw t('.create')
 
-      = form_for(@role, :url => admin_roles_path) do |f|
+    .panel-body
+      = form_for(@role, url: admin_roles_path, role: :form) do |f|
         %label= t('.name')
-        %p= f.text_field :name
+        %p= f.text_field :name, class: "form-control"
 
         %label= t('.title')
-        %p= f.text_field :title
+        %p= f.text_field :title, class: "form-control"
 
         %label= t('.description')
-        %p= f.text_field :description
+        %p= f.text_field :description, class: "form-control"
 
-        = f.submit t('.create'), :class => :btn
+        = f.submit t('.create'), class: "btn btn-success"
