@@ -15,7 +15,9 @@ module TheRoleUserModel
     end
   end
 
-  def role_hash; @role_hash ||= role.try(:to_hash) || {} end
+  def role_hash;
+    @role_hash ||= role.try(:to_hash) || {}
+  end
 
   # FALSE if object is nil
   # If object is a USER - check for youself
@@ -23,19 +25,18 @@ module TheRoleUserModel
   # Check for owner _object_ if owner field is not :user_id
   def owner? obj
     return false unless obj
-    return true  if admin?
+    return true if admin?
 
     section_name = obj.class.to_s.tableize
-    return true  if moderator?(section_name)
+    return true if moderator?(section_name)
 
     # obj is User, simple way to define user_id
     return id == obj.id if obj.is_a?(User)
 
     # few ways to define user_id
-    return id == obj.user_id     if obj.respond_to? :user_id
-    return id == obj[:user_id]   if obj[:user_id]
+    return id == obj.user_id if obj.respond_to? :user_id
+    return id == obj[:user_id] if obj[:user_id]
     return id == obj[:user][:id] if obj[:user]
-
     false
   end
 
@@ -43,8 +44,8 @@ module TheRoleUserModel
 
   def set_default_role
     unless role
-      default_role = Role.where(name: TheRole.config.default_user_role).first
-      self.role    = default_role if default_role
+      default_role = Role.find_by_name(TheRole.config.default_user_role)
+      self.role = default_role if default_role
     end
 
     if User.count.zero? && TheRole.config.first_user_should_be_admin
