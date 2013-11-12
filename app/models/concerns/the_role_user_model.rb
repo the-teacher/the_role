@@ -11,7 +11,7 @@ module TheRoleUserModel
 
   module ClassMethods
     def with_role name
-      Role.where(name: name).first.users
+      Role.where(name: name).first.try(:users)
     end
   end
 
