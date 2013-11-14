@@ -110,7 +110,7 @@ end
 
 ```ruby
 class User < ActiveRecord::Base
-  include TheRoleUserModel
+  has_roles
 
   # has_many :pages
 end
