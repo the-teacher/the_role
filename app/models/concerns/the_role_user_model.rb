@@ -31,7 +31,7 @@ module TheRoleUserModel
     return true if moderator?(section_name)
 
     # obj is User, simple way to define user_id
-    return id == obj.id if obj.is_a?(User)
+    return id == obj.id if obj.is_a?(self.class)
 
     # few ways to define user_id
     return id == obj.user_id if obj.respond_to? :user_id
@@ -48,7 +48,7 @@ module TheRoleUserModel
       self.role = default_role if default_role
     end
 
-    if User.count.zero? && TheRole.config.first_user_should_be_admin
+    if self.class.count.zero? && TheRole.config.first_user_should_be_admin
       self.role = TheRole.create_admin
     end
   end
