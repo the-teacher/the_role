@@ -1,6 +1,11 @@
 module TheRoleController
   private
 
+  def login_required
+    authenticate_user! if respond_to?(:authenticate_user!)
+    require_login if respond_to?(:require_login)
+  end
+
   def role_access_denied
     flash[:error] = t('the_role.access_denied')
     redirect_back_or_to root_path
