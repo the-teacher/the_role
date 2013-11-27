@@ -4,14 +4,16 @@ require 'the_role/hash'
 require 'the_role/config'
 require 'the_role/version'
 require 'the_role/param_helper'
+require 'the_role/activerecord'
+
 
 module TheRole
   class << self
     def create_admin_role!
       admin_role = Role.where(name: :admin).first_or_create!(
-        name: :admin,
-        title: "Role for admin",
-        description:"This user can do anything"
+          name: :admin,
+          title: "Role for admin",
+          description: "This user can do anything"
       )
       admin_role.create_rule(:system, :administrator)
       admin_role.rule_on(:system, :administrator)
@@ -27,4 +29,8 @@ module TheRole
     # http://stackoverflow.com/questions/6279325/adding-to-rails-autoload-path-from-gem
     # config.to_prepare do; end
   end
+end
+
+if defined?(ActiveRecord::Base)
+  ActiveRecord::Base.extend TheRole::ActiveRecord
 end

@@ -3,7 +3,7 @@ module TheRoleController
 
   def role_access_denied
     flash[:error] = t('the_role.access_denied')
-    redirect_to '/'
+    redirect_back_or_to root_path
   end
 
   def role_required

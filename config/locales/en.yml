@@ -14,6 +14,7 @@ en:
     section_not_deleted:      Section not deleted
     section_rule_deleted:     "Section rule deleted"
     section_rule_not_deleted: "Section rule not deleted"
+    access_denied: "Access Denied"
 
   admin:
     roles:
