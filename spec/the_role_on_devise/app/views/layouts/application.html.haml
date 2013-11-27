@@ -12,14 +12,14 @@
     = yield :css 
 
   %body
-    .container-fluid
-      .row-fluid
-        .span12.header
+    .container
+      .row
+        .col-md-12.header
           %h2 TheRole - Authorization Gem for Ruby on Rails with administrative interface.
           %h3 Semantic, Flexible, Lightweight
 
-      .row-fluid
-        .span3.manage_panel
+      .row
+        .col-md-3.manage_panel
           = yield :role_sidebar
 
           %h4 Basic links
@@ -33,7 +33,7 @@
           
           = render :partial => 'layouts/current_user_info'
 
-        .span9.main_content
+        .col-md-9.main_content
           - if flash[:notice]
             .alert.alert-success
               %a.close{:href => '#', 'data-dismiss' => :alert } &times;
@@ -47,11 +47,11 @@
           = yield
           = yield :role_main
 
-      .row-fluid
-        .span3
+      .row
+        .col-md-3
           %p
             = link_to 'TheRole 2', 'https://github.com/the-teacher/the_role'
-        .span9
+        .col-md-9
           %p
             = link_to 'en', '/?locale=en'
             \|

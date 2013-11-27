@@ -68,10 +68,8 @@ gem 'the_role', '~> 2.0.0'
 ## Install
 
 ```ruby
-# Optional for UI.
-# You can use any Bootstrap version (CSS, LESS, SCSS)
-# You can find required components below
-gem 'bootstrap-sass', '~> 2.3.1.0'
+# You can use any Bootstrap 3 version (CSS, LESS, SCSS)
+gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem "the_role", "~> 2.0.0"
 ```
@@ -209,32 +207,17 @@ end
 **application.css**
 
 ```
-//= require the_role/bootstrap_sass
-//= require the_role
+//= require bootstrap
 ```
 
-If you don't use **bootstrap-sass** gem you should add the following componetns from your bootstrap version instead **the_role/bootstrap_sass**:
+**application.js**
 
 ```
-bootstrap/variables
-bootstrap/mixins
-bootstrap/reset
+//= require jquery
+//= require jquery_ujs
 
-bootstrap/scaffolding
-bootstrap/grid
-bootstrap/layouts
-
-bootstrap/navs
-bootstrap/wells
-bootstrap/forms
-bootstrap/close
-bootstrap/tables
-bootstrap/navbar
-bootstrap/dropdowns
-
-bootstrap/alerts
-bootstrap/buttons
-bootstrap/button-groups
+//= require bootstrap
+//= require the_role_editinplace
 ```
 
 ### Configuration

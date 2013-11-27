@@ -10,7 +10,8 @@ gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'coffee-rails',    github: 'rails/coffee-rails'
 gem 'sass-rails',      github: 'rails/sass-rails'
-gem 'bootstrap-sass', '~> 2.3.1.0'
+
+gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'faker'
 gem 'uglifier'

@@ -13,6 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 
-//= require bootstrap-alert
-//= require bootstrap-dropdown
-//= require the_role
+//= require bootstrap
+//= require the_role_editinplace
