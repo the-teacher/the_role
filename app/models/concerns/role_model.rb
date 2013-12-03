@@ -15,8 +15,8 @@ module RoleModel
   end
 
   included do
-    has_many :users, dependent: :restrict_with_exception
-    validates :name, presence: true, uniqueness: true
+    has_many  :users, class_name: TheRole.user_model, dependent: TheRole.config.dependent_destroy  
+    validates :name,  presence: true, uniqueness: true
     validates :title, presence: true, uniqueness: true
     validates :description, presence: true
 

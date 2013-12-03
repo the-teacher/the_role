@@ -9,6 +9,10 @@ require 'the_role/activerecord'
 
 module TheRole
   class << self
+    def user_model
+      config.user_model.to_s.classify.constantize
+    end
+
     def create_admin_role!
       admin_role = Role.where(name: :admin).first_or_create!(
           name: :admin,
