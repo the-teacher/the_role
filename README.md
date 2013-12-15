@@ -38,7 +38,7 @@ puts following yields into your layout:
 ### Rails 4 version
 
 ```
-gem 'the_role', '~> 2.0.0'
+gem 'the_role', '~> 2.3'
 ```
 
 ## If you have any questions
