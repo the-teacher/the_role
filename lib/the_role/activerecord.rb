@@ -1,11 +1,11 @@
 module TheRole
   module ActiveRecord
     def has_roles
-      include TheRoleUserModel
+      include TheRole::User
     end
 
     def acts_as_role
-      include RoleModel
+      include TheRole::Role
     end
   end
 end

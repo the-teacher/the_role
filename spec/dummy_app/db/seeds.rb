@@ -27,6 +27,8 @@ Role.create!(
   the_role: { moderator: { pages: true } }
 )
 
+TheRole.create_admin_role!
+
 p "Roles created"
 
 ##############################

@@ -1,3 +1,3 @@
 class Role < ActiveRecord::Base
-  include RoleModel
+  include TheRole::Role
 end
