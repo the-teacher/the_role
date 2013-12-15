@@ -7,7 +7,7 @@ App for development and testing TheRole gem
 ```
 git clone git@github.com:the-teacher/the_role.git
 
-cd the_role/spec/the_role_on_devise/
+cd the_role/spec/dummy_app/
 
 bundle
 ```
@@ -15,7 +15,7 @@ bundle
 ### Start it!
 
 ```
-rake db:test_launch
+rake db:bootstrap_and_seed
 
 rails s
 ```
