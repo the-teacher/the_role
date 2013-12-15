@@ -91,6 +91,7 @@ describe PagesController do
 
       it "hacker should be blocked" do
         sign_in @hacker
+        @request.env['HTTP_REFERER'] = '/'
         patch :update, id: @page, page: { title: "test_title" }
         response.body.should match access_denied_match
       end
@@ -125,6 +126,7 @@ describe PagesController do
 
     it "Hacker cant update page" do
       sign_in @hacker
+      @request.env['HTTP_REFERER'] = '/'
 
       expect {
         patch :update, id: @page, page: { title: @new_title }

@@ -1,6 +1,6 @@
 module TheRole
   module ActiveRecord
-    def has_roles
+    def has_role
       include TheRole::User
     end
 

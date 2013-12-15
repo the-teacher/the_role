@@ -4,6 +4,7 @@ describe Admin::RolesController do
   describe "Admin Section" do
     describe 'Unauthorized' do
       before(:each) do
+        @request.env['HTTP_REFERER'] = '/'
         @role = FactoryGirl.create(:role_user)
       end
 
@@ -25,6 +26,7 @@ describe Admin::RolesController do
     describe "Authorized / Regular user" do
       describe "Can't do something with Roles" do
         before(:each) do
+          @request.env['HTTP_REFERER'] = '/'
           @user = FactoryGirl.create(:user)
           @role = FactoryGirl.create(:role_user)
           sign_in @user

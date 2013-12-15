@@ -15,7 +15,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 # Return default text on "Access Denied" page
 def access_denied_match
-  "access_denied"
+  "redirected"
 end
 
 RSpec.configure do |config|
