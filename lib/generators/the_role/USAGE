@@ -12,7 +12,7 @@ Generators:
   > bundle exec rails g the_role install
   - Install config file and models
 
-  > bundle exec rails g the_role setup
+  > bundle exec rails g the_role config
   - Install config file
 
   > bundle exec rails g the_role models

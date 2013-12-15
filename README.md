@@ -108,7 +108,9 @@ end
 
 ```ruby
 class User < ActiveRecord::Base
-  has_roles
+  include TheRole::User
+  # or following alias for AR:
+  # has_role
 
   # has_many :pages
 end
@@ -120,6 +122,17 @@ Generate Role model
 
 ```ruby
 bundle exec rails g the_role install
+```
+
+or you can create Role model manually:
+
+```ruby
+class Role < ActiveRecord::Base
+  include TheRole::Role
+  # or following alias for AR:
+  # acts_as_role
+end
+```
 ```
 
 install TheRole migrations
@@ -156,22 +169,35 @@ User.first.update( role: Role.with_name(:admin) )
 
 ```ruby
 class ApplicationController < ActionController::Base
-  include TheRoleController
+  include TheRole::Controller
 
   protect_from_forgery
 
-  # your Access Denied processor
   def access_denied
-    return render(text: 'access_denied: requires a role')
+    flash[:error] = t('the_role.access_denied')
+    redirect_to(:back)
   end
+end
+```
+### Configuration
 
-  # 1) LOGIN_REQUIRE => authenticate_user!    for Devise
-  # 2) LOGIN_REQUIRE => require_login         for Sorcery
-  # 3) LOGIN_REQUIRE => user_require_method   for other Authentication solution
+create the_role config:
 
-  # Define method aliases for the correct TheRole's controller work
-  alias_method :login_required,     :LOGIN_REQUIRE
-  alias_method :role_access_denied, :access_denied
+```
+bundle exec rails g the_role setup
+```
+
+**config/initializers/the_role.rb**
+
+```ruby
+TheRole.configure do |config|
+  config.layout                = :application
+  config.default_user_role     = :user
+  config.access_denied_method  = :access_denied      # define it in ApplicationController
+  config.login_required_method = :authenticate_user! # devise auth method
+
+  # config.first_user_should_be_admin = false
+  # config.destroy_strategy           = :restrict_with_exception # can be nil
 end
 ```
 
@@ -218,17 +244,6 @@ end
 
 //= require bootstrap
 //= require the_role_editinplace
-```
-
-### Configuration
-
-config/initializers/the_role.rb
-
-```ruby
-TheRole.configure do |config|
-  config.layout            = :application # default Layout for TheRole UI
-  config.default_user_role = nil          # set default role (name)
-end
 ```
 
 ## Understanding

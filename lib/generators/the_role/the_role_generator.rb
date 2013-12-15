@@ -4,10 +4,10 @@ class TheRoleGenerator < Rails::Generators::NamedBase
 
   def generate_controllers
     if gen_name == 'install'
-      cp_setup
+      cp_config
       cp_models
-    elsif gen_name == 'setup'
-      cp_setup
+    elsif gen_name == 'config'
+      cp_config
     elsif gen_name == 'models'
       cp_models
     elsif gen_name == 'admin'
@@ -31,7 +31,7 @@ class TheRoleGenerator < Rails::Generators::NamedBase
               "app/models/role.rb"
   end
 
-  def cp_setup
+  def cp_config
     copy_file 'the_role.rb', 'config/initializers/the_role.rb'
   end
 
