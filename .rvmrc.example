@@ -1,1 +1,1 @@
-rvm use ruby-1.8.7-p357@the_role --create
+rvm use ruby-2.0.0-p353@the_role --create
