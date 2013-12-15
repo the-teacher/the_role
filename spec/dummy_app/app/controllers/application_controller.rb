@@ -9,11 +9,9 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
   def access_denied
-    render :text => 'access_denied: requires an role' and return
+    flash[:error] = t('the_role.access_denied')
+    redirect_to(:back)
   end
-
-  alias_method :login_required,     :authenticate_user!
-  alias_method :role_access_denied, :access_denied
 
   private
 

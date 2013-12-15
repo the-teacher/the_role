@@ -1,11 +1,14 @@
 module TheRole
   module Controller
-    private
+    def login_required
+      send TheRole.config.login_required_method
+    end
 
     def role_access_denied
-      flash[:error] = t('the_role.access_denied')
-      redirect_back_or_to root_path
+      send TheRole.config.access_denied_method
     end
+
+    private
 
     def role_required
       role_access_denied unless current_user.has_role?(controller_path, action_name)

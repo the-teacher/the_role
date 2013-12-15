@@ -16,8 +16,8 @@ module TheRole
     end
 
     included do
-      has_many :users, dependent: :restrict_with_exception
-      validates :name, presence: true, uniqueness: true
+      has_many  :users, dependent: TheRole.config.destroy_strategy
+      validates :name,  presence: true, uniqueness: true
       validates :title, presence: true, uniqueness: true
       validates :description, presence: true
 
