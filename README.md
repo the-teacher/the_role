@@ -475,6 +475,7 @@ new_role_hash = {
 
 #### Changelog
 
+* 2.3.0 - Refactoring
 * 2.1.0 - User#any_role? & Role#any?
 * 2.0.3 - create role fix, cleanup
 * 2.0.2 - code cleanup, readme
