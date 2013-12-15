@@ -20,12 +20,15 @@ class TheRoleGenerator < Rails::Generators::NamedBase
 
   private
 
+  def root_path; TheRole::Engine.root; end
+
   def gen_name
     name.to_s.downcase
   end
 
   def cp_models
-    copy_file 'role.rb', 'app/models/role.rb'
+    copy_file "#{root_path}/app/models/_templates_/role.rb",
+              "app/models/role.rb"
   end
 
   def cp_setup

@@ -2,4 +2,4 @@ language: ruby
 rvm:
   - 1.9.3
 gemfile: spec/dummy_app/Gemfile
-script: "cd spec/the_role_on_devise && rake db:bootstrap RAILS_ENV=test && rspec --format documentation"
+script: "cd spec/dummy_app && rake db:bootstrap RAILS_ENV=test && rspec --format documentation"
