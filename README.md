@@ -41,7 +41,9 @@ puts following yields into your layout:
 gem 'the_role', '~> 2.0.0'
 ```
 
-[Rails 3 version](http://rubygems.org/gems/the_role/versions/1.7.0) (not recommended for use)
+## If you have any questions
+
+Please before ask anything try to launch and play with **[Dummy App](spec/dummy_app)** in spec folder. Maybe example of integration will be better than any documentation. Thank you!
 
 ### Instalation
 
