@@ -185,7 +185,7 @@ end
 create the_role config:
 
 ```
-bundle exec rails g the_role setup
+bundle exec rails g the_role config
 ```
 
 **config/initializers/the_role.rb**
