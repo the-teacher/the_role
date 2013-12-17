@@ -13,7 +13,7 @@ class TheRoleGenerator < Rails::Generators::NamedBase
     elsif gen_name == 'admin'
       create_admin_role
     else
-      puts 'TheComments Generator - wrong Name'
+      puts 'TheRole Generator - wrong Name'
       puts 'Try to use install'
     end
   end
