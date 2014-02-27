@@ -14,7 +14,8 @@ pl:
     section_not_deleted:      Sekcja nie skasowana
     section_rule_deleted:     "Reguła skasowana"
     section_rule_not_deleted: "Reguła nie skasowana"
-
+    access_denied: "Odmowa dostępu"
+    
   admin:
     roles:
       new:
@@ -39,4 +40,4 @@ pl:
       sidebar:
         roles_list: Lista ról
         new_role: Utwórz nową rolę
-        delete_role_confirm: 'Jesteś pewien? To może być niebezpieczne!'
+        delete_role_confirm: 'Czy jesteś pewien? To może być niebezpieczne!'
