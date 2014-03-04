@@ -13,7 +13,7 @@
 </tr>
 <tr>
 <td><img src="https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png" alt="Bye bye CanCan, I got The Role!"></td>
-<td>TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with 2-level-hash, and store in database with JSON.<br><br>TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the <b>sections</b> and nested <b>rules</b>.<br><br><b>Section</b> may be associated with <b>controller</b> name.<br><br><b>Rule</b> may be associated with <b>action</b> name.<br><br>Section can have many rules.<br><br>Rule can have <b>true</b> or <b>false</b> value<br><br><b>Sections</b> and nested <b>Rules</b> provide <b>ACL</b> (<b>Access Control List</b>)<br><br>Role <b>stored in the database as JSON</b> string.<br><br>Using of hashes, makes role system extremely easy to configure and use.<br></td>
+<td>TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with 2-level-hash, and stored in the database as a JSON string.<br><br>TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the <b>sections</b> and nested <b>rules</b>.<br><br>A <b>Section</b> may be associated with a <b>controller</b> name.<br><br>A <b>Rule</b> may be associated with an <b>action</b> name.<br><br>A Section can have many rules.<br><br>A Rule can be <b>true</b> or <b>false</b>.<br><br><b>Sections</b> and nested <b>Rules</b> provide an <b>ACL</b> (<b>Access Control List</b>)<br><br><br>Using hashes, makes role system extremely easy to configure and use.<br></td>
 </tr>
 </table>  
 
@@ -43,7 +43,7 @@ gem 'the_role', '~> 2.3'
 
 ## If you have any questions
 
-Please before ask anything try to launch and play with **[Dummy App](spec/dummy_app)** in spec folder. Maybe example of integration will be better than any documentation. Thank you!
+Please, before asking anything try to launch and play with the **[Dummy App](spec/dummy_app)** in the spec folder. Maybe an example integration will be better than any documentation. Thank you!
 
 ### Instalation
 
@@ -88,7 +88,7 @@ bundle exec rails g the_role --help
 
 ### Change User migration
 
-Add **role_id:integer** field to your User Model
+Add a **role_id:integer** field to your User Model
 
 ```ruby
 def self.up
@@ -142,7 +142,7 @@ install TheRole migrations
 rake the_role_engine:install:migrations
 ```
 
-Invoke migration
+Invoke migrations
 
 ```ruby
 rake db:migrate
@@ -202,7 +202,7 @@ TheRole.configure do |config|
 end
 ```
 
-#### Using with any controller
+#### Usage with any controller
 
 ```ruby
 class PagesController < ApplicationController
@@ -251,13 +251,13 @@ end
 
 #### TheRole instead of CanCan?
 
-TheRole in contrast to CanCan has simple and predefined way to find access state of current role. If you don't want to create your own role scheme with CanCan Abilities - TheRole can be a great solution for your.
+TheRole, in contrast to CanCan, has a simple and predefined way to find the access state of the current role. If you don't want to create your own role scheme with CanCan Abilities - TheRole can be a great solution for your.
 
-You can manage roles with simple UI. TheRole's ACL structure is inspired by Rails controllers, that is why it's so great for Rails application.
+You can manage roles with a simple UI. TheRole's ACL structure is inspired by Rails' controllers, that's why it's so great for Rails applications.
 
-#### What does it mean semantic?
+#### What does semantic mean?
 
-Semantic - the science of meaning. Human should be able to understand fast what is happening in a role system.
+Semantic - the science of meaning. Humans should be able to quickly understand what is happening in a role system.
 
 Look at the next Role hash. If you can understand access rules - this authorization system is semantic.
 
@@ -299,7 +299,7 @@ But, also, you can use virtual names of sections, and virtual names of section's
 
 And you can use them as well as other access rules.
 
-#### Using with Views
+#### Usage within Views
 
 ```ruby
 <% if @user.has_role?(:twitter, :button) %>
@@ -311,11 +311,11 @@ And you can use them as well as other access rules.
 
 #### Who is Administrator?
 
-Administrator is the user who can access any section and the rules of your application.
+Administrator is the user who can access any section and rules of your application.
 
 Administrator is the owner of any objects in your application.
 
-Administrator is the user, which has virtual section **system** and rule **administrator** in the role-hash.
+Administrator is the user, who has a virtual section **system** and a rule **administrator** in the role-hash.
 
 
 ```ruby
@@ -328,13 +328,13 @@ admin_role_fragment = {
 
 #### Who is Moderator?
 
-Moderator is the user, which has access to any actions of some section(s).
+Moderator is the user, who has access to any actions of some section(s).
 
 Moderator is the owner of any objects of some class.
 
-Moderator is the user, which has a virtual section **moderator**, with **section name** as rule name.
+Moderator is the user, who has a virtual section **moderator**, with **section name** as rule name.
 
-There is Moderator of Pages (controller) and Twitter (virtual section)
+An example of a Moderator of Pages (controller) and Twitter (virtual section)
 
 ```ruby
 moderator_role_fragment = {
@@ -352,7 +352,7 @@ Administrator is owner of any object in system.
 
 Moderator of pages is owner of any page.
 
-User is owner of object, when **Object#user_id == User#id**.
+User is owner of objects, when **Object#user_id == User#id**.
 
 
 # API
@@ -364,13 +364,13 @@ User is owner of object, when **Object#user_id == User#id**.
 @user.role # => Role obj
 ```
 
-Is it Administrator?
+Is a user Administrator?
 
 ```ruby
 @user.admin?                       => true | false
 ```
 
-Is it Moderator?
+Is a user Moderator?
 
 ```ruby
 @user.moderator?(:pages)           => true | false
@@ -378,7 +378,7 @@ Is it Moderator?
 @user.moderator?(:articles)        => true | false
 ```
 
-Has user got an access to **rule** of **section** (action of controller)?
+Has user got access to **rule** of **section** (action of controller)?
 
 ```ruby
 @user.has_role?(:pages,    :show)  => true | false
@@ -451,7 +451,7 @@ Is user **Owner** of object?
 
 ```ruby
 # Incoming hash is true-mask-hash
-# All the rules of the Role will be reseted to false
+# All the rules of the Role will be reset to false
 # Only rules from true-mask-hash will be set true
 new_role_hash = {
   :pages => {
