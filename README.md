@@ -251,7 +251,7 @@ end
 
 #### TheRole instead of CanCan?
 
-TheRole, in contrast to CanCan, has a simple and predefined way to find the access state of the current role. If you don't want to create your own role scheme with CanCan Abilities - TheRole can be a great solution for your.
+TheRole, in contrast to CanCan, has a simple and predefined way to find the access state of the current role. If you don't want to create your own role scheme with CanCan Abilities - TheRole can be a great solution for you.
 
 You can manage roles with a simple UI. TheRole's ACL structure is inspired by Rails' controllers, that's why it's so great for Rails applications.
 
