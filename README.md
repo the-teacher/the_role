@@ -229,6 +229,15 @@ class PagesController < ApplicationController
 end
 ```
 
+**integration with Inhirited Resource**
+
+```ruby
+  def owner_required
+    @owner_check_object = resource
+    super
+  end
+```
+
 ### Assets and Bootstrap
 
 **application.css**
