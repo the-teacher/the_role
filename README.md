@@ -19,7 +19,7 @@
 
 ### GUI
 
-:warn: UI moved in **the_role_bootstrap3_ui** gem
+:warning: UI moved in **the_role_bootstrap3_ui** gem
 
 We are waiting for **foundation** version of UI
 
