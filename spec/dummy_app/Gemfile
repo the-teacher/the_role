@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0.0'
-gem 'rake',  '~> 10.0.4'
+gem 'rails'
 
+gem 'devise'
 gem 'sqlite3'
 gem 'state_machine', '~> 1.2.0'
-gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'coffee-rails',    github: 'rails/coffee-rails'
@@ -19,8 +18,10 @@ gem 'uglifier'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
 
-gem 'the_role' , path: '../../'
-gem 'haml' ,     git: 'https://github.com/haml/haml.git', tag: '4.0.1'
+gem 'the_role', path: '../../'
+gem 'the_role_bootstrap3_ui',
+  github: 'the-teacher/the_role_bootstrap3_ui',
+  branch: 'master'
 
 group :test do
   gem 'factory_girl_rails', '~> 4.0'
