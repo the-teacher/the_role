@@ -1,5 +1,3 @@
-require 'haml'
-
 require 'the_role/hash'
 require 'the_role/config'
 require 'the_role/version'

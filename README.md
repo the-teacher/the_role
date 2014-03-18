@@ -19,6 +19,10 @@
 
 ### GUI
 
+:warn: UI moved in **the_role_bootstrap3_ui** gem
+
+We are waiting for **foundation** version of UI
+
 <table>
 <tr>
   <td>TheRole management web interface => localhost:3000/admin/roles</td>
@@ -38,8 +42,12 @@ puts following yields into your layout:
 ### Rails 4 version
 
 ```
-gem 'the_role', '~> 2.3'
+gem 'the_role', '~> 2.4'
+
+gem 'the_role_bootstrap3_ui'
 ```
+
+Please read *the_role_bootstrap3_ui* docs to know more about assets
 
 ## If you have any questions
 
@@ -49,7 +57,6 @@ Please, before asking anything try to launch and play with the **[Dummy App](spe
 
 * [INSTALL](#install)
 * [INTEGRATION](#integration)
-* [Assets and Bootstrap](#assets-and-bootstrap)
 * [Configuration (optional)](#configuration)
 
 ### Understanding
@@ -236,24 +243,6 @@ end
     @owner_check_object = resource
     super
   end
-```
-
-### Assets and Bootstrap
-
-**application.css**
-
-```
-//= require bootstrap
-```
-
-**application.js**
-
-```
-//= require jquery
-//= require jquery_ujs
-
-//= require bootstrap
-//= require the_role_editinplace
 ```
 
 ## Understanding
