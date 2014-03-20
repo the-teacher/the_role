@@ -19,7 +19,9 @@
 
 ### GUI
 
-:warn: UI moved in **the_role_bootstrap3_ui** gem
+:warning: UI moved in **the_role_bootstrap3_ui** gem
+
+https://github.com/the-teacher/the_role_bootstrap3_ui
 
 We are waiting for **foundation** version of UI
 
@@ -48,6 +50,9 @@ gem 'the_role_bootstrap3_ui'
 ```
 
 Please read *the_role_bootstrap3_ui* docs to know more about assets
+
+https://github.com/the-teacher/the_role_bootstrap3_ui
+
 
 ## If you have any questions
 
