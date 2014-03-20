@@ -3,6 +3,8 @@ require 'the_role/config'
 require 'the_role/version'
 require 'the_role/activerecord'
 
+require 'the_string_to_slug'
+
 module TheRole
   class << self
     def create_admin_role!

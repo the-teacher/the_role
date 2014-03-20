@@ -6,8 +6,6 @@ gem 'devise'
 gem 'sqlite3'
 gem 'state_machine', '~> 1.2.0'
 
-gem "the_string_to_slug", path: "../../../the_string_to_slug"
-
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'coffee-rails',    github: 'rails/coffee-rails'
 gem 'sass-rails',      github: 'rails/sass-rails'
@@ -20,7 +18,9 @@ gem 'uglifier'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
 
-gem 'the_role', path: '../../'
+gem 'the_role', "~> 2.5"
+  # path: '../../'
+
 gem 'the_role_bootstrap3_ui',
   github: 'the-teacher/the_role_bootstrap3_ui',
   branch: 'master'
