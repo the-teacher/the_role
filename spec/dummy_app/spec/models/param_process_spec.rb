@@ -2,36 +2,31 @@
 
 require 'spec_helper'
 
-describe TheRoleParam do
-  it 'module TheRoleParam should be defined' do
-    TheRoleParam.class.should be Module
-  end
-
+describe "String to slug" do
   it 'string process 1' do
-    TheRoleParam.process('hello world!').should eq 'hello_world'
+    'hello world!'.to_slug_param(delimiter: '_').should eq 'hello_world'
   end
 
   it 'string process 2' do
-    TheRoleParam.process(:hello_world!).should eq 'hello_world'
+    :hello_world!.to_s.to_slug_param(delimiter: '_').should eq 'hello_world'
   end
 
   it 'string process 3' do
-    TheRoleParam.process("hello !      world").should eq 'hello_world'
+    "hello !      world".to_slug_param(delimiter: '_').should eq 'hello_world'
   end
 
   it 'string process 4' do
-    TheRoleParam.process("HELLO  $!= WorlD").should eq 'hello_world'
+    "HELLO  $!= WorlD".to_slug_param(delimiter: '_').should eq 'hello_world'
   end
 
   it 'string process 5' do
-    TheRoleParam.process("HELLO---WorlD").should eq 'hello_world'
+    "HELLO---WorlD".to_slug_param(delimiter: '_').should eq 'hello_world'
   end
 
   it "should work with Controller Name" do
     ctrl = PagesController.new
     ctrl.controller_path
-
-    TheRoleParam.process(ctrl.controller_path).should eq 'pages'
+    ctrl.controller_path.to_slug_param(delimiter: '_').should eq 'pages'
   end
 
   it "should work with Nested Controller Name" do
@@ -39,6 +34,6 @@ describe TheRoleParam do
     ctrl = Admin::PagesController.new
     ctrl.controller_path
 
-    TheRoleParam.process(ctrl.controller_path).should eq 'admin_pages'
+    ctrl.controller_path.to_slug_param(delimiter: '_').should eq 'admin_pages'
   end
 end

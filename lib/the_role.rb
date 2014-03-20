@@ -1,7 +1,6 @@
 require 'the_role/hash'
 require 'the_role/config'
 require 'the_role/version'
-require 'the_role/param_helper'
 require 'the_role/activerecord'
 
 module TheRole

@@ -6,6 +6,8 @@ gem 'devise'
 gem 'sqlite3'
 gem 'state_machine', '~> 1.2.0'
 
+gem "the_string_to_slug", path: "../../../the_string_to_slug"
+
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'coffee-rails',    github: 'rails/coffee-rails'
 gem 'sass-rails',      github: 'rails/sass-rails'
