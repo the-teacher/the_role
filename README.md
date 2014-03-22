@@ -44,7 +44,7 @@ puts following yields into your layout:
 ### Rails 4 version
 
 ```
-gem 'the_role', '~> 2.4'
+gem 'the_role', '~> 2.5.2'
 
 gem 'the_role_bootstrap3_ui'
 ```
