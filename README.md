@@ -506,7 +506,7 @@ new_role_hash = {
 
 ### MIT-LICENSE
 
-##### Copyright (c) 2012 [Ilya N.Zykin]
+##### Copyright (c) 2012-2014 [Ilya N.Zykin]
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

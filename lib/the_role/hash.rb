@@ -34,7 +34,7 @@ class Hash
 
   unless {}.respond_to?(:underscorify_keys)
     def underscorify_keys
-      deep_transform_keys{ |key| key.to_s.to_slug_param(delimiter: '_') }
+      deep_transform_keys{ |key| key.to_slug_param(sep: '_') }
     end
 
     def underscorify_keys!

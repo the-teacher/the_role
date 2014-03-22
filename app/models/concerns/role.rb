@@ -12,7 +12,7 @@ module TheRole
     alias_method :any?, :any_role?
 
     def has_section? section_name
-      to_hash.key? section_name.to_s.to_slug_param(delimiter: '_')
+      to_hash.key? section_name.to_slug_param(sep: '_')
     end
 
     included do
@@ -22,7 +22,7 @@ module TheRole
       validates :description, presence: true
 
       before_save do
-        self.name = name.to_s.to_slug_param(delimiter: '_')
+        self.name = name.to_slug_param(sep: '_')
 
         rules_set = self.the_role
         self.the_role = {}.to_json if rules_set.blank? # blank
@@ -41,7 +41,7 @@ module TheRole
     def create_section section_name = nil
       return false unless section_name
       role = to_hash
-      section_name = section_name.to_s.to_slug_param(delimiter: '_')
+      section_name = section_name.to_slug_param(sep: '_')
       return false if section_name.blank?
       return true  if role[section_name]
       role[section_name] = {}
@@ -53,8 +53,8 @@ module TheRole
       return false unless create_section(section_name)
       
       role = to_hash
-      rule_name    = rule_name.to_s.to_slug_param(delimiter: '_')
-      section_name = section_name.to_s.to_slug_param(delimiter: '_')
+      rule_name    = rule_name.to_slug_param(sep: '_')
+      section_name = section_name.to_slug_param(sep: '_')
 
       return true if role[section_name][rule_name]
       role[section_name][rule_name] = false
@@ -91,8 +91,8 @@ module TheRole
 
     def rule_on section_name, rule_name
       role = to_hash
-      rule_name    = rule_name.to_s.to_slug_param(delimiter: '_')
-      section_name = section_name.to_s.to_slug_param(delimiter: '_')
+      rule_name    = rule_name.to_slug_param(sep: '_')
+      section_name = section_name.to_slug_param(sep: '_')
 
       return false unless role[section_name]
       return false unless role[section_name].key? rule_name
@@ -104,8 +104,8 @@ module TheRole
 
     def rule_off section_name, rule_name
       role = to_hash
-      rule_name    = rule_name.to_s.to_slug_param(delimiter: '_')
-      section_name = section_name.to_s.to_slug_param(delimiter: '_')
+      rule_name    = rule_name.to_slug_param(sep: '_')
+      section_name = section_name.to_slug_param(sep: '_')
 
       return false unless role[section_name]
       return false unless role[section_name].key? rule_name
@@ -120,7 +120,7 @@ module TheRole
     def delete_section section_name = nil
       return false unless section_name
       role = to_hash
-      section_name = section_name.to_s.to_slug_param(delimiter: '_')
+      section_name = section_name.to_slug_param(sep: '_')
 
       return false if section_name.blank?
       return false unless role[section_name]
@@ -131,8 +131,8 @@ module TheRole
 
     def delete_rule section_name, rule_name
       role = to_hash
-      rule_name    = rule_name.to_s.to_slug_param(delimiter: '_')
-      section_name = section_name.to_s.to_slug_param(delimiter: '_')
+      rule_name    = rule_name.to_slug_param(sep: '_')
+      section_name = section_name.to_slug_param(sep: '_')
 
       return false unless role[section_name]
       return false unless role[section_name].key? rule_name
