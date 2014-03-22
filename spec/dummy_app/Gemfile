@@ -18,12 +18,11 @@ gem 'uglifier'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
 
-gem 'the_string_to_slug',
-  path: "../../../the_string_to_slug"
+# gem 'the_string_to_slug', path: "../../../the_string_to_slug"
 
 gem 'the_role',
-  # "~> 2.5.1"
-  path: '../../'
+  "~> 2.5.2"
+  # path: '../../'
 
 gem 'the_role_bootstrap3_ui',
   github: 'the-teacher/the_role_bootstrap3_ui',
