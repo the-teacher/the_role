@@ -21,12 +21,17 @@ gem 'jbuilder', '~> 1.0.1'
 # gem 'the_string_to_slug', path: "../../../the_string_to_slug"
 
 gem 'the_role',
-  "~> 2.5.2"
   # path: '../../'
+  "~> 2.5.3"
 
 gem 'the_role_bootstrap3_ui',
+  # path: "path: '../../../../../the_role_bootstrap3_ui"
   github: 'the-teacher/the_role_bootstrap3_ui',
   branch: 'master'
+
+group :development do
+  gem 'pry-rails'
+end
 
 group :test do
   gem 'factory_girl_rails', '~> 4.0'

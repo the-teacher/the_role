@@ -16,17 +16,29 @@ module TheRole
     end
 
     included do
+      attr_accessor :based_on_role
+
       has_many  :users, dependent: TheRole.config.destroy_strategy
       validates :name,  presence: true, uniqueness: true
       validates :title, presence: true, uniqueness: true
       validates :description, presence: true
 
+      private
+
       before_save do
         self.name = name.to_slug_param(sep: '_')
 
-        rules_set = self.the_role
-        self.the_role = {}.to_json if rules_set.blank? # blank
-        self.the_role = rules_set.to_json if rules_set.is_a?(Hash) # Hash
+        rules_set     = self.the_role
+        self.the_role = {}.to_json        if rules_set.blank?
+        self.the_role = rules_set.to_json if rules_set.is_a?(Hash)
+      end
+
+      after_create do
+        unless based_on_role.blank?
+          if base_role = self.class.where(id: based_on_role).first
+            update_role base_role.to_hash
+          end
+        end
       end
     end
 

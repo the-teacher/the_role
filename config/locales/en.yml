@@ -23,6 +23,7 @@ en:
         name: Name of role (underscored latin string)
         title: Title of role (text)
         description: Description of role (text)
+        based_on_role: "New role will be based on:"
       role:
         role_name: 'Role name:'
         title:     'Title:'
