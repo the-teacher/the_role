@@ -29,13 +29,13 @@ pt-BR:
         title:     'Título:'
         role_description: 'Descrição do papel:'
         delete_section: Excluir sessão
-        section_delete_confirm: 'Deseja excluir a sessão?'
+        section_delete_confirm: 'Deseja excluir a seção?'
         rule_delete_confirm: 'Deseja excluir a regra?'
         enable: Habilitar
         disable: Desabilitar
         delete_rule: Excluir regra
-        new_section_placeholder: Nome da nova sessão
-        create_section: Criar nova sessão
+        new_section_placeholder: Nome da nova seção
+        create_section: Criar nova seção
         new_rule_placeholder: Nome da nova regra
         create_rule: Criar nova regra
       sidebar:
