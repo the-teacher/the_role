@@ -4,16 +4,16 @@ pt-BR:
     role_updated:             Papel atualizado
     role_deleted:             Papel excluído
     section_created:          Seção criada
-    section_not_created:      Sessão não foi criada
-    section_rule_created:     "Regra de sessão criada"
-    section_rule_not_created: "Regra de sessão não foi criada"
-    section_rule_on:          "Regra de sessão habilitada"
-    section_rule_off:         "Regra de sessão desabilitada"
-    state_not_changed:        "Regra de sessão não alterada"
-    section_deleted:          Sessão excluída
-    section_not_deleted:      Sessão não foi excluída
-    section_rule_deleted:     "Regra de sessão excluída"
-    section_rule_not_deleted: "Regra de sessão não foi excluída"
+    section_not_created:      Seção não foi criada
+    section_rule_created:     "Regra de seção criada"
+    section_rule_not_created: "Regra de seção não foi criada"
+    section_rule_on:          "Regra de seção habilitada"
+    section_rule_off:         "Regra de seção desabilitada"
+    state_not_changed:        "Regra de seção não alterada"
+    section_deleted:          Seção excluída
+    section_not_deleted:      Seção não foi excluída
+    section_rule_deleted:     "Regra de seção excluída"
+    section_rule_not_deleted: "Regra de seção não foi excluída"
     access_denied: "Acesso negado"
 
   admin:
@@ -23,6 +23,7 @@ pt-BR:
         name: "Nome do Papel (caracteres latinos, com underscore)"
         title: Título do papel (texto)
         description: Descrição do papel (texto)
+        based_on_role: "Novo papel baseado em:"
       role:
         role_name: 'Nome do papel:'
         title:     'Título:'
@@ -40,4 +41,4 @@ pt-BR:
       sidebar:
         roles_list: Lista de Papéis
         new_role: Criar novo papel
-        delete_role_confirm: 'Tem certeza? Isto pode ser perigiso!'
+        delete_role_confirm: 'Tem certeza? Isto pode ser perigoso!'
