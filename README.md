@@ -192,6 +192,19 @@ class ApplicationController < ActionController::Base
   end
 end
 ```
+
+#### Mount routes
+
+config/routes.rb
+
+```ruby
+  concern :the_role, TheRole::AdminRoutes.new
+  
+  namespace :admin do
+    concerns :the_role
+  end
+```
+
 ### Configuration
 
 create the_role config:

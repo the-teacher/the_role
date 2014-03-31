@@ -1,6 +1,12 @@
 RailsApp::Application.routes.draw do
   devise_for :users
 
+  concern :the_role, TheRole::AdminRoutes.new
+  
+  namespace :admin do
+    concerns :the_role
+  end
+
   root :to => 'welcome#index'
 
   get 'welcome/index'
