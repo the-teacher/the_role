@@ -38,7 +38,9 @@ en:
         create_section: Create new section
         new_rule_placeholder: New rule name
         create_rule: Create new rule
+        role_export: "Export role"
       sidebar:
         roles_list: Roles list
         new_role: Create new role
         delete_role_confirm: 'Are you sure? It can be dangerous!'
+        roles_export: "Export roles"

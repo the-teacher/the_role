@@ -5,7 +5,7 @@ class Admin::RolesController < ApplicationController
   before_filter :login_required
   before_filter :role_required
 
-  before_filter :role_find,      only: [:edit, :update, :destroy, :change]
+  before_filter :role_find,      only: [:edit, :update, :destroy, :change, :role_export]
   before_filter :owner_required, only: [:edit, :update, :destroy, :change]
 
   def index
@@ -17,6 +17,24 @@ class Admin::RolesController < ApplicationController
   end
 
   def edit; end
+
+  def role_export
+    role_hash = @role.to_hash
+    role_hash[:export_comment] = "EXPORT Role with name: *#{ @role.name }*"
+    send_data role_hash.to_json, filename: "TheRole_#{ @role.name }.json"
+  end
+
+  def export
+    roles = Role.all
+
+    roles_hash = roles.inject({}) do |hash, role|
+      hash[role.name] = role.to_hash
+      hash
+    end
+
+    roles_hash[:export_comment] = "EXPORT Roles: *#{ roles.map(&:name).join(', ') }*"
+    send_data roles_hash.to_json, filename: "TheRole_#{ roles.map(&:name).join('-') }.json"
+  end
 
   def create
     @role = Role.new role_params

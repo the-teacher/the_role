@@ -2,7 +2,13 @@ module TheRole
   class AdminRoutes
     def call mapper, options = {}
       mapper.resources :roles, :except => :show do
-        mapper.patch 'change', on: :member
+        mapper.get 'export', on: :collection
+
+        mapper.member do
+          mapper.get   'role_export'
+          mapper.patch 'change'
+        end
+
         mapper.resources :sections, :controller => :role_sections, :only => :none do
           mapper.collection do
             mapper.post :create
@@ -17,6 +23,7 @@ module TheRole
             mapper.delete :destroy_rule
           end
         end
+
       end
     end
   end
