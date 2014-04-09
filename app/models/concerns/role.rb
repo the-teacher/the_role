@@ -18,7 +18,10 @@ module TheRole
     included do
       attr_accessor :based_on_role
 
-      has_many  :users, dependent: TheRole.config.destroy_strategy
+      # has_many :users,    dependent: :restrict_with_exception
+      # has_many :accounts, dependent: :destroy
+      has_many TheRole.user_table_name, dependent: TheRole.config.destroy_strategy
+
       validates :name,  presence: true, uniqueness: true
       validates :title, presence: true, uniqueness: true
       validates :description, presence: true

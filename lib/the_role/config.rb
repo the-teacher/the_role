@@ -11,6 +11,7 @@ module TheRole
   class Configuration
     include ActiveSupport::Configurable
     config_accessor :layout,
+                    :user_model,
                     :destroy_strategy,
                     :default_user_role,
                     :access_denied_method,
@@ -19,6 +20,7 @@ module TheRole
   end
 
   configure do |config|
+    config.user_model                 = "::User"
     config.layout                     = :application
 
     config.default_user_role          = nil

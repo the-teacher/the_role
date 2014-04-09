@@ -7,6 +7,16 @@ require 'the_string_to_slug'
 
 module TheRole
   class << self
+    # TheRole.user_class
+    def user_class
+      @uclass ||= config.user_model.constantize
+    end
+
+    # TheRole.user_table_name
+    def user_table_name
+      user_class.to_s.tableize.to_sym
+    end
+
     def create_admin_role!
       admin_role = ::Role.where(name: :admin).first_or_create!(
           name: :admin,

@@ -2,6 +2,7 @@
 
 TheRole.configure do |config|
   # config.layout                     = :application
+  # config.user_model                 = "::User"
 
   # config.default_user_role          = nil
   # config.first_user_should_be_admin = false

@@ -12,7 +12,7 @@ module TheRole
 
     module ClassMethods
       def with_role name
-        ::Role.where(name: name).first.users
+        ::Role.where(name: name).first.send(TheRole.user_table_name)
       end
     end
 
@@ -26,18 +26,25 @@ module TheRole
     # Check for owner _object_ if owner field is not :user_id
     def owner? obj
       return false unless obj
-      return true if admin?
 
+      # owner if admin
+      return true  if admin?
+
+      # owner if moderator of this section
       section_name = obj.class.to_s.tableize
       return true if moderator?(section_name)
 
-      # obj is User, simple way to define user_id
+      # owner if himself
       return id == obj.id if obj.is_a?(self.class)
 
-      # few ways to define user_id
-      return id == obj.user_id if obj.respond_to? :user_id
-      return id == obj[:user_id] if obj[:user_id]
-      return id == obj[:user][:id] if obj[:user]
+      user    = TheRole.user_class.to_s.downcase.to_sym
+      user_id = "#{ user }_id".to_sym
+
+      # few ways to define user_id and check ownership
+      return id == obj.send(user_id) if obj.respond_to?(user_id)
+      return id == obj[user_id]      if obj[user_id]
+      return id == obj[user][:id]    if obj[user]
+
       false
     end
 
