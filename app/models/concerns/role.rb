@@ -71,7 +71,7 @@ module TheRole
 
       return true if role[section_name][rule_name]
       role[section_name][rule_name] = false
-      update(the_role: role)
+      self.update(the_role: role)
     end
 
     # R
