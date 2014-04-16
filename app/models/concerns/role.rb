@@ -57,7 +57,7 @@ module TheRole
       return false if section_name.blank?
       return true  if role[section_name]
       role[section_name] = {}
-      update(the_role: role)
+      update(the_role: {"pages"=>{}})
       Rails.logger.info role
     end
 
