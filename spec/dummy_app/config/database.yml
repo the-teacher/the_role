@@ -1,9 +1,3 @@
-production:
-  adapter: sqlite3
-  database: db/the_role_prod.db
-  pool: 5
-  timeout: 5000
-
 development:
   adapter: sqlite3
   database: db/the_role_dev.db
@@ -15,3 +9,27 @@ test:
   database: db/the_role_test.db
   pool: 5
   timeout: 5000
+
+# development:
+#   adapter:  postgresql
+#   database: the_role
+#   username: postgres
+#   password: qwerty
+
+#   host:     localhost
+#   encoding: unicode
+#   reconnect: true
+#   port: 5432
+#   pool: 5
+
+# test:
+#   adapter:  postgresql
+#   database: the_role_test
+#   username: postgres
+#   password: qwerty
+
+#   host:     localhost
+#   encoding: unicode
+#   reconnect: true
+#   port: 5432
+#   pool: 5
