@@ -59,6 +59,7 @@ module TheRole
       role[section_name] = {}
       Rails.logger.info role
       update(the_role: role)
+      Rails.logger.info "Yo I just updated this"
     end
 
     def create_rule section_name, rule_name
