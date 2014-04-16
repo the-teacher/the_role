@@ -52,7 +52,7 @@ module TheRole
 
     def create_section section_name = nil
       #return false unless section_name
-      role = to_hash
+      #role = to_hash
       #section_name = section_name.to_slug_param(sep: '_')
       #return false if section_name.blank?
       #return true  if role[section_name]
