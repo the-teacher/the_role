@@ -51,13 +51,13 @@ module TheRole
     # C
 
     def create_section section_name = nil
-      #return false unless section_name
-      role = {}
-      #section_name = section_name.to_slug_param(sep: '_')
-      #return false if section_name.blank?
-      #return true  if role[section_name]
+      return false unless section_name
+      role = to_json
+      section_name = section_name.to_slug_param(sep: '_')
+      return false if section_name.blank?
+      return true  if role[section_name]
       role[section_name] = {}
-      self.update(the_role: {"pages"=>{}, "users"=>{}})
+      self.update(the_role: role)
       Rails.logger.info role
     end
 
