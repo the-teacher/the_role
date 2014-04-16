@@ -51,6 +51,7 @@ module TheRole
     # C
 
     def create_section section_name = nil
+      Rails.logger.info the_role
       return false unless section_name
       role = the_role
       section_name = section_name.to_slug_param(sep: '_')
