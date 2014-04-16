@@ -55,9 +55,10 @@ module TheRole
       role = to_hash
       section_name = section_name.to_slug_param(sep: '_')
       return false if section_name.blank?
-      #return true  if role[section_name]
+      return true  if role[section_name]
       role[section_name] = {}
       update(the_role: role)
+      Rails.logger.info role
     end
 
     def create_rule section_name, rule_name
