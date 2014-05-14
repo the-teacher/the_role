@@ -9,7 +9,6 @@ class Admin::RolesController < ApplicationController
   before_filter :owner_required, only: [:edit, :update, :destroy, :change]
 
   def index
-    @roles = Role.all.order('created_at ASC')
   end
 
   def new
@@ -66,8 +65,11 @@ class Admin::RolesController < ApplicationController
   end
 
   def destroy
-    @role.destroy
-    flash[:notice] = t 'the_role.role_deleted'
+    if @role.destroy
+      flash[:notice] = t 'the_role.role_deleted'
+    else
+      flash[:error] = 'Cannot delete role. You currently have users attached to this role. Please re-assign those users before deleting this role.'
+    end
     redirect_to admin_roles_url
   end
 
