@@ -6,6 +6,7 @@ class Admin::RolesController < ApplicationController
   before_filter :role_required
 
   before_filter :role_find,      only: [:edit, :update, :destroy, :change, :role_export]
+  before_filter :roles_list,      only: [:edit, :index, :new]
   before_filter :owner_required, only: [:edit, :update, :destroy, :change]
 
   def index
@@ -85,6 +86,10 @@ class Admin::RolesController < ApplicationController
     # TheRole: You should define OWNER CHECK OBJECT
     # When editable object was found
     @owner_check_object = @role
+  end
+
+  def roles_list
+    @roles = Role.all.order('created_at ASC')
   end
 
   def redirect_to_edit
