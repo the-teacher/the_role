@@ -12,11 +12,11 @@ module TheRole
 
     module ClassMethods
       def with_role name
-        role = ::Role.where(name: name).first
-        if role
-          role.users
+        roles = ::Role.where(name: name)
+        if roles.empty?
+          roles
         else
-          nil
+          roles.first.users
         end
       end
     end
