@@ -1,3 +1,1 @@
-module TheRole
-  VERSION = "2.5.4"
-end
+require_relative '../../gem_version'

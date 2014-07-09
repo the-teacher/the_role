@@ -1,8 +1,11 @@
 module TheRole
-  class AdminRoutes
-    def call mapper, options = {}
+  class Routes
+    def self.mixin mapper
       mapper.resources :roles, :except => :show do
-        mapper.get 'export', on: :collection
+        mapper.collection do
+          mapper.get   :export
+          mapper.patch :import
+        end
 
         mapper.member do
           mapper.get   'role_export'
@@ -23,7 +26,6 @@ module TheRole
             mapper.delete :destroy_rule
           end
         end
-
       end
     end
   end

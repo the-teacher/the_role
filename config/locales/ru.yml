@@ -1,4 +1,13 @@
 ru:
+  activerecord:
+    models:
+      role: Роль
+    attributes:
+      role:
+        name: Название роли
+        title: Заголовок роли
+        description: Описание роли
+
   the_role:
     role_created:             Роль создана
     role_updated:             Роль обновлена
@@ -14,6 +23,8 @@ ru:
     section_not_deleted:      Раздел не удален
     section_rule_deleted:     Правило удалено
     section_rule_not_deleted: Правило не удалено
+    cant_be_imported:         Импорт ролей не удался
+    imported_roles:           "Были импортированы роли: %{roles_list}"
 
   admin:
     roles:
@@ -37,7 +48,11 @@ ru:
         create_section: Создать раздел
         new_rule_placeholder: Имя нового правила
         create_rule: Создать правило
+        role_export:  Выгрузить роль
       sidebar:
+        roles_export: Выгрузить роли
+        roles_import: Загрузить роли
         roles_list: Список ролей
         new_role: Создать новую Роль
         delete_role_confirm: 'Удалить роль? Это может быть опасно! Уверены?'
+        roles_import_confirm: 'Загрузка внешних ролей может существенно изменить настройки доступа. Вы уверены?'
