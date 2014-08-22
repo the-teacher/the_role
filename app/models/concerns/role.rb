@@ -2,7 +2,7 @@ module TheRole
   module Role
     extend ActiveSupport::Concern
 
-    include TheRole::Base
+    include TheRole::BaseModule
 
     def role_hash;
       to_hash;
