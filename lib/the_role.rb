@@ -29,15 +29,8 @@ module TheRole
   end
 end
 
-_root_ = File.expand_path('../../',  __FILE__)
-
 # Loading of concerns
-require "#{_root_}/config/routes.rb"
-require "#{_root_}/app/controllers/concerns/controller.rb"
-
-%w[ base role user ].each do |concern|
-  require "#{_root_}/app/models/concerns/#{concern}.rb"
-end
+require_relative "../config/routes.rb"
 
 if defined?(ActiveRecord::Base)
   ActiveRecord::Base.extend TheRole::ActiveRecord

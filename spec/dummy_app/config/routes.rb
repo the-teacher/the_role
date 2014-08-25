@@ -1,8 +1,8 @@
 RailsApp::Application.routes.draw do
   devise_for :users
 
-  concern :the_role, TheRole::AdminRoutes.new
-  
+  concern :the_role, TheRole::Routes.new
+
   namespace :admin do
     concerns :the_role
   end

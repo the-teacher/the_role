@@ -198,7 +198,7 @@ end
 config/routes.rb
 
 ```ruby
-  concern :the_role, TheRole::AdminRoutes.new
+  concern :the_role, TheRole::Routes.new
   
   namespace :admin do
     concerns :the_role

@@ -9,7 +9,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'state_machine', '~> 1.2.0'
 
-gem 'sprockets-rails', github: 'rails/sprockets-rails'
+gem 'sprockets-rails'
 gem 'coffee-rails',    github: 'rails/coffee-rails'
 gem 'sass-rails',      github: 'rails/sass-rails'
 
