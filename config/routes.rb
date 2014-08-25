@@ -1,6 +1,6 @@
 module TheRole
   class Routes
-    def self.mixin mapper
+    def call mapper, options = {}
       mapper.resources :roles, :except => :show do
         mapper.collection do
           mapper.get   :export
