@@ -49,6 +49,10 @@ module TheRole
     end
 
     # C
+    def _jsonable role
+      return role if role.is_a? String
+      role.to_json
+    end
 
     def create_section section_name = nil
       return false unless section_name
@@ -57,20 +61,20 @@ module TheRole
       return false if section_name.blank?
       return true  if role[section_name]
       role[section_name] = {}
-      update(the_role: role)
+      update(the_role: _jsonable(role))
     end
 
     def create_rule section_name, rule_name
       return false if     rule_name.blank?
       return false unless create_section(section_name)
-      
+
       role = to_hash
       rule_name    = rule_name.to_slug_param(sep: '_')
       section_name = section_name.to_slug_param(sep: '_')
 
       return true if role[section_name][rule_name]
       role[section_name][rule_name] = false
-      update(the_role: role)
+      update(the_role: _jsonable(role))
     end
 
     # R
@@ -98,7 +102,7 @@ module TheRole
       new_role = new_role_hash.underscorify_keys
       role = to_hash.underscorify_keys.deep_reset(false)
       role.deep_merge! new_role
-      update(the_role: role)
+      update(the_role: _jsonable(role))
     end
 
     def rule_on section_name, rule_name
@@ -111,7 +115,7 @@ module TheRole
       return true  if     role[section_name][rule_name]
 
       role[section_name][rule_name] = true
-      update(the_role: role)
+      update(the_role: _jsonable(role))
     end
 
     def rule_off section_name, rule_name
@@ -124,7 +128,7 @@ module TheRole
       return true  unless role[section_name][rule_name]
 
       role[section_name][rule_name] = false
-      update(the_role: role)
+      update(the_role: _jsonable(role))
     end
 
     # D
@@ -136,9 +140,9 @@ module TheRole
 
       return false if section_name.blank?
       return false unless role[section_name]
-      
+
       role.delete section_name
-      update(the_role: role)
+      update(the_role: _jsonable(role))
     end
 
     def delete_rule section_name, rule_name
@@ -150,7 +154,7 @@ module TheRole
       return false unless role[section_name].key? rule_name
 
       role[section_name].delete rule_name
-      update(the_role: role)
+      update(the_role: _jsonable(role))
     end
   end
 end
