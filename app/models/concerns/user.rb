@@ -2,7 +2,7 @@ module TheRole
   module User
     extend ActiveSupport::Concern
 
-    include TheRole::Base
+    include TheRole::BaseModule
 
     included do
       belongs_to :role
