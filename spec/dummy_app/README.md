@@ -23,8 +23,8 @@ rails s
 ### Test it!
 
 ```
-rake db:bootstrap RAILS_ENV=test
-rspec --format documentation
+RAILS_ENV=test rake db:bootstrap
+RAILS_ENV=test rspec --format documentation
 
 rspec spec/models/ --format documentation
 ```

@@ -3,6 +3,7 @@ require 'the_role/config'
 require 'the_role/version'
 require 'the_role/activerecord'
 
+require 'multi_json'
 require 'the_string_to_slug'
 
 module TheRole
@@ -20,6 +21,9 @@ module TheRole
   end
 
   class Engine < Rails::Engine
+    config.autoload_paths << "#{ config.root }/app/models/concerns/**"
+    config.autoload_paths << "#{ config.root }/app/controllers/concerns/**"
+
     # initializer "TheRole precompile hook", group: :all do |app|
     #   app.config.assets.precompile += %w( x.js y.css )
     # end
@@ -31,13 +35,8 @@ end
 
 _root_ = File.expand_path('../../',  __FILE__)
 
-# Loading of concerns
+# # Loading of concerns
 require "#{_root_}/config/routes.rb"
-require "#{_root_}/app/controllers/concerns/controller.rb"
-
-%w[ base role user ].each do |concern|
-  require "#{_root_}/app/models/concerns/#{concern}.rb"
-end
 
 if defined?(ActiveRecord::Base)
   ActiveRecord::Base.extend TheRole::ActiveRecord

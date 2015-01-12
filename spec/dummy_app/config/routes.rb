@@ -2,7 +2,7 @@ RailsApp::Application.routes.draw do
   devise_for :users
 
   concern :the_role, TheRole::AdminRoutes.new
-  
+
   namespace :admin do
     concerns :the_role
   end
@@ -18,7 +18,7 @@ RailsApp::Application.routes.draw do
   resources  :users, :only => [:edit, :update]
 
   resources  :pages do
-    collection do 
+    collection do
       get :my
       get :manage
     end

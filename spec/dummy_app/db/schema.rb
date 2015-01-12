@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20120314061307) do
 
-  create_table "pages", force: true do |t|
+  create_table "pages", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "person_id"
     t.string   "title"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20120314061307) do
     t.datetime "updated_at"
   end
 
-  create_table "roles", force: true do |t|
+  create_table "roles", force: :cascade do |t|
     t.string   "name",        default: ""
     t.string   "title",       default: ""
     t.text     "description"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20120314061307) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "company"
     t.string   "address"
