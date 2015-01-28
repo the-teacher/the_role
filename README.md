@@ -12,7 +12,7 @@ gem 'the_role_bootstrap3_ui',
   tag: "v2.8"
 ```
 
-v2.8  tests <img src="https://travis-ci.org/TheRole/DummyApp.svg?branch=v2.8" alt="v2.8">
+v2.8  tests <a href="https://travis-ci.org/TheRole/DummyApp/builds/48599912"><img src="https://travis-ci.org/TheRole/DummyApp.svg?branch=v2.8" alt="v2.8"></a>
 
 ## TheRole - Authorization Gem for Ruby on Rails with administrative interface.
 
