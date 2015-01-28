@@ -1,12 +1,16 @@
+# Right now we working on TheRole 3.0
+
 ## Attention! Last stable 2.X version can be installed with
 
 ```ruby
 gem 'the_role',
   github: 'TheRole/TheRoleApi',
-  tag: 'v2.6'
-```
+  tag: "v2.8"
 
-**Right now we working on TheRole 3.0**
+gem 'the_role_bootstrap3_ui',
+  github: 'TheRole/TheRoleManagementPanelBootstrap3',
+  tag: "v2.8"
+```
 
 ## TheRole - Authorization Gem for Ruby on Rails with administrative interface.
 
