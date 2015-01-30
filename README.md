@@ -8,7 +8,7 @@ gem 'the_role',
   tag: "v2.8"
 
 gem 'the_role_bootstrap3_ui',
-  github: 'TheRole/TheRoleManagementPanelBootstrap3',
+  github: 'TheRole/the_role_management_panel',
   tag: "v2.8"
 ```
 
