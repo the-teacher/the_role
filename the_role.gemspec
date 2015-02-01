@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["zykin-ilya@ya.ru"]
   s.homepage    = "https://github.com/the-teacher/the_role"
   s.summary     = %q{Authorization for Rails 4}
-  s.description = %q{Authorization for Rails 4 with Web Interface}
+  s.description = %q{Authorization gem for Ruby on Rails with Management Panel}
 
   s.rubyforge_project = "the_role"
 
@@ -18,8 +18,6 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-
-  s.add_dependency 'multi_json'
-  s.add_dependency 'the_string_to_slug', '~> 1.2'
-  s.add_runtime_dependency 'rails', ['>= 3', '< 5']
+  s.add_runtime_dependency 'the_role_api', '~> 3.0.0'
+  s.add_runtime_dependency 'the_role_management_panel', '~> 3.0.0'
 end

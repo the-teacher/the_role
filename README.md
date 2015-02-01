@@ -1,122 +1,89 @@
-# Right now we working on TheRole 3.0
+<h2 align="center" class='center' style="text-align:center">
+  TheRole 3.0
+</h2>
 
-## Attention! Last stable 2.X version can be installed with
+<p align="center" class='center' style="text-align:center">
+  <b>Authorization gem for Ruby on Rails</b><br>
+  <i>with <a href="https://github.com/TheRole/TheRoleManagementPanelBootstrap3">Management Panel</a></i>
+</p>
 
-```ruby
-gem 'the_role',
-  github: 'TheRole/TheRoleApi',
-  tag: "v2.8"
+<p align="center" class='center' style="text-align:center">
+  <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/the_role.png" alt="TheRole. Authorization gem for Ruby on Rails with Administrative interface">
+</p>
 
-gem 'the_role_bootstrap3_ui',
-  github: 'TheRole/the_role_management_panel',
-  tag: "v2.8"
-```
+<p align="center" class='center' style="text-align:center">
+  <b>Semantic. Flexible. Lightweigh</b>
+</p>
 
-v2.8  tests <a href="https://travis-ci.org/TheRole/DummyApp/builds/48599912"><img src="https://travis-ci.org/TheRole/DummyApp.svg?branch=v2.8" alt="v2.8"></a>
+<div align="center" class='center' style="text-align:center">
 
-## TheRole - Authorization Gem for Ruby on Rails with administrative interface.
-
-[![Gem Version](https://badge.fury.io/rb/the_role.png)](http://badge.fury.io/rb/the_role) | [![Build Status](https://travis-ci.org/the-teacher/the_role.png?branch=master)](https://travis-ci.org/the-teacher/the_role) | [![Code Climate](https://codeclimate.com/github/the-teacher/the_role.png)](https://codeclimate.com/github/the-teacher/the_role) | [ruby-toolbox](https://www.ruby-toolbox.com/categories/rails_authorization)
-
-### Semantic, Flexible, Lightweight
+<a href="http://badge.fury.io/rb/the_role"><img src="https://badge.fury.io/rb/the_role.svg" alt="Gem Version" height="18"></a>
+&nbsp;
+<a href="https://travis-ci.org/TheRole/DummyApp"><img src="https://travis-ci.org/TheRole/DummyApp.svg?branch=master" alt="Build Status" height="18"></a>
+&nbsp;
+<a href="https://codeclimate.com/github/TheRole/TheRoleApi"><img src="https://codeclimate.com/github/TheRole/TheRoleApi/badges/gpa.svg" /></a>
+&nbsp;
+<a href="https://www.ruby-toolbox.com/categories/rails_authorization">ruby-toolbox</a>
+</div>
 
 ### INTRO
 
-<table>
-<tr>
-<th align="left">Bye bye CanCan, I got The Role!</th>
-<th align="left">Description</th>
-</tr>
-<tr>
-<td><img src="https://github.com/the-teacher/the_role/raw/master/Bye_bye_CanCan_I_got_the_Role.png" alt="Bye bye CanCan, I got The Role!"></td>
-<td>TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with 2-level-hash, and stored in the database as a JSON string.<br><br>TheRole - Semantic, lightweight role system with an administrative interface.<br><br>Role is a two-level hash, consisting of the <b>sections</b> and nested <b>rules</b>.<br><br>A <b>Section</b> may be associated with a <b>controller</b> name.<br><br>A <b>Rule</b> may be associated with an <b>action</b> name.<br><br>A Section can have many rules.<br><br>A Rule can be <b>true</b> or <b>false</b>.<br><br><b>Sections</b> and nested <b>Rules</b> provide an <b>ACL</b> (<b>Access Control List</b>)<br><br><br>Using hashes, makes role system extremely easy to configure and use.<br></td>
-</tr>
-</table>  
+TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with **2-level-hash**, and **stored in the database as a JSON string**.
 
-### GUI
+<p align="center" class='center' style="text-align:center">
+  <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/hash2string.png" alt="TheRole. Authorization gem for Ruby on Rails with Administrative interface">
+</p>
 
-:warning: UI moved in **the_role_bootstrap3_ui** gem
+Using hashes, makes role system extremely easy to configure and use
 
-https://github.com/the-teacher/the_role_bootstrap3_ui
+* Any Role is a two-level hash, consisting of the <b>sections</b> and nested <b>rules</b>
+* A <b>Section</b> may be associated with a <b>controller</b> name
+* A <b>Rule</b> may be associated with an <b>action</b> name
+* A Section can have many rules
+* A Rule can be <b>true</b> or <b>false</b>
+* <b>Sections</b> and nested <b>Rules</b> provide an <b>ACL</b> (<b>Access Control List</b>)
 
-We are waiting for **foundation** version of UI
+#### Import/Export
 
-<table>
-<tr>
-  <td>TheRole management web interface => localhost:3000/admin/roles</td>
-</tr>
-<tr>
-  <td><img src="https://github.com/the-teacher/the_role/raw/master/pic.png" alt="TheRole"></td>
-</tr>
-</table>
+If you have 2 Rails apps, based on TheRole - you can move roles between them via export/import abilities of TheRole Management Panel.
+It can be usefull for Rails apps based on one engine.
 
-puts following yields into your layout:
+<div align="center" class='center' style="text-align:center">
+  <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/import_export.png" alt="TheRole. Authorization gem for Ruby on Rails with Administrative interface">
+</div>
 
-```ruby
-= yield :role_sidebar
-= yield :role_main
-```
+### Limitations by Design
 
-### Rails 4 version
+TheRole uses few conventions over configuration.
+It gives simplicity of code, but also some limitations.
+You have to know about them before using of TheRole:
+<a href="https://github.com/TheRole/docs/blob/master/Limitations.md">Limitations list</a>
 
-```
-gem 'the_role', '~> 2.5.2'
+## Installation
 
-gem 'the_role_bootstrap3_ui'
-```
-
-Please read *the_role_bootstrap3_ui* docs to know more about assets
-
-https://github.com/the-teacher/the_role_bootstrap3_ui
-
-
-## If you have any questions
-
-Please, before asking anything try to launch and play with the **[Dummy App](spec/dummy_app)** in the spec folder. Maybe an example integration will be better than any documentation. Thank you!
-
-### Instalation
-
-* [INSTALL](#install)
-* [INTEGRATION](#integration)
-* [Configuration (optional)](#configuration)
-
-### Understanding
-
-* [TheRole instead of CanCan?](#therole-instead-of-cancan)
-* [What does it mean semantic?](#what-does-it-mean-semantic)
-* [Virtual sections and rules](#virtual-sections-and-rules)
-* [Using with Views](#using-with-views)
-* [Who is Administrator?](#who-is-administrator)
-* [Who is Moderator?](#who-is-moderator)
-* [Who is Owner?](#who-is-owner)
-
-### API
-
-* [User](#user)
-* [Role](#role)
-
-## Install
+#### 0. Gemfile
 
 ```ruby
-# You can use any Bootstrap 3 version (CSS, LESS, SCSS)
-gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
-
-gem "the_role", "~> 2.0.0"
+# only API
+gem 'the_role_api', '~> 3.0.0'
 ```
 
+or
+
 ```ruby
+# API and UI
+gem 'the_role', '~> 3.0.0'
+```
+
+and after that
+
+```sh
 bundle
 ```
 
-install note
+#### 1. Change User migration file
 
-```
-bundle exec rails g the_role --help
-```
-
-### Change User migration
-
-Add a **role_id:integer** field to your User Model
+Add a `role_id:integer` field to your User Model
 
 ```ruby
 def self.up
@@ -126,7 +93,7 @@ def self.up
     t.string :crypted_password
     t.string :salt
 
-    # TheRole field
+    # !!! TheRole field !!!
     t.integer :role_id
 
     t.timestamps
@@ -134,424 +101,128 @@ def self.up
 end
 ```
 
-### Change User model
+#### 2. Install TheRole migration file
 
-```ruby
-class User < ActiveRecord::Base
-  include TheRole::User
-  # or following alias for AR:
-  # has_role
-
-  # has_many :pages
-end
+```sh
+bundle exec rake the_role_engine:install:migrations
 ```
 
-### Create Role model
+#### 3. Invoke migrations
 
-Generate Role model
-
-```ruby
-bundle exec rails g the_role install
-```
-
-or you can create Role model manually:
-
-```ruby
-class Role < ActiveRecord::Base
-  include TheRole::Role
-  # or following alias for AR:
-  # acts_as_role
-end
-```
-
-install TheRole migrations
-
-```ruby
-rake the_role_engine:install:migrations
-```
-
-Invoke migrations
-
-```ruby
+```sh
 rake db:migrate
 ```
 
-### Create Admin
-
-Create admin role
-
-```
-bundle exec rails g the_role admin
-```
-
-Makes any user as Admin
-
-```
-User.first.update( role: Role.with_name(:admin) )
-```
-
-## Integration
-
-#### Change your ApplicationController
-
-**include TheRoleController** in your Application controller
+#### 4. Change User model
 
 ```ruby
-class ApplicationController < ActionController::Base
-  include TheRole::Controller
+class User < ActiveRecord::Base
+  include TheRole::Api::User
 
-  protect_from_forgery
-
-  def access_denied
-    flash[:error] = t('the_role.access_denied')
-    redirect_to(:back)
-  end
+  # ... code ...
 end
 ```
 
-#### Mount routes
+#### 5. Create Role model
 
-config/routes.rb
-
-```ruby
-  concern :the_role, TheRole::AdminRoutes.new
-  
-  namespace :admin do
-    concerns :the_role
-  end
+```sh
+bundle exec rails g the_role install
 ```
 
-### Configuration
+#### 6. Setup TheRole gem
 
-create the_role config:
-
-```
-bundle exec rails g the_role config
-```
-
-**config/initializers/the_role.rb**
+<i>config/initializers/the_role.rb</i>
 
 ```ruby
 TheRole.configure do |config|
-  config.layout                = :application
-  config.default_user_role     = :user
-  config.access_denied_method  = :access_denied      # define it in ApplicationController
-  config.login_required_method = :authenticate_user! # devise auth method
+  # [ Devise => :authenticate_user! | Sorcery => :require_login ]
+  config.login_required_method = :authenticate_user!
 
+  # layout for Management panel
+  config.layout = :the_role_management_panel
+
+  # config.default_user_role          = nil
   # config.first_user_should_be_admin = false
+
+  # config.access_denied_method       = :access_denied
   # config.destroy_strategy           = :restrict_with_exception # can be nil
 end
 ```
 
-#### Usage with any controller
+#### 7. Create admin role
 
-```ruby
-class PagesController < ApplicationController
-  before_action :login_required, except: [:index, :show]
-  before_action :role_required,  except: [:index, :show]
-
-  before_action :set_page,       only: [:edit, :update, :destroy]
-  before_action :owner_required, only: [:edit, :update, :destroy]
-
-  def edit
-     # ONLY OWNER CAN EDIT THIS PAGE
-  end
-
-  private
-
-  def set_page
-    @page = Page.find params[:id]
-
-    # TheRole: You should define OWNER CHECK OBJECT
-    # When editable object was found
-    # You should define @owner_check_object before invoking **owner_required** method
-    @owner_check_object = @page
-  end
-end
+```sh
+rake db:the_role:admin
 ```
 
-**integration with Inhirited Resource**
+Now you can make any user an Admin via `rails console`, for instance:
 
 ```ruby
-  def owner_required
-    @owner_check_object = resource
-    super
-  end
+User.first.update( role: Role.with_name(:admin) )
+User.first.admin? # => true
 ```
 
-## Understanding
+<hr>
 
-#### TheRole instead of CanCan?
+<p align="center" class='center' style="text-align:center">
+  <b>
+    You are in deal!<br>
+    Thanks for using TheRole!
+  </b>
+</p>
 
-TheRole, in contrast to CanCan, has a simple and predefined way to find the access state of the current role. If you don't want to create your own role scheme with CanCan Abilities - TheRole can be a great solution for you.
+<hr>
 
-You can manage roles with a simple UI. TheRole's ACL structure is inspired by Rails' controllers, that's why it's so great for Rails applications.
+<div align="center" class='center' style="text-align:center">
+  <a href="https://github.com/TheRole/docs/blob/master/TheRoleAPI.md">
+    <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/install.png?2" alt="TheRole. Installation">
+  </a>
+</div>
 
-#### What does semantic mean?
+<div align="center" class='center' style="text-align:center">
+  <a href="https://github.com/TheRole/docs/blob/master/TheRoleAPI.md">
+    <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/api.png" alt="TheRole API">
+  </a>
+</div>
 
-Semantic - the science of meaning. Humans should be able to quickly understand what is happening in a role system.
+<div align="center" class='center' style="text-align:center">
+  <a href="https://github.com/TheRole/docs/blob/master/IntegrationWithRailsControllers.md">
+    <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/int_ctrl.png" alt="Integration with Rails controllers">
+  </a>
+</div>
 
-Look at the next Role hash. If you can understand access rules - this authorization system is semantic.
+<div align="center" class='center' style="text-align:center">
+  <a href="https://github.com/TheRole/docs/blob/master/IntegrationWithRailsViews.md">
+    <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/int_views.png" alt="Integration with Rails views">
+  </a>
+</div>
 
-```ruby
-role = {
-  'pages' => {
-    'index'   => true,
-    'show'    => true,
-    'new'     => false,
-    'edit'    => false,
-    'update'  => false,
-    'destroy' => false
-  },
-  'articles' => {
-    'index'  => true,
-    'show'   => true
-  },
-  'twitter'  => {
-    'button' => true,
-    'follow' => false
-  }
-}
-```
+<div align="center" class='center' style="text-align:center">
+  <a href="https://github.com/TheRole/docs/blob/master/UsingWithStrongParameters.md">
+    <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/int_params.png" alt="Using with Strong Parameters">
+  </a>
+</div>
 
-#### Virtual sections and rules
+<div align="center" class='center' style="text-align:center">
+  <a href="https://github.com/TheRole/docs/blob/master/TheRoleAPI.md">
+    <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/install_gui.png" alt="TheRole GUI. Installation">
+  </a>
+</div>
 
-Usually, we use real names of controllers and actions for names of sections and rules:
+<hr>
 
-```ruby
-@user.has_role?(:pages, :show)
-```
+### MIT License
 
-But, also, you can use virtual names of sections, and virtual names of section's rules.
+Copyright (c) 2012-2015 [Ilya N.Zykin](https://github.com/the-teacher)
 
-```ruby
-@user.has_role?(:twitter, :button)
-@user.has_role?(:facebook, :like)
-```
+[MIT License](https://github.com/TheRole/docs/blob/master/LICENSE.md)
 
-And you can use them as well as other access rules.
+#### Maintainers
 
-#### Usage within Views
+[@the-teacher](https://github.com/the-teacher),
+[@sedx](https://github.com/sedx),
+[@seuros](https://github.com/seuros)
 
-```ruby
-<% if @user.has_role?(:twitter, :button) %>
-  Twitter Button is Here
-<% else %>
-  Nothing here :(
-<% end %>
-```
+#### Contributors
 
-#### Who is Administrator?
-
-Administrator is the user who can access any section and rules of your application.
-
-Administrator is the owner of any objects in your application.
-
-Administrator is the user, who has a virtual section **system** and a rule **administrator** in the role-hash.
-
-
-```ruby
-admin_role_fragment = {
-  :system => {
-    :administrator => true
-  }
-}
-```
-
-#### Who is Moderator?
-
-Moderator is the user, who has access to any actions of some section(s).
-
-Moderator is the owner of any objects of some class.
-
-Moderator is the user, who has a virtual section **moderator**, with **section name** as rule name.
-
-An example of a Moderator of Pages (controller) and Twitter (virtual section)
-
-```ruby
-moderator_role_fragment = {
-  :moderator => {
-    :pages   => true,
-    :blogs   => false,
-    :twitter => true
-  }
-}
-```
-
-#### Who is Owner?
-
-Administrator is owner of any object in system.
-
-Moderator of pages is owner of any page.
-
-User is owner of objects, when **Object#user_id == User#id**.
-
-
-# API
-
-## User
-
-```ruby
-# User's role
-@user.role # => Role obj
-```
-
-Is a user Administrator?
-
-```ruby
-@user.admin?                       => true | false
-```
-
-Is a user Moderator?
-
-```ruby
-@user.moderator?(:pages)           => true | false
-@user.moderator?(:blogs)           => true | false
-@user.moderator?(:articles)        => true | false
-```
-
-Has user got access to **rule** of **section** (action of controller)?
-
-```ruby
-@user.has_role?(:pages,    :show)  => true | false
-@user.has_role?(:blogs,    :new)   => true | false
-@user.has_role?(:articles, :edit)  => true | false
-
-# return true if one of roles is true
-@user.any_role?(pages: :show, posts: :show) => true | false
-```
-
-Is user **Owner** of object?
-
-```ruby
-@user.owner?(@page)                => true | false
-@user.owner?(@blog)                => true | false
-@user.owner?(@article)             => true | false
-```
-
-## Role
-
-```ruby
-# Find a Role by name
-@role = Role.with_name(:user)
-```
-
-```ruby
-@role.has?(:pages, :show)       => true | false
-@role.moderator?(:pages)        => true | false
-@role.admin?                    => true | false
-
-# return true if one of roles is true
-@role.any?(pages: :show, posts: :show) => true | false
-```
-
-#### CREATE
-
-```ruby
-# Create a section of rules
-@role.create_section(:pages)
-```
-
-```ruby
-# Create rule in section (false value by default)
-@role.create_rule(:pages, :index)
-```
-
-#### READ
-
-```ruby
-@role.to_hash => Hash
-
-# JSON string
-@role.to_json => String
-
-# check method
-@role.has_section?(:pages) => true | false
-```
-
-#### UPDATE
-
-```ruby
-# set this rule on
-@role.rule_on(:pages, :index)
-```
-
-```ruby
-# set this rule off
-@role.rule_off(:pages, :index)
-```
-
-```ruby
-# Incoming hash is true-mask-hash
-# All the rules of the Role will be reset to false
-# Only rules from true-mask-hash will be set true
-new_role_hash = {
-  :pages => {
-    :index => true,
-    :show => true
-  }
-}
-
-@role.update_role(new_role_hash)
-```
-
-#### DELETE
-
-```ruby
-# delete a section
-@role.delete_section(:pages)
-
-# delete a rule in section
-@role.delete_rule(:pages, :show)
-```
-
-#### Changelog
-
-* 2.3.0 - Refactoring
-* 2.1.0 - User#any_role? & Role#any?
-* 2.0.3 - create role fix, cleanup
-* 2.0.2 - code cleanup, readme
-* 2.0.1 - code cleanup
-* 2.0.0 - Rails 4 ready, configurable, tests
-* 1.7.0 - mass assignment for User#role_id, doc, locales, changes in test app
-* 1.6.9 - assets precompile addon
-* 1.6.8 - doc, re dependencies
-* 1.6.7 - Es locale (beta 0.2)
-* 1.6.6 - Ru locale, localization (beta 0.1)
-* 1.6.5 - has_section?, fixes, tests (alpha 0.3)
-* 1.6.4 - En locale (alpha 0.2)
-* 1.6.3 - notifications
-* 1.6.0 - stabile release (alpha 0.1)
-
-### i18n
-
-**Ru, En** (by me)
-
-**Es** by @igmarin
-
-**zh_CN** by @doabit & @linjunpop
-
-**PL** by @egb3
-
-### MIT-LICENSE
-
-##### Copyright (c) 2012-2014 [Ilya N.Zykin]
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+@igmarin, @doabit, @linjunpop, @egb3
