@@ -28,6 +28,8 @@
 
 ### INTRO
 
+TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with **2-level-hash**, and **stored in the database as a JSON string**.
+
 <p align="center" class='center' style="text-align:center">
   <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/hash2string.png" alt="TheRole. Authorization gem for Ruby on Rails with Administrative interface">
 </p>
@@ -133,8 +135,6 @@ I became rails developer in 2008 and I dreamed to re-implement my simple and eff
 First of all TheRole designed for end-point users, and provide GUI to manage access policies. It means that programmer have to put restriction methods into code just once, and after that site administrator might change access rules independently with simple GUI.
 
 If you are looking for user-oriented authorization gem for Rails - TheRole can be suitable solution for you.
-
-TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with **2-level-hash**, and **stored in the database as a JSON string**.
 
 <hr>
 
