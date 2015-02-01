@@ -114,6 +114,18 @@ You have to know about them before using of TheRole:
 
 <hr>
 
+### We need your feedback!
+
+If you have to say something about TheRole, or if you need help, there are few ways to contact us:
+
+0. SKYPE:    **ilya.killich**
+0. EMAIL:    zykin-ilya@ya.ru
+0. TWITTER:  [@iam_teacher](https://twitter.com/iam_teacher)
+0. HASHTAGS: [#the_role](https://twitter.com/hashtag/the_role)
+0. Google group: [about the_role](https://twitter.com/hashtag/the_role)
+
+<hr>
+
 ### MIT License
 
 [MIT License](https://github.com/TheRole/docs/blob/master/LICENSE.md)
