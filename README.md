@@ -28,7 +28,19 @@
 
 ### INTRO
 
+#### Why TheRole was created?
+
+Proof-of-concept of TheRole was created in 2007, when I implemented my first MVC framework on `PHP`. I knew nothing about the other authorization solutions at this time. That's why you shouldn't compare TheRole with other gems like **CanCan**, **Pundit** etc. TheRole is different.
+
+I became rails developer in 2008 and I dreamed to re-implement my simple and effective idea about authorization module in Ruby. But I did it later, just in 2011.
+
+First of all TheRole designed for end-point users, and provide GUI to manage access policies. It means that programmer have to put restriction methods into code just once, and after that site administrator might change access rules independently with simple GUI.
+
+If you are looking for user-oriented authorization gem for Rails - TheRole can be suitable solution for you.
+
 TheRole is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access. All permissions are defined in with **2-level-hash**, and **stored in the database as a JSON string**.
+
+#### Basics
 
 <p align="center" class='center' style="text-align:center">
   <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/hash2string.png" alt="TheRole. Authorization gem for Ruby on Rails with Administrative interface">
@@ -119,10 +131,10 @@ You have to know about them before using of TheRole:
 If you have to say something about TheRole, or if you need help, there are few ways to contact us:
 
 0. SKYPE:    **ilya.killich**
-0. EMAIL:    zykin-ilya@ya.ru
+0. Email:    zykin-ilya@ya.ru
 0. TWITTER:  [@iam_teacher](https://twitter.com/iam_teacher)
-0. HASHTAGS: [#the_role](https://twitter.com/hashtag/the_role)
-0. Google group: [about the_role](https://twitter.com/hashtag/the_role)
+0. Hash tag: [#the_role](https://twitter.com/hashtag/the_role)
+0. Google group: [about the_role](https://groups.google.com/forum/#!forum/the_role)
 
 <hr>
 
