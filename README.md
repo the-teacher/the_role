@@ -43,6 +43,21 @@ Using hashes, makes role system extremely easy to configure and use
 * A Rule can be <b>true</b> or <b>false</b>
 * <b>Sections</b> and nested <b>Rules</b> provide an <b>ACL</b> (<b>Access Control List</b>)
 
+#### Management Panel
+
+<table>
+<tr>
+  <td>
+    <b>http://localhost:3000/admin/roles</b>
+  </td>
+</tr>
+<tr>
+  <td>
+    <img src="https://raw.githubusercontent.com/TheRole/docs/master/images/gui.png?2" alt="TheRole GUI">
+  </td>
+</tr>
+</table>
+
 #### Import/Export
 
 If you have 2 Rails apps, based on TheRole - you can move roles between them via export/import abilities of TheRole Management Panel.
