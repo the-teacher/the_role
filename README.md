@@ -74,6 +74,14 @@ It gives simplicity of code, but also some limitations.
 You have to know about them before using of TheRole:
 <a href="https://github.com/TheRole/docs/blob/master/Limitations.md">Limitations list</a>
 
+#### Test matrix
+
+* **RAILS:** 3.2.21, 4.0, 4.1, 4.2
+* **RUBY:** 1.9.3, 2.0, 2.1, 2.2
+* **DB**: sqlite, mysql, postgresql
+
+totally: 48 environments
+
 <hr>
 
 <div align="center" class='center' style="text-align:center">
