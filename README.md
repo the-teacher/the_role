@@ -147,34 +147,22 @@ totally: 48 environments
 
       <tr>
         <td width="350px">
-          <ul>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
-          </ul>
+          [Why TheRole was created?](#why-therole-was-created)
+
+          [Who is Administrator?](#who-is-administrator)
+
+          [Who is Moderator?](#who-is-moderator)
+
+          [Who is Owner?](#who-is-owner)
         </td>
 
         <td width="350px">
-          <ul>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
-          </ul>
+          [Virtual sections and rules](#virtual-sections-and-rules)
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-
-#### Why TheRole was created?
-
-Proof-of-concept of TheRole was created in 2007, when I implemented my first MVC framework on `PHP`. I knew nothing about the other authorization solutions at this time. That's why you shouldn't compare TheRole with other gems like **CanCan**, **Pundit** etc. TheRole is different.
-
-I became rails developer in 2008 and I dreamed to re-implement my simple and effective idea about authorization module in Ruby. But I did it later, just in 2011.
-
-First of all TheRole designed for end-point users, and provide GUI to manage access policies. It means that programmer have to put restriction methods into code just once, and after that site administrator might change access rules independently with simple GUI.
-
-If you are looking for user-oriented authorization gem for Rails - TheRole can be suitable solution for you.
 
 <hr>
 
