@@ -155,7 +155,7 @@ totally: 48 environments
         </td>
 
         <td width="350px" valign="top" style='vertical-align:top'>
-          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#what-does-it-mean-semantic'>What does it mean semantic?</a></p>
+          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md##what-does-semantic-mean'>What does it mean semantic?</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#virtual-sections-and-rules'>Virtual sections and rules</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/Limitations.md'>Limitations</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/Contributing.md'>Contributing</a></p>
