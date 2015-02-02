@@ -138,29 +138,31 @@ totally: 48 environments
 
 <hr>
 
-<table>
-<tbody>
-  <tr>
-    <td colspan="2">
-      <b>FAQ</b>
-    </td>
-  </tr>
+<div align="center" class='center' style="text-align:center">
+  <table>
+    <tbody>
+      <tr>
+        <td colspan="2">
+          <b>FAQ</b>
+        </td>
+      </tr>
 
-  <tr>
-    <td width="350px">
-      * test
-      * test
-      * test
-    </td>
+      <tr>
+        <td width="350px">
+          * test
+          * test
+          * test
+        </td>
 
-    <td width="350px">
-      * test
-      * test
-      * test
-    </td>
-  </tr>
-</tbody>
-</table>
+        <td width="350px">
+          * test
+          * test
+          * test
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 #### Why TheRole was created?
 
