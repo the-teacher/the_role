@@ -114,28 +114,6 @@ You have to know about them before using of TheRole:
 
 <hr>
 
-### We need your feedback!
-
-If you have to say something about TheRole, or if you need help, there are few ways to contact us:
-
-0. SKYPE:    **ilya.killich**
-0. Email:    zykin-ilya@ya.ru
-0. TWITTER:  [@iam_teacher](https://twitter.com/iam_teacher)
-0. Hash tag: [#the_role](https://twitter.com/hashtag/the_role)
-0. Google group: [about the_role](https://groups.google.com/forum/#!forum/the_role)
-
-<hr>
-
-#### Test matrix
-
-* **RAILS:** 3.2.21, 4.0, 4.1, 4.2
-* **RUBY:** 1.9.3, 2.0, 2.1, 2.2
-* **DB**: sqlite, mysql, postgresql
-
-totally: 48 environments
-
-<hr>
-
 <div align="center" class='center' style="text-align:center">
   <table>
     <tbody>
@@ -165,6 +143,28 @@ totally: 48 environments
     </tbody>
   </table>
 </div>
+
+<hr>
+
+### We need your feedback!
+
+If you have to say something about TheRole, or if you need help, there are few ways to contact us:
+
+0. SKYPE:    **ilya.killich**
+0. Email:    zykin-ilya@ya.ru
+0. TWITTER:  [@iam_teacher](https://twitter.com/iam_teacher)
+0. Hash tag: [#the_role](https://twitter.com/hashtag/the_role)
+0. Google group: [about the_role](https://groups.google.com/forum/#!forum/the_role)
+
+<hr>
+
+#### Test matrix
+
+* **RAILS:** 3.2.21, 4.0, 4.1, 4.2
+* **RUBY:** 1.9.3, 2.0, 2.1, 2.2
+* **DB**: sqlite, mysql, postgresql
+
+totally: 48 environments
 
 <hr>
 
