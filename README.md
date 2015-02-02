@@ -139,13 +139,14 @@ totally: 48 environments
 <hr>
 
 <table width="100%">
-  <tr>
-    <td colspan="2">
+<tbody width="100%">
+  <tr width="100%">
+    <td colspan="2" width="100%">
       <b>FAQ</b>
     </td>
   </tr>
 
-  <tr>
+  <tr width="100%">
     <td width="50%">
       * test
       * test
@@ -158,6 +159,7 @@ totally: 48 environments
       * test
     </td>
   </tr>
+</tbody>
 </table>
 
 #### Why TheRole was created?
