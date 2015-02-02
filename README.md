@@ -147,13 +147,13 @@ totally: 48 environments
   </tr>
 
   <tr>
-    <td width="300px">
+    <td width="350px">
       * test
       * test
       * test
     </td>
 
-    <td width="300px">
+    <td width="350px">
       * test
       * test
       * test
