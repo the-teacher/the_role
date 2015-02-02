@@ -60,6 +60,8 @@ Using hashes, makes role system extremely easy to configure and use
 
 #### Import/Export
 
+Import/Export operations provided via TheRole Management Panel.
+
 If you have 2 Rails apps, based on TheRole - you can move roles between them via export/import abilities of TheRole Management Panel.
 It can be usefull for Rails apps based on one engine.
 
@@ -73,14 +75,6 @@ TheRole uses few conventions over configuration.
 It gives simplicity of code, but also some limitations.
 You have to know about them before using of TheRole:
 <a href="https://github.com/TheRole/docs/blob/master/Limitations.md">Limitations list</a>
-
-#### Test matrix
-
-* **RAILS:** 3.2.21, 4.0, 4.1, 4.2
-* **RUBY:** 1.9.3, 2.0, 2.1, 2.2
-* **DB**: sqlite, mysql, postgresql
-
-totally: 48 environments
 
 <hr>
 
@@ -133,6 +127,38 @@ If you have to say something about TheRole, or if you need help, there are few w
 0. Google group: [about the_role](https://groups.google.com/forum/#!forum/the_role)
 
 <hr>
+
+#### Test matrix
+
+* **RAILS:** 3.2.21, 4.0, 4.1, 4.2
+* **RUBY:** 1.9.3, 2.0, 2.1, 2.2
+* **DB**: sqlite, mysql, postgresql
+
+totally: 48 environments
+
+<hr>
+
+<table width="100%">
+  <tr>
+    <td colspan="2">
+      <b>FAQ</b>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="50%">
+      * test
+      * test
+      * test
+    </td>
+
+    <td width="50%">
+      * test
+      * test
+      * test
+    </td>
+  </tr>
+</table>
 
 #### Why TheRole was created?
 
