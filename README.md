@@ -147,17 +147,14 @@ totally: 48 environments
 
       <tr>
         <td width="350px">
-          <a href='https://github.com/TheRole/docs/blob/master/FAQ.md#why-therole-was-created'>Why TheRole was created?</a>
-
-          <a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-administrator'>Who is Administrator?</a>
-
-          <a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-moderator'>Who is Moderator?</a>
-
-          <a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-owner'>Who is Owner?</a>
+          <p><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#why-therole-was-created'>Why TheRole was created?</a></p>
+          <p><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-administrator'>Who is Administrator?</a></p>
+          <p><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-moderator'>Who is Moderator?</a></p>
+          <p><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-owner'>Who is Owner?</a></p>
         </td>
 
         <td width="350px">
-          <a href='https://github.com/TheRole/docs/blob/master/FAQ.md#virtual-sections-and-rules'>Virtual sections and rules</a>
+          <p><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#virtual-sections-and-rules'>Virtual sections and rules</a></p>
         </td>
       </tr>
     </tbody>
