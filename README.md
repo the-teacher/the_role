@@ -58,8 +58,6 @@ Using hashes, makes role system extremely easy to configure and use
 </tr>
 </table>
 
-#### Import/Export
-
 **Import/Export operations provided via TheRole Management Panel.** If you have 2 Rails apps, based on TheRole - you can move roles between them via export/import abilities of TheRole Management Panel.
 It can be usefull for Rails apps based on one engine.
 
