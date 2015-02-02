@@ -138,22 +138,22 @@ totally: 48 environments
 
 <hr>
 
-<table width="100%">
-<tbody width="100%">
-  <tr width="100%">
-    <td colspan="2" width="100%">
+<table>
+<tbody>
+  <tr>
+    <td colspan="2">
       <b>FAQ</b>
     </td>
   </tr>
 
-  <tr width="100%">
-    <td width="50%">
+  <tr>
+    <td width="300px">
       * test
       * test
       * test
     </td>
 
-    <td width="50%">
+    <td width="300px">
       * test
       * test
       * test
