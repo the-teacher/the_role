@@ -147,17 +147,17 @@ totally: 48 environments
 
       <tr>
         <td width="350px">
-          [Why TheRole was created?](#why-therole-was-created)
+          <a href='https://github.com/TheRole/docs/blob/master/FAQ.md#why-therole-was-created'>Why TheRole was created?</a>
 
-          [Who is Administrator?](#who-is-administrator)
+          <a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-administrator'>Who is Administrator?</a>
 
-          [Who is Moderator?](#who-is-moderator)
+          <a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-moderator'>Who is Moderator?</a>
 
-          [Who is Owner?](#who-is-owner)
+          <a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-owner'>Who is Owner?</a>
         </td>
 
         <td width="350px">
-          [Virtual sections and rules](#virtual-sections-and-rules)
+          <a href='https://github.com/TheRole/docs/blob/master/FAQ.md#virtual-sections-and-rules'>Virtual sections and rules</a>
         </td>
       </tr>
     </tbody>
