@@ -151,11 +151,15 @@ totally: 48 environments
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-administrator'>Who is Administrator?</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-moderator'>Who is Moderator?</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-owner'>Who is Owner?</a></p>
+          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/Ownership.md'>Few words about Ownership</a></p>
         </td>
 
         <td width="350px" valign="top" style='vertical-align:top'>
-          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#virtual-sections-and-rules'>Virtual sections and rules</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#what-does-it-mean-semantic'>What does it mean semantic?</a></p>
+          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#virtual-sections-and-rules'>Virtual sections and rules</a></p>
+          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/Limitations.md'>Limitations</a></p>
+          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/Contributing.md'>Contributing</a></p>
+          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/MigrationsFromV2.md'>Migration form TheRole 2</a></p>
         </td>
       </tr>
     </tbody>
