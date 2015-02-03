@@ -1,9 +1,3 @@
-<p align="center" class='center' style="text-align:center">
-  Strongly recommended <a href='https://github.com/TheRole/docs/blob/master/MigrationsFromV2.md'>to upgrade from TheRole2 to TheRole3</a>. Please, do it ASAP.
-</p>
-
-<hr>
-
 <h2 align="center" class='center' style="text-align:center">
   TheRole 3.0
 </h2>
@@ -21,6 +15,10 @@
   <b>Semantic. Flexible. Lightweigh</b>
 </p>
 
+<hr>
+<p align="center" class='center' style="text-align:center">
+  Strongly recommended <a href='https://github.com/TheRole/docs/blob/master/MigrationsFromV2.md'>to upgrade from TheRole2 to TheRole3</a>. Please, do it ASAP.
+</p>
 <hr>
 
 <div align="center" class='center' style="text-align:center">
