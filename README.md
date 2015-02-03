@@ -15,12 +15,6 @@
   <b>Semantic. Flexible. Lightweigh</b>
 </p>
 
-<hr>
-<p align="center" class='center' style="text-align:center">
-  Strongly recommended <a href='https://github.com/TheRole/docs/blob/master/MigrationsFromV2.md'>to upgrade from TheRole2 to TheRole3</a>. Please, do it ASAP.
-</p>
-<hr>
-
 <div align="center" class='center' style="text-align:center">
 
 <a href="http://badge.fury.io/rb/the_role"><img src="https://badge.fury.io/rb/the_role.svg" alt="Gem Version" height="18"></a>
@@ -32,6 +26,12 @@
 <a href="https://www.ruby-toolbox.com/categories/rails_authorization">ruby-toolbox</a>
 
 </div>
+
+<hr>
+<p align="center" class='center' style="text-align:center">
+  Strongly recommended <a href='https://github.com/TheRole/docs/blob/master/MigrationsFromV2.md'>to upgrade from TheRole2 to TheRole3</a>. Please, do it ASAP.
+</p>
+<hr>
 
 ### INTRO
 
