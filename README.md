@@ -24,6 +24,10 @@
 <a href="https://codeclimate.com/github/TheRole/TheRoleApi"><img src="https://codeclimate.com/github/TheRole/TheRoleApi/badges/gpa.svg" /></a>
 &nbsp;
 <a href="https://www.ruby-toolbox.com/categories/rails_authorization">ruby-toolbox</a>
+
+<p>
+  Strongly recommended <a href='https://github.com/TheRole/docs/blob/master/MigrationsFromV2.md'>to upgrade from TheRole2 to TheRole3</a>. Please, do it ASAP.
+</p>
 </div>
 
 ### INTRO
