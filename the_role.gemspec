@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Ilya N. Zykin [the-teacher]"]
   s.email       = ["zykin-ilya@ya.ru"]
   s.homepage    = "https://github.com/the-teacher/the_role"
-  s.summary     = %q{Authorization for Rails 4}
+  s.summary     = %q{Authorization for Rails}
   s.description = %q{Authorization gem for Ruby on Rails with Management Panel}
 
   s.rubyforge_project = "the_role"
