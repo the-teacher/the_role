@@ -128,10 +128,11 @@ You have to know about them before using of TheRole:
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-moderator'>Who is Moderator?</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#who-is-owner'>Who is Owner?</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/Ownership.md'>Few words about Ownership</a></p>
+          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/Customization.md'>Customization, Rake tasks, code generators</a></p>
         </td>
 
         <td width="350px" valign="top" style='vertical-align:top'>
-          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md##what-does-semantic-mean'>What does it mean semantic?</a></p>
+          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md##what-does-it-mean-semantic'>What does it mean semantic?</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/FAQ.md#virtual-sections-and-rules'>Virtual sections and rules</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/Limitations.md'>Limitations</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/Contributing.md'>Contributing</a></p>
@@ -164,6 +165,12 @@ If you have to say something about TheRole, or if you need help, there are few w
 
 totally: 48 environments
 
+<hr>
+
+**Supported locales:**
+[the_role_api](https://github.com/TheRole/the_role_api/tree/master/config/locales) |
+[the_role_management_panel](https://github.com/TheRole/the_role_management_panel/tree/master/config/locales)
+(please, help us with them)
 <hr>
 
 ### MIT License
