@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_runtime_dependency 'the_role_api', '~> 3.0.1'
-  s.add_runtime_dependency 'the_role_management_panel', '~> 3.0.1'
+  s.add_runtime_dependency 'the_role_management_panel', '~> 3.0.2'
 end
