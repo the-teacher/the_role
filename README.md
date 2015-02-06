@@ -144,6 +144,7 @@ You have to know about them before using of TheRole:
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/Limitations.md'>Limitations</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/Contributing.md'>Contributing</a></p>
           <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/MigrationsFromV2.md'>Migration form TheRole 2 to TheRole 3</a></p>
+          <p align="left" class="left" style="text-align:left"><a href='https://github.com/TheRole/docs/blob/master/forPostgresSQLusers.md'>PSQL: how to use native :json column?</a></p>
         </td>
       </tr>
     </tbody>
