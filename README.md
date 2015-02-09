@@ -12,7 +12,7 @@
 </p>
 
 <p align="center" class='center' style="text-align:center">
-  <b>Semantic. Flexible. Lightweigh</b>
+  <b>Semantic. Flexible. Lightweight</b>
 </p>
 
 <div align="center" class='center' style="text-align:center">
