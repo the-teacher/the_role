@@ -196,3 +196,5 @@ Copyright (c) 2012-2015 [Ilya N.Zykin](https://github.com/the-teacher)
 [@egb3](https://github.com/egb3)
 [@klacointe](https://github.com/klacointe)
 [@niltonvasques](https://github.com/niltonvasques)
+
+[Thanks for contributors](https://github.com/the-teacher/the_role/graphs/contributors)
