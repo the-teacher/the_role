@@ -190,4 +190,9 @@ Copyright (c) 2012-2015 [Ilya N.Zykin](https://github.com/the-teacher)
 
 #### Contributors
 
-@igmarin, @doabit, @linjunpop, @egb3, @klacointe
+[@igmarin](https://github.com/igmarin)
+[@doabit](https://github.com/doabit)
+[@linjunpop](https://github.com/linjunpop)
+[@egb3](https://github.com/egb3)
+[@klacointe](https://github.com/klacointe)
+[@niltonvasques](https://github.com/niltonvasques)
