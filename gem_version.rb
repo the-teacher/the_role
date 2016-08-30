@@ -1,3 +1,3 @@
 module TheRole
-  VERSION = "3.0.2"
+  VERSION = "3.5"
 end
