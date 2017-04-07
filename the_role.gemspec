@@ -2,7 +2,7 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 module TheRole
-  VERSION = "3.8.2"
+  VERSION = "3.8.3"
 end
 
 Gem::Specification.new do |s|
