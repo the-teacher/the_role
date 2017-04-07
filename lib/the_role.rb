@@ -1,5 +1,3 @@
-require 'the_role/version'
-
 require 'the_role_api'
 require 'the_role_management_panel'
 
