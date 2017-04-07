@@ -1,6 +1,9 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "the_role/version"
+
+module TheRole
+  VERSION = "3.8"
+end
 
 Gem::Specification.new do |s|
   s.name        = "the_role"
