@@ -14,8 +14,6 @@ Gem::Specification.new do |s|
   s.summary     = %q{Authorization for Rails}
   s.description = %q{Authorization gem for Ruby on Rails with Management Panel}
 
-  s.rubyforge_project = "the_role"
-
   s.files         = `git ls-files`.split("\n").select{ |file_name| !(file_name =~ /^spec/) }
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
