@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        counter: [1, 2, 3]
+        project: ['project-1', 'project-2']
     steps:
-      - name: First step
-        run: echo "First step: Matrix: ${{ matrix.counter }}"
-      - name: Second step
-        run: echo "Second step: Matrix: ${{ matrix.counter }}"
-      - name: Third step
-        run: echo "Third step: Matrix: ${{ matrix.counter }}"
+      - name: First project
+        if: matrix.project == 'project-1'
+        run: echo 'Hello world, it is first project => ${{ matrix.project }}'
+      - name: Second project
+        if: matrix.project == 'project-2'
+        run: echo 'Hello world, it is second project => ${{ matrix.project }}'
