@@ -1,19 +1,1 @@
-name: Matrix Playground
 
-on:
-  workflow_dispatch:
-
-jobs:
-  one:
-    name: First job
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        project: ['project-1', 'project-2']
-    steps:
-      - name: First project
-        if: matrix.project == 'project-1'
-        run: echo 'Hello world, it is first project => ${{ matrix.project }}'
-      - name: Second project
-        if: matrix.project == 'project-2'
-        run: echo 'Hello world, it is second project => ${{ matrix.project }}'
