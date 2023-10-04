@@ -3,7 +3,7 @@
 These people helped with development and testing of the project
 
 - o-200
-- sk8higher
+- [@sk8higher](https://github.com/sk8higher)
 - Alex808r
 - ekatebenkova
 - Pavelandr1207
