@@ -6,7 +6,7 @@ These people helped with development and testing of the project
 - [@sk8higher](https://github.com/sk8higher)
 - [@Alex808r](https://github.com/Alex808r)
 - ekatebenkova
-- Pavelandr1207
+- @Pavelandr1207
 
 Also see other contributors:
 
