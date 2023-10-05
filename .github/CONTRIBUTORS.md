@@ -2,7 +2,7 @@
 
 These people helped with development and testing of the project
 
-- o-200
+- [@o-200](https://github.com/o-200)
 - sk8higher
 - Alex808r
 - ekatebenkova
